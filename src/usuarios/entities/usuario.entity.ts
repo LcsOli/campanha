@@ -1,22 +1,22 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
-@Entity()
+@Entity('usuario') 
 export class Usuario {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ type: 'varchar', length: 11, unique: true })
+  cpf: string; 
+
+  @Column({ type: 'varchar', length: 255 })
   nome: string;
 
-  @Column()
-  senha: string;  
+  @Column({ type: 'varchar', length: 255 })
+  senha: string; 
 
-  @Column()
+  @Column({ type: 'int' })
   grupo: number;
 
   @Column({ type: 'date' })
   acesso: string;
-
-  @Column()
-  CPF: string;
 }

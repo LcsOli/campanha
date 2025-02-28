@@ -1,8 +1,8 @@
-import { Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
+import { Injectable, NotFoundException, UnauthorizedException, BadRequestException, InternalServerErrorException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Usuario } from './entities/usuario.entity';
-import * as bcrypt from 'bcrypt';
+import * as bcrypt from 'bcryptjs';
 import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
@@ -13,46 +13,94 @@ export class UsuariosService {
     private readonly jwtService: JwtService,
   ) {}
 
+  /**
+   * Criar um novo usuário garantindo que a senha seja criptografada antes de salvar
+   */
   async create(usuario: Usuario): Promise<Usuario> {
-    usuario.senha = await bcrypt.hash(usuario.senha, 10).then(hash => hash);
-    return this.usuarioRepository.save(usuario);
-  }
+    console.log("?? Criando usuário:", usuario);
 
+    // Certifique-se de que a senha recebida está em texto puro antes de criptografar
+    if (usuario.senha.startsWith('$2b$')) {
+        throw new BadRequestException("A senha não pode estar criptografada no cadastro!");
+    }
+
+    usuario.senha = await bcrypt.hash(usuario.senha, 10); // Agora a senha sempre será criptografada
+
+    const novoUsuario = await this.usuarioRepository.save(usuario);
+    console.log("? Usuário criado com sucesso:", novoUsuario);
+
+    return novoUsuario;
+}
+
+
+  /**
+   * Retorna todos os usuários do banco
+   */
   async findAll(): Promise<Usuario[]> {
     return this.usuarioRepository.find();
   }
 
+  /**
+   * Busca um único usuário pelo ID
+   */
   async findOne(id: number): Promise<Usuario> {
     const usuario = await this.usuarioRepository.findOne({ where: { id } });
+
     if (!usuario) {
       throw new NotFoundException('Usuário não encontrado');
     }
+
     return usuario;
   }
 
-  async validateUser(cpf: string, password: string): Promise<{ accessToken: string }> {
-    // Buscar o usuário pelo CPF
-    const usuario = await this.usuarioRepository.findOne({ where: { CPF: cpf } });
-  
+  /**
+   * Método para login e geração do token JWT
+   */
+  async validateUser(cpf: string, senhaDigitada: string): Promise<{ accessToken: string }> {
+    console.log("?? Buscando usuário com CPF:", cpf);
+
+    const usuario = await this.usuarioRepository.findOne({ where: { cpf } });
+
     if (!usuario) {
+      console.log("? CPF não encontrado no banco!");
       throw new UnauthorizedException('CPF não encontrado');
     }
-  
-    // Comparar a senha fornecida com a armazenada (utilizando bcrypt)
-    const isPasswordValid = await bcrypt.compare(password, usuario.senha);  // Aqui você compara a senha
-  
+
+    console.log("? Usuário encontrado:", usuario);
+
+    // Exibir senhas para depuração
+    console.log("?? Senha armazenada no banco:", usuario.senha);
+    console.log("?? Senha digitada pelo usuário:", senhaDigitada);
+
+    // Comparação da senha usando bcrypt
+    const isPasswordValid = await bcrypt.compare(senhaDigitada, usuario.senha);
+
     if (!isPasswordValid) {
+      console.log("? Senha incorreta!");
       throw new UnauthorizedException('Senha incorreta');
     }
-  
-    // Gerar o payload do JWT
-    const payload = { cpf: usuario.CPF, sub: usuario.id };
-    
-    // Gerar o accessToken com o payload
+
+    // Gerando um JWT se as credenciais estiverem corretas
+    const payload = { cpf: usuario.cpf, sub: usuario.id };
     const accessToken = this.jwtService.sign(payload);
-  
+
+    console.log("? Login bem-sucedido! Token gerado:", accessToken);
+
     return { accessToken };
   }
-  
-  }
 
+  /**
+   * Método para criptografar todas as senhas que ainda não foram criptografadas no banco.
+   */
+  async criptografarSenhas() {
+    const usuarios = await this.usuarioRepository.find();
+
+    for (const usuario of usuarios) {
+      if (usuario.senha && !usuario.senha.startsWith('$2b$')) { // Verifica se a senha não está criptografada
+        usuario.senha = await bcrypt.hash(usuario.senha, 10);
+        await this.usuarioRepository.save(usuario);
+        console.log(`? Senha criptografada para o usuário ${usuario.cpf}`);
+      }
+    }
+  }
+}
