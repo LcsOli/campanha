@@ -9,7 +9,7 @@ export class Usuario {
   nome: string;
 
   @Column()
-  senha: string;
+  senha: string;  
 
   @Column()
   grupo: number;
@@ -18,5 +18,5 @@ export class Usuario {
   acesso: string;
 
   @Column()
-  CPF: string; 
+  CPF: string;
 }

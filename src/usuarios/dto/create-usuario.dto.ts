@@ -1,23 +1,18 @@
-import { IsString, IsNotEmpty, IsNumber, IsDateString } from 'class-validator';
+import { IsString, IsInt, IsDateString } from 'class-validator';
 
 export class CreateUsuarioDto {
-  @IsNotEmpty()
   @IsString()
   nome: string;
 
-  @IsNotEmpty()
   @IsString()
-  senha: string;
+  password: string;
 
-  @IsNotEmpty()
-  @IsNumber()
-  grupo: number; 
+  @IsInt()
+  grupo: number;
 
-  @IsNotEmpty()
   @IsDateString()
-  acesso: string; 
+  acesso: string;
 
-  @IsNotEmpty()
   @IsString()
-  CPF: string; 
+  CPF: string;
 }
