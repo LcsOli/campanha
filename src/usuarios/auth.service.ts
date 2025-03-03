@@ -12,6 +12,9 @@ export class AuthService {
     private readonly jwtService: JwtService,
   ) {}
 
+  /**
+   * 🔹 Valida o usuário pelo CPF e senha
+   */
   async validateUser(cpf: string, senha: string): Promise<Usuario> {
     console.log("🔍 Validando usuário com CPF:", cpf);
 
@@ -32,11 +35,18 @@ export class AuthService {
     return usuario;
   }
 
+  /**
+   * 🔹 Gera um token JWT e retorna o CPF do usuário autenticado
+   */
   async login(user: Usuario) {
     const payload = { cpf: user.cpf, sub: user.id };
     const accessToken = this.jwtService.sign(payload, { expiresIn: '1h' });
 
     console.log("✅ Login bem-sucedido! Token gerado:", accessToken);
-    return { accessToken };
+    
+    return { 
+      accessToken, 
+      cpf: user.cpf // ✅ Agora retornamos o CPF para ser salvo no localStorage
+    };
   }
 }

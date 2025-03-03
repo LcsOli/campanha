@@ -1,22 +1,21 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn } from 'typeorm';
 
 @Entity('usuario') 
 export class Usuario {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'varchar', length: 11, unique: true })
-  cpf: string; 
+  @Column({ type: 'bigint', unique: true })
+  cpf: string;
 
   @Column({ type: 'varchar', length: 255 })
-  nome: string;
+  nome: string; 
 
-  @Column({ type: 'varchar', length: 255 })
-  senha: string; 
-
+  @Column({ type: 'varchar', length: 255, nullable: false })
+  senha: string;
   @Column({ type: 'int' })
   grupo: number;
 
-  @Column({ type: 'date' })
-  acesso: string;
+  @CreateDateColumn({ type: 'timestamp', default: () => "CURRENT_TIMESTAMP", nullable: true })
+  acesso: Date; 
 }

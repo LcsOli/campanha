@@ -43,22 +43,33 @@ export class UsuariosService {
   /**
    * 🔹 Cria um novo usuário garantindo que a senha seja criptografada antes de salvar
    */
-  async create(usuarioDto: { cpf: string; nome: string; senha: string }): Promise<Usuario> {
+  async create(usuarioDto: { cpf: string; nome: string; senha: string; grupo?: number }): Promise<Usuario> {
     console.log("🔹 Criando usuário:", usuarioDto);
 
+    // Verifica se o CPF já existe no banco
+    const usuarioExistente = await this.usuarioRepository.findOne({ where: { cpf: usuarioDto.cpf } });
+    if (usuarioExistente) {
+      throw new BadRequestException("CPF já cadastrado!");
+    }
+
+    // Verifica se a senha foi fornecida
     if (!usuarioDto.senha) {
       throw new BadRequestException("Senha é obrigatória!");
     }
 
+    // Impede senhas já criptografadas de serem salvas novamente
     if (usuarioDto.senha.startsWith('$2b$')) {
       throw new BadRequestException("A senha não pode estar criptografada no cadastro!");
     }
 
+    // Criptografa a senha antes de salvar no banco
     const usuario = new Usuario();
     usuario.cpf = usuarioDto.cpf;
     usuario.nome = usuarioDto.nome;
     usuario.senha = await bcrypt.hash(usuarioDto.senha, 10);
+    usuario.grupo = usuarioDto.grupo || 2; // Se não informado, assume "Usuário Comum"
 
+    // Salva no banco de dados
     const novoUsuario = await this.usuarioRepository.save(usuario);
     console.log("✅ Usuário criado com sucesso:", novoUsuario);
 
@@ -86,7 +97,7 @@ export class UsuariosService {
   /**
    * 🔹 Método para login e geração do token JWT
    */
-  async validateUser(cpf: string, senhaDigitada: string): Promise<{ accessToken: string }> {
+  async validateUser(cpf: string, senhaDigitada: string): Promise<{ accessToken: string; grupo: number }> {
     console.log("🔹 Buscando usuário com CPF:", cpf);
     
     const usuario = await this.findByCpf(cpf);
@@ -103,11 +114,15 @@ export class UsuariosService {
       throw new UnauthorizedException('Senha incorreta');
     }
 
-    const payload = { cpf: usuario.cpf, sub: usuario.id };
+    // Atualiza o campo `acesso` com o timestamp atual
+    usuario.acesso = new Date();
+    await this.usuarioRepository.save(usuario);
+
+    const payload = { cpf: usuario.cpf, sub: usuario.id, grupo: usuario.grupo };
     const accessToken = this.jwtService.sign(payload);
     console.log("✅ Login bem-sucedido! Token gerado:", accessToken);
 
-    return { accessToken };
+    return { accessToken, grupo: usuario.grupo };
   }
 
   /**
