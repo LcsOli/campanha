@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException, UnauthorizedException, BadRequestException, InternalServerErrorException } from '@nestjs/common';
+import { Injectable, NotFoundException, UnauthorizedException, BadRequestException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Usuario } from './entities/usuario.entity';
@@ -14,42 +14,66 @@ export class UsuariosService {
   ) {}
 
   /**
-   * Busca um usuário pelo CPF
+   * 🔹 Busca um usuário pelo CPF
    */
   async findByCpf(cpf: string): Promise<Usuario | null> {
-    return await this.usuarioRepository.findOne({ where: { cpf } }) || null;
+    const usuario = await this.usuarioRepository.findOne({ where: { cpf } });
+
+    if (!usuario) {
+      console.warn(`⚠️ Usuário com CPF ${cpf} não encontrado no banco.`);
+      return null;
+    }
+
+    return usuario;
   }
 
   /**
-   * Criar um novo usuário garantindo que a senha seja criptografada antes de salvar
+   * 🔹 Obtém apenas o nome do usuário pelo CPF
    */
-  async create(usuario: Usuario): Promise<Usuario> {
-    console.log("?? Criando usuário:", usuario);
+  async getNomePorCpf(cpf: string): Promise<{ nome: string }> {
+    const usuario = await this.usuarioRepository.findOne({ where: { cpf }, select: ['nome'] });
 
-    if (!usuario.senha) {
+    if (!usuario) {
+      throw new NotFoundException(`Usuário com CPF ${cpf} não encontrado.`);
+    }
+
+    return { nome: usuario.nome };
+  }
+
+  /**
+   * 🔹 Cria um novo usuário garantindo que a senha seja criptografada antes de salvar
+   */
+  async create(usuarioDto: { cpf: string; nome: string; senha: string }): Promise<Usuario> {
+    console.log("🔹 Criando usuário:", usuarioDto);
+
+    if (!usuarioDto.senha) {
       throw new BadRequestException("Senha é obrigatória!");
     }
 
-    if (usuario.senha.startsWith('$2b$')) {
+    if (usuarioDto.senha.startsWith('$2b$')) {
       throw new BadRequestException("A senha não pode estar criptografada no cadastro!");
     }
 
-    usuario.senha = await bcrypt.hash(usuario.senha, 10);
+    const usuario = new Usuario();
+    usuario.cpf = usuarioDto.cpf;
+    usuario.nome = usuarioDto.nome;
+    usuario.senha = await bcrypt.hash(usuarioDto.senha, 10);
+
     const novoUsuario = await this.usuarioRepository.save(usuario);
-    console.log("? Usuário criado com sucesso:", novoUsuario);
+    console.log("✅ Usuário criado com sucesso:", novoUsuario);
 
     return novoUsuario;
   }
 
   /**
-   * Retorna todos os usuários do banco
+   * 🔹 Retorna todos os usuários do banco
    */
   async findAll(): Promise<Usuario[]> {
     return this.usuarioRepository.find();
   }
 
   /**
-   * Busca um único usuário pelo ID
+   * 🔹 Busca um único usuário pelo ID
    */
   async findOne(id: number): Promise<Usuario> {
     const usuario = await this.usuarioRepository.findOne({ where: { id } });
@@ -60,35 +84,34 @@ export class UsuariosService {
   }
 
   /**
-   * Método para login e geração do token JWT
+   * 🔹 Método para login e geração do token JWT
    */
   async validateUser(cpf: string, senhaDigitada: string): Promise<{ accessToken: string }> {
-    console.log("?? Buscando usuário com CPF:", cpf);
+    console.log("🔹 Buscando usuário com CPF:", cpf);
     
     const usuario = await this.findByCpf(cpf);
     if (!usuario) {
-      console.log("? CPF não encontrado no banco!");
+      console.warn("⚠️ CPF não encontrado no banco!");
       throw new UnauthorizedException('CPF não encontrado');
     }
 
-    console.log("? Usuário encontrado:", usuario);
-    console.log("?? Senha armazenada no banco:", usuario.senha);
-    console.log("?? Senha digitada pelo usuário:", senhaDigitada);
+    console.log("✅ Usuário encontrado:", usuario.nome);
 
     const isPasswordValid = await bcrypt.compare(senhaDigitada, usuario.senha);
     if (!isPasswordValid) {
-      console.log("? Senha incorreta!");
+      console.warn("⚠️ Senha incorreta para CPF:", cpf);
       throw new UnauthorizedException('Senha incorreta');
     }
 
     const payload = { cpf: usuario.cpf, sub: usuario.id };
     const accessToken = this.jwtService.sign(payload);
-    console.log("? Login bem-sucedido! Token gerado:", accessToken);
+    console.log("✅ Login bem-sucedido! Token gerado:", accessToken);
+
     return { accessToken };
   }
 
   /**
-   * Método para criptografar todas as senhas que ainda não foram criptografadas no banco.
+   * 🔹 Método para criptografar todas as senhas que ainda não foram criptografadas no banco.
    */
   async criptografarSenhas() {
     const usuarios = await this.usuarioRepository.find();
@@ -96,7 +119,7 @@ export class UsuariosService {
       if (usuario.senha && !usuario.senha.startsWith('$2b$')) {
         usuario.senha = await bcrypt.hash(usuario.senha, 10);
         await this.usuarioRepository.save(usuario);
-        console.log(`? Senha criptografada para o usuário ${usuario.cpf}`);
+        console.log(`🔹 Senha criptografada para o usuário ${usuario.cpf}`);
       }
     }
   }

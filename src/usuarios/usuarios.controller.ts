@@ -1,4 +1,4 @@
-import { Controller, Post, Body, BadRequestException, UnauthorizedException } from '@nestjs/common';
+import { Controller, Post, Body, BadRequestException, UnauthorizedException, Get, Param } from '@nestjs/common';
 import { UsuariosService } from './usuarios.service';
 import { AuthService } from './auth.service';
 
@@ -8,6 +8,12 @@ export class UsuariosController {
     private readonly usuariosService: UsuariosService,
     private readonly authService: AuthService,
   ) {}
+
+  @Get('/')
+  async listarUsuarios() {
+    return this.usuariosService.findAll();
+  }
+
 
   @Post('/login')
   async login(@Body() loginDto: { cpf: string; senha: string }) {
@@ -30,5 +36,9 @@ export class UsuariosController {
       }
       throw new BadRequestException("Falha ao autenticar usuário.");
     }
+  }
+  @Get('/nome/:cpf')
+  async obterNomeUsuario(@Param('cpf') cpf: string) {
+    return this.usuariosService.getNomePorCpf(cpf);
   }
 }
