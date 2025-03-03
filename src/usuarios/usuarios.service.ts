@@ -114,10 +114,20 @@ export class UsuariosService {
       throw new UnauthorizedException('Senha incorreta');
     }
 
-    // Atualiza o campo `acesso` com o timestamp atual
-    usuario.acesso = new Date();
-    await this.usuarioRepository.save(usuario);
+    
+    // 🔹 Atualiza o campo `acesso` diretamente no banco
+    console.log("🛠️ Tentando atualizar último acesso...");
 
+    const resultado = await this.usuarioRepository
+      .createQueryBuilder()
+      .update(Usuario)
+      .set({ acesso: () => 'NOW()' })
+      .where("id = :id", { id: usuario.id })
+      .execute();
+    
+    console.log(`✅ Query de atualização executada. Linhas afetadas: ${resultado.affected}`);
+    
+    // 🔹 Gera token JWT
     const payload = { cpf: usuario.cpf, sub: usuario.id, grupo: usuario.grupo };
     const accessToken = this.jwtService.sign(payload);
     console.log("✅ Login bem-sucedido! Token gerado:", accessToken);
@@ -137,5 +147,18 @@ export class UsuariosService {
         console.log(`🔹 Senha criptografada para o usuário ${usuario.cpf}`);
       }
     }
+    
   }
+  async atualizarUltimoAcesso(id: number): Promise<void> {
+    console.log(`🛠 Atualizando último acesso para o usuário com ID: ${id}`);
+
+    const resultado = await this.usuarioRepository
+      .createQueryBuilder()
+      .update(Usuario)
+      .set({ acesso: () => 'NOW()' }) 
+      .where("id = :id", { id })
+      .execute();
+
+    console.log(`✅ Último acesso atualizado! Linhas afetadas: ${resultado.affected}`);
+}
 }

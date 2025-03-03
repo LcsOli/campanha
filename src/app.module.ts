@@ -14,6 +14,7 @@ import { UsuariosModule } from './usuarios/usuarios.module';
       database: 'Campanha',
       entities: [Usuario],
       synchronize: false,
+      logging: true,
     }),
     UsuariosModule,
   ],

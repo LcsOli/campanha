@@ -32,8 +32,13 @@ export class AuthService {
       throw new UnauthorizedException('Senha incorreta');
     }
 
+    // ✅ Atualiza o último acesso chamando o serviço correto
+    await this.usuariosService.atualizarUltimoAcesso(usuario.id);
+
     return usuario;
-  }
+}
+
+
 
   /**
    * 🔹 Gera um token JWT e retorna o CPF do usuário autenticado
