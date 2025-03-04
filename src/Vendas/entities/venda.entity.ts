@@ -1,12 +1,15 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryColumn } from 'typeorm';
 
-@Entity('vendas') // Nome da tabela no banco
+@Entity('vendas') // Nome exato da tabela no banco
 export class Venda {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryColumn({ type: 'date' })
+  dtmov: string; // Data da venda como parte da chave primária
 
-  @Column({ type: 'date' })
-  dtmov: string;
+  @PrimaryColumn({ type: 'int' })
+  rcacode: number; // Código do RCA como parte da chave primária
+
+  @PrimaryColumn({ type: 'varchar', length: 20 })
+  cgc_client: string; // Cliente como parte da chave primária
 
   @Column({ type: 'varchar', length: 50 })
   unidade: string;
@@ -18,14 +21,8 @@ export class Venda {
   total: number;
 
   @Column({ type: 'int' })
-  rcacode: number;
-
-  @Column({ type: 'int' })
   qtde: number;
 
   @Column({ type: 'varchar', length: 255 })
   manager: string;
-
-  @Column({ type: 'varchar', length: 20 })
-  cgc_client: string;
 }

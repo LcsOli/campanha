@@ -15,8 +15,10 @@ export class VendasService {
     return this.vendasRepository.find();
   }
 
-  // Buscar uma venda por ID
-  async findOne(id: number): Promise<Venda | null> {
-    return this.vendasRepository.findOne({ where: { id } });
+  // Buscar uma venda específica usando a chave primária composta
+  async findOne(dtmov: string, rcacode: number, cgc_client: string): Promise<Venda | null> {
+    return this.vendasRepository.findOne({
+      where: { dtmov, rcacode, cgc_client },
+    });
   }
 }

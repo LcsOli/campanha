@@ -3,6 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Usuario } from './usuarios/entities/usuario.entity';
 import { UsuariosModule } from './usuarios/usuarios.module';
 import { VendasModule } from './Vendas/vendas.module';
+import { Venda } from './Vendas/entities/venda.entity';
 
 @Module({
   imports: [
@@ -13,7 +14,7 @@ import { VendasModule } from './Vendas/vendas.module';
       username: 'root',
       password: '123Mudar@',
       database: 'Campanha',
-      entities: [Usuario],
+      entities: [Usuario, Venda],
       synchronize: false,
       logging: true,
     }),

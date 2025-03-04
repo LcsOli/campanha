@@ -11,8 +11,12 @@ export class VendasController {
     return this.vendasService.findAll();
   }
 
-  @Get(':id')
-  async getVendaById(@Param('id') id: number): Promise<Venda | null> {
-    return this.vendasService.findOne(id);
+  @Get(':dtmov/:rcacode/:cgc_client')
+  async getVendaById(
+    @Param('dtmov') dtmov: string,
+    @Param('rcacode') rcacode: number,
+    @Param('cgc_client') cgc_client: string
+  ): Promise<Venda | null> {
+    return this.vendasService.findOne(dtmov, rcacode, cgc_client);
   }
 }
