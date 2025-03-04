@@ -1,15 +1,15 @@
 import { Entity, Column, PrimaryColumn } from 'typeorm';
 
-@Entity('vendas') // Nome exato da tabela no banco
+@Entity('vendas')
 export class Venda {
   @PrimaryColumn({ type: 'date' })
-  dtmov: string; // Data da venda como parte da chave primária
+  dtmov: string;
 
   @PrimaryColumn({ type: 'int' })
-  rcacode: number; // Código do RCA como parte da chave primária
+  rcacode: number;
 
   @PrimaryColumn({ type: 'varchar', length: 20 })
-  cgc_client: string; // Cliente como parte da chave primária
+  cgc_client: string;
 
   @Column({ type: 'varchar', length: 50 })
   unidade: string;
@@ -17,7 +17,7 @@ export class Venda {
   @Column({ type: 'char', length: 1 })
   codoper: string;
 
-  @Column({ type: 'decimal', precision: 15, scale: 4 })
+  @Column({ type: 'decimal', precision: 15, scale: 4, transformer: { from: value => parseFloat(value), to: value => value } })
   total: number;
 
   @Column({ type: 'int' })
