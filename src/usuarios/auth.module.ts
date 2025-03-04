@@ -1,6 +1,6 @@
 import { Module, forwardRef } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { UsuariosModule } from '../usuarios/usuarios.module'; // ✅ Importação com forwardRef
+import { UsuariosModule } from '../usuarios/usuarios.module';
 import { JwtModule } from '@nestjs/jwt';
 
 @Module({
@@ -11,7 +11,7 @@ import { JwtModule } from '@nestjs/jwt';
       }),
       forwardRef(() => UsuariosModule),
     ],
-    providers: [AuthService], // ✅ Apenas `AuthService`
+    providers: [AuthService], 
     exports: [AuthService],
   })
   export class AuthModule {}

@@ -9,25 +9,19 @@ export class UsuariosController {
     private readonly authService: AuthService,
   ) {}
 
-  /**
-   * 🔹 Rota para listar todos os usuários (GET /usuarios)
-   */
+  //rota para listar os usuários
   @Get('/')
   async listarUsuarios() {
     return this.usuariosService.findAll();
   }
 
-  /**
-   * 🔹 Rota para obter o nome do usuário pelo CPF (GET /usuarios/nome/:cpf)
-   */
+ //rota para obter o nome do usuário
   @Get('/nome/:cpf')
   async obterNomeUsuario(@Param('cpf') cpf: string) {
     return this.usuariosService.getNomePorCpf(cpf);
   }
 
-  /**
-   * 🔹 Rota para login e geração do token JWT (POST /usuarios/login)
-   */
+  //rota do login
   @Post('/login')
   async login(@Body() loginDto: { cpf: string; senha: string }) {
     try {
@@ -37,10 +31,10 @@ export class UsuariosController {
         throw new BadRequestException("CPF e Senha são obrigatórios!");
       }
 
-      // ✅ Verificando se o usuário é válido
+      //valida o usuário
       const user = await this.authService.validateUser(loginDto.cpf, loginDto.senha);
 
-      // ✅ Se o usuário for válido, gerar e retornar o token JWT + grupo do usuário
+      // valida o usuário e gera o token
       const tokenData = await this.authService.login(user);
       return tokenData;
     } catch (error) {
@@ -52,9 +46,7 @@ export class UsuariosController {
     }
   }
 
-  /**
-   * 🔹 Rota para registrar um novo usuário (POST /usuarios/registrar)
-   */
+ //rota para registrar o usuário
   @Post('/registrar')
   async registrarUsuario(@Body() usuarioDto: { cpf: string; nome: string; senha: string; grupo?: number }) {
     try {

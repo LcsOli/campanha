@@ -13,9 +13,7 @@ export class UsuariosService {
     private readonly jwtService: JwtService,
   ) {}
 
-  /**
-   * 🔹 Busca um usuário pelo CPF
-   */
+//busca o usuário pelo cpf
   async findByCpf(cpf: string): Promise<Usuario | null> {
     const usuario = await this.usuarioRepository.findOne({ where: { cpf } });
 
@@ -27,9 +25,7 @@ export class UsuariosService {
     return usuario;
   }
 
-  /**
-   * 🔹 Obtém apenas o nome do usuário pelo CPF
-   */
+  //obtem o nome do usuário pelo cpf
   async getNomePorCpf(cpf: string): Promise<{ nome: string }> {
     const usuario = await this.usuarioRepository.findOne({ where: { cpf }, select: ['nome'] });
 
@@ -40,9 +36,7 @@ export class UsuariosService {
     return { nome: usuario.nome };
   }
 
-  /**
-   * 🔹 Cria um novo usuário garantindo que a senha seja criptografada antes de salvar
-   */
+  //cria um novo usuário
   async create(usuarioDto: { cpf: string; nome: string; senha: string; grupo?: number }): Promise<Usuario> {
     console.log("🔹 Criando usuário:", usuarioDto);
 
@@ -67,7 +61,7 @@ export class UsuariosService {
     usuario.cpf = usuarioDto.cpf;
     usuario.nome = usuarioDto.nome;
     usuario.senha = await bcrypt.hash(usuarioDto.senha, 10);
-    usuario.grupo = usuarioDto.grupo || 2; // Se não informado, assume "Usuário Comum"
+    
 
     // Salva no banco de dados
     const novoUsuario = await this.usuarioRepository.save(usuario);
@@ -76,16 +70,12 @@ export class UsuariosService {
     return novoUsuario;
   }
 
-  /**
-   * 🔹 Retorna todos os usuários do banco
-   */
+//retorna todos os usuários
   async findAll(): Promise<Usuario[]> {
     return this.usuarioRepository.find();
   }
 
-  /**
-   * 🔹 Busca um único usuário pelo ID
-   */
+ //busca um usuário pelo id
   async findOne(id: number): Promise<Usuario> {
     const usuario = await this.usuarioRepository.findOne({ where: { id } });
     if (!usuario) {
@@ -94,9 +84,7 @@ export class UsuariosService {
     return usuario;
   }
 
-  /**
-   * 🔹 Método para login e geração do token JWT
-   */
+  //atualiza um usuário
   async validateUser(cpf: string, senhaDigitada: string): Promise<{ accessToken: string; grupo: number }> {
     console.log("🔹 Buscando usuário com CPF:", cpf);
     
@@ -115,7 +103,7 @@ export class UsuariosService {
     }
 
     
-    // 🔹 Atualiza o campo `acesso` diretamente no banco
+   //atuazliza o ultimo acesso do usuário
     console.log("🛠️ Tentando atualizar último acesso...");
 
     const resultado = await this.usuarioRepository
@@ -127,7 +115,7 @@ export class UsuariosService {
     
     console.log(`✅ Query de atualização executada. Linhas afetadas: ${resultado.affected}`);
     
-    // 🔹 Gera token JWT
+    // gerar o token de acesso
     const payload = { cpf: usuario.cpf, sub: usuario.id, grupo: usuario.grupo };
     const accessToken = this.jwtService.sign(payload);
     console.log("✅ Login bem-sucedido! Token gerado:", accessToken);
@@ -135,9 +123,7 @@ export class UsuariosService {
     return { accessToken, grupo: usuario.grupo };
   }
 
-  /**
-   * 🔹 Método para criptografar todas as senhas que ainda não foram criptografadas no banco.
-   */
+  //criptografa as senhas
   async criptografarSenhas() {
     const usuarios = await this.usuarioRepository.find();
     for (const usuario of usuarios) {

@@ -9,8 +9,8 @@ import { JwtModule } from '@nestjs/jwt';
 @Module({
   imports: [
     TypeOrmModule.forFeature([Usuario]),
-    forwardRef(() => AuthModule), // ✅ Corrigido para evitar dependência circular
-    JwtModule.register({}), // ✅ Adicionado para permitir injeção do JwtService
+    forwardRef(() => AuthModule), 
+    JwtModule.register({}), 
   ],
   controllers: [UsuariosController],
   providers: [UsuariosService],
