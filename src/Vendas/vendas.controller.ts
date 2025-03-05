@@ -8,17 +8,22 @@ export class VendasController {
 
   // ✅ Agora aceita filtros opcionais
   @Get()
-  async getAllVendas(@Query('rcacode') rcacode?: string): Promise<Venda[]> {
+  async getAllVendas(
+    @Query('rcacode') rcacode?: string,
+    @Query('manager') manager?: string
+  ): Promise<Venda[]> {
     const rcaCodeNumber = rcacode ? parseInt(rcacode, 10) : undefined;
-    return this.vendasService.findAll(rcaCodeNumber);
+    return this.vendasService.findAll(rcaCodeNumber, manager);
   }
+  
 
-  @Get(':dtmov/:rcacode/:cgc_client')
+  @Get(':dtmov/:rcacode/:cgc_client/:manager')
   async getVendaById(
     @Param('dtmov') dtmov: string,
     @Param('rcacode') rcacode: number,
-    @Param('cgc_client') cgc_client: string
+    @Param('cgc_client') cgc_client: string,
+    @Param('manager') manager: string
   ): Promise<Venda | null> {
-    return this.vendasService.findOne(dtmov, rcacode, cgc_client);
+    return this.vendasService.findOne(dtmov, rcacode, cgc_client, manager);
   }
 }
