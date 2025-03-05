@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Query, Param } from '@nestjs/common';
 import { VendasService } from './vendas.service';
 import { Venda } from './entities/venda.entity';
 
@@ -6,9 +6,11 @@ import { Venda } from './entities/venda.entity';
 export class VendasController {
   constructor(private readonly vendasService: VendasService) {}
 
+  // ✅ Agora aceita filtros opcionais
   @Get()
-  async getAllVendas(): Promise<Venda[]> {
-    return this.vendasService.findAll();
+  async getAllVendas(@Query('rcacode') rcacode?: string): Promise<Venda[]> {
+    const rcaCodeNumber = rcacode ? parseInt(rcacode, 10) : undefined;
+    return this.vendasService.findAll(rcaCodeNumber);
   }
 
   @Get(':dtmov/:rcacode/:cgc_client')
