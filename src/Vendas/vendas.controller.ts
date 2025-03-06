@@ -17,13 +17,13 @@ export class VendasController {
   }
   
 
-  @Get(':dtmov/:rcacode/:cgc_client/:manager')
+  @Get(':dtmov/:rcacode/:codprod/:manager')
   async getVendaById(
     @Param('dtmov') dtmov: string,
     @Param('rcacode') rcacode: number,
-    @Param('cgc_client') cgc_client: string,
+    @Param('codprod') codprod: number,
     @Param('manager') manager: string
   ): Promise<Venda | null> {
-    return this.vendasService.findOne(dtmov, rcacode, cgc_client, manager);
+    return this.vendasService.findOne(dtmov, rcacode, codprod, manager);
   }
 }

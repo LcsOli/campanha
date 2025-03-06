@@ -26,7 +26,7 @@ export class VendasService {
   }
   
 
-  async findOne(dtmov: string, rcacode: number, cgc_client: string, manager: string): Promise<Venda | null> {
-    return this.vendaRepository.findOne({ where: { dtmov, rcacode, cgc_client } });
+  async findOne(dtmov: string, rcacode: number, codprod: number, manager: string): Promise<Venda | null> {
+    return this.vendaRepository.findOne({ where: { dtmov, rcacode, codprod, manager } });
   }
 }
