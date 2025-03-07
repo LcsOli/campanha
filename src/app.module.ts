@@ -5,6 +5,7 @@ import { UsuariosModule } from './usuarios/usuarios.module';
 import { VendasModule } from './Vendas/vendas.module';
 import { Venda } from './Vendas/entities/venda.entity';
 import { ResumoVendas } from './Vendas/entities/resumo.entity';
+import { ResumoVendasModule } from './Vendas/resumo.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { ResumoVendas } from './Vendas/entities/resumo.entity';
     }),
     UsuariosModule,
     VendasModule,
+    ResumoVendasModule,
   ],
 })
 export class AppModule {}
