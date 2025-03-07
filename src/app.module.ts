@@ -4,6 +4,7 @@ import { Usuario } from './usuarios/entities/usuario.entity';
 import { UsuariosModule } from './usuarios/usuarios.module';
 import { VendasModule } from './Vendas/vendas.module';
 import { Venda } from './Vendas/entities/venda.entity';
+import { ResumoVendas } from './Vendas/entities/resumo.entity';
 
 @Module({
   imports: [
@@ -14,7 +15,7 @@ import { Venda } from './Vendas/entities/venda.entity';
       username: 'root',
       password: '123Mudar@',
       database: 'Campanha',
-      entities: [Usuario, Venda],
+      entities: [Usuario, Venda, ResumoVendas],
       synchronize: false,
       logging: true,
     }),

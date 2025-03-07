@@ -14,16 +14,16 @@ export class VendasService {
     const query = this.vendaRepository
       .createQueryBuilder('venda')
       .select(['venda.dtmov', 'venda.rcacode', 'venda.codprod', 'venda.manager', 'venda.total'])
-      .orderBy('venda.dtmov', 'DESC') // 🔹 Ordena pela data mais recente primeiro
-      .limit(limit)  // 🔥 Define o limite de registros por página
-      .offset((page - 1) * limit); // 🔥 Pula os registros já carregados
+      .orderBy('venda.dtmov', 'DESC') 
+      .limit(limit) 
+      .offset((page - 1) * limit); 
 
     if (rcacode) {
       query.andWhere('venda.rcacode = :rcacode', { rcacode });
     }
 
     if (manager) {
-      query.andWhere('venda.manager LIKE :manager', { manager: `%${manager}%` }); // 🔹 Busca parcial pelo manager
+      query.andWhere('venda.manager LIKE :manager', { manager: `%${manager}%` }); 
     }
 
     return query.getMany();
