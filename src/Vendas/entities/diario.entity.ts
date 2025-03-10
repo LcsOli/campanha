@@ -1,7 +1,7 @@
 import { Entity, Column, PrimaryColumn } from 'typeorm';
 
 @Entity('diario')
-export class Venda {
+export class Diario {
   @PrimaryColumn({ type: 'date' })
   dtmov: string;
 
