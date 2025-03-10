@@ -9,7 +9,7 @@ export class Diario {
   nome: string;
 
   @Column({ type: 'int' })
-  pontos: number;
+  point: number;
 
   @Column({ type: 'decimal', precision: 10, scale: 2 })
   total_vendido: number;

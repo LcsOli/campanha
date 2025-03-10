@@ -1,6 +1,7 @@
-import { Controller, Post, Body, BadRequestException, UnauthorizedException, Get, Param } from '@nestjs/common';
+import { Controller, Post, Body, BadRequestException, UnauthorizedException, Get, Param, Put } from '@nestjs/common';
 import { UsuariosService } from './usuarios.service';
 import { AuthService } from './auth.service';
+import * as bcrypt from 'bcryptjs';
 
 @Controller('usuarios')
 export class UsuariosController {
@@ -9,19 +10,19 @@ export class UsuariosController {
     private readonly authService: AuthService,
   ) {}
 
-  //rota para listar os usuários
+  // Rota para listar os usuários
   @Get('/')
   async listarUsuarios() {
     return this.usuariosService.findAll();
   }
 
- //rota para obter o nome do usuário
+  // Rota para obter o nome do usuário
   @Get('/nome/:cpf')
   async obterNomeUsuario(@Param('cpf') cpf: string) {
     return this.usuariosService.getNomePorCpf(cpf);
   }
 
-  //rota do login
+  // Rota do login
   @Post('/login')
   async login(@Body() loginDto: { cpf: string; senha: string }) {
     try {
@@ -31,10 +32,10 @@ export class UsuariosController {
         throw new BadRequestException("CPF e Senha são obrigatórios!");
       }
 
-      //valida o usuário
+      // Valida o usuário
       const user = await this.authService.validateUser(loginDto.cpf, loginDto.senha);
 
-      // valida o usuário e gera o token
+      // Gera o token
       const tokenData = await this.authService.login(user);
       return tokenData;
     } catch (error) {
@@ -46,7 +47,7 @@ export class UsuariosController {
     }
   }
 
- //rota para registrar o usuário
+  // Rota para registrar um novo usuário
   @Post('/registrar')
   async registrarUsuario(@Body() usuarioDto: { cpf: string; nome: string; senha: string; grupo?: number }) {
     try {
@@ -56,6 +57,44 @@ export class UsuariosController {
     } catch (error) {
       console.error("❌ Erro ao cadastrar usuário:", error);
       throw new BadRequestException(error.message || "Erro ao registrar usuário.");
+    }
+  }
+
+  // Rota para atualizar múltiplas senhas
+  @Put('/atualizar-senhas')
+  async atualizarSenhas(@Body() usuarios: { cpf: string; novaSenha: string }[]) {
+    try {
+      console.log("🔹 Atualizando múltiplas senhas...");
+
+      if (!Array.isArray(usuarios) || usuarios.length === 0) {
+        throw new BadRequestException("A lista de usuários não pode estar vazia!");
+      }
+
+      // Criar uma lista de atualizações
+      const atualizacoes = await Promise.all(
+        usuarios.map(async (usuario) => {
+          if (!usuario.cpf || !usuario.novaSenha) {
+            return { cpf: usuario.cpf, status: "Erro", message: "CPF e nova senha são obrigatórios!" };
+          }
+
+          // Criptografar a nova senha com bcrypt
+          const hashedPassword = await bcrypt.hash(usuario.novaSenha, 10);
+
+          // Atualizar a senha no banco
+          const atualizado = await this.usuariosService.atualizarSenha(usuario.cpf, hashedPassword);
+
+          if (!atualizado) {
+            return { cpf: usuario.cpf, status: "Erro", message: "Usuário não encontrado!" };
+          }
+
+          return { cpf: usuario.cpf, status: "Sucesso", message: "Senha atualizada com sucesso!" };
+        })
+      );
+
+      return { message: "Processo concluído!", resultados: atualizacoes };
+    } catch (error) {
+      console.error("❌ Erro ao atualizar senhas:", error);
+      throw new BadRequestException(error.message || "Erro ao atualizar senhas.");
     }
   }
 }

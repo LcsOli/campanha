@@ -147,4 +147,20 @@ export class UsuariosService {
 
     console.log(`✅ Último acesso atualizado! Linhas afetadas: ${resultado.affected}`);
 }
+
+async atualizarSenha(cpf: string, novaSenhaCriptografada: string): Promise<boolean> {
+  const usuario = await this.usuarioRepository.findOne({ where: { cpf } });
+
+  if (!usuario) {
+    console.warn(`⚠️ Usuário com CPF ${cpf} não encontrado para atualização de senha.`);
+    return false;
+  }
+
+  usuario.senha = novaSenhaCriptografada;
+  await this.usuarioRepository.save(usuario);
+
+  console.log(`✅ Senha atualizada com sucesso para CPF: ${cpf}`);
+  return true;
+}
+
 }
