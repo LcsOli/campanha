@@ -25,27 +25,39 @@ export class UsuariosController {
   // Rota do login
   @Post('/login')
   async login(@Body() loginDto: { cpf: string; senha: string }) {
-    try {
-      console.log('🔹 Login body recebido:', loginDto);
-
-      if (!loginDto.cpf || !loginDto.senha) {
-        throw new BadRequestException("CPF e Senha são obrigatórios!");
+      try {
+          console.log('🔹 Login body recebido:', loginDto);
+  
+          if (!loginDto.cpf || !loginDto.senha) {
+              throw new BadRequestException("CPF e Senha são obrigatórios!");
+          }
+  
+          // Valida o usuário
+          const user = await this.authService.validateUser(loginDto.cpf, loginDto.senha);
+  
+          // Gera o token
+          const accessToken = await this.authService.login(user);
+  
+          // Retorna o token e os dados do usuário (incluindo `grupo`)
+          return {
+              accessToken,
+              user: {
+                  id: user.id,
+                  cpf: user.cpf,
+                  nome: user.nome,
+                  grupo: user.grupo, // Adiciona o grupo
+                  acesso: user.acesso
+              }
+          };
+      } catch (error) {
+          console.error('❌ Erro ao fazer login:', error);
+          if (error instanceof UnauthorizedException) {
+              throw error;
+          }
+          throw new BadRequestException("Falha ao autenticar usuário.");
       }
-
-      // Valida o usuário
-      const user = await this.authService.validateUser(loginDto.cpf, loginDto.senha);
-
-      // Gera o token
-      const tokenData = await this.authService.login(user);
-      return tokenData;
-    } catch (error) {
-      console.error('❌ Erro ao fazer login:', error);
-      if (error instanceof UnauthorizedException) {
-        throw error;
-      }
-      throw new BadRequestException("Falha ao autenticar usuário.");
-    }
   }
+  
 
   // Rota para registrar um novo usuário
   @Post('/registrar')
