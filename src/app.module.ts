@@ -10,6 +10,8 @@ import { Diario } from './Vendas/entities/diario.entity';
 import { DiarioModule } from './Vendas/diario.module';
 import { GeralModule } from './Vendas/geral.module';
 import { Geral } from './Vendas/entities/geral.entity';
+import { fornecedor } from './Fornecedor/entities/fornecedor.entity';
+import { fornecedorModule } from './Fornecedor/fornecedor.module';
 
 @Module({
   imports: [
@@ -20,7 +22,7 @@ import { Geral } from './Vendas/entities/geral.entity';
       username: 'root',
       password: '123Mudar@',
       database: 'Campanha',
-      entities: [Usuario, Venda, ResumoVendas, Diario, Geral],
+      entities: [Usuario, Venda, ResumoVendas, Diario, Geral, fornecedor],
       synchronize: false,
       logging: true,
     }),
@@ -29,6 +31,7 @@ import { Geral } from './Vendas/entities/geral.entity';
     ResumoVendasModule,
     DiarioModule,
     GeralModule,
+    fornecedorModule,
   ],
 })
 export class AppModule {}
