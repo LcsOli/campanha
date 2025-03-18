@@ -10,7 +10,21 @@ export class fornecedorService {
         private readonly fornecedorRepository: Repository<fornecedor>,
     ) {}
 
+    // **Buscar todos os fornecedores**
     async findAll(): Promise<fornecedor[]> {
         return this.fornecedorRepository.find();
     }
+
+    // **Buscar fornecedor por cnpj
+    async findByCgc(cgc: number): Promise<fornecedor[]> {  
+        const results = await this.fornecedorRepository.find({
+            where: { cgc } 
+        });
+    
+        return results.map(fornecedor => ({
+            ...fornecedor,
+            total: parseFloat(fornecedor.total as any) || 0 
+        }));
+    }
+    
 }

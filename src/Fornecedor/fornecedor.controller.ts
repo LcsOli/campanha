@@ -1,5 +1,4 @@
-import { Controller, Get } from "@nestjs/common";
-import { fornecedor } from "./entities/fornecedor.entity";
+import { Controller, Get, Query } from "@nestjs/common";
 import { fornecedorService } from "./fornecedor.service";
 
 @Controller('fornecedor')
@@ -7,8 +6,11 @@ export class fornecedorController {
     constructor(private readonly fornecedorService: fornecedorService) {}
 
     @Get()
-    async getForecedor(): Promise<fornecedor[]> {
-        return this.fornecedorService.findAll();
+async getFornecedores(@Query("cgc") cgc?: string) {
+    if (cgc) {
+        return this.fornecedorService.findByCgc(Number(cgc)); 
     }
+    return this.fornecedorService.findAll();
+}
 
 }
