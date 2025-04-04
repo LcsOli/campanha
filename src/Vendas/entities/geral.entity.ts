@@ -25,4 +25,7 @@ export class Geral {
 
     @Column({ type: 'int' })
     pontos: number;
+
+    @Column({ type: 'int' })
+    equipe: string;
 }
