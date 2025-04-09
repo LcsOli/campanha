@@ -19,4 +19,8 @@ export class Usuario {
 
   @Column({ type: 'timestamp', nullable: true })
   acesso: Date; 
+
+  @Column({ type: 'varchar', length: 255 })
+  participacao: string; 
+
 }

@@ -45,8 +45,9 @@ export class UsuariosController {
                   id: user.id,
                   cpf: user.cpf,
                   nome: user.nome,
-                  grupo: user.grupo, // Adiciona o grupo
-                  acesso: user.acesso
+                  grupo: user.grupo, 
+                  acesso: user.acesso,
+                  participacao: user.participacao,
               }
           };
       } catch (error) {
