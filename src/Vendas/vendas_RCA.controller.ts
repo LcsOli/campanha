@@ -2,7 +2,7 @@ import { Controller, Get, Query, Param } from '@nestjs/common';
 import { VendasRCAService } from './vendas_RCA.service';
 import { vendaRCA } from './entities/vendaRCA.entity';
 
-@Controller('vendas')
+@Controller('vendasRCA')
 export class VendasRCAController {
     constructor(private readonly vendasRCAService: VendasRCAService) {}
 

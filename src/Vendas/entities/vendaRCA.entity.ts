@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryColumn } from 'typeorm';
 
-@Entity('vendaRCA')
+@Entity('resumo_RCA')
 export class vendaRCA {
     @PrimaryColumn({ type: 'varchar', length: 255 })
     nome: string;
