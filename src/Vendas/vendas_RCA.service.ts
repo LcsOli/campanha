@@ -10,22 +10,22 @@ export class VendasRCAService {
         private readonly vendaRCARepository: Repository<vendaRCA>,
     ) {}
 
-    async findAll(nome?: string, dtmov?: string, page: number = 1, limit: number = 1000): Promise<vendaRCA[]> {
+    async findAll(nome?: string, dtmov?: string): Promise<vendaRCA[]> {
         const query = this.vendaRCARepository
             .createQueryBuilder('vendaRCA')
             .select(['vendaRCA.nome', 'vendaRCA.vendas', 'vendaRCA.pontos', 'vendaRCA.dtmov'])
-            .orderBy('vendaRCA.dtmov', 'DESC') 
-            .limit(limit) 
-            .offset((page - 1) * limit); 
-
+            .orderBy('vendaRCA.dtmov', 'DESC');
+    
         if (nome) {
             query.andWhere('vendaRCA.nome LIKE :nome', { nome: `%${nome}%` });
         }
-
+    
         if (dtmov) {
+           
             query.andWhere('vendaRCA.dtmov = :dtmov', { dtmov });
+            return await query.getMany();
         }
 
-        return query.getMany();
+        return await query.getMany();
     }
 }
