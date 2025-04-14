@@ -11,7 +11,15 @@ export class GeralService {
     private readonly GeralRepository: Repository<Geral>,
   ){}
 
-  async findAll(): Promise<Geral[]> {
-    return this.GeralRepository.find(); 
+  async findAll(): Promise<any[]> {
+    const geralList = await this.GeralRepository.find();
+  
+    const resultadoComCalculo = geralList.map(item => ({
+      ...item,
+      pontos: Number(item.faturamento) * item.point,
+    }));
+  
+    return resultadoComCalculo;
   }
 }
+
