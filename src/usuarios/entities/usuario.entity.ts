@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, UpdateDateColumn } from 'typeorm';
 
-@Entity('usuario') 
+@Entity('usuario')
 export class Usuario {
   @PrimaryGeneratedColumn()
   id: number;
@@ -9,7 +9,7 @@ export class Usuario {
   cpf: string;
 
   @Column({ type: 'varchar', length: 255 })
-  nome: string; 
+  nome: string;
 
   @Column({ type: 'varchar', length: 255, nullable: false })
   senha: string;
@@ -18,9 +18,12 @@ export class Usuario {
   grupo: number;
 
   @Column({ type: 'timestamp', nullable: true })
-  acesso: Date; 
+  acesso: Date;
 
   @Column({ type: 'varchar', length: 255 })
-  participacao: string; 
+  participacao: string;
+
+  @Column({ type: 'timestamp', nullable: true })
+  ultimaPontuacaoSemanal: Date;
 
 }

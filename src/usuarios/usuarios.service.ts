@@ -13,7 +13,7 @@ export class UsuariosService {
     private readonly jwtService: JwtService,
   ) {}
 
-//busca o usuário pelo cpf
+  // Busca o usuário pelo CPF
   async findByCpf(cpf: string): Promise<Usuario | null> {
     const usuario = await this.usuarioRepository.findOne({ where: { cpf } });
 
@@ -25,7 +25,7 @@ export class UsuariosService {
     return usuario;
   }
 
-  //obtem o nome do usuário pelo cpf
+  // Obtém o nome do usuário pelo CPF
   async getNomePorCpf(cpf: string): Promise<{ nome: string }> {
     const usuario = await this.usuarioRepository.findOne({ where: { cpf }, select: ['nome'] });
 
@@ -36,46 +36,40 @@ export class UsuariosService {
     return { nome: usuario.nome };
   }
 
-  //cria um novo usuário
+  // Cria um novo usuário
   async create(usuarioDto: { cpf: string; nome: string; senha: string; grupo?: number }): Promise<Usuario> {
     console.log("🔹 Criando usuário:", usuarioDto);
 
-    // Verifica se o CPF já existe no banco
     const usuarioExistente = await this.usuarioRepository.findOne({ where: { cpf: usuarioDto.cpf } });
     if (usuarioExistente) {
       throw new BadRequestException("CPF já cadastrado!");
     }
 
-    // Verifica se a senha foi fornecida
     if (!usuarioDto.senha) {
       throw new BadRequestException("Senha é obrigatória!");
     }
 
-    // Impede senhas já criptografadas de serem salvas novamente
     if (usuarioDto.senha.startsWith('$2b$')) {
       throw new BadRequestException("A senha não pode estar criptografada no cadastro!");
     }
 
-    // Criptografa a senha antes de salvar no banco
     const usuario = new Usuario();
     usuario.cpf = usuarioDto.cpf;
     usuario.nome = usuarioDto.nome;
     usuario.senha = await bcrypt.hash(usuarioDto.senha, 10);
-    
 
-    // Salva no banco de dados
     const novoUsuario = await this.usuarioRepository.save(usuario);
     console.log("✅ Usuário criado com sucesso:", novoUsuario);
 
     return novoUsuario;
   }
 
-//retorna todos os usuários
+  // Retorna todos os usuários
   async findAll(): Promise<Usuario[]> {
     return this.usuarioRepository.find();
   }
 
- //busca um usuário pelo id
+  // Busca um usuário pelo ID
   async findOne(id: number): Promise<Usuario> {
     const usuario = await this.usuarioRepository.findOne({ where: { id } });
     if (!usuario) {
@@ -84,7 +78,7 @@ export class UsuariosService {
     return usuario;
   }
 
-  //atualiza um usuário
+  // Valida o usuário
   async validateUser(cpf: string, senhaDigitada: string): Promise<{ accessToken: string; grupo: number }> {
     console.log("🔹 Buscando usuário com CPF:", cpf);
     
@@ -102,8 +96,6 @@ export class UsuariosService {
       throw new UnauthorizedException('Senha incorreta');
     }
 
-    
-   //atuazliza o ultimo acesso do usuário
     console.log("🛠️ Tentando atualizar último acesso...");
 
     const resultado = await this.usuarioRepository
@@ -115,7 +107,6 @@ export class UsuariosService {
     
     console.log(`✅ Query de atualização executada. Linhas afetadas: ${resultado.affected}`);
     
-    // gerar o token de acesso
     const payload = { cpf: usuario.cpf, sub: usuario.id, grupo: usuario.grupo };
     const accessToken = this.jwtService.sign(payload);
     console.log("✅ Login bem-sucedido! Token gerado:", accessToken);
@@ -123,7 +114,7 @@ export class UsuariosService {
     return { accessToken, grupo: usuario.grupo };
   }
 
-  //criptografa as senhas
+  // Criptografa as senhas dos usuários
   async criptografarSenhas() {
     const usuarios = await this.usuarioRepository.find();
     for (const usuario of usuarios) {
@@ -133,34 +124,63 @@ export class UsuariosService {
         console.log(`🔹 Senha criptografada para o usuário ${usuario.cpf}`);
       }
     }
-    
   }
+
+  // Atualiza o último acesso e a pontuação semanal
   async atualizarUltimoAcesso(id: number): Promise<void> {
-    console.log(`🛠 Atualizando último acesso para o usuário com ID: ${id}`);
-
-    const resultado = await this.usuarioRepository
-      .createQueryBuilder()
-      .update(Usuario)
-      .set({ acesso: () => 'NOW()' }) 
-      .where("id = :id", { id })
-      .execute();
-
-    console.log(`✅ Último acesso atualizado! Linhas afetadas: ${resultado.affected}`);
-}
-
-async atualizarSenha(cpf: string, novaSenhaCriptografada: string): Promise<boolean> {
-  const usuario = await this.usuarioRepository.findOne({ where: { cpf } });
-
-  if (!usuario) {
-    console.warn(`⚠️ Usuário com CPF ${cpf} não encontrado para atualização de senha.`);
-    return false;
+    const usuario = await this.usuarioRepository.findOne({ where: { id } });
+  
+    if (!usuario) {
+      throw new NotFoundException('Usuário não encontrado');
+    }
+  
+    const hoje = new Date();
+    const ano = hoje.getFullYear();
+    const semanaAtual = this.getSemanaDoAno(hoje);
+  
+    let jaPontuouEssaSemana = false;
+  
+    if (usuario.ultimaPontuacaoSemanal) {
+      const dataUltimaPontuacao = new Date(usuario.ultimaPontuacaoSemanal);
+      const semanaUltimaPontuacao = this.getSemanaDoAno(dataUltimaPontuacao);
+      const anoUltimaPontuacao = dataUltimaPontuacao.getFullYear();
+  
+      jaPontuouEssaSemana = semanaAtual === semanaUltimaPontuacao && ano === anoUltimaPontuacao;
+    }
+  
+    if (!jaPontuouEssaSemana) {
+      const pontosAtuais = parseInt(usuario.participacao || '0', 10);
+      usuario.participacao = String(pontosAtuais + 50000); //alterar quantidade de pontos
+      usuario.ultimaPontuacaoSemanal = hoje;
+    }
+  
+    usuario.acesso = hoje;
+  
+    await this.usuarioRepository.save(usuario);
+  
+    console.log(`✅ Último acesso e pontuação atualizados para o usuário com ID: ${id}`);
   }
 
-  usuario.senha = novaSenhaCriptografada;
-  await this.usuarioRepository.save(usuario);
+  // Atualiza a senha de um usuário
+  async atualizarSenha(cpf: string, novaSenhaCriptografada: string): Promise<boolean> {
+    const usuario = await this.usuarioRepository.findOne({ where: { cpf } });
 
-  console.log(`✅ Senha atualizada com sucesso para CPF: ${cpf}`);
-  return true;
-}
+    if (!usuario) {
+      console.warn(`⚠️ Usuário com CPF ${cpf} não encontrado para atualização de senha.`);
+      return false;
+    }
 
+    usuario.senha = novaSenhaCriptografada;
+    await this.usuarioRepository.save(usuario);
+
+    console.log(`✅ Senha atualizada com sucesso para CPF: ${cpf}`);
+    return true;
+  }
+
+  // Função utilitária para calcular a semana do ano
+  private getSemanaDoAno(date: Date): number {
+    const oneJan = new Date(date.getFullYear(), 0, 1);
+    const numberOfDays = Math.floor((date.getTime() - oneJan.getTime()) / (24 * 60 * 60 * 1000));
+    return Math.ceil((numberOfDays + oneJan.getDay() + 1) / 7);
+  }
 }

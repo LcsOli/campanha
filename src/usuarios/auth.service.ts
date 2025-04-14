@@ -7,12 +7,12 @@ import { Usuario } from '../usuarios/entities/usuario.entity';
 @Injectable()
 export class AuthService {
   constructor(
-    @Inject(forwardRef(() => UsuariosService)) 
+    @Inject(forwardRef(() => UsuariosService))
     private readonly usuariosService: UsuariosService,
     private readonly jwtService: JwtService,
   ) {}
 
-  //valida o usuário
+  // Valida o usuário e atualiza acesso
   async validateUser(cpf: string, senha: string): Promise<Usuario> {
     console.log("🔍 Validando usuário com CPF:", cpf);
 
@@ -30,24 +30,22 @@ export class AuthService {
       throw new UnauthorizedException('Senha incorreta');
     }
 
- //atauliza o ultimo acesso do usuário
+    // Atualiza último acesso e pontuação semanal
     await this.usuariosService.atualizarUltimoAcesso(usuario.id);
 
     return usuario;
-}
+  }
 
-
-
-  //gera o token de acesso
+  // Gera o token JWT
   async login(user: Usuario) {
     const payload = { cpf: user.cpf, sub: user.id };
     const accessToken = this.jwtService.sign(payload, { expiresIn: '1h' });
 
     console.log("✅ Login bem-sucedido! Token gerado:", accessToken);
-    
-    return { 
-      accessToken, 
-      cpf: user.cpf 
+
+    return {
+      accessToken,
+      cpf: user.cpf,
     };
   }
 }
