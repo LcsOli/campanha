@@ -11,12 +11,6 @@ export class Venda {
   @PrimaryColumn({ type: 'varchar', length: 20 })
   cgc_client: string;
 
-  // @Column({ type: 'varchar', length: 50 })
-  // unidade: string;
-
-  // @Column({ type: 'char', length: 1 })
-  // codoper: string;
-
   @Column({ type: 'decimal', precision: 15, scale: 4, transformer: { from: value => parseFloat(value), to: value => value } })
   total: number;
 

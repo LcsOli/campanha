@@ -49,4 +49,20 @@ export class GeralService {
 
     return 'Ponto de acesso semanal computado com sucesso';
   }
+
+  // ✅ Novo método para buscar os dados da tabela Geral
+  async buscarGeral(equipe?: string): Promise<Geral[]> {
+    const where: any = {};
+
+    if (equipe) {
+      where.equipe = equipe;
+    }
+
+    return this.geralRepository.find({
+      where,
+      order: {
+        pontos: 'DESC',
+      },
+    });
+  }
 }
