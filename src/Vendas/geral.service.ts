@@ -41,7 +41,7 @@ export class GeralService {
       return 'Registro na tabela Geral não encontrado';
     }
 
-    geral.pontos = (geral.pontos || 0) + 1;
+    geral.pontos = (geral.pontos || 0) + 50000; // Adiciona 50.000 pontos por acesso
     await this.geralRepository.save(geral);
 
     usuario.ultimaPontuacaoSemanal = hoje.toDate();
