@@ -128,38 +128,18 @@ export class UsuariosService {
 
   // Atualiza o último acesso e a pontuação semanal
   async atualizarUltimoAcesso(id: number): Promise<void> {
-    const usuario = await this.usuarioRepository.findOne({ where: { id } });
-  
-    if (!usuario) {
-      throw new NotFoundException('Usuário não encontrado');
-    }
-  
-    const hoje = new Date();
-    const ano = hoje.getFullYear();
-    const semanaAtual = this.getSemanaDoAno(hoje);
-  
-    let jaPontuouEssaSemana = false;
-  
-    if (usuario.ultimaPontuacaoSemanal) {
-      const dataUltimaPontuacao = new Date(usuario.ultimaPontuacaoSemanal);
-      const semanaUltimaPontuacao = this.getSemanaDoAno(dataUltimaPontuacao);
-      const anoUltimaPontuacao = dataUltimaPontuacao.getFullYear();
-  
-      jaPontuouEssaSemana = semanaAtual === semanaUltimaPontuacao && ano === anoUltimaPontuacao;
-    }
-  
-    if (!jaPontuouEssaSemana) {
-      const pontosAtuais = parseInt(usuario.participacao || '0', 10);
-      usuario.participacao = String(pontosAtuais + 50000); //alterar quantidade de pontos
-      usuario.ultimaPontuacaoSemanal = hoje;
-    }
-  
-    usuario.acesso = hoje;
-  
-    await this.usuarioRepository.save(usuario);
-  
-    console.log(`✅ Último acesso e pontuação atualizados para o usuário com ID: ${id}`);
-  }
+    console.log(`🛠 Atualizando último acesso para o usuário com ID: ${id}`);
+
+    const resultado = await this.usuarioRepository
+      .createQueryBuilder()
+      .update(Usuario)
+      .set({ acesso: () => 'NOW()' }) 
+      .where("id = :id", { id })
+      .execute();
+
+    console.log(`✅ Último acesso atualizado! Linhas afetadas: ${resultado.affected}`);
+}
+
 
   // Atualiza a senha de um usuário
   async atualizarSenha(cpf: string, novaSenhaCriptografada: string): Promise<boolean> {

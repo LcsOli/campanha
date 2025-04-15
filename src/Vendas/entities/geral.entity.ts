@@ -24,5 +24,8 @@ export class Geral {
     cupons: number;
 
     @Column({ type: 'int' })
+    pontos: number;
+
+    @Column({ type: 'int' })
     equipe: string;
 }
