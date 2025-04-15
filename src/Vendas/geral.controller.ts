@@ -1,14 +1,12 @@
-import { Controller, Get } from "@nestjs/common";
-import { GeralService } from "./geral.service";
-import { Geral } from "./entities/geral.entity";
+import { Controller, Post, Body } from '@nestjs/common';
+import { GeralService } from './geral.service';
 
-
-@Controller('Geral')
+@Controller('geral')
 export class GeralController {
-    constructor(private readonly GeralService: GeralService) {}
+  constructor(private readonly geralService: GeralService) {}
 
-    @Get()
-    async getAllResumoVendas(): Promise<Geral[]> {
-        return this.GeralService.findAll();
-    }
+  @Post('acesso')
+  registrarAcesso(@Body('cpf') cpf: string) {
+    return this.geralService.registrarAcesso(cpf);
+  }
 }

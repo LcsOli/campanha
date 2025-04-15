@@ -1,25 +1,52 @@
-import { Injectable } from "@nestjs/common";
-import { InjectRepository } from "@nestjs/typeorm";
-import { Geral } from "./entities/geral.entity";
+import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-
+import { Geral } from './entities/geral.entity';
+import { Usuario } from 'src/usuarios/entities/usuario.entity';
+import * as moment from 'moment';
 
 @Injectable()
 export class GeralService {
   constructor(
     @InjectRepository(Geral)
-    private readonly GeralRepository: Repository<Geral>,
-  ){}
+    private readonly geralRepository: Repository<Geral>,
 
-  async findAll(): Promise<any[]> {
-    const geralList = await this.GeralRepository.find();
-  
-    const resultadoComCalculo = geralList.map(item => ({
-      ...item,
-      pontos: Number(item.faturamento) * item.point,
-    }));
-  
-    return resultadoComCalculo;
+    @InjectRepository(Usuario)
+    private readonly usuarioRepository: Repository<Usuario>,
+  ) {}
+
+  async registrarAcesso(cpf: string): Promise<string> {
+    const usuario = await this.usuarioRepository.findOne({ where: { cpf } });
+
+    if (!usuario) {
+      return 'Usuário não encontrado';
+    }
+
+    const hoje = moment();
+    const ultimaPontuacao = usuario.ultimaPontuacaoSemanal
+      ? moment(usuario.ultimaPontuacaoSemanal)
+      : null;
+
+    const mesmaSemana = ultimaPontuacao &&
+      hoje.isoWeek() === ultimaPontuacao.isoWeek() &&
+      hoje.year() === ultimaPontuacao.year();
+
+    if (mesmaSemana) {
+      return 'Usuário já recebeu ponto nesta semana';
+    }
+
+    const geral = await this.geralRepository.findOne({ where: { nome: usuario.nome } });
+
+    if (!geral) {
+      return 'Registro na tabela Geral não encontrado';
+    }
+
+    geral.pontos = (geral.pontos || 0) + 1;
+    await this.geralRepository.save(geral);
+
+    usuario.ultimaPontuacaoSemanal = hoje.toDate();
+    await this.usuarioRepository.save(usuario);
+
+    return 'Ponto de acesso semanal computado com sucesso';
   }
 }
-
