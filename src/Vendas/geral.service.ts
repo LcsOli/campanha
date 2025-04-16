@@ -51,18 +51,30 @@ export class GeralService {
   }
 
   // ✅ Novo método para buscar os dados da tabela Geral
-  async buscarGeral(equipe?: string): Promise<Geral[]> {
+  async buscarGeral(equipe?: string): Promise<any[]> {
     const where: any = {};
-
+  
     if (equipe) {
       where.equipe = equipe;
     }
-
-    return this.geralRepository.find({
+  
+    const dados = await this.geralRepository.find({
       where,
       order: {
         pontos: 'DESC',
       },
     });
+  
+    // Formata os dados antes de retornar
+    return dados.map((item) => ({
+      ...item,
+      pontos: (item.pontos ?? 0).toLocaleString('pt-BR'),
+      cupons: (item.cupons ?? 0).toLocaleString('pt-BR'),
+      faturamento: (item.faturamento ?? 0).toLocaleString('pt-BR', {
+        style: 'currency',
+        currency: 'BRL',
+        minimumFractionDigits: 2,
+      }),
+    }));
   }
-}
+}  

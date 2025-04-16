@@ -10,7 +10,17 @@ export class ResumoVendasService {
     private readonly resumoVendasRepository: Repository<ResumoVendas>,
   ) {}
 
-  async findAll(): Promise<ResumoVendas[]> {
-    return this.resumoVendasRepository.find();
+  async findAll(): Promise<any[]> {
+    const dados = await this.resumoVendasRepository.find();
+
+    return dados.map((item) => ({
+      ...item,
+      pontosFormatado: (item.pontos ?? 0).toLocaleString('pt-BR'),
+      totalVendidoFormatado: (item.total_vendido ?? 0).toLocaleString('pt-BR', {
+        style: 'currency',
+        currency: 'BRL',
+        minimumFractionDigits: 2,
+      }),
+    }));
   }
 }
