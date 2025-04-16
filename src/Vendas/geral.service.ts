@@ -17,38 +17,46 @@ export class GeralService {
 
   async registrarAcesso(cpf: string): Promise<string> {
     const usuario = await this.usuarioRepository.findOne({ where: { cpf } });
-
+  
     if (!usuario) {
       return 'Usuário não encontrado';
     }
-
+  
     const hoje = moment();
     const ultimaPontuacao = usuario.ultimaPontuacaoSemanal
       ? moment(usuario.ultimaPontuacaoSemanal)
       : null;
-
-    const mesmaSemana = ultimaPontuacao &&
+  
+    const mesmaSemana =
+      ultimaPontuacao &&
       hoje.isoWeek() === ultimaPontuacao.isoWeek() &&
       hoje.year() === ultimaPontuacao.year();
-
+  
     if (mesmaSemana) {
       return 'Usuário já recebeu ponto nesta semana';
     }
-
+  
     const geral = await this.geralRepository.findOne({ where: { nome: usuario.nome } });
-
+  
     if (!geral) {
       return 'Registro na tabela Geral não encontrado';
     }
-
-    geral.pontos = (geral.pontos || 0) + 50000; // Adiciona 50.000 pontos por acesso
+  
+    // 👉 Adiciona os pontos
+    geral.pontos = (geral.pontos || 0) + 50000;
+  
+    // 🧠 Calcula os cupons baseado nos pontos (500.000 pontos = 1 cupom)
+    geral.cupons = Math.floor(geral.pontos / 500000);
+  
     await this.geralRepository.save(geral);
-
+  
+    // Atualiza o usuário com nova data
     usuario.ultimaPontuacaoSemanal = hoje.toDate();
     await this.usuarioRepository.save(usuario);
-
+  
     return 'Ponto de acesso semanal computado com sucesso';
   }
+  
 
   // ✅ Novo método para buscar os dados da tabela Geral
   async buscarGeral(equipe?: string): Promise<any[]> {
@@ -77,4 +85,17 @@ export class GeralService {
       }),
     }));
   }
+  async simularPontuacaoCompleta(nome: string): Promise<string> {
+    const geral = await this.geralRepository.findOne({ where: { nome } });
+  
+    if (!geral) {
+      return 'Usuário não encontrado na tabela Geral.';
+    }
+  
+    geral.pontos = 500000; // Atualiza os pontos para 500 mil
+    await this.geralRepository.save(geral); // Isso dispara o cálculo automático dos cupons
+  
+    return `Pontuação atualizada para 500.000. Cupons agora: ${geral.cupons}`;
+  }
+  
 }  

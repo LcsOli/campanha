@@ -15,4 +15,9 @@ export class GeralController {
   buscarGeral(@Query('equipe') equipe?: string) {
     return this.geralService.buscarGeral(equipe);
   }
+  @Post('simular-pontos')
+async simularPontos(@Body('nome') nome: string) {
+  return this.geralService.simularPontuacaoCompleta(nome);
+}
+
 }

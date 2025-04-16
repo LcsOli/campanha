@@ -1,4 +1,10 @@
-import { Entity, Column, PrimaryColumn } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryColumn,
+  BeforeInsert,
+  BeforeUpdate,
+} from 'typeorm';
 
 @Entity('Geral')
 export class Geral {
@@ -20,12 +26,18 @@ export class Geral {
   @Column({ type: 'decimal', precision: 10, scale: 2 })
   faturamento: number;
 
-  @Column({ type: 'int' })
+  @Column({ type: 'int', default: 0 })
   cupons: number;
 
-  @Column({ type: 'int' })
+  @Column({ type: 'int', default: 0 })
   pontos: number;
 
   @Column({ type: 'varchar', length: 255 }) 
   equipe: string;
+
+  @BeforeInsert()
+  @BeforeUpdate()
+  calcularCupons() {
+    this.cupons = Math.floor(this.pontos / 500000);
+  }
 }
