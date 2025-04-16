@@ -48,6 +48,7 @@ export class UsuariosController {
                   grupo: user.grupo, 
                   acesso: user.acesso,
                   participacao: user.participacao,
+                  supervisor: user.supervisor,
               }
           };
       } catch (error) {

@@ -26,4 +26,7 @@ export class Usuario {
   @Column({ type: 'timestamp', nullable: true })
   ultimaPontuacaoSemanal: Date;
 
+  @Column({ type: 'varchar', length: 255 })
+  supervisor: string;
+
 }
