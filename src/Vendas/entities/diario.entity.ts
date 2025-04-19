@@ -3,7 +3,7 @@ import { Entity, Column, PrimaryColumn } from 'typeorm';
 @Entity('diario')
 export class Diario {
   @PrimaryColumn({ type: 'date' })
-  dtmov: string;
+  dtmov: Date;
 
   @PrimaryColumn({ type: 'varchar', length: 255 })
   nome: string;
