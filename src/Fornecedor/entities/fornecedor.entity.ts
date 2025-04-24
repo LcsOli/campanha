@@ -18,5 +18,5 @@ export class fornecedor {
     cgc:number;
     
     @Column({type: 'int'})
-    produtos_positividos: number;
+    produtos_positivados: number;
 }
