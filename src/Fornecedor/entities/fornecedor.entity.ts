@@ -17,4 +17,6 @@ export class fornecedor {
     @Column({type: 'bigint'})
     cgc:number;
     
+    @Column({type: 'int'})
+    produtos_positividos: number;
 }
