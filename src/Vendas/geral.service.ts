@@ -61,29 +61,28 @@ export class GeralService {
   // ✅ Novo método para buscar os dados da tabela Geral
   async buscarGeral(equipe?: string): Promise<any[]> {
     const where: any = {};
-  
-    if (equipe) {
-      where.equipe = equipe;
-    }
+    if (equipe) where.equipe = equipe;
   
     const dados = await this.geralRepository.find({
       where,
-      order: {
-        pontos: 'DESC',
-      },
+      order: { pontos: 'DESC' },
     });
   
-    // Formata os dados antes de retornar
-    return dados.map((item) => ({
-      ...item,
-      pontos: (item.pontos ?? 0).toLocaleString('pt-BR'),
-      cupons: (item.cupons ?? 0).toLocaleString('pt-BR'),
-      faturamento: (item.faturamento ?? 0).toLocaleString('pt-BR', {
-        style: 'currency',
-        currency: 'BRL',
-        minimumFractionDigits: 2,
-      }),
-    }));
+    return dados.map((item) => {
+      const pontosNum = item.pontos ?? 0;
+      const cuponsCalc = Math.floor(pontosNum / 500_000);
+  
+      return {
+        ...item,
+        pontos: pontosNum.toLocaleString('pt-BR'),
+        cupons: cuponsCalc.toLocaleString('pt-BR'),
+        faturamento: (item.faturamento ?? 0).toLocaleString('pt-BR', {
+          style: 'currency',
+          currency: 'BRL',
+          minimumFractionDigits: 2,
+        }),
+      };
+    });
   }
   async simularPontuacaoCompleta(nome: string): Promise<string> {
     const geral = await this.geralRepository.findOne({ where: { nome } });
@@ -98,15 +97,10 @@ export class GeralService {
     return `Pontuação atualizada para 500.000. Cupons agora: ${geral.cupons}`;
   }
   async atualizarPositivados(): Promise<void> {
-    await this.geralRepository
-      .createQueryBuilder()
-      .update(Geral)
-      .set({
-        // soma o bônus de positivação nos pontos
-        pontos: () => 'pontos + clientes_positivados * 50000',
-        // recalcula cupons via SQL
-        cupons: () => 'FLOOR((pontos + clientes_positivados * 50000) / 500000)',
-      })
-      .execute();
+    await this.geralRepository.query(`
+      UPDATE geral
+      SET pontos = pontos + clientes_positivados * 50000,
+          cupons = FLOOR((pontos + clientes_positivados * 50000) / 500000)
+    `);
   }
 }  

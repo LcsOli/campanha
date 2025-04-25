@@ -20,27 +20,32 @@ export class Geral {
   @Column({ type: 'varchar', length: 255 })
   manager: string;
 
-  @Column({ type: 'int' })
-  point: number;
-
   @Column({ type: 'decimal', precision: 10, scale: 2 })
   faturamento: number;
 
-  @Column({ type: 'int', default: 0 })
-  cupons: number;
-
+  // pontos vindos de vendas/atividades
   @Column({ type: 'int', default: 0 })
   pontos: number;
 
-  @Column({ type: 'varchar', length: 255 }) 
+  // quantos clientes foram positivados (cada um dá +50.000 pontos, por exemplo)
+  @Column({ type: 'int', default: 0 })
+  clientes_positivados: number;
+
+  // cupons = floor( (pontos + clientes_positivados*50k) / 500k )
+  @Column({ type: 'int', default: 0 })
+  cupons: number;
+
+  @Column({ type: 'varchar', length: 255 })
   equipe: string;
+
+  @Column({ type: 'int', default: 0 })
+  meta: number;
 
   @BeforeInsert()
   @BeforeUpdate()
   calcularCupons() {
-    this.cupons = Math.floor(this.pontos / 500000);
+    const totalPontos =
+      (this.pontos ?? 0) + (this.clientes_positivados ?? 0) * 50000;
+    this.cupons = Math.floor(totalPontos / 500000);
   }
-
-  @Column({ type: 'int'})
-  clientes_positivados: number;
 }
