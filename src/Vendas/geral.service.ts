@@ -97,5 +97,16 @@ export class GeralService {
   
     return `Pontuação atualizada para 500.000. Cupons agora: ${geral.cupons}`;
   }
-  
+  async atualizarPositivados(): Promise<void> {
+    await this.geralRepository
+      .createQueryBuilder()
+      .update(Geral)
+      .set({
+        // soma o bônus de positivação nos pontos
+        pontos: () => 'pontos + clientes_positivados * 50000',
+        // recalcula cupons via SQL
+        cupons: () => 'FLOOR((pontos + clientes_positivados * 50000) / 500000)',
+      })
+      .execute();
+  }
 }  

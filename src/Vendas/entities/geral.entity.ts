@@ -40,4 +40,7 @@ export class Geral {
   calcularCupons() {
     this.cupons = Math.floor(this.pontos / 500000);
   }
+
+  @Column({ type: 'int'})
+  clientes_positivados: number;
 }

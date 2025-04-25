@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Get, Query } from '@nestjs/common';
+import { Controller, Post, Body, Get, Query, HttpCode, HttpStatus } from '@nestjs/common';
 import { GeralService } from './geral.service';
 
 @Controller('geral')
@@ -18,6 +18,11 @@ export class GeralController {
   @Post('simular-pontos')
 async simularPontos(@Body('nome') nome: string) {
   return this.geralService.simularPontuacaoCompleta(nome);
+}
+@Post('atualizar-positivados')
+@HttpCode(HttpStatus.NO_CONTENT)
+async atualizarPositivados(): Promise<void> {
+  await this.geralService.atualizarPositivados();
 }
 
 }
