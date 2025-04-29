@@ -19,4 +19,10 @@ export class fornecedor {
     
     @Column({type: 'int'})
     produtos_positivados: number;
+
+    @Column({type: 'date'})
+    mes_1: Date;
+
+    @Column({type: 'int'})
+    total_1: number;
 }
