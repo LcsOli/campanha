@@ -41,7 +41,7 @@ export class AuthService {
     const payload = { cpf: user.cpf, sub: user.id };
     const accessToken = this.jwtService.sign(payload, { expiresIn: '1h' });
 
-    console.log("✅ Login bem-sucedido! Token gerado:", accessToken);
+    // console.log("✅ Login bem-sucedido! Token gerado:", accessToken);
 
     return {
       accessToken,
