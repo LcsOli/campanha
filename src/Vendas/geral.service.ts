@@ -56,7 +56,6 @@ export class GeralService {
   
     return 'Ponto de acesso semanal computado com sucesso';
   }
-  
 
   // ✅ Novo método para buscar os dados da tabela Geral
   async buscarGeral(equipe?: string): Promise<any[]> {
