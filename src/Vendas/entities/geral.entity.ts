@@ -27,9 +27,13 @@ export class Geral {
   @Column({ type: 'int', default: 0 })
   pontos: number;
 
-  // quantos clientes foram positivados (cada um dá +50.000 pontos, por exemplo)
+  // quantos clientes foram positivados (cada um dá +10.000 pontos, por exemplo)
   @Column({ type: 'int', default: 0 })
   clientes_positivados: number;
+
+  // quantos clientes foram reativados (mesma mecanica do positivados)
+  @Column({ type: 'int', default: 0 })
+  clientes_reativados: number;
 
   // cupons = floor( (pontos + clientes_positivados*50k) / 500k )
   @Column({ type: 'int', default: 0 })
@@ -48,4 +52,5 @@ export class Geral {
       (this.pontos ?? 0) + (this.clientes_positivados ?? 0) * 50000;
     this.cupons = Math.floor(totalPontos / 500000);
   }
+
 }

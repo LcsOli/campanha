@@ -13,7 +13,6 @@ export class UsuariosService {
     private readonly jwtService: JwtService,
   ) {}
 
-  // Busca o usuário pelo CPF
   async findByCpf(cpf: string): Promise<Usuario | null> {
     const usuario = await this.usuarioRepository.findOne({ where: { cpf } });
 
@@ -25,7 +24,6 @@ export class UsuariosService {
     return usuario;
   }
 
-  // Obtém o nome do usuário pelo CPF
   async getNomePorCpf(cpf: string): Promise<{ nome: string }> {
     const usuario = await this.usuarioRepository.findOne({ where: { cpf }, select: ['nome'] });
 
@@ -36,7 +34,6 @@ export class UsuariosService {
     return { nome: usuario.nome };
   }
 
-  // Cria um novo usuário
   async create(usuarioDto: { cpf: string; nome: string; senha: string; grupo?: number }): Promise<Usuario> {
     console.log("🔹 Criando usuário:", usuarioDto);
 
@@ -64,12 +61,10 @@ export class UsuariosService {
     return novoUsuario;
   }
 
-  // Retorna todos os usuários
   async findAll(): Promise<Usuario[]> {
     return this.usuarioRepository.find();
   }
 
-  // Busca um usuário pelo ID
   async findOne(id: number): Promise<Usuario> {
     const usuario = await this.usuarioRepository.findOne({ where: { id } });
     if (!usuario) {
@@ -78,7 +73,6 @@ export class UsuariosService {
     return usuario;
   }
 
-  // Valida o usuário
   async validateUser(cpf: string, senhaDigitada: string): Promise<{ accessToken: string; grupo: number }> {
     console.log("🔹 Buscando usuário com CPF:", cpf);
     
@@ -114,7 +108,6 @@ export class UsuariosService {
     return { accessToken, grupo: usuario.grupo };
   }
 
-  // Criptografa as senhas dos usuários
   async criptografarSenhas() {
     const usuarios = await this.usuarioRepository.find();
     for (const usuario of usuarios) {
@@ -126,7 +119,6 @@ export class UsuariosService {
     }
   }
 
-  // Atualiza o último acesso e a pontuação semanal
   async atualizarUltimoAcesso(id: number): Promise<void> {
     console.log(`🛠 Atualizando último acesso para o usuário com ID: ${id}`);
 
@@ -140,8 +132,6 @@ export class UsuariosService {
     console.log(`✅ Último acesso atualizado! Linhas afetadas: ${resultado.affected}`);
 }
 
-
-  // Atualiza a senha de um usuário
   async atualizarSenha(cpf: string, novaSenhaCriptografada: string): Promise<boolean> {
     const usuario = await this.usuarioRepository.findOne({ where: { cpf } });
 
@@ -157,7 +147,6 @@ export class UsuariosService {
     return true;
   }
 
-  // Função utilitária para calcular a semana do ano
   private getSemanaDoAno(date: Date): number {
     const oneJan = new Date(date.getFullYear(), 0, 1);
     const numberOfDays = Math.floor((date.getTime() - oneJan.getTime()) / (24 * 60 * 60 * 1000));

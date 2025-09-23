@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { VendasRCAService } from './vendas_RCA.service';
-import { VendasRCAController } from './vendas_RCA.controller';
+import { vendasrcaService } from './vendas_RCA.service';
+import { vendasrcaController } from './vendas_RCA.controller';
 import { vendaRCA } from './entities/vendaRCA.entity';
 @Module({
   imports: [TypeOrmModule.forFeature([vendaRCA])],
-  controllers: [VendasRCAController],
-  providers: [VendasRCAService],
-  exports: [VendasRCAService],
+  controllers: [vendasrcaController],
+  providers: [vendasrcaService],
+  exports: [vendasrcaService],
 })
-export class VendasRCAModule {}
+export class vendasrcaModule {}

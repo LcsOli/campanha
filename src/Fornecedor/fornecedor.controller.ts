@@ -12,7 +12,7 @@ export class fornecedorController {
     @Query('cgc') cgc?: string,
   ): Promise<fornecedor[]> {
     if (nome) {
-      // Busca exata por nome; use QueryBuilder para LIKE se quiser busca parcial
+
       return this.fornecedorService.findByNome(nome);
     }
     if (cgc) {

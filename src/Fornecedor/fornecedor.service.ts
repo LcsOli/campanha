@@ -10,12 +10,12 @@ export class fornecedorService {
     private readonly fornecedorRepository: Repository<fornecedor>,
   ) {}
 
-  // **Buscar todos os fornecedores**
+
   async findAll(): Promise<fornecedor[]> {
     return this.fornecedorRepository.find();
   }
 
-  // **Buscar fornecedor por CNPJ**
+
   async findByCgc(cgc: number): Promise<fornecedor[]> {  
     const results = await this.fornecedorRepository.find({
       where: { cgc } 
@@ -27,10 +27,9 @@ export class fornecedorService {
     }));
   }
 
-  // **Buscar fornecedor por nome**
   async findByNome(nome: string): Promise<fornecedor[]> {
     const results = await this.fornecedorRepository.find({
-      where: { fornecedor: nome }  // se o campo no entity for "fornecedor"
+      where: { fornecedor: nome } 
     });
 
     return results.map(f => ({

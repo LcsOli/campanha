@@ -10,19 +10,16 @@ export class UsuariosController {
     private readonly authService: AuthService,
   ) {}
 
-  // Rota para listar os usuários
   @Get('/')
   async listarUsuarios() {
     return this.usuariosService.findAll();
   }
 
-  // Rota para obter o nome do usuário
   @Get('/nome/:cpf')
   async obterNomeUsuario(@Param('cpf') cpf: string) {
     return this.usuariosService.getNomePorCpf(cpf);
   }
 
-  // Rota do login
   @Post('/login')
   async login(@Body() loginDto: { cpf: string; senha: string }) {
       try {
@@ -31,14 +28,11 @@ export class UsuariosController {
           if (!loginDto.cpf || !loginDto.senha) {
               throw new BadRequestException("CPF e Senha são obrigatórios!");
           }
-  
-          // Valida o usuário
+
           const user = await this.authService.validateUser(loginDto.cpf, loginDto.senha);
-  
-          // Gera o token
+
           const accessToken = await this.authService.login(user);
-  
-          // Retorna o token e os dados do usuário (incluindo `grupo`)
+
           return {
               accessToken,
               user: {
@@ -61,7 +55,6 @@ export class UsuariosController {
   }
   
 
-  // Rota para registrar um novo usuário
   @Post('/registrar')
   async registrarUsuario(@Body() usuarioDto: { cpf: string; nome: string; senha: string; grupo?: number }) {
     try {
@@ -74,7 +67,6 @@ export class UsuariosController {
     }
   }
 
-  // Rota para atualizar múltiplas senhas
   @Put('/atualizar-senhas')
   async atualizarSenhas(@Body() usuarios: { cpf: string; novaSenha: string }[]) {
     try {
@@ -84,7 +76,6 @@ export class UsuariosController {
         throw new BadRequestException("A lista de usuários não pode estar vazia!");
       }
 
-      // Criar uma lista de atualizações
       const atualizacoes = await Promise.all(
         usuarios.map(async (usuario) => {
           if (!usuario.cpf || !usuario.novaSenha) {
@@ -94,7 +85,6 @@ export class UsuariosController {
           // Criptografar a nova senha com bcrypt
           const hashedPassword = await bcrypt.hash(usuario.novaSenha, 10);
 
-          // Atualizar a senha no banco
           const atualizado = await this.usuariosService.atualizarSenha(usuario.cpf, hashedPassword);
 
           if (!atualizado) {

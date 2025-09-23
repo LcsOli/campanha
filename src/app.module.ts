@@ -13,7 +13,7 @@ import { Geral } from './Vendas/entities/geral.entity';
 import { fornecedor } from './Fornecedor/entities/fornecedor.entity';
 import { fornecedorModule } from './Fornecedor/fornecedor.module';
 import { vendaRCA } from './Vendas/entities/vendaRCA.entity';
-import { VendasRCAModule } from './Vendas/vendas_RCA.module';
+import { vendasrcaModule } from './Vendas/vendas_RCA.module';
 
 @Module({
   imports: [
@@ -22,8 +22,8 @@ import { VendasRCAModule } from './Vendas/vendas_RCA.module';
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: '123Mudar@',
-      database: 'Campanha',
+      password: '135713Mudar@',
+      database: 'campanha',
       entities: [Usuario, Venda, ResumoVendas, Diario, Geral, fornecedor,vendaRCA],
       synchronize: false,
       logging: true,
@@ -34,7 +34,7 @@ import { VendasRCAModule } from './Vendas/vendas_RCA.module';
     DiarioModule,
     GeralModule,
     fornecedorModule,
-    VendasRCAModule,
+    vendasrcaModule,
   ],
 })
 export class AppModule {}

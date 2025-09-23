@@ -1,6 +1,6 @@
 import { Entity, Column,  PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity('resumo_RCA')
+@Entity('resumo_rca')
 export class vendaRCA {
     @PrimaryGeneratedColumn({ type: 'int' })
     id: number;

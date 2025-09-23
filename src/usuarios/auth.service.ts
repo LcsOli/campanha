@@ -12,7 +12,6 @@ export class AuthService {
     private readonly jwtService: JwtService,
   ) {}
 
-  // Valida o usuário e atualiza acesso
   async validateUser(cpf: string, senha: string): Promise<Usuario> {
     console.log("🔍 Validando usuário com CPF:", cpf);
 
@@ -30,18 +29,16 @@ export class AuthService {
       throw new UnauthorizedException('Senha incorreta');
     }
 
-    // Atualiza último acesso e pontuação semanal
     await this.usuariosService.atualizarUltimoAcesso(usuario.id);
 
     return usuario;
   }
 
-  // Gera o token JWT
   async login(user: Usuario) {
     const payload = { cpf: user.cpf, sub: user.id };
     const accessToken = this.jwtService.sign(payload, { expiresIn: '1h' });
 
-    // console.log("✅ Login bem-sucedido! Token gerado:", accessToken);
+    // console.log("Login bem-sucedido! Token gerado:", accessToken);
 
     return {
       accessToken,
