@@ -22,7 +22,7 @@ import { vendasrcaModule } from './Vendas/vendas_RCA.module';
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: '135713Mudar@',
+      password: '123Mudar@',
       database: 'campanha',
       entities: [Usuario, Venda, ResumoVendas, Diario, Geral, fornecedor,vendaRCA],
       synchronize: false,
