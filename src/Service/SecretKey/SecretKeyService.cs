@@ -11,7 +11,7 @@ namespace Campaign.API.Service.SecretKey
             var secretkey = Environment.GetEnvironmentVariable("COMPAIGN_SECRET_KEY");
 
             if (string.IsNullOrEmpty(secretkey))
-                throw new CompaignExceptionResponse(HttpStatusCode.InternalServerError, "Variável de ambiente COMPAIGN_SECRET_KEY não encontrada.");
+                throw new CompaignException(HttpStatusCode.InternalServerError, "Variável de ambiente COMPAIGN_SECRET_KEY não encontrada.");
 
             return secretkey;
         }
