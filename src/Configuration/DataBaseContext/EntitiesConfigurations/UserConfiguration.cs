@@ -1,9 +1,9 @@
-﻿using Campaign.API.Configuration.DataBaseContext.Entites;
-using Campaign.API.Enums.Role;
-using Campaign.API.Extensions.Role;
+﻿using Campaign.API.Extensions.Role;
 using Microsoft.EntityFrameworkCore;
+using Campaign.API.Extensions.Enums;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Campaign.API.Configuration.DataBaseContext.Entites;
+using Campaign.API.Enums.Role;
 
 namespace Campaign.API.Configuration.DataBaseContext.EntityConfig
 {
@@ -29,8 +29,9 @@ namespace Campaign.API.Configuration.DataBaseContext.EntityConfig
 
             builder.Property(t => t.Roles)
                    .HasColumnName("ROLE")
-                   .HasConversion(v => v.RoleToDescTranslated(),
-                                  v => Enum.Parse<Roles>(v));
+                   .HasConversion(value => value.GetTranslatedDescription(), 
+                                  value => value.EnumDescriptionTranslatedToNumericValue<Roles>());
+
         }
     }
 }

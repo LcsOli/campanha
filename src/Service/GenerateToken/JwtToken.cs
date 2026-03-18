@@ -4,6 +4,7 @@ using Campaign.API.Extensions.Role;
 using Campaign.API.Service.SecretKey;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
+using Campaign.API.Extensions.Enums;
 
 namespace Campaign.API.Service.GenerateToken
 {
@@ -16,7 +17,7 @@ namespace Campaign.API.Service.GenerateToken
                 Subject = new(new[]
                {
                   new Claim("name", name),
-                  new Claim(ClaimTypes.Role, role.RoleToDesc().ToLower())
+                  new Claim(ClaimTypes.Role, role.GetTranslatedDescription())
              }),
 
                 Expires = DateTime.UtcNow.AddHours(8),
