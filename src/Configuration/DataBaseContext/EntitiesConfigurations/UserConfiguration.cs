@@ -2,13 +2,12 @@
 using Microsoft.EntityFrameworkCore;
 using Campaign.API.Extensions.Enums;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Campaign.API.Configuration.DataBaseContext.Entites;
 
 namespace Campaign.API.Configuration.DataBaseContext.EntityConfig
 {
-    public class UserConfiguration : IEntityTypeConfiguration<User>
+    public class UserConfiguration : IEntityTypeConfiguration<Entities.User>
     {
-        public void Configure(EntityTypeBuilder<User> builder)
+        public void Configure(EntityTypeBuilder<Entities.User> builder)
         {
             builder.ToTable("CF_CAMPANHA_USUARIO");
 
@@ -19,14 +18,17 @@ namespace Campaign.API.Configuration.DataBaseContext.EntityConfig
 
             builder.Property(t => t.Name)
                    .HasColumnName("NOME")
+                   .HasMaxLength(100)
                    .IsRequired();
 
             builder.Property(t => t.Document)
                    .HasColumnName("CPF")
+                   .HasMaxLength(14)
                    .IsRequired();
 
             builder.Property(t => t.Password)
                    .HasColumnName("SENHA")
+                   .HasMaxLength(50)
                    .IsRequired();
 
             builder.Property(t => t.Roles)
@@ -48,7 +50,11 @@ namespace Campaign.API.Configuration.DataBaseContext.EntityConfig
 
             builder.HasOne(t => t.Team)
                    .WithOne()
-                   .HasForeignKey<User>(t => t.TeamId);
+                   .HasForeignKey<Entities.User>(t => t.TeamId);
+
+            builder.HasOne(t => t.Manager)
+                   .WithOne()
+                   .HasForeignKey<Entities.User>(t => t.ManagerId);
         }
     }
 }

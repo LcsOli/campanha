@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.ComponentModel.DataAnnotations;
 
-namespace Campaign.API.Configuration.DataBaseContext.Entites
+namespace Campaign.API.Configuration.DataBaseContext.Entities
 {
     public class Team
     {

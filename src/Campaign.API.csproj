@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="12.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.5" />
@@ -24,8 +25,8 @@
   <ItemGroup>
     <Folder Include="Configuration\ContainerDI\Handlers\" />
     <Folder Include="Controllers\" />
-    <Folder Include="Handlers\" />
     <Folder Include="Migrations\" />
+    <Folder Include="Repositories\User\ReadOnly\" />
   </ItemGroup>
 
 </Project>

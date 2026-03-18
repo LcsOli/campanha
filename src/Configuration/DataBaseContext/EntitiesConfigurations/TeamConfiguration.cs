@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Campaign.API.Configuration.DataBaseContext.Entites;
+using Campaign.API.Configuration.DataBaseContext.Entities;
 
 namespace Campaign.API.Configuration.DataBaseContext.EntitiesConfigurations
 {
@@ -14,8 +14,9 @@ namespace Campaign.API.Configuration.DataBaseContext.EntitiesConfigurations
             
             builder.Property(t => t.Id)
                    .HasColumnName("ID");
-            
+
             builder.Property(t => t.Description)
+                   .HasMaxLength(100)
                    .HasColumnName("NOME");
         }
     }
