@@ -23,7 +23,6 @@
 
   <ItemGroup>
     <Folder Include="Configuration\ContainerDI\Handlers\" />
-    <Folder Include="Configuration\DataBaseContext\Entites\" />
     <Folder Include="Controllers\" />
     <Folder Include="Handlers\" />
   </ItemGroup>

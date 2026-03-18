@@ -16,7 +16,7 @@ namespace Campaign.API.Service.GenerateToken
                 Subject = new(new[]
                {
                   new Claim("name", name),
-                  new Claim(ClaimTypes.Role, role.RoleDescription().ToLower())
+                  new Claim(ClaimTypes.Role, role.RoleToDesc().ToLower())
              }),
 
                 Expires = DateTime.UtcNow.AddHours(8),

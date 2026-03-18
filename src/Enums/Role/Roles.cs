@@ -2,8 +2,8 @@
 {
     public enum Roles
     {
-        Director,
         Manager,
+        Supplier,
         User
     }
 }
