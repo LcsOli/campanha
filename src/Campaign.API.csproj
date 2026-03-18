@@ -25,6 +25,7 @@
     <Folder Include="Configuration\ContainerDI\Handlers\" />
     <Folder Include="Controllers\" />
     <Folder Include="Handlers\" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>

@@ -9,10 +9,11 @@ namespace Campaign.API.Configuration.Container_DI.DataBaseContext
     {
         public static void AddDataBaseInjection(this IServiceCollection services)
         {
-            var environment = Environment.GetEnvironmentVariable("CAMPAIGN_HOMOLOGA_DB") ??
+            var connectionString = Environment.GetEnvironmentVariable("CAMPAIGN_HOMOLOGA_CONNECTION") ??
                 throw new CompaignException(HttpStatusCode.InternalServerError, "Variável de ambient CAMPAIGN_HOMOLOGA_CONNECTION não encontrada.");
 
-            services.AddDbContext<CampaingContextDb>(options => options.UseOracle(environment));
+            services.AddDbContext<CampaingContextDb>(options => options.UseOracle(connectionString,
+                                                                          options => options.MigrationsHistoryTable("CF_EF_HISTORICO_DE_MIGRACOES")));
         }
     }
 }
