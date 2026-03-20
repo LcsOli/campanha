@@ -13,7 +13,8 @@ namespace Campaign.API.Configuration.DataBaseContext.EntitiesConfigurations
             builder.HasKey(t => t.Id);
             
             builder.Property(t => t.Id)
-                   .HasColumnName("ID");
+                   .HasColumnName("ID")
+                   .ValueGeneratedNever();
 
             builder.Property(t => t.Description)
                    .HasMaxLength(100)

@@ -1,13 +1,9 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.ComponentModel.DataAnnotations;
-
-namespace Campaign.API.Configuration.DataBaseContext.Entities
+﻿namespace Campaign.API.Configuration.DataBaseContext.Entities
 {
     public class Team
     {
-        [Key]
         public int Id { get; private set; }
-        [NotNull]
+        public string Name { get; private set; } = default!;
         public string Description { get; private set; } = default!;
     }
 }

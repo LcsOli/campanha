@@ -4,7 +4,7 @@ using FluentValidation.Results;
 using Campaign.API.Commands.User.Create;
 using Campaign.API.Configuration.Exceptions;
 
-namespace Campaign.API.Handlers.RegisterUser.Validator
+namespace Campaign.API.Handlers.User.RegisterUser.Validator
 {
     public class RegisterUserValidator : AbstractValidator<RegisterUserCommand>
     {

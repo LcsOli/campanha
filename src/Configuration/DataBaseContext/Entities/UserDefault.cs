@@ -20,6 +20,7 @@ namespace Campaign.API.Configuration.DataBaseContext.Entities
             Document = document;
             Password = password;
         }
+
         public void UpdateAccess()
         {
             LastAccess = DateTime.Now;

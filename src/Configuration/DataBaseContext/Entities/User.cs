@@ -10,26 +10,15 @@ namespace Campaign.API.Configuration.DataBaseContext.Entities
         public Team? Team { get; private set; }
         public User? Manager { get; private set; }
 
-        /*
-         
-          protected UserDefault(int id, string name, string document, string password, Roles roles, DateTime? lastAccess)
+        public User(int teamId,
+                    Roles roles,
+                    string name,
+                    int? managerId,
+                    string document,
+                    string password) : base(name, document, password, roles)
         {
-            Id = id;
-            Name = name;
-            Document = document;
-            Password = password;
-            Roles = roles;
-            LastAccess = lastAccess;
-        }
-         
-         */
-
-        public User CreateUser(Roles roles,
-                               string name,
-                               string document,
-                               string password)
-        {
-            return new();
+            TeamId = teamId;
+            ManagerId = managerId;
         }
     }
 }
