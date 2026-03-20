@@ -24,9 +24,8 @@
 
   <ItemGroup>
     <Folder Include="Configuration\ContainerDI\Handlers\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Handlers\Team\" />
     <Folder Include="Migrations\" />
+    <Folder Include="Repositories\Team\ReadOnly\" />
     <Folder Include="Repositories\User\ReadOnly\" />
   </ItemGroup>
 

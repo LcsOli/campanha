@@ -4,6 +4,6 @@ namespace Campaign.API.Repositories.User.WriteOnly
 {
     public interface IUserWriteOnlyRepository
     {
-        Task Add(Entities.User entity);
+        Task Add(Entities.Users.User entity);
     }
 }

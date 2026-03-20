@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Campaign.API.Configuration.DataBaseContext.EntityConfig
 {
-    public class UserConfiguration : IEntityTypeConfiguration<Entities.User>
+    public class UserConfiguration : IEntityTypeConfiguration<Entities.Users.User>
     {
-        public void Configure(EntityTypeBuilder<Entities.User> builder)
+        public void Configure(EntityTypeBuilder<Entities.Users.User> builder)
         {
             builder.ToTable("CF_CAMPANHA_USUARIO");
 
@@ -50,11 +50,11 @@ namespace Campaign.API.Configuration.DataBaseContext.EntityConfig
 
             builder.HasOne(t => t.Team)
                    .WithOne()
-                   .HasForeignKey<Entities.User>(t => t.TeamId);
+                   .HasForeignKey<Entities.Users.User>(t => t.TeamId);
 
             builder.HasOne(t => t.Manager)
                    .WithOne()
-                   .HasForeignKey<Entities.User>(t => t.ManagerId);
+                   .HasForeignKey<Entities.Users.User>(t => t.ManagerId);
         }
     }
 }

@@ -1,12 +1,10 @@
-﻿using System.Net;
-using FluentValidation;
-using FluentValidation.Results;
+﻿using FluentValidation;
 using Campaign.API.Commands.User.Create;
-using Campaign.API.Configuration.Exceptions;
+using Campaign.API.Configuration.Validator;
 
 namespace Campaign.API.Handlers.User.RegisterUser.Validator
 {
-    public class RegisterUserValidator : AbstractValidator<RegisterUserCommand>
+    public class RegisterUserValidator : FluentValidator<RegisterUserCommand>
     {
         public RegisterUserValidator()
         {
@@ -38,22 +36,6 @@ namespace Campaign.API.Handlers.User.RegisterUser.Validator
                 .WithMessage("Senha do usuário deve ser definido.")
                 .MaximumLength(50)
                 .WithMessage("Tamanho máximo da senha deve ser de 50 caracteres.");
-        }
-
-        public override ValidationResult Validate(ValidationContext<RegisterUserCommand> context)
-        {
-
-            var result = base.Validate(context);
-
-            if (!result.IsValid)
-            {
-                var messages = new List<ExceptionMessage>();
-                result.Errors.ForEach(error => messages.Add(new(error.ErrorMessage)));
-
-                throw new CompaignExceptions(HttpStatusCode.BadRequest, messages);
-            }
-
-            return result;
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Campaign.API.Commands.User.Create;
-using Entities = Campaign.API.Configuration.DataBaseContext.Entities;
+using Entities = Campaign.API.Configuration.DataBaseContext.Entities.Users;
+using Campaign.API.Configuration.DataBaseContext.Entities.Users;
 
 namespace Campaign.API.Handlers.User.RegisterUser.Mapper
 {
@@ -7,12 +8,7 @@ namespace Campaign.API.Handlers.User.RegisterUser.Mapper
     {
         public static Entities.User ToEntity(RegisterUserCommand cmd)
         {
-            return new(name: cmd.Name,
-                       roles: cmd.Role,
-                       teamId: cmd.TeamId,
-                       document: cmd.Document,
-                       password: cmd.Password,
-                       managerId: cmd.ManagerId);
+            return UserFactory.Factory(cmd.Role, cmd.TeamId, cmd.Name, cmd.ManagerId, cmd.Document, cmd.Password);
         }
     }
 }
