@@ -2,7 +2,7 @@
 using System.Text;
 using Campaign.API.Configuration.Exceptions;
 
-namespace Campaign.API.Service.SecretKey
+namespace Campaign.API.Services.SecretKey
 {
     public static class SecretKeyService
     {

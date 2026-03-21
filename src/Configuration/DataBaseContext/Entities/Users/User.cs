@@ -1,5 +1,4 @@
-﻿using Campaign.API.Configuration.DataBaseContext.Entities.User.Users;
-using Campaign.API.Enums.Role;
+﻿using Campaign.API.Enums.Role;
 
 namespace Campaign.API.Configuration.DataBaseContext.Entities.Users
 {
@@ -18,6 +17,25 @@ namespace Campaign.API.Configuration.DataBaseContext.Entities.Users
 
         public User() { }
 
+        public User(int id,
+                    Roles roles,
+                    int? teamId,
+                    string name,
+                    int? managerId,
+                    string document,
+                    string password,
+                    DateTime? lastAccess)
+        {
+            Id = id;
+            Name = name;
+            Roles = roles;
+            TeamId = teamId;
+            Password = password;
+            Document = document;
+            ManagerId = managerId;
+            LastAccess = lastAccess;
+        }
+
         public static User Generate(int? teamId,
                                     Roles roles,
                                     string name,
@@ -34,6 +52,11 @@ namespace Campaign.API.Configuration.DataBaseContext.Entities.Users
                 Password = password,
                 ManagerId = managerId
             };
+        }
+
+        public void SetPassword(string password)
+        {
+            Password = password;
         }
     }
 }

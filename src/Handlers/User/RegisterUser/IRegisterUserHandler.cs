@@ -4,6 +4,6 @@ namespace Campaign.API.Handlers.User.RegisterUser
 {
     public interface IRegisterUserHandler
     {
-        Task Handle(RegisterUserCommand cmd);
+        Task<int> Handle(RegisterUserCommand cmd);
     }
 }

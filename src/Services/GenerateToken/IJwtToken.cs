@@ -1,6 +1,6 @@
 ﻿using Campaign.API.Enums.Role;
 
-namespace Campaign.API.Service.GenerateToken
+namespace Campaign.API.Services.GenerateToken
 {
     public interface IJwtToken
     {

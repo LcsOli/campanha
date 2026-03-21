@@ -16,9 +16,13 @@ namespace Campaign.API.Configuration.DataBaseContext.EntitiesConfigurations
                    .HasColumnName("ID")
                    .ValueGeneratedNever();
 
-            builder.Property(t => t.Description)
+            builder.Property(t => t.Name)
                    .HasMaxLength(100)
                    .HasColumnName("NOME");
+
+            builder.Property(t => t.Description)
+                   .HasMaxLength(100)
+                   .HasColumnName("DESCRICAO");
         }
     }
 }

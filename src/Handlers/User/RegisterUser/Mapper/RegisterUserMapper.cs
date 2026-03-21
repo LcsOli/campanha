@@ -1,6 +1,6 @@
 ﻿using Campaign.API.Commands.User.Create;
-using Entities = Campaign.API.Configuration.DataBaseContext.Entities.Users;
 using Campaign.API.Configuration.DataBaseContext.Entities.Users;
+using Entities = Campaign.API.Configuration.DataBaseContext.Entities.Users;
 
 namespace Campaign.API.Handlers.User.RegisterUser.Mapper
 {

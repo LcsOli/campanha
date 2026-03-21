@@ -28,7 +28,7 @@ namespace Campaign.API.Configuration.DataBaseContext.EntityConfig
 
             builder.Property(t => t.Password)
                    .HasColumnName("SENHA")
-                   .HasMaxLength(50)
+                   .HasMaxLength(200)
                    .IsRequired();
 
             builder.Property(t => t.Roles)
@@ -38,8 +38,7 @@ namespace Campaign.API.Configuration.DataBaseContext.EntityConfig
                    .IsRequired();
 
             builder.Property(t => t.LastAccess)
-                   .HasColumnName("ULTIMO_ACESSO")
-                   .IsRequired();
+                   .HasColumnName("ULTIMO_ACESSO");
 
             builder.Property(t => t.TeamId)
                    .HasColumnName("EQUIPE_ID")

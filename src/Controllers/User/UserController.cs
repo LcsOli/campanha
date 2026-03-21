@@ -1,7 +1,8 @@
-﻿using Campaign.API.Commands.User.Create;
+﻿using Microsoft.AspNetCore.Mvc;
 using Campaign.API.DTOs.User.Create;
+using Campaign.API.Commands.User.Create;
+using Microsoft.AspNetCore.Authorization;
 using Campaign.API.Handlers.User.RegisterUser;
-using Microsoft.AspNetCore.Mvc;
 
 namespace Campaign.API.Controllers.User
 {
@@ -10,11 +11,12 @@ namespace Campaign.API.Controllers.User
     public class UserController : ControllerBase
     {
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Register([FromBody] RegisterUserRequest dto,
                                                   [FromServices] IRegisterUserHandler registerUserHandler)
         {
             var cmd = new RegisterUserCommand(dto.Role, dto.TeamId, dto.Name, dto.ManagerId, dto.Document, dto.Password);
-            Ok(await registerUserHandler.Handle());
+            return Created(string.Empty, await registerUserHandler.Handle(cmd));
         }
     }
 }

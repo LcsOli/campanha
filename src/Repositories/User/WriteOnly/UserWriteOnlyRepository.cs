@@ -11,7 +11,7 @@ namespace Campaign.API.Repositories.User.WriteOnly
             _context = context;
         }
 
-        public async Task Add(Entities.Users.User entity)
+        public async Task AddAsync(Entities.Users.User entity)
         {
             await _context.Users.AddAsync(entity);
         }

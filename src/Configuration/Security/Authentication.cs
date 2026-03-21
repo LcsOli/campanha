@@ -1,4 +1,4 @@
-﻿using Campaign.API.Service.SecretKey;
+﻿using Campaign.API.Services.SecretKey;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 
