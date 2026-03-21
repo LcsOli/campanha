@@ -25,7 +25,6 @@
   <ItemGroup>
     <Folder Include="Migrations\" />
     <Folder Include="Repositories\Team\ReadOnly\" />
-    <Folder Include="Repositories\User\ReadOnly\" />
   </ItemGroup>
 
 </Project>

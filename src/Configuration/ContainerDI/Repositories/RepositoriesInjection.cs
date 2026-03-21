@@ -1,4 +1,5 @@
-﻿using Campaign.API.Repositories.User.WriteOnly;
+﻿using Campaign.API.Repositories.User.ReadOnly;
+using Campaign.API.Repositories.User.WriteOnly;
 
 namespace Campaign.API.Configuration.ContainerDI.Repositories
 {
@@ -6,6 +7,7 @@ namespace Campaign.API.Configuration.ContainerDI.Repositories
     {
         public static void AddRepositoriesInjection(this IServiceCollection services)
         {
+            services.AddScoped<IUserReadOnlyRepository, UserReadOnlyRepository>();
             services.AddScoped<IUserWriteOnlyRepository, UserWriteOnlyRepository>();
         }
     }

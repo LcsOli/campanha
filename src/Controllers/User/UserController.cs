@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Campaign.API.DTOs.User.Create;
 using Campaign.API.Commands.User.Create;
 using Microsoft.AspNetCore.Authorization;
 using Campaign.API.Handlers.User.RegisterUser;
+using Campaign.API.DTOs.Request.User.Create;
 
 namespace Campaign.API.Controllers.User
 {

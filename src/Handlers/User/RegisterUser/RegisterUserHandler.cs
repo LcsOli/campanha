@@ -1,5 +1,5 @@
-﻿using Campaign.API.Commands.User.Create;
-using Campaign.API.Services.Password;
+﻿using Campaign.API.Services.Password;
+using Campaign.API.Commands.User.Create;
 using Campaign.API.Repositories.User.WriteOnly;
 using Campaign.API.Handlers.User.RegisterUser.Mapper;
 using Campaign.API.Handlers.User.RegisterUser.Validator;

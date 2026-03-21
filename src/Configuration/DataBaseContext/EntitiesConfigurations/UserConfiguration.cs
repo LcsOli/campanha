@@ -26,8 +26,8 @@ namespace Campaign.API.Configuration.DataBaseContext.EntityConfig
                    .HasMaxLength(14)
                    .IsRequired();
 
-            builder.Property(t => t.Password)
-                   .HasColumnName("SENHA")
+            builder.Property(t => t.HashedPassword)
+                   .HasColumnName("SENHA_CRIPTOGRAFADA")
                    .HasMaxLength(200)
                    .IsRequired();
 

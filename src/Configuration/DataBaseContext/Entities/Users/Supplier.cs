@@ -14,7 +14,7 @@ namespace Campaign.API.Configuration.DataBaseContext.Entities.User.Users
                 Roles = roles,
                 Name = name,
                 Document = document,
-                Password = password
+                HashedPassword = password
             };
         }
     }

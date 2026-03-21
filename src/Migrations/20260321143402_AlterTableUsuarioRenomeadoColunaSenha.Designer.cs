@@ -3,6 +3,7 @@ using System;
 using Campaign.API.Configuration.DataBaseContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Oracle.EntityFrameworkCore.Metadata;
 
@@ -11,9 +12,11 @@ using Oracle.EntityFrameworkCore.Metadata;
 namespace Campaign.API.Migrations
 {
     [DbContext(typeof(CampaingContextDb))]
-    partial class CampaingContextDbModelSnapshot : ModelSnapshot
+    [Migration("20260321143402_AlterTableUsuarioRenomeadoColunaSenha")]
+    partial class AlterTableUsuarioRenomeadoColunaSenha
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

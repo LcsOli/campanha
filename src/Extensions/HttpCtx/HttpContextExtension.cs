@@ -1,5 +1,5 @@
 ﻿using Campaign.API.Configuration.Exceptions;
-using Campaign.API.DTOs.Exception;
+using Campaign.API.DTOs.Response. Exception;
 using System.Net;
 
 namespace Campaign.API.Extensions.HttpCtx

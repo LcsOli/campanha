@@ -1,0 +1,43 @@
+﻿using Campaign.API.Commands.User.Auth;
+using System.Net;
+using Campaign.API.Services.Password;
+using Campaign.API.Services.GenerateToken;
+using Campaign.API.DTOs.Response.User.Auth;
+using Campaign.API.Configuration.Exceptions;
+using Campaign.API.Repositories.User.ReadOnly;
+using Campaign.API.Handlers.User.Auth.Validator;
+
+namespace Campaign.API.Handlers.User.Auth
+{
+    public class AuthHandler : IAuthHandler
+    {
+        private readonly IJwtToken _jwtToken;
+        private readonly IPasswordService _passwordService;
+        private readonly IUserReadOnlyRepository _userReadOnlyRepository;
+
+        public AuthHandler(IJwtToken jwtToken,
+                           IPasswordService passwordService,
+                           IUserReadOnlyRepository userReadOnlyRepository)
+        {
+            _jwtToken = jwtToken;
+            _passwordService = passwordService;
+            _userReadOnlyRepository = userReadOnlyRepository;
+        }
+
+        public async Task<TokenJwt> Handle(AuthCommand cmd)
+        {
+            new AuthValidator()
+                .Validate(cmd);
+
+            var user = await _userReadOnlyRepository.GetByDocument(cmd.Document) ??
+                throw new CompaignException(HttpStatusCode.NotFound, "Usuário não cadastrado.");
+
+            var passwordIsValid = _passwordService.VerifyPassword(user, user.HashedPassword, cmd.Password);
+
+            if (!passwordIsValid)
+                throw new CompaignException(HttpStatusCode.Forbidden, "Senha inválida.");
+
+            return new(_jwtToken.Generate(user.Name, user.Roles));
+        }
+    }
+}

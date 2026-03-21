@@ -7,7 +7,7 @@ namespace Campaign.API.Configuration.DataBaseContext.Entities.Users
         public int Id { get; protected set; }
         public string Name { get; protected set; } = default!;
         public string Document { get; protected set; } = default!;
-        public string Password { get; protected set; } = default!;
+        public string HashedPassword { get; protected set; } = default!;
         public Roles Roles { get; protected set; }
         public DateTime? LastAccess { get; protected set; }
         public int? TeamId { get; protected set; }
@@ -30,7 +30,7 @@ namespace Campaign.API.Configuration.DataBaseContext.Entities.Users
             Name = name;
             Roles = roles;
             TeamId = teamId;
-            Password = password;
+            HashedPassword = password;
             Document = document;
             ManagerId = managerId;
             LastAccess = lastAccess;
@@ -49,14 +49,14 @@ namespace Campaign.API.Configuration.DataBaseContext.Entities.Users
                 Roles = roles,
                 TeamId = teamId,
                 Document = document,
-                Password = password,
+                HashedPassword = password,
                 ManagerId = managerId
             };
         }
 
         public void SetPassword(string password)
         {
-            Password = password;
+            HashedPassword = password;
         }
     }
 }
