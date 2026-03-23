@@ -37,7 +37,7 @@ namespace Campaign.API.Handlers.User.Auth
             if (!passwordIsValid)
                 throw new CompaignException(HttpStatusCode.Forbidden, "Senha inválida.");
 
-            return new(_jwtToken.Generate(user.Id.ToString(), user.Name, user.Roles));
+            return new(_jwtToken.Generate(user.Id.ToString(), user.Name, user.TeamId?.ToString() , user.Roles));
         }
     }
 }

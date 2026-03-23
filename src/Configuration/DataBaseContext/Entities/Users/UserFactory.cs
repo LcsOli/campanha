@@ -1,6 +1,6 @@
-﻿using Campaign.API.Configuration.DataBaseContext.Entities.User.Users;
-using Campaign.API.Enums.Role;
+﻿using Campaign.API.Enums.Role;
 using System.Text.RegularExpressions;
+using Campaign.API.Configuration.DataBaseContext.Entities.User.Users;
 
 namespace Campaign.API.Configuration.DataBaseContext.Entities.Users
 {
@@ -13,15 +13,14 @@ namespace Campaign.API.Configuration.DataBaseContext.Entities.Users
                                    string document,
                                    string password)
         {
-
             document = Regex.Replace(document, @"[^\d]", "");
 
-            if (role == Roles.User)
-                return User.Generate(teamId, role, name, managerId, document, password);
-            else if (role == Roles.Supplier)
+            if (role == Roles.Supplier)
                 return Supplier.Generate(role, name, document, password);
-            else 
+            else if (role == Roles.Manager)
                 return Manager.Generate(teamId, role, name, document, password);
+            else
+                return User.Generate(teamId, role, name, managerId, document, password);
         }
     }
 }
