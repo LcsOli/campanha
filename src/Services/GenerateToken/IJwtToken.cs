@@ -4,6 +4,6 @@ namespace Campaign.API.Services.GenerateToken
 {
     public interface IJwtToken
     {
-        string Generate(string name, Roles role);
+        string Generate(string userId, string name, Roles role);
     }
 }

@@ -30,10 +30,10 @@ namespace Campaign.API.Configuration.DataBaseContext.Entities.Users
             Name = name;
             Roles = roles;
             TeamId = teamId;
-            HashedPassword = password;
             Document = document;
             ManagerId = managerId;
             LastAccess = lastAccess;
+            HashedPassword = password;
         }
 
         public static User Generate(int? teamId,
@@ -49,14 +49,19 @@ namespace Campaign.API.Configuration.DataBaseContext.Entities.Users
                 Roles = roles,
                 TeamId = teamId,
                 Document = document,
-                HashedPassword = password,
-                ManagerId = managerId
+                ManagerId = managerId,
+                HashedPassword = password
             };
         }
 
         public void SetPassword(string password)
         {
             HashedPassword = password;
+        }
+
+        public void UpdateLastAccess()
+        {
+            LastAccess = DateTime.Now;
         }
     }
 }

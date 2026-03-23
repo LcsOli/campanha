@@ -1,8 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Campaign.API.Commands.User.Auth;
-using Campaign.API.Handlers.User.Auth;
-using Microsoft.AspNetCore.Authorization;
+﻿using Campaign.API.Commands.User.Auth;
 using Campaign.API.DTOs.Request.User.Auth;
+using Campaign.API.Handlers.User.Auth;
+using Campaign.API.Handlers.User.AuthOrchestrator;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Campaign.API.Controllers.User
 {
@@ -13,11 +14,10 @@ namespace Campaign.API.Controllers.User
         [HttpPost]
         [AllowAnonymous]
         public async Task<IActionResult> Auth([FromBody] AuthRequest request,
-                                              [FromServices] IAuthHandler authHandler)
+                                              [FromServices] IAuthOrchestratorHandler authOrchestratorHandler)
         {
-            var cmd = new AuthCommand(request.Document, request.Password);
-
-            return Accepted(await authHandler.Handle(cmd));
+            var cmd = new AuthOrchestratorCommand(request.Document, request.Password);
+            return Accepted(await authOrchestratorHandler.Handle(cmd));
         }
     }
 }

@@ -1,5 +1,5 @@
-﻿using Campaign.API.Services.SecretKey;
-using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.IdentityModel.Tokens;
+using Campaign.API.Services.SecretKey;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace Campaign.API.Configuration.Security
@@ -18,6 +18,8 @@ namespace Campaign.API.Configuration.Security
                 options.RequireHttpsMetadata = true;
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
                     ValidateIssuerSigningKey = true,
                     IssuerSigningKey = new SymmetricSecurityKey(SecretKeyService.GetBytes())
                 };

@@ -15,5 +15,10 @@ namespace Campaign.API.Repositories.User.WriteOnly
         {
             await _context.Users.AddAsync(entity);
         }
+
+        public void Update(Entities.Users.User entity)
+        {
+            _context.Users.Update(entity);
+        }
     }
 }

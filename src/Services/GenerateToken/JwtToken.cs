@@ -9,14 +9,15 @@ namespace Campaign.API.Services.GenerateToken
 {
     public class JwtToken : IJwtToken
     {
-        public string Generate(string name, Roles role)
+        public string Generate(string userId, string name, Roles role)
         {
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new(new[]
                {
+                  new Claim("id", userId),
                   new Claim("name", name),
-                  new Claim(ClaimTypes.Role, role.GetTranslatedDescription())
+                  new Claim(ClaimTypes.Role, role.GetTranslatedDescription()),
              }),
 
                 Expires = DateTime.UtcNow.AddHours(8),

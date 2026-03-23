@@ -1,10 +1,10 @@
 ﻿using Campaign.API.Commands.User.Auth;
-using Campaign.API.DTOs.Response.User.Auth;
+using Campaign.API.DTOs.Response.User;
 
 namespace Campaign.API.Handlers.User.Auth
 {
     public interface IAuthHandler
     {
-        Task<TokenJwt> Handle(AuthCommand cmd);
+        Task<TokenJwtResponse> Handle(AuthCommand cmd);
     }
 }

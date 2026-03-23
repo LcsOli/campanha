@@ -1,5 +1,6 @@
 ﻿using Campaign.API.Repositories.User.ReadOnly;
 using Campaign.API.Repositories.User.WriteOnly;
+using Campaign.API.Handlers.User.UpdateLastAccess;
 
 namespace Campaign.API.Configuration.ContainerDI.Repositories
 {
@@ -9,6 +10,7 @@ namespace Campaign.API.Configuration.ContainerDI.Repositories
         {
             services.AddScoped<IUserReadOnlyRepository, UserReadOnlyRepository>();
             services.AddScoped<IUserWriteOnlyRepository, UserWriteOnlyRepository>();
+            services.AddScoped<IUserUpdateLastAccessHandler, UserUpdateLastAccessHandler>();
         }
     }
 }

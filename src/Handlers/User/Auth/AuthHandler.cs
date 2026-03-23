@@ -1,8 +1,8 @@
-﻿using Campaign.API.Commands.User.Auth;
-using System.Net;
+﻿using System.Net;
+using Campaign.API.Commands.User.Auth;
 using Campaign.API.Services.Password;
+using Campaign.API.DTOs.Response.User;
 using Campaign.API.Services.GenerateToken;
-using Campaign.API.DTOs.Response.User.Auth;
 using Campaign.API.Configuration.Exceptions;
 using Campaign.API.Repositories.User.ReadOnly;
 using Campaign.API.Handlers.User.Auth.Validator;
@@ -24,7 +24,7 @@ namespace Campaign.API.Handlers.User.Auth
             _userReadOnlyRepository = userReadOnlyRepository;
         }
 
-        public async Task<TokenJwt> Handle(AuthCommand cmd)
+        public async Task<TokenJwtResponse> Handle(AuthCommand cmd)
         {
             new AuthValidator()
                 .Validate(cmd);
@@ -37,7 +37,7 @@ namespace Campaign.API.Handlers.User.Auth
             if (!passwordIsValid)
                 throw new CompaignException(HttpStatusCode.Forbidden, "Senha inválida.");
 
-            return new(_jwtToken.Generate(user.Name, user.Roles));
+            return new(_jwtToken.Generate(user.Id.ToString(), user.Name, user.Roles));
         }
     }
 }
