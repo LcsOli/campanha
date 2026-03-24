@@ -1,13 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Campaign.Shared.DataBaseContext.Entities.Order;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Campaign.Shared.DataBaseContext.Entities.EntitiesConfigurations
 {
-    public class OrderDetailConfiguration : IEntityTypeConfiguration<OrderDetails>
+    public class OrderDetailConfiguration : IEntityTypeConfiguration<OrderDetail>
     {
-        public void Configure(EntityTypeBuilder<OrderDetails> builder)
+        public void Configure(EntityTypeBuilder<OrderDetail> builder)
         {
-            builder.ToTable("PCPEDI");
+            builder.ToTable("PCPEDI", o => o.ExcludeFromMigrations());
 
             builder.HasKey(o => o.Id);
 

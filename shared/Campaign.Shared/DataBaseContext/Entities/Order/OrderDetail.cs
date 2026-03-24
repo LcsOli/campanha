@@ -1,6 +1,6 @@
-﻿namespace Campaign.Shared.DataBaseContext.Entities
+﻿namespace Campaign.Shared.DataBaseContext.Entities.Order
 {
-    public class OrderDetails
+    public class OrderDetail
     {
         public int Id { get; private set; }
         public long Quantity { get; private set; }

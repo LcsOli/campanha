@@ -4,9 +4,16 @@ namespace Campaign.Shared.DataBaseContext.Entities
 {
     public class CampaingContextDb(DbContextOptions<CampaingContextDb> options) : DbContext(options)
     {
-        public DbSet<Team> Teams { get; private set; }
+        public DbSet<Team.Team> Teams { get; private set; }
         public DbSet<Users.User> Users { get; private set; }
-        public DbSet<OrderSummary> OrderSummaries { get; private set; }
+        public DbSet<Seller.Seller> Seller { get; private set; }
+        public DbSet<Branch.Branch> Branches { get; private set; }
+        public DbSet<Customer.Customer> Customers { get; private set; }
+        public DbSet<Order.OrderDetail> OrderDetails { get; private set; }
+        public DbSet<Seller.SellerScore> SellerScores { get; private set; }
+        public DbSet<Order.OrderSummary> OrderSummaries { get; private set; }
+        public DbSet<Product.ProductPromotion> ProductPromotions { get; private set; }
+        public DbSet<Product.ProductPromotionReadDataHistory> PromotionReadDataHistories { get; private set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasDefaultSchema("HOMOLOGA");

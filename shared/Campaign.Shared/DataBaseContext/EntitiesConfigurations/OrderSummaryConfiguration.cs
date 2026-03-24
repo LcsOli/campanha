@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Campaign.Shared.DataBaseContext.Entities.Order;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Campaign.Shared.DataBaseContext.Entities.EntitiesConfigurations
@@ -7,7 +8,7 @@ namespace Campaign.Shared.DataBaseContext.Entities.EntitiesConfigurations
     {
         public void Configure(EntityTypeBuilder<OrderSummary> builder)
         {
-            builder.ToTable("PCPEDC");
+            builder.ToTable("PCPEDC", o => o.ExcludeFromMigrations());
 
             builder.HasKey(o => o.Id);
 

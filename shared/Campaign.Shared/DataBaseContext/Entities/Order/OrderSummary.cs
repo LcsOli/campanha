@@ -1,4 +1,4 @@
-﻿namespace Campaign.Shared.DataBaseContext.Entities
+﻿namespace Campaign.Shared.DataBaseContext.Entities.Order
 {
     public class OrderSummary
     {
@@ -7,8 +7,8 @@
         public int CustomerId { get; private set; }
         public int BranchId { get; private set; }
         public DateTime DateOfSale { get; private set; }
-        public Seller? Seller { get; private set; }
-        public Customer? Customer { get; private set; }
-        public Branch? Branch { get; private set; }
+        public Branch.Branch? Branch { get; private set; }
+        public Seller.Seller? Seller { get; private set; }
+        public Customer.Customer? Customer { get; private set; }
     }
 }

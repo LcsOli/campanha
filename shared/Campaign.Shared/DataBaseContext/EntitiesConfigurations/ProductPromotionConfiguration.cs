@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Campaign.Shared.DataBaseContext.Entities.Product;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Campaign.Shared.DataBaseContext.Entities.EntitiesConfigurations
@@ -7,7 +8,7 @@ namespace Campaign.Shared.DataBaseContext.Entities.EntitiesConfigurations
     {
         public void Configure(EntityTypeBuilder<ProductPromotion> builder)
         {
-            builder.ToTable("PCPROMOI");
+            builder.ToTable("PCPROMOI", p => p.ExcludeFromMigrations());
 
             builder.HasKey(p => p.Id);
 

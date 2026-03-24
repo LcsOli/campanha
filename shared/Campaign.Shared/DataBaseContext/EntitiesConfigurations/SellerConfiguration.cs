@@ -7,7 +7,7 @@ namespace Campaign.Shared.DataBaseContext.Entities.EntitiesConfigurations
     {
         public void Configure(EntityTypeBuilder<Seller> builder)
         {
-            builder.ToTable("PCUSUARI");
+            builder.ToTable("PCUSUARI", s => s.ExcludeFromMigrations());
 
             builder.HasKey(s => s.Id);
 

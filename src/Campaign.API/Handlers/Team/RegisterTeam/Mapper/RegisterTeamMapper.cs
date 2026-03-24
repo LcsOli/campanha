@@ -5,7 +5,7 @@ namespace Campaign.API.Handlers.Team.RegisterTeam.Mapper
 {
     public static class RegisterTeamMapper
     {
-        public static Entities.Team ToEntity(RegisterTeamCommand cmd)
+        public static Entities.Team.Team ToEntity(RegisterTeamCommand cmd)
         {
             return new(cmd.Id, cmd.Name, cmd.Description);
         }

@@ -7,7 +7,7 @@ namespace Campaign.Shared.DataBaseContext.Entities.EntitiesConfigurations
     {
         public void Configure(EntityTypeBuilder<Branch> builder)
         {
-            builder.ToTable("PCFILIAL");
+            builder.ToTable("PCFILIAL", b => b.ExcludeFromMigrations());
 
             builder.HasKey(b => b.Id);
 

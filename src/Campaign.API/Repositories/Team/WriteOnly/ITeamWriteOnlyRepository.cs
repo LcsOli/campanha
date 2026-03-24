@@ -4,6 +4,6 @@ namespace Campaign.API.Repositories.Team.WriteOnly
 {
     public interface ITeamWriteOnlyRepository
     {
-        Task Add(Entities.Team entity);
+        Task Add(Entities.Team.Team entity);
     }
 }

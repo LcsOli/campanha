@@ -1,4 +1,4 @@
-﻿namespace Campaign.Shared.DataBaseContext.Entities
+﻿namespace Campaign.Shared.DataBaseContext.Entities.Team
 {
     public class Team
     {

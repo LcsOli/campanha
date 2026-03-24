@@ -11,7 +11,7 @@ namespace Campaign.API.Repositories.Team.WriteOnly
             _context = context;
         }
 
-        public async Task Add(Entities.Team entity)
+        public async Task Add(Entities.Team.Team entity)
         {
             await _context.Teams.AddAsync(entity);
         }

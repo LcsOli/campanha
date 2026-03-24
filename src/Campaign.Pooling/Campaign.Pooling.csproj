@@ -11,7 +11,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="ContainerDI\Handlers\" />
     <Folder Include="Controllers\" />
+    <Folder Include="Repositories\ProductpromotionReadDataHistory\WriteOnly\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Handlers\Promotions\CheckForUpdatedsPromotionsOrchestrator\ICheckForUpdatedsPromotionsOrchestrator.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\shared\Campaign.Shared\Campaign.Shared.csproj" />
   </ItemGroup>
 
 </Project>
