@@ -1,3 +1,4 @@
+using Campaign.API.Background;
 using Campaign.API.Configuration.Container_DI;
 using Campaign.API.Configuration.Container_DI.DataBaseContext;
 using Campaign.API.Configuration.ContainerDI.Handlers;
@@ -11,6 +12,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
+
+builder.Services.AddHostedService<TestBackgroundService>();
 
 builder.Services.AddHandlerInjection();
 builder.Services.AddIdentityInjection();

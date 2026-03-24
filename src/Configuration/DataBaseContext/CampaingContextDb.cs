@@ -6,6 +6,7 @@ namespace Campaign.API.Configuration.DataBaseContext
     {
         public DbSet<Entities.Team> Teams { get; private set; }
         public DbSet<Entities.Users.User> Users { get; private set; }
+        public DbSet<Entities.OrderSummary> OrderSummaries { get; private set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasDefaultSchema("HOMOLOGA");
