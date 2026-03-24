@@ -1,4 +1,4 @@
-﻿namespace Campaign.API.Configuration.Attributes.Enums
+﻿namespace Campaign.Shared.Attributes.Enums
 {
     [AttributeUsage(AttributeTargets.Field, AllowMultiple = true)]
     public sealed class EnumDisplayDescriptionAttribute : Attribute

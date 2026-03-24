@@ -1,5 +1,5 @@
-﻿using Campaign.API.DTOs.Response.User;
-using Entities = Campaign.API.Configuration.DataBaseContext.Entities;
+﻿using Campaign.Shared.DTOs.Response.User;
+using Entities = Campaign.Shared.DataBaseContext.Entities;
 
 namespace Campaign.API.Handlers.User.GetUser.Mapper
 {

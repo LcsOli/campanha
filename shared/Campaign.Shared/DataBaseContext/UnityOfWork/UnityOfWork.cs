@@ -1,8 +1,8 @@
 ﻿using System.Net;
-using Campaign.API.Configuration.Exceptions;
+using Campaign.Shared.Exceptions;
 using Microsoft.EntityFrameworkCore.Storage;
 
-namespace Campaign.API.Configuration.DataBaseContext.UnityOfWork
+namespace Campaign.Shared.DataBaseContext.Entities.UnityOfWork
 {
     public class UnityOfWork : IUnityOfWork
     {

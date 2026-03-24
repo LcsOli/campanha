@@ -1,4 +1,4 @@
-﻿namespace Campaign.API.DTOs.Response.User
+﻿namespace Campaign.Shared.DTOs.Response.User
 {
     public record TokenJwtResponse(string Token);
 }

@@ -1,9 +1,9 @@
 ﻿using System.Net;
 using System.Reflection;
-using Campaign.API.Configuration.Exceptions;
-using Campaign.API.Configuration.Attributes.Enums;
+using Campaign.Shared.Exceptions;
+using Campaign.Shared.Attributes.Enums;
 
-namespace Campaign.API.Extensions.Enums
+namespace Campaign.Shared.Extensions.Enums
 {
     public static class EnumAttributeExtension
     {

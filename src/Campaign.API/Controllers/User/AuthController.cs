@@ -1,9 +1,8 @@
-﻿using Campaign.API.Commands.User.Auth;
-using Campaign.API.DTOs.Request.User.Auth;
-using Campaign.API.Handlers.User.Auth;
-using Campaign.API.Handlers.User.AuthOrchestrator;
+﻿using Microsoft.AspNetCore.Mvc;
+using Campaign.API.Commands.User.Auth;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+using Campaign.Shared.DTOs.Request.User.Auth;
+using Campaign.API.Handlers.User.AuthOrchestrator;
 
 namespace Campaign.API.Controllers.User
 {

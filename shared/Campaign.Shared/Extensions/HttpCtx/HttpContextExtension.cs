@@ -1,10 +1,10 @@
 ﻿using System.Net;
 using System.Text.Json;
 using Microsoft.AspNetCore.Http;
-using Campaign.API.Configuration.Exceptions;
-using Campaign.API.DTOs.Response. Exception;
+using Campaign.Shared.Exceptions;
+using Campaign.Shared.DTOs.Response.Exception;
 
-namespace Campaign.API.Extensions.HttpCtx
+namespace Campaign.Shared.Extensions.HttpCtx
 {
     public static class HttpContextExtension
     {

@@ -1,13 +1,13 @@
-﻿using Campaign.API.Enums.Role;
+﻿using Campaign.Shared.Enums.Role;
 using Microsoft.EntityFrameworkCore;
-using Campaign.API.Extensions.Enums;
+using Campaign.Shared.Extensions.Enums;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Campaign.API.Configuration.DataBaseContext.EntityConfig
+namespace Campaign.Shared.DataBaseContext.Entities.EntitiesConfigurations
 {
-    public class UserConfiguration : IEntityTypeConfiguration<Entities.Users.User>
+    public class UserConfiguration : IEntityTypeConfiguration<Users.User>
     {
-        public void Configure(EntityTypeBuilder<Entities.Users.User> builder)
+        public void Configure(EntityTypeBuilder<Users.User> builder)
         {
             builder.ToTable("CF_CAMPANHA_USUARIO");
 

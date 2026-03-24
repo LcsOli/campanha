@@ -1,4 +1,4 @@
-﻿using Campaign.API.Enums.Role;
+﻿using Campaign.Shared.Enums.Role;
 
 namespace Campaign.API.Commands.User.Create
 {

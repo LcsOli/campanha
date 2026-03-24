@@ -1,11 +1,11 @@
 using Campaign.API.Configuration.Container_DI;
-using Campaign.API.Configuration.Container_DI.DataBaseContext;
 using Campaign.API.Configuration.ContainerDI.Handlers;
 using Campaign.API.Configuration.ContainerDI.Identity;
 using Campaign.API.Configuration.ContainerDI.Repositories;
-using Campaign.API.Configuration.ContainerDI.UOW;
-using Campaign.API.Configuration.Middlewares;
 using Campaign.API.Configuration.Security;
+using Campaign.Shared.UnitOfWorkDI;
+using Campaign.Shared.DataBaseContextDI;
+using Campaign.Shared.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,7 +17,7 @@ builder.Services.AddIdentityInjection();
 builder.Services.AddServicesInjection();
 builder.Services.AddDataBaseInjection();
 builder.Services.AddRepositoriesInjection();
-builder.Services.AddUnityOfWorkInjecction();
+builder.Services.AddUnityOfWorkInjection();
 builder.Services.AddAuthorizationConfiguration();
 builder.Services.AddAuthenticationConfigurations();
 builder.Services.AddControllerSecurityConfiguration();

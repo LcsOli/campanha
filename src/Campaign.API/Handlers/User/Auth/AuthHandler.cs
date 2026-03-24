@@ -1,9 +1,9 @@
 ﻿using System.Net;
-using Campaign.API.Commands.User.Auth;
+using Campaign.Shared.Exceptions;
 using Campaign.API.Services.Password;
-using Campaign.API.DTOs.Response.User;
+using Campaign.API.Commands.User.Auth;
 using Campaign.API.Services.GenerateToken;
-using Campaign.API.Configuration.Exceptions;
+using Campaign.Shared.DTOs.Response.User;
 using Campaign.API.Repositories.User.ReadOnly;
 using Campaign.API.Handlers.User.Auth.Validator;
 

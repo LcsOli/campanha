@@ -1,9 +1,9 @@
 ﻿using System.Security.Claims;
-using Campaign.API.Enums.Role;
-using Campaign.API.Extensions.Enums;
+using Campaign.Shared.Enums.Role;
 using Microsoft.IdentityModel.Tokens;
 using Campaign.API.Services.SecretKey;
 using System.IdentityModel.Tokens.Jwt;
+using Campaign.Shared.Extensions.Enums;
 
 namespace Campaign.API.Services.GenerateToken
 {

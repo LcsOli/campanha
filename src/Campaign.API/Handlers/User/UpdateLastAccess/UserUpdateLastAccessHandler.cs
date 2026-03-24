@@ -1,6 +1,6 @@
 ﻿using System.Net;
+using Campaign.Shared.Exceptions;
 using Campaign.API.Commands.User.Update;
-using Campaign.API.Configuration.Exceptions;
 using Campaign.API.Repositories.User.ReadOnly;
 using Campaign.API.Repositories.User.WriteOnly;
 

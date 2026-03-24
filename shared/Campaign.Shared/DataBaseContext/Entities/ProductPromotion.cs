@@ -1,4 +1,4 @@
-﻿namespace Campaign.API.Configuration.DataBaseContext.Entities
+﻿namespace Campaign.Shared.DataBaseContext.Entities
 {
     public class ProductPromotion
     {

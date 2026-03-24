@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace Campaign.API.Configuration.Exceptions
+namespace Campaign.Shared.Exceptions
 {
     public class CompaignException : Exception
     {

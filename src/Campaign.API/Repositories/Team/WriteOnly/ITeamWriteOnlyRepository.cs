@@ -1,4 +1,4 @@
-﻿using Entities = Campaign.API.Configuration.DataBaseContext.Entities;
+﻿using Entities = Campaign.Shared.DataBaseContext.Entities;
 
 namespace Campaign.API.Repositories.Team.WriteOnly
 {

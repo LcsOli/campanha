@@ -1,5 +1,5 @@
 ﻿using Campaign.API.Commands.User.Get;
-using Campaign.API.DTOs.Response.User;
+using Campaign.Shared.DTOs.Response.User;
 
 namespace Campaign.API.Handlers.User.GetUser
 {

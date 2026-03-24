@@ -1,9 +1,10 @@
 ﻿using System.Net;
+using Campaign.Shared.Exceptions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using Campaign.API.Configuration.Exceptions;
+using Campaign.Shared.DataBaseContext.Entities;
 
-namespace Campaign.API.Configuration.DataBaseContext.Design
+namespace Campaign.Shared.DataBaseContext.Design
 {
     public class CampaningContextDesign : IDesignTimeDbContextFactory<CampaingContextDb>
     {

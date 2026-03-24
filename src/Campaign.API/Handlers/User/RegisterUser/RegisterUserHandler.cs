@@ -3,7 +3,7 @@ using Campaign.API.Commands.User.Create;
 using Campaign.API.Repositories.User.WriteOnly;
 using Campaign.API.Handlers.User.RegisterUser.Mapper;
 using Campaign.API.Handlers.User.RegisterUser.Validator;
-using Campaign.API.Configuration.DataBaseContext.UnityOfWork;
+using Campaign.Shared.DataBaseContext.Entities.UnityOfWork;
 
 namespace Campaign.API.Handlers.User.RegisterUser
 {

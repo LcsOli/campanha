@@ -1,10 +1,10 @@
 ﻿using System.Net;
+using Campaign.Shared.Exceptions;
 using Microsoft.EntityFrameworkCore;
-using Campaign.API.Configuration.Exceptions;
 using Microsoft.Extensions.DependencyInjection;
-using Campaign.API.Configuration.DataBaseContext;
+using Campaign.Shared.DataBaseContext.Entities;
 
-namespace Campaign.API.Configuration.Container_DI.DataBaseContext
+namespace Campaign.Shared.DataBaseContextDI
 {
     public static class DataBaseInjection
     {

@@ -1,4 +1,4 @@
-﻿using Campaign.API.Configuration.DataBaseContext.Entities.Users;
+﻿using Campaign.Shared.DataBaseContext.Entities.Users;
 using Microsoft.AspNetCore.Identity;
 
 namespace Campaign.API.Configuration.ContainerDI.Identity

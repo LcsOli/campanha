@@ -1,8 +1,7 @@
-﻿using Campaign.API.Enums.Role;
+﻿using Campaign.Shared.Enums.Role;
 using System.Text.RegularExpressions;
-using Campaign.API.Configuration.DataBaseContext.Entities.User.Users;
 
-namespace Campaign.API.Configuration.DataBaseContext.Entities.Users
+namespace Campaign.Shared.DataBaseContext.Entities.Users
 {
     public static class UserFactory
     {

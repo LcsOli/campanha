@@ -1,7 +1,7 @@
 ﻿using System.Net;
+using Campaign.Shared.Exceptions;
 using Campaign.API.Commands.User.Get;
-using Campaign.API.DTOs.Response.User;
-using Campaign.API.Configuration.Exceptions;
+using Campaign.Shared.DTOs.Response.User;
 using Campaign.API.Repositories.User.ReadOnly;
 using Campaign.API.Handlers.User.GetUser.Mapper;
 

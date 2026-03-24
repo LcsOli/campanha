@@ -1,6 +1,6 @@
-﻿using Campaign.API.Enums.Role;
+﻿using Campaign.Shared.Enums.Role;
 
-namespace Campaign.API.Configuration.DataBaseContext.Entities.Users
+namespace Campaign.Shared.DataBaseContext.Entities.Users
 {
     public class User
     {

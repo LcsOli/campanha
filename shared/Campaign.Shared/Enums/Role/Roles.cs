@@ -1,6 +1,6 @@
-﻿using Campaign.API.Configuration.Attributes.Enums;
+﻿using Campaign.Shared.Attributes.Enums;
 
-namespace Campaign.API.Enums.Role
+namespace Campaign.Shared.Enums.Role
 {
     public enum Roles
     {

@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
-using Campaign.API.Extensions.HttpCtx;
-using Campaign.API.Configuration.Exceptions;
+using Campaign.Shared.Exceptions;
+using Campaign.Shared.Extensions.HttpCtx;
 
-namespace Campaign.API.Configuration.Middlewares
+namespace Campaign.Shared.Middlewares
 {
     public class ExceptionMiddleware
     {

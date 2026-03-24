@@ -1,8 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Campaign.API.Configuration.DataBaseContext.Entities;
 
-namespace Campaign.API.Configuration.DataBaseContext.EntitiesConfigurations
+namespace Campaign.Shared.DataBaseContext.Entities.EntitiesConfigurations
 {
     public class BranchConfiguration : IEntityTypeConfiguration<Branch>
     {

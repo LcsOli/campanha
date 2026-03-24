@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Campaign.API.Configuration.DataBaseContext;
-using Entities = Campaign.API.Configuration.DataBaseContext.Entities;
+using Campaign.Shared.DataBaseContext.Entities;
+using Entities = Campaign.Shared.DataBaseContext.Entities;
 
 namespace Campaign.API.Repositories.User.ReadOnly
 {

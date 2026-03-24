@@ -1,7 +1,7 @@
 ﻿using System.Net;
+using Campaign.Shared.Exceptions;
 using FluentValidation;
 using FluentValidation.Results;
-using Campaign.API.Configuration.Exceptions;
 
 namespace Campaign.API.Configuration.Validator
 {

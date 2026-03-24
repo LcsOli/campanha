@@ -1,10 +1,10 @@
-﻿using Campaign.API.Configuration.DataBaseContext.Entities.Users;
+﻿using Entities = Campaign.Shared.DataBaseContext.Entities;
 
 namespace Campaign.API.Services.Password
 {
     public interface IPasswordService
     {
-        string GeneratePassword(User user, string password);
-        bool VerifyPassword(User user, string hashedPassword, string password);
+        string GeneratePassword(Entities.Users.User user, string password);
+        bool VerifyPassword(Entities.Users.User user, string hashedPassword, string password);
     }
 }

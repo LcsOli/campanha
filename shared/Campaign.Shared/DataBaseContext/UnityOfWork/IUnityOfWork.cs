@@ -1,4 +1,4 @@
-﻿namespace Campaign.API.Configuration.DataBaseContext.UnityOfWork
+﻿namespace Campaign.Shared.DataBaseContext.Entities.UnityOfWork
 {
     public interface IUnityOfWork
     {

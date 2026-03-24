@@ -1,8 +1,8 @@
 ﻿using System.Net;
-using Campaign.API.Enums.Role;
-using Campaign.API.Configuration.Exceptions;
+using Campaign.Shared.Exceptions;
+using Campaign.Shared.Enums.Role;
 
-namespace Campaign.API.Extensions.Role
+namespace Campaign.Shared.Extensions.Role
 {
     public static class RoleExtensions
     {
