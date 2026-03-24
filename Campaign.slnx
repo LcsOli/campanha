@@ -1,9 +1,9 @@
 <Solution>
   <Folder Name="/Shared/">
-    <Project Path="shared/Campaign.Shared/Campaign.Shared.csproj" Id="26229482-965d-43d2-b995-0b88e17192ee" />
+    <Project Path="shared/Campaign.Shared/Campaign.Shared.csproj" />
   </Folder>
   <Folder Name="/src/">
-    <Project Path="Campaign.Pooling/Campaign.Pooling.csproj" Id="a3e7919e-6919-4bfd-8028-55d63bb63a44" />
     <Project Path="src/Campaign.API/Campaign.API.csproj" />
+    <Project Path="src/Campaign.Pooling/Campaign.Pooling.csproj" />
   </Folder>
 </Solution>
