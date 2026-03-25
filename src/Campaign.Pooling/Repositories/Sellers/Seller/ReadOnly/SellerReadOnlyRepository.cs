@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Campaign.Shared.DataBaseContext.Entities;
+using Entity = Campaign.Shared.DataBaseContext.Entities.Seller;
 
 namespace Campaign.Pooling.Repositories.Sellers.Seller.ReadOnly
 {
@@ -11,7 +12,7 @@ namespace Campaign.Pooling.Repositories.Sellers.Seller.ReadOnly
             _context = context;
         }
 
-        public async Task GetSellersByIds(int[] sellersIds)
+        public async Task<List<Entity.Seller>> GetSellersByIds(int[] sellersIds)
         {
             return await _context.Sellers.Where(s => sellersIds.Contains(s.Id)).ToListAsync();
         }

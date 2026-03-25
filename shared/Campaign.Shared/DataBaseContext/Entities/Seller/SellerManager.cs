@@ -11,5 +11,12 @@
             Code = code;
             Name = name;
         }
+
+        public SellerManager(int id, int code, string name)
+        {
+            Id = id;
+            Code = code;
+            Name = name;
+        }
     }
 }

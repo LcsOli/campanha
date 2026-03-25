@@ -1,7 +1,9 @@
-﻿namespace Campaign.Pooling.Repositories.Sellers.Seller.ReadOnly
+﻿using Entity = Campaign.Shared.DataBaseContext.Entities.Seller;
+
+namespace Campaign.Pooling.Repositories.Sellers.Seller.ReadOnly
 {
     public interface ISellerReadOnlyRepository
     {
-        Task GetSellersByIds(int[] sellersIds);
+        Task<List<Entity.Seller>> GetSellersByIds(int[] sellersIds);
     }
 }
