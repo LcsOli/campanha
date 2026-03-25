@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Campaign.Shared.DataBaseContext.Entities.EntitiesConfigurations
 {
-    public class SellerConfiguration : IEntityTypeConfiguration<Seller>
+    public class SellerConfiguration : IEntityTypeConfiguration<Seller.Seller>
     {
-        public void Configure(EntityTypeBuilder<Seller> builder)
+        public void Configure(EntityTypeBuilder<Seller.Seller> builder)
         {
             builder.ToTable("PCUSUARI", s => s.ExcludeFromMigrations());
 

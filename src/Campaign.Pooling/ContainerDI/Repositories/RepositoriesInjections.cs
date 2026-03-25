@@ -1,4 +1,4 @@
-﻿using Campaign.Pooling.Repositories.ProductpromotionReadDataHistory.ReadOnly;
+﻿using Campaign.Pooling.Repositories.Products.ProductPromotionReadDataHistory.ReadOnly;
 
 namespace Campaign.Pooling.ContainerDI.Repositories
 {

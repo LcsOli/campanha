@@ -11,13 +11,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ContainerDI\Handlers\" />
     <Folder Include="Controllers\" />
-    <Folder Include="Repositories\ProductpromotionReadDataHistory\WriteOnly\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Handlers\Promotions\CheckForUpdatedsPromotionsOrchestrator\ICheckForUpdatedsPromotionsOrchestrator.cs" />
+    <Folder Include="Repositories\Products\ProductPromotionReadDataHistory\WriteOnly\" />
+    <Folder Include="Repositories\Products\ProductPromotion\WriteOnly\" />
   </ItemGroup>
 
   <ItemGroup>

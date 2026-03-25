@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Campaign.Shared.DataBaseContext.Entities.EntitiesConfigurations
 {
-    public class BranchConfiguration : IEntityTypeConfiguration<Branch>
+    public class BranchConfiguration : IEntityTypeConfiguration<Branch.Branch>
     {
-        public void Configure(EntityTypeBuilder<Branch> builder)
+        public void Configure(EntityTypeBuilder<Branch.Branch> builder)
         {
             builder.ToTable("PCFILIAL", b => b.ExcludeFromMigrations());
 

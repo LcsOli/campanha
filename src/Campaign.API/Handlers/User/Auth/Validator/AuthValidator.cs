@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
+using Campaign.Shared.FluentValidator;
 using Campaign.API.Commands.User.Auth;
-using Campaign.API.Configuration.Validator;
 
 namespace Campaign.API.Handlers.User.Auth.Validator
 {

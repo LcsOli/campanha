@@ -12,7 +12,7 @@ namespace Campaign.Shared.DataBaseContext.Entities.Users
         public DateTime? LastAccess { get; protected set; }
         public int? TeamId { get; protected set; }
         public int? ManagerId { get; protected set; }
-        public Team? Team { get; protected set; }
+        public Team.Team? Team { get; protected set; }
         public User? Manager { get; protected set; }
 
         public User() { }

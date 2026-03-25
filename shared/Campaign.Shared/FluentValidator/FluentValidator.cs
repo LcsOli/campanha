@@ -1,9 +1,9 @@
 ﻿using System.Net;
-using Campaign.Shared.Exceptions;
 using FluentValidation;
 using FluentValidation.Results;
+using Campaign.Shared.Exceptions;
 
-namespace Campaign.API.Configuration.Validator
+namespace Campaign.Shared.FluentValidator
 {
     public abstract class FluentValidator<T> : AbstractValidator<T> where T : class
     {

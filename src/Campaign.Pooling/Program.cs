@@ -1,5 +1,6 @@
-using Campaign.Pooling.ContainerDI.Repositories;
 using Campaign.Shared.Middlewares;
+using Campaign.Pooling.ContainerDI.Handlers;
+using Campaign.Pooling.ContainerDI.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +8,7 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
 builder.Services.AddRepositories();
+builder.Services.AddHandlersInjections();
 
 var app = builder.Build();
 

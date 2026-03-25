@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
+using Campaign.Shared.FluentValidator;
 using Campaign.API.Commands.Team.Create;
-using Campaign.API.Configuration.Validator;
 
 namespace Campaign.API.Handlers.Team.RegisterTeam.Validator
 {

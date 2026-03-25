@@ -1,7 +1,8 @@
-﻿using Campaign.Shared.DataBaseContext.Entities;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Campaign.Shared.DataBaseContext.Entities;
+using Product = Campaign.Shared.DataBaseContext.Entities.Product;
 
-namespace Campaign.Pooling.Repositories.ProductpromotionReadDataHistory.ReadOnly
+namespace Campaign.Pooling.Repositories.Products.ProductPromotionReadDataHistory.ReadOnly
 {
     public class ProductPromotionReadDataHistoryRepositorie : IProductPromotionReadDataHistoryRepositorie
     {
@@ -15,6 +16,11 @@ namespace Campaign.Pooling.Repositories.ProductpromotionReadDataHistory.ReadOnly
         {
             //TODO - Verificar como a busca irá se comportar caso não seja encontrado nada.
             return await _context.PromotionReadDataHistories.MaxAsync(p => p.ReadAt);
+        }
+
+        public async Task<Product.ProductPromotionReadDataHistory?> GetLastPromotionCodeCreated()
+        {
+            return await _context.PromotionReadDataHistories.LastAsync();
         }
     }
 }

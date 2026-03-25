@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Campaign.Shared.DataBaseContext.Entities.EntitiesConfigurations
 {
-    public class TeamConfiguration : IEntityTypeConfiguration<Team>
+    public class TeamConfiguration : IEntityTypeConfiguration<Team.Team>
     {
-        public void Configure(EntityTypeBuilder<Team> builder)
+        public void Configure(EntityTypeBuilder<Team.Team> builder)
         {
             builder.ToTable("CF_CAMPANHA_EQUIPE");
 
