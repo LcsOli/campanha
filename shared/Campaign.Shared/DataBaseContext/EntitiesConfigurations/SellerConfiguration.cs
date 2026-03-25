@@ -16,6 +16,9 @@ namespace Campaign.Shared.DataBaseContext.Entities.EntitiesConfigurations
 
             builder.Property(s => s.Name)
                    .HasColumnName("NOME");
+
+            builder.Property(s => s.ManagerId)
+                   .HasColumnName("CODSUPERVISOR");
         }
     }
 }

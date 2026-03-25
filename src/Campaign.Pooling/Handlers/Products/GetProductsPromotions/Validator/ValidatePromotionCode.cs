@@ -9,7 +9,7 @@ namespace Campaign.Pooling.Handlers.Products.GetProductsPromotions.Validator
         public ValidatePromotionCode()
         {
             RuleFor(p => p.PromotionCode)
-                .LessThanOrEqualTo(0)
+                .GreaterThan(0)
                 .WithMessage("Código promocional deve ser definido");
         }
     }

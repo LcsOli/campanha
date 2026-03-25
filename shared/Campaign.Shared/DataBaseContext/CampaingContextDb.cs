@@ -6,7 +6,7 @@ namespace Campaign.Shared.DataBaseContext.Entities
     {
         public DbSet<Team.Team> Teams { get; private set; }
         public DbSet<Users.User> Users { get; private set; }
-        public DbSet<Seller.Seller> Seller { get; private set; }
+        public DbSet<Seller.Seller> Sellers { get; private set; }
         public DbSet<Branch.Branch> Branches { get; private set; }
         public DbSet<Customer.Customer> Customers { get; private set; }
         public DbSet<Order.OrderDetail> OrderDetails { get; private set; }
