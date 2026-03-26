@@ -1,11 +1,9 @@
-﻿using Campaign.Pooling.Commands.ProductPromotionReadHistory.Create;
+﻿using Campaign.Shared.DataBaseContext.Entities.UnityOfWork;
 using Campaign.Pooling.Commands.ProductPromotionReadHistory.Get;
-using Campaign.Pooling.Handlers.ProductPromotionHistory.GetLastProductPromotionsHistory;
-using Campaign.Pooling.Handlers.ProductPromotionReadDataHistory.RegisterNewHistory;
+using Campaign.Pooling.Commands.ProductPromotionReadHistory.Create;
 using Campaign.Pooling.Orchestrators.UpdateProductPromotionReadHistory.Validator;
-using Campaign.Shared.DataBaseContext.Entities.UnityOfWork;
-using Campaign.Shared.Exceptions;
-using System.Net;
+using Campaign.Pooling.Handlers.ProductPromotionReadDataHistory.RegisterNewHistory;
+using Campaign.Pooling.Handlers.ProductPromotionHistory.GetLastProductPromotionsHistory;
 
 namespace Campaign.Pooling.Orchestrators.UpdateProductPromotionReadHistory
 {
@@ -29,8 +27,8 @@ namespace Campaign.Pooling.Orchestrators.UpdateProductPromotionReadHistory
         {
             var productPromotionReadHistory = await _getProductPromotionReadDataHistoryHandler.Handle(new GetProductPromotionReadHistoryCommand(promotionCode));
 
-           new ProductPromotionExistsValidator()
-                .Validate(productPromotionReadHistory!);
+            new ProductPromotionExistsValidator()
+                 .Validate(productPromotionReadHistory!);
 
             await _registerProductPromotionReadDataHistoryHandler.Handle(new RegisterProductPromotionReadDataHistoryCommand(promotionCode));
 
