@@ -12,8 +12,7 @@
 
   <ItemGroup>
     <Folder Include="Controllers\" />
-    <Folder Include="Repositories\Products\ProductPromotionReadDataHistory\WriteOnly\" />
-    <Folder Include="Repositories\Products\ProductPromotion\WriteOnly\" />
+    <Folder Include="Repositories\ProductPromotion\WriteOnly\" />
     <Folder Include="Repositories\SellerManager\WriteOnly\" />
     <Folder Include="Repositories\Sellers\Seller\WriteOnly\" />
   </ItemGroup>

@@ -14,7 +14,7 @@ namespace Campaign.Shared.DataBaseContext.Entities
         public DbSet<Seller.SellerScore> SellerScores { get; private set; }
         public DbSet<Order.OrderSummary> OrderSummaries { get; private set; }
         public DbSet<Product.ProductPromotion> ProductPromotions { get; private set; }
-        public DbSet<Product.ProductPromotionReadDataHistory> PromotionReadDataHistories { get; private set; }
+        public DbSet<Product.ProductPromotionReadDataHistory> ProductPromotionReadDataHistories { get; private set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasDefaultSchema("HOMOLOGA");

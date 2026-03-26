@@ -14,5 +14,11 @@
             ReadAt = readAt;
             PromotionCode = promotionCode;
         }
+
+        public ProductPromotionReadDataHistory(int promotionCode, DateTime readAt)
+        {
+            ReadAt = readAt;
+            PromotionCode = promotionCode;
+        }
     }
 }
