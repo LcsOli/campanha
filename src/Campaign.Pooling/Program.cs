@@ -1,7 +1,7 @@
 using Campaign.Shared.Middlewares;
-using Campaign.Pooling.ContainerDI.Handlers;
-using Campaign.Pooling.ContainerDI.Repositories;
-using Campaign.Pooling.ContainerDI.Orchestrators;
+using Campaign.Pooling.Configurations.ContainerDI.Handlers;
+using Campaign.Pooling.Configurations.ContainerDI.Orchestrators;
+using Campaign.Pooling.Configurations.ContainerDI.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 

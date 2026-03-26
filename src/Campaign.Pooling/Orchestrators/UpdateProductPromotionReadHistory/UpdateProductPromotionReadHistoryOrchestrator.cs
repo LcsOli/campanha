@@ -1,10 +1,11 @@
-﻿using System.Net;
-using Campaign.Shared.Exceptions;
-using Campaign.Shared.DataBaseContext.Entities.UnityOfWork;
+﻿using Campaign.Pooling.Commands.ProductPromotionReadHistory.Create;
 using Campaign.Pooling.Commands.ProductPromotionReadHistory.Get;
-using Campaign.Pooling.Commands.ProductPromotionReadHistory.Create;
-using Campaign.Pooling.Handlers.ProductPromotionReadDataHistory.RegisterNewHistory;
 using Campaign.Pooling.Handlers.ProductPromotionHistory.GetLastProductPromotionsHistory;
+using Campaign.Pooling.Handlers.ProductPromotionReadDataHistory.RegisterNewHistory;
+using Campaign.Pooling.Orchestrators.UpdateProductPromotionReadHistory.Validator;
+using Campaign.Shared.DataBaseContext.Entities.UnityOfWork;
+using Campaign.Shared.Exceptions;
+using System.Net;
 
 namespace Campaign.Pooling.Orchestrators.UpdateProductPromotionReadHistory
 {
@@ -14,6 +15,7 @@ namespace Campaign.Pooling.Orchestrators.UpdateProductPromotionReadHistory
 
         private readonly IGetProductPromotionReadDataHistoryHandler _getProductPromotionReadDataHistoryHandler;
         private readonly IRegisterProductPromotionReadDataHistoryHandler _registerProductPromotionReadDataHistoryHandler;
+
         public UpdateProductPromotionReadHistoryOrchestrator(IUnityOfWork unityOfWork,
                                                              IGetProductPromotionReadDataHistoryHandler getProductPromotionReadDataHistoryHandler,
                                                              IRegisterProductPromotionReadDataHistoryHandler registerProductPromotionReadDataHistoryHandler)
@@ -27,8 +29,8 @@ namespace Campaign.Pooling.Orchestrators.UpdateProductPromotionReadHistory
         {
             var productPromotionReadHistory = await _getProductPromotionReadDataHistoryHandler.Handle(new GetProductPromotionReadHistoryCommand(promotionCode));
 
-            if (productPromotionReadHistory != null)
-                throw new CompaignException(HttpStatusCode.Forbidden, $"A promoção {promotionCode} foi processada em: {productPromotionReadHistory:dd/MM/YYYY}");
+           new ProductPromotionExistsValidator()
+                .Validate(productPromotionReadHistory!);
 
             await _registerProductPromotionReadDataHistoryHandler.Handle(new RegisterProductPromotionReadDataHistoryCommand(promotionCode));
 

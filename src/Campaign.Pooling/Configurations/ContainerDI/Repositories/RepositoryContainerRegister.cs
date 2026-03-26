@@ -2,7 +2,7 @@
 using Campaign.Pooling.Repositories.SellerManager.ReadOnly;
 using Campaign.Pooling.Repositories.ProductPromotionReadDataHistory.ReadOnly;
 
-namespace Campaign.Pooling.ContainerDI.Repositories
+namespace Campaign.Pooling.Configurations.ContainerDI.Repositories
 {
     public static class RepositoryContainerRegister
     {

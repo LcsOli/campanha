@@ -15,11 +15,11 @@ namespace Campaign.Pooling.Handlers.ProductPromotion.GetProductsPromotions
 
         public async Task<List<Entity.ProductPromotion>> Handle(GetProductsPromotionsCommand cmd)
         {
-            new ValidatePromotionCode().Validate(cmd);
+            new CommandValidator().Validate(cmd);
 
             var promotions = await _productPromotionReadOnlyRepository.GetByPromotionCode(cmd.PromotionCode);
 
-            new ValidateFindedProductsPromotions().Validate(promotions);
+            new FindedProductsPromotionsValidator().Validate(promotions);
 
             return promotions;
         }

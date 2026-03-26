@@ -1,4 +1,5 @@
-﻿using Campaign.Pooling.Commands.ProductPromotionReadHistory.Create;
+﻿using Campaign.Shared.Mappers;
+using Campaign.Pooling.Commands.ProductPromotionReadHistory.Create;
 using Campaign.Pooling.Repositories.ProductPromotionReadDataHistory.WriteOnly;
 using Campaign.Pooling.Handlers.ProductPromotionReadDataHistory.RegisterNewHistory.Mapper;
 using Campaign.Pooling.Handlers.ProductPromotionReadDataHistory.RegisterNewHistory.Validator;
@@ -16,7 +17,9 @@ namespace Campaign.Pooling.Handlers.ProductPromotionReadDataHistory.RegisterNewH
         public async Task Handle(RegisterProductPromotionReadDataHistoryCommand cmd)
         {
             new CommandValidator().Validate(cmd);
-            await _productPromotionReadDataHistoryWriteOnlyRepository.AddAsync(ToEntity.Parse(cmd));
+            
+            var mapperParam = new MapperParamImplement<RegisterProductPromotionReadDataHistoryCommand>(cmd);
+            await _productPromotionReadDataHistoryWriteOnlyRepository.AddAsync(new ToEntity().Parse(mapperParam));
         }
     }
 }

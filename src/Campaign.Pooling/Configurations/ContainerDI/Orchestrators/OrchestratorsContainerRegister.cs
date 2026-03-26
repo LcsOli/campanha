@@ -1,6 +1,6 @@
 ﻿using Campaign.Pooling.Orchestrators.UpdateProductPromotionReadHistory;
 
-namespace Campaign.Pooling.ContainerDI.Orchestrators
+namespace Campaign.Pooling.Configurations.ContainerDI.Orchestrators
 {
     public static class OrchestratorsContainerRegister
     {

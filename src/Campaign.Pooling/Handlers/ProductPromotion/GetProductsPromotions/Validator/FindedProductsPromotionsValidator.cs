@@ -4,9 +4,9 @@ using Product = Campaign.Shared.DataBaseContext.Entities.Product;
 
 namespace Campaign.Pooling.Handlers.ProductPromotion.GetProductsPromotions.Validator
 {
-    public class ValidateFindedProductsPromotions : FluentValidator<List<Product.ProductPromotion>>
+    public class FindedProductsPromotionsValidator : FluentValidator<List<Product.ProductPromotion>>
     {
-        public ValidateFindedProductsPromotions()
+        public FindedProductsPromotionsValidator()
         {
             RuleFor(p => p.Count)
                 .GreaterThan(0)

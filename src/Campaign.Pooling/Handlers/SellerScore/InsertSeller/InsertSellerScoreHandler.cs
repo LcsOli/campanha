@@ -1,7 +1,8 @@
-﻿using Campaign.Pooling.Commands.Seller.Create;
+﻿using Campaign.Shared.Mappers;
+using Campaign.Pooling.Commands.Seller.Create;
 using Campaign.Pooling.Repositories.SellerScore.WriteOnly;
-using Campaign.Pooling.Handlers.Seller.InsertSeller.Mapper;
 using Campaign.Pooling.Handlers.Seller.InsertSeller.Validator;
+using Campaign.Pooling.Handlers.SellerScore.InsertSeller.Mapper;
 
 namespace Campaign.Pooling.Handlers.Seller.InsertSeller
 {
@@ -18,10 +19,10 @@ namespace Campaign.Pooling.Handlers.Seller.InsertSeller
             if (cmd.SellersToCreate.Count <= 0)
                 return;
 
-            var validator = new ValidateSallersScoreToCreate();
-            cmd.SellersToCreate.ForEach(sellerScore => validator.Validate(sellerScore));
+            cmd.SellersToCreate.ForEach(sellerScore => new SallersScoreValidator().Validate(sellerScore));
 
-            var entities = InsertSellerScoreMapper.ToEntities(cmd.SellersToCreate);
+            var mapperParam = new MapperParamImplement<List<SellersScoreToCreateCommand>>(cmd.SellersToCreate);
+            var entities = new ToEntities().Parse(mapperParam);
 
             await _sellerScoreWriteOnlyRepository.AddAsync(entities);
         }

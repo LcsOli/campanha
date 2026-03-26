@@ -4,9 +4,9 @@ using Campaign.Pooling.Commands.Seller.Get;
 
 namespace Campaign.Pooling.Handlers.Seller.GetSellers.Validator
 {
-    public class ValidateListOfSellersIds : FluentValidator<GetSellersCommand>
+    public class CommandValidator : FluentValidator<GetSellersCommand>
     {
-        public ValidateListOfSellersIds()
+        public CommandValidator()
         {
             RuleFor(s => s.SellersIds.Count())
                 .GreaterThan(0)

@@ -7,7 +7,7 @@ using Campaign.Pooling.Handlers.ProductPromotion.GetProductsPromotions;
 using Campaign.Pooling.Handlers.ProductPromotionReadDataHistory.RegisterNewHistory;
 using Campaign.Pooling.Handlers.ProductPromotionHistory.GetLastProductPromotionsHistory;
 
-namespace Campaign.Pooling.ContainerDI.Handlers
+namespace Campaign.Pooling.Configurations.ContainerDI.Handlers
 {
 
     //TODO - Verificar todos os registros de serviço e verificar se estão no padrão: Nome_do_tipo + ContainerRegister.

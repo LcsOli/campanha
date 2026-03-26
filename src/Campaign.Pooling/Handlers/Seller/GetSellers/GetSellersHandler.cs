@@ -15,11 +15,11 @@ namespace Campaign.Pooling.Handlers.Seller.GetSellers
 
         public async Task<List<Entity.Seller>> Handle(GetSellersCommand cmd)
         {
-            new ValidateListOfSellersIds().Validate(cmd);
+            new CommandValidator().Validate(cmd);
 
             var sallers = await _sellerReadOnlyRepository.GetSellersByIds(cmd.SellersIds);
 
-            new ValidateWhetherSallersWasFounded().Validate(sallers);
+            new SallersWasFoundedValidator().Validate(sallers);
 
             return sallers;
         }

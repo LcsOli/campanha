@@ -4,9 +4,9 @@ using Campaign.Pooling.Commands.Promotions;
 
 namespace Campaign.Pooling.Handlers.ProductPromotion.GetProductsPromotions.Validator
 {
-    public class ValidatePromotionCode : FluentValidator<GetProductsPromotionsCommand>
+    public class CommandValidator : FluentValidator<GetProductsPromotionsCommand>
     {
-        public ValidatePromotionCode()
+        public CommandValidator()
         {
             RuleFor(p => p.PromotionCode)
                 .GreaterThan(0)

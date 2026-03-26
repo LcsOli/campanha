@@ -4,9 +4,9 @@ using Entity = Campaign.Shared.DataBaseContext.Entities.Seller;
 
 namespace Campaign.Pooling.Handlers.Seller.GetSellers.Validator
 {
-    public class ValidateWhetherSallersWasFounded : FluentValidator<List<Entity.Seller>>
+    public class SallersWasFoundedValidator : FluentValidator<List<Entity.Seller>>
     {
-        public ValidateWhetherSallersWasFounded()
+        public SallersWasFoundedValidator()
         {
             RuleFor(s => s.Count())
                 .GreaterThan(0)

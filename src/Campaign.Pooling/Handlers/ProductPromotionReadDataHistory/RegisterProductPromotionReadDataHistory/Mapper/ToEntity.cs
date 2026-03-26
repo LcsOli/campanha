@@ -1,14 +1,14 @@
-﻿using Entity = Campaign.Shared.DataBaseContext.Entities.Product;
+﻿using Campaign.Shared.Mappers;
+using Entity = Campaign.Shared.DataBaseContext.Entities.Product;
 using Campaign.Pooling.Commands.ProductPromotionReadHistory.Create;
 
 namespace Campaign.Pooling.Handlers.ProductPromotionReadDataHistory.RegisterNewHistory.Mapper
 {
-    //TODO - Verificar todos os Mappers e deixar no padrão: To + Tipo de retorno.
-    public static class ToEntity
+    public class ToEntity : Mapper<Entity.ProductPromotionReadDataHistory, RegisterProductPromotionReadDataHistoryCommand>
     {
-        public static Entity.ProductPromotionReadDataHistory Parse(RegisterProductPromotionReadDataHistoryCommand cmd)
+        public override Entity.ProductPromotionReadDataHistory Parse(MapperParam<RegisterProductPromotionReadDataHistoryCommand> param)
         {
-            return new(cmd.promotionCode, DateTime.Now);
+            return new(param.Model.promotionCode, DateTime.Now);
         }
     }
 }

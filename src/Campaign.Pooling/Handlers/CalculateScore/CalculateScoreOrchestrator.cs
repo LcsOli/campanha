@@ -1,10 +1,9 @@
-﻿using Campaign.Pooling.Commands.CalculateScore;
-using Campaign.Pooling.Commands.ProductPromotionHistory;
-using Campaign.Pooling.Commands.Promotions;
+﻿using System.Net;
+using Campaign.Shared.Exceptions;
+using Campaign.Pooling.Commands.CalculateScore;
+using Campaign.Pooling.Commands.ProductPromotionReadHistory.Get;
 using Campaign.Pooling.Handlers.CalculateScore.Validator;
 using Campaign.Pooling.Handlers.ProductPromotionHistory.GetLastProductPromotionsHistory;
-using Campaign.Shared.Exceptions;
-using System.Net;
 
 namespace Campaign.Pooling.Handlers.CalculateScore
 {
