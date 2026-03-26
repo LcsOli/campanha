@@ -2,12 +2,12 @@
 
 namespace Campaign.Shared.DataBaseContext.Entities.Users
 {
-    public class Supplier : Entities.Users.User
+    public class Supplier : User
     {
-        public static Entities.Users.User Generate(Roles roles,
-                                                   string name,
-                                                   string document,
-                                                   string password)
+        public static User Generate(Roles roles,
+                                    string name,
+                                    string document,
+                                    string password)
         {
             return new Supplier
             {

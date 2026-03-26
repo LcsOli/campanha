@@ -3,10 +3,10 @@ using Campaign.Pooling.Repositories.Products.ProductPromotionReadDataHistory.Rea
 
 namespace Campaign.Pooling.Handlers.Products.GetLastProductPromotions
 {
-    public class GetLastProductPromotionsHandler : IGetLastProductPromotionsHandler
+    public class GetLastProductPromotionsHistoryHandler : IGetLastProductPromotionsHistoryHandler
     {
         private readonly IProductPromotionReadDataHistoryRepositorie _productPromotionReadDataHistoryRepositorie;
-        public GetLastProductPromotionsHandler(IProductPromotionReadDataHistoryRepositorie productPromotionReadDataHistoryRepositorie)
+        public GetLastProductPromotionsHistoryHandler(IProductPromotionReadDataHistoryRepositorie productPromotionReadDataHistoryRepositorie)
         {
             _productPromotionReadDataHistoryRepositorie = productPromotionReadDataHistoryRepositorie;
         }

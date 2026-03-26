@@ -5,6 +5,7 @@ namespace Campaign.Shared.DataBaseContext.Entities
     public class CampaingContextDb(DbContextOptions<CampaingContextDb> options) : DbContext(options)
     {
         public DbSet<Team.Team> Teams { get; private set; }
+        public DbSet<Seller.SellerManager> SellerManagers { get; private set; }
         public DbSet<Users.User> Users { get; private set; }
         public DbSet<Seller.Seller> Sellers { get; private set; }
         public DbSet<Branch.Branch> Branches { get; private set; }

@@ -1,6 +1,6 @@
-﻿using Campaign.Shared.DataBaseContext.Entities.Product;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Campaign.Shared.DataBaseContext.Entities.Product;
 
 namespace Campaign.Shared.DataBaseContext.Entities.EntitiesConfigurations
 {

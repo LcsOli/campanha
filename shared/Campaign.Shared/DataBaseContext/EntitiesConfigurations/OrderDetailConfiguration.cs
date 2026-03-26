@@ -1,5 +1,5 @@
-﻿using Campaign.Shared.DataBaseContext.Entities.Order;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Campaign.Shared.DataBaseContext.Entities.Order;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Campaign.Shared.DataBaseContext.Entities.EntitiesConfigurations

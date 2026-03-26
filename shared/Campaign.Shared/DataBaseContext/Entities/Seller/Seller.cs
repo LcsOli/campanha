@@ -3,7 +3,16 @@
     public class Seller
     {
         public int Id { get; private set; }
-        public string Name { get; private set; } = default!;
         public int ManagerId { get; private set; }
+        public string Name { get; private set; } = default!;
+
+        public Seller(int id,
+              string name,
+              int managerId)
+        {
+            Id = id;
+            Name = name;
+            ManagerId = managerId;
+        }
     }
 }

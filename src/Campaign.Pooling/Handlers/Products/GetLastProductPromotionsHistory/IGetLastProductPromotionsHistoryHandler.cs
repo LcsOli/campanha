@@ -2,7 +2,7 @@
 
 namespace Campaign.Pooling.Handlers.Products.GetLastProductPromotions
 {
-    public interface IGetLastProductPromotionsHandler
+    public interface IGetLastProductPromotionsHistoryHandler
     {
         Task<ProductPromotionReadDataHistory?> Handle();
     }
