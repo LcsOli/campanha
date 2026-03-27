@@ -19,10 +19,6 @@ namespace Campaign.Shared.DataBaseContext.EntitiesConfigurations
                    .HasColumnName("USUARI_ID")
                    .IsRequired();
 
-            builder.HasOne(s => s.User)
-                   .WithOne()
-                   .HasForeignKey<SellerScore>(s => s.SellerId);
-
             builder.Property(s => s.Score)
                    .HasColumnName("PONTOS");
 

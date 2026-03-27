@@ -2,6 +2,6 @@
 {
     public interface IMainOrchestrator
     {
-        Task Execute(int promotionCode);
+        Task Execute(int promotionCode, DateTime initIn);
     }
 }

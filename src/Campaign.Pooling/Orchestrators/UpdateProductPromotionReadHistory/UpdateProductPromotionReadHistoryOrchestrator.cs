@@ -1,11 +1,11 @@
-﻿using Campaign.Shared.DataBaseContext.Entities.UnityOfWork;
+﻿using Campaign.Pooling.Commands.ProductPromotions.Get;
+using Campaign.Shared.DataBaseContext.Entities.UnityOfWork;
 using Campaign.Pooling.Commands.ProductPromotionReadHistory.Get;
 using Campaign.Pooling.Commands.ProductPromotionReadHistory.Create;
+using Campaign.Pooling.Handlers.ProductPromotion.ProductPromotionExists;
 using Campaign.Pooling.Orchestrators.UpdateProductPromotionReadHistory.Validator;
 using Campaign.Pooling.Handlers.ProductPromotionReadDataHistory.RegisterNewHistory;
 using Campaign.Pooling.Handlers.ProductPromotionHistory.GetLastProductPromotionsHistory;
-using Campaign.Pooling.Handlers.ProductPromotion.ProductPromotionExists;
-using Campaign.Pooling.Commands.ProductPromotions.Get;
 
 namespace Campaign.Pooling.Orchestrators.UpdateProductPromotionReadHistory
 {
