@@ -26,6 +26,9 @@ namespace Campaign.Shared.DataBaseContext.Entities.EntitiesConfigurations
 
             builder.Property(o => o.ProductId)
                    .HasColumnName("CODPROD");
+
+            builder.Property(o => o.DateOfSale)
+                   .HasColumnName("DATA");
         }
     }
 }

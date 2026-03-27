@@ -1,7 +1,7 @@
-﻿using Campaign.Pooling.Repositories.ProductPromotion.ReadOnly;
+﻿using Campaign.Pooling.Commands.ProductPromotions.Get;
+using Campaign.Pooling.Repositories.ProductPromotion.ReadOnly;
 using Entity = Campaign.Shared.DataBaseContext.Entities.Product;
 using Campaign.Pooling.Handlers.ProductPromotion.GetProductsPromotions.Validator;
-using Campaign.Pooling.Commands.ProductPromotions.Get;
 
 namespace Campaign.Pooling.Handlers.ProductPromotion.GetProductsPromotions
 {

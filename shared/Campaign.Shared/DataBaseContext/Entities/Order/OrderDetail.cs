@@ -7,5 +7,6 @@
         public decimal Price { get; private set; }
         public int CustomerId { get; private set; }
         public int ProductId { get; private set; }
+        public DateTime DateOfSale { get; private set; }
     }
 }
