@@ -15,7 +15,7 @@ namespace Campaign.Pooling.Orchestrators.MainOrchestrator
             _updateProductPromotionReadHistoryOrchestrator = updateProductPromotionReadHistoryOrchestrator;
         }
 
-        public async Task Execute(int promotionCode)
+        public async Task Execute(int promotionCode, DateTime initIn)
         {
             _unityOfWork.SecureCommitAsync(async () =>
             {

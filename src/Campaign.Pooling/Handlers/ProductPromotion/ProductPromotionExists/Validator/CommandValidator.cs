@@ -2,9 +2,9 @@
 using Campaign.Shared.FluentValidator;
 using Campaign.Pooling.Commands.ProductPromotions.Get;
 
-namespace Campaign.Pooling.Handlers.ProductPromotion.GetProductsPromotions.Validator
+namespace Campaign.Pooling.Handlers.ProductPromotion.ProductPromotionExists.Validator
 {
-    public class CommandValidator : FluentValidator<GetProductsPromotionsCommand>
+    public class CommandValidator : FluentValidator<ProductPromotionExistsCommand>
     {
         public CommandValidator()
         {

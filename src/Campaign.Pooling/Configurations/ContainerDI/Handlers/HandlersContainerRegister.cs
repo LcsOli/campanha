@@ -1,9 +1,9 @@
-﻿using Campaign.Pooling.Handlers.CalculateScore;
-using Campaign.Pooling.Handlers.Seller.GetSellers;
+﻿using Campaign.Pooling.Handlers.Seller.GetSellers;
 using Campaign.Pooling.Handlers.Seller.InsertSeller;
 using Campaign.Pooling.Handlers.SellerManager.GetSellers;
 using Campaign.Pooling.Handlers.Seller.GetSellersToCreate;
 using Campaign.Pooling.Handlers.ProductPromotion.GetProductsPromotions;
+using Campaign.Pooling.Handlers.ProductPromotion.ProductPromotionExists;
 using Campaign.Pooling.Handlers.ProductPromotionReadDataHistory.RegisterNewHistory;
 using Campaign.Pooling.Handlers.ProductPromotionHistory.GetLastProductPromotionsHistory;
 
@@ -19,8 +19,8 @@ namespace Campaign.Pooling.Configurations.ContainerDI.Handlers
             services.AddScoped<IInsertSellerScoreHandler, InsertSellerScoreHandler>();
             services.AddScoped<IGetSellersManagersHandler, GetSellersManagersHandler>();
             services.AddScoped<IGetSellersToCreateHandler, GetSellerstoCreateHandler>();
-            services.AddScoped<ICalculateScoreOrchestrator, CalculateScoreOrchestrator>();
             services.AddScoped<IGetProductsPromotionsHandler, GetProductsPromotionsHandler>();
+            services.AddScoped<IProductPromotionExistsHandler, ProductPromotionExistsHandler>();
             services.AddScoped<IGetProductPromotionReadDataHistoryHandler, GetProductPromotionReadDataHistoryHandler>();
             services.AddScoped<IRegisterProductPromotionReadDataHistoryHandler, RegisterProductPromotionReadDataHistoryHandler>();
         }

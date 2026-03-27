@@ -1,8 +1,8 @@
 ﻿namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
 {
-    public class UpdateSellerScoreOrchestrator : IUpdateSellerScoreOrchestrator
+    public class UpdateSellerScorePartcipantsOrchestrator : IUpdateSellerScoreOrchestrator
     {
-        public UpdateSellerScoreOrchestrator()
+        public UpdateSellerScorePartcipantsOrchestrator()
         {
             
         }

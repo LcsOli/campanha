@@ -1,7 +1,7 @@
-﻿using Campaign.Pooling.Commands.Promotions;
-using Campaign.Pooling.Repositories.ProductPromotion.ReadOnly;
+﻿using Campaign.Pooling.Repositories.ProductPromotion.ReadOnly;
 using Entity = Campaign.Shared.DataBaseContext.Entities.Product;
 using Campaign.Pooling.Handlers.ProductPromotion.GetProductsPromotions.Validator;
+using Campaign.Pooling.Commands.ProductPromotions.Get;
 
 namespace Campaign.Pooling.Handlers.ProductPromotion.GetProductsPromotions
 {
@@ -17,11 +17,12 @@ namespace Campaign.Pooling.Handlers.ProductPromotion.GetProductsPromotions
         {
             new CommandValidator().Validate(cmd);
 
-            var promotions = await _productPromotionReadOnlyRepository.GetByPromotionCode(cmd.PromotionCode);
+            var productPromotions = await _productPromotionReadOnlyRepository.GetByPromotionCode(cmd.PromotionCode);
 
-            new FindedProductsPromotionsValidator().Validate(promotions);
+            new FindedProductsPromotionsValidator()
+                .Validate(productPromotions);
 
-            return promotions;
+            return productPromotions;
         }
     }
 }

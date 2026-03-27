@@ -1,4 +1,4 @@
-﻿using Campaign.Pooling.Commands.Promotions;
+﻿using Campaign.Pooling.Commands.ProductPromotions.Get;
 using Entity = Campaign.Shared.DataBaseContext.Entities.Product;
 
 namespace Campaign.Pooling.Handlers.ProductPromotion.GetProductsPromotions

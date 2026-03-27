@@ -17,5 +17,10 @@ namespace Campaign.Pooling.Repositories.ProductPromotion.ReadOnly
         {
             return await _context.ProductPromotions.Where(p => p.PromotionCode == promotionCode).ToListAsync();
         }
+
+        public async Task<bool> Exists(int promotionCode)
+        {
+            return await _context.ProductPromotions.AnyAsync(p => p.PromotionCode == promotionCode);
+        }
     }
 }
