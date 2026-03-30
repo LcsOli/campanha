@@ -7,6 +7,9 @@ using Campaign.Pooling.Handlers.Seller.GetSellers;
 using Campaign.Pooling.Handlers.Seller.GetSellersToCreate;
 using Campaign.Pooling.Handlers.Seller.InsertSeller;
 using Campaign.Pooling.Handlers.SellerManager.GetSellers;
+using Campaign.Pooling.Handlers.SellerScore.GetSellersScore;
+using Campaign.Pooling.Orchestrators.UpdateSellerScore;
+using Campaign.Pooling.Repositories.Sellers.Seller.ReadOnly;
 
 namespace Campaign.Pooling.Configurations.ContainerDI.Handlers
 {
@@ -17,6 +20,7 @@ namespace Campaign.Pooling.Configurations.ContainerDI.Handlers
         public static void AddHandlers(this IServiceCollection services)
         {
             services.AddScoped<IGetSellersHandler, GetSellersHandler>();
+            services.AddScoped<IGetSellerScoreHandler, GetSellerScoreHandler>();
             services.AddScoped<IGetOrdersDetailHandler, GetOrdersDetailHandler>();
             services.AddScoped<IInsertSellerScoreHandler, InsertSellerScoreHandler>();
             services.AddScoped<IGetSellersManagersHandler, GetSellersManagersHandler>();

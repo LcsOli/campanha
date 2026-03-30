@@ -29,5 +29,10 @@
             SellerId = sellerId;
             ManagerName = managerName;
         }
+
+        public void UpdateScore(decimal score)
+        {
+            Score += score;
+        }
     }
 }

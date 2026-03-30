@@ -8,5 +8,23 @@
         public int CustomerId { get; private set; }
         public int ProductId { get; private set; }
         public DateTime DateOfSale { get; private set; }
+        public int SellerId { get; private set; }
+
+        public OrderDetail(int id, 
+                           int sellerId,
+                           decimal price, 
+                           int productId, 
+                           int customerId, 
+                           decimal quantity, 
+                           DateTime dateOfSale)
+        {
+            Id = id;
+            Price = price;
+            SellerId = sellerId;
+            Quantity = quantity;
+            ProductId = productId;
+            DateOfSale = dateOfSale;
+            CustomerId = customerId;
+        }
     }
 }

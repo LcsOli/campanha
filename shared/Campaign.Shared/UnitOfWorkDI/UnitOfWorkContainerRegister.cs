@@ -3,9 +3,9 @@ using Campaign.Shared.DataBaseContext.Entities.UnityOfWork;
 
 namespace Campaign.Shared.UnitOfWorkDI
 {
-    public static class UnityOfWorkInjection
+    public static class UnitOfWorkContainerRegister
     {
-        public static void AddUnityOfWorkInjection(this IServiceCollection services)
+        public static void AddUnityOfWork(this IServiceCollection services)
         {
             services.AddScoped<IUnityOfWork, UnityOfWork>();
         }

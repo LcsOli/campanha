@@ -2,5 +2,6 @@
 {
     public interface ICalcuateScoreByProductOrchestrator
     {
+        Task Execute(int promotionCode, DateTime initIn, DateTime endIn);
     }
 }

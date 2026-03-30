@@ -6,9 +6,9 @@ using Campaign.Shared.DataBaseContext.Entities;
 
 namespace Campaign.Shared.DataBaseContextDI
 {
-    public static class DataBaseInjection
+    public static class DataBaseContainerRegister
     {
-        public static void AddDataBaseInjection(this IServiceCollection services)
+        public static void AddDataBase(this IServiceCollection services)
         {
             var connectionString = Environment.GetEnvironmentVariable("CAMPAIGN_HOMOLOGA_CONNECTION") ??
                 throw new CompaignException(HttpStatusCode.InternalServerError, "Variável de ambient CAMPAIGN_HOMOLOGA_CONNECTION não encontrada.");

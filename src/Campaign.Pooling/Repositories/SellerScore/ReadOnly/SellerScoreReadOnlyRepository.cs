@@ -1,5 +1,6 @@
-﻿using Campaign.Shared.DataBaseContext.Entities;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Campaign.Shared.DataBaseContext.Entities;
+using Entity = Campaign.Shared.DataBaseContext.Entities.Seller;
 
 namespace Campaign.Pooling.Repositories.SellerScore.ReadOnly
 {
@@ -17,6 +18,11 @@ namespace Campaign.Pooling.Repositories.SellerScore.ReadOnly
             return await _context.SellerScores.Select(s => s.SellerId)
                                               .Where(sellerId => SellersIds.Contains(sellerId))
                                               .ToListAsync();
+        }
+
+        public async Task<List<Entity.SellerScore>> GetAll()
+        {
+            return await _context.SellerScores.ToListAsync();
         }
     }
 }

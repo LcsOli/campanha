@@ -14,11 +14,19 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
 
         public async Task<List<OrderDetail>> GetByIdAndDateInitAndEnd(int[] productsIds, DateTime initIn, DateTime endIn)
         {
-            return await _context.OrderDetails.Where(o => (o.DateOfSale >= initIn && o.DateOfSale <= endIn) &&
-                                                                 productsIds.Contains(o.ProductId)
-                                                    ).ToListAsync();
-
-
+            var query = from o in _context.OrderDetails
+                        join sc in _context.SellerScores on o.SellerId equals sc.SellerId
+                        where
+                            productsIds.Contains(o.ProductId) &&
+                            (o.DateOfSale.Date >= initIn.Date && o.DateOfSale.Date <= endIn.Date)
+                        select new OrderDetail(o.Id,
+                                               o.SellerId,
+                                               o.Price,
+                                               o.ProductId,
+                                               o.CustomerId,
+                                               o.Quantity,
+                                               o.DateOfSale);
+            return await query.ToListAsync();
         }
     }
 }

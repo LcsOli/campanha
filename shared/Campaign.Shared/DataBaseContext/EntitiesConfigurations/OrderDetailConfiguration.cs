@@ -29,6 +29,9 @@ namespace Campaign.Shared.DataBaseContext.Entities.EntitiesConfigurations
 
             builder.Property(o => o.DateOfSale)
                    .HasColumnName("DATA");
+
+            builder.Property(o => o.SellerId)
+                   .HasColumnName("CODUSUR");
         }
     }
 }

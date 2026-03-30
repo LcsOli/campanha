@@ -1,17 +1,21 @@
-﻿using Campaign.Pooling.Orchestrators.UpdateProductPromotionReadHistory;
+﻿using Campaign.Pooling.Orchestrators.UpdateSellerScore;
 using Campaign.Shared.DataBaseContext.Entities.UnityOfWork;
+using Campaign.Pooling.Orchestrators.UpdateProductPromotionReadHistory;
 
 namespace Campaign.Pooling.Orchestrators.MainOrchestrator
 {
     public class MainOrchestrator : IMainOrchestrator
     {
         private readonly IUnityOfWork _unityOfWork;
+        private readonly ICalcuateScoreByProductOrchestrator _calcuateScoreByProductOrchestrator;
 
         private readonly IUpdateProductPromotionReadHistoryOrchestrator _updateProductPromotionReadHistoryOrchestrator;
         public MainOrchestrator(IUnityOfWork unityOfWork,
+                                ICalcuateScoreByProductOrchestrator calcuateScoreByProductOrchestrator,
                                 IUpdateProductPromotionReadHistoryOrchestrator updateProductPromotionReadHistoryOrchestrator)
         {
             _unityOfWork = unityOfWork;
+            _calcuateScoreByProductOrchestrator = calcuateScoreByProductOrchestrator;
             _updateProductPromotionReadHistoryOrchestrator = updateProductPromotionReadHistoryOrchestrator;
         }
 
@@ -20,7 +24,7 @@ namespace Campaign.Pooling.Orchestrators.MainOrchestrator
             _unityOfWork.SecureCommitAsync(async () =>
             {
                 await _updateProductPromotionReadHistoryOrchestrator.Execute(promotionCode);
-
+                await _calcuateScoreByProductOrchestrator.Execute(promotionCode, initIn, endIn);
             });
         }
     }
