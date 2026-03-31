@@ -31,12 +31,13 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
 
         public async Task<List<OrderDetail>> GetByPromotionCodeAndDateInitAndEnd(int promotionCode, DateTime initIn, DateTime endIn)
         {
-            var query = from o in _context.OrderDetails
-                        join sc in _context.SellerScores on o.SellerId equals sc.SellerId
+            var query = from os in _context.OrderSummaries
+                        join o in _context.OrderDetails on os.Id equals o.Id
+                        join sc in _context.SellerScores on os.SellerId equals sc.SellerId
                         join pm in _context.ProductPromotions on o.ProductId equals pm.ProductId
                         where
                             pm.PromotionCode == promotionCode &&
-                            (o.DateOfSale.Date >= initIn.Date && o.DateOfSale.Date <= endIn.Date)
+                            (os.DateOfSale.Date >= initIn.Date && os.DateOfSale.Date <= endIn.Date)
                         select new OrderDetail(o.Id,
                                                o.SellerId,
                                                o.Price,
