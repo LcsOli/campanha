@@ -3,6 +3,6 @@
     public interface IUnityOfWork
     {
         Task SaveAsync();
-        void SecureCommitAsync(Func<Task> func);
+        Task SecureCommitAsync(Func<Task> func);
     }
 }

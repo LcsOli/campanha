@@ -1,7 +1,5 @@
 ﻿using Campaign.Pooling.Commands.Orders.Get;
 using Campaign.Pooling.Commands.ProductPromotions.Get;
-using Campaign.Pooling.Repositories.SellerScore.WriteOnly;
-using Campaign.Shared.DataBaseContext.Entities.UnityOfWork;
 using Campaign.Pooling.Handlers.OrderDetail.GetOrdersDetail;
 using Campaign.Pooling.Handlers.SellerScore.GetSellersScore;
 using Campaign.Pooling.Handlers.ProductPromotion.GetProductsPromotions;
@@ -10,21 +8,16 @@ namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
 {
     public class CalcuateScoreByProductOrchestrator : ICalcuateScoreByProductOrchestrator
     {
-
-        private ISellerScoreWriteOnlyRepository _sellerScoreWriteOnlyRepository;
-
         private readonly IGetSellerScoreHandler _getSellerScoreHandler;
         private readonly IGetOrdersDetailHandler _getOrdersDetailHandler;
         private readonly IGetProductsPromotionsHandler _getProductsPromotionsHandler;
         public CalcuateScoreByProductOrchestrator(IGetSellerScoreHandler getSellerScoreHandler,
                                                   IGetOrdersDetailHandler getOrdersDetailHandler,
-                                                  IGetProductsPromotionsHandler getProductsPromotionsHandler,
-                                                  ISellerScoreWriteOnlyRepository sellerScoreWriteOnlyRepository)
+                                                  IGetProductsPromotionsHandler getProductsPromotionsHandler)
         {
             _getSellerScoreHandler = getSellerScoreHandler;
             _getOrdersDetailHandler = getOrdersDetailHandler;
             _getProductsPromotionsHandler = getProductsPromotionsHandler;
-            _sellerScoreWriteOnlyRepository = sellerScoreWriteOnlyRepository;
         }
 
         public async Task Execute(int promotionCode, DateTime initIn, DateTime endIn)
@@ -35,29 +28,30 @@ namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
 
             var sellersScore = await _getSellerScoreHandler.Handle();
 
-
             sellersScore.ForEach(sellerScore =>
             {
                 var ordersByClient = ordersDetail.Where(o => o.SellerId == sellerScore.SellerId)
                                                  .GroupBy(o => o.CustomerId)
                                                  .Select(o =>
                                                  {
-                                                     return new                                                      {
+                                                     return new
+                                                     {
                                                          CustomerId = o.Key,
-                                                         Orders = o.DistinctBy(o => o.ProductId)
-                                                                   .ToList()
+                                                         Orders = o.DistinctBy(p => p.ProductId).ToList()
                                                      };
                                                  }).ToList();
 
                 ordersByClient.ForEach(o =>
                 {
                     var productsIds = o.Orders.Select(p => p.ProductId);
+
                     var points = productsPromotions.Where(p => productsIds.Contains(p.ProductId))
                                                    .Sum(p => p.QuantityPointsGoals);
-                    sellerScore.UpdateScore(points);
+
+                    sellerScore.UpdateScore(points!.Value);
                 });
             });
-            await _sellerScoreWriteOnlyRepository.AddAsync(sellersScore);
+            _sellerScoreWriteOnlyRepository.Update(sellersScore);
         }
     }
 }

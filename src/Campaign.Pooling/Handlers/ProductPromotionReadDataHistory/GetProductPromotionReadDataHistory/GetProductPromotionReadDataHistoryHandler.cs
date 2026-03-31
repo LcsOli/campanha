@@ -1,6 +1,7 @@
-﻿using Entity = Campaign.Shared.DataBaseContext.Entities.Product;
-using Campaign.Pooling.Commands.ProductPromotionReadHistory.Get;
+﻿using Campaign.Pooling.Commands.ProductPromotionReadHistory.Get;
+using Entity = Campaign.Shared.DataBaseContext.Entities.Product;
 using Campaign.Pooling.Repositories.ProductPromotionReadDataHistory.ReadOnly;
+using Campaign.Pooling.Handlers.ProductPromotionReadDataHistory.GetProductPromotionReadDataHistory.Validator;
 
 namespace Campaign.Pooling.Handlers.ProductPromotionHistory.GetLastProductPromotionsHistory
 {
@@ -12,9 +13,10 @@ namespace Campaign.Pooling.Handlers.ProductPromotionHistory.GetLastProductPromot
             _productPromotionReadDataHistoryRepositorie = productPromotionReadDataHistoryRepositorie;
         }
 
-        public async Task<bool> Handle(ProductPromotionWasReadCommand cmd)
+        public async Task Handle(ProductPromotionWasReadCommand cmd)
         {
-            return await _productPromotionReadDataHistoryRepositorie.Exists(cmd.promotionCode);
+            var command = await Handle(new GetProductPromotionReadHistoryCommand(cmd.promotionCode));
+            ProductPromotionWasReadValidator.Validate(command!);
         }
 
         public async Task<Entity.ProductPromotionReadDataHistory?> Handle(GetProductPromotionReadHistoryCommand cmd)

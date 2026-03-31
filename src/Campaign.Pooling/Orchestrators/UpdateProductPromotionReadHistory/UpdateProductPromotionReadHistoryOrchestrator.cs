@@ -3,7 +3,6 @@ using Campaign.Shared.DataBaseContext.Entities.UnityOfWork;
 using Campaign.Pooling.Commands.ProductPromotionReadHistory.Get;
 using Campaign.Pooling.Commands.ProductPromotionReadHistory.Create;
 using Campaign.Pooling.Handlers.ProductPromotion.ProductPromotionExists;
-using Campaign.Pooling.Orchestrators.UpdateProductPromotionReadHistory.Validator;
 using Campaign.Pooling.Handlers.ProductPromotionReadDataHistory.RegisterNewHistory;
 using Campaign.Pooling.Handlers.ProductPromotionHistory.GetLastProductPromotionsHistory;
 
@@ -31,15 +30,8 @@ namespace Campaign.Pooling.Orchestrators.UpdateProductPromotionReadHistory
         public async Task Execute(int promotionCode)
         {
             await _productPromotionExistsHandler.Handle(new ProductPromotionExistsCommand(promotionCode));
-
-            var productPromotionReadHistory = await _getProductPromotionReadDataHistoryHandler.Handle(new GetProductPromotionReadHistoryCommand(promotionCode));
-
-            new ProductPromotionExistsValidator()
-                 .Validate(productPromotionReadHistory!);
-
+            //await _getProductPromotionReadDataHistoryHandler.Handle(new ProductPromotionWasReadCommand(promotionCode));
             await _registerProductPromotionReadDataHistoryHandler.Handle(new RegisterProductPromotionReadDataHistoryCommand(promotionCode));
-
-            await _unityOfWork.SaveAsync();
         }
     }
 }

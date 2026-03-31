@@ -5,7 +5,7 @@ namespace Campaign.Pooling.Handlers.ProductPromotionHistory.GetLastProductPromot
 {
     public interface IGetProductPromotionReadDataHistoryHandler
     {
-        Task<bool> Handle(ProductPromotionWasReadCommand cmd);
+        Task Handle(ProductPromotionWasReadCommand cmd);
         Task<Entity.ProductPromotionReadDataHistory?> Handle(GetProductPromotionReadHistoryCommand cmd);
     }
 }

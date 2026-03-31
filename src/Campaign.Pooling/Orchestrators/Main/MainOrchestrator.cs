@@ -21,10 +21,12 @@ namespace Campaign.Pooling.Orchestrators.MainOrchestrator
 
         public async Task Execute(int promotionCode, DateTime initIn, DateTime endIn)
         {
-            _unityOfWork.SecureCommitAsync(async () =>
+            await _unityOfWork.SecureCommitAsync(async () =>
             {
                 await _updateProductPromotionReadHistoryOrchestrator.Execute(promotionCode);
                 await _calcuateScoreByProductOrchestrator.Execute(promotionCode, initIn, endIn);
+
+                await _unityOfWork.SaveAsync();
             });
         }
     }

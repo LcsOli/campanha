@@ -20,7 +20,14 @@ namespace Campaign.Pooling.Repositories.ProductPromotion.ReadOnly
 
         public async Task<bool> Exists(int promotionCode)
         {
-            return await _context.ProductPromotions.AnyAsync(p => p.PromotionCode == promotionCode);
+            //TODO - Não é possível simplificar a busca com AnyAsync pois a oracle não compreende a palavra chave TRUE/FALSE.
+
+            var exists = await _context.ProductPromotions.FirstOrDefaultAsync(p => p.PromotionCode == promotionCode);
+
+            if (exists != null)
+                return true;
+
+            return false;
         }
     }
 }

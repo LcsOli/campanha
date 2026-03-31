@@ -15,5 +15,10 @@ namespace Campaign.Pooling.Repositories.SellerScore.WriteOnly
         {
             await _context.AddRangeAsync(entities);
         }
+
+        public void Update(List<Entity.SellerScore> entities)
+        {
+            _context.UpdateRange(entities);
+        }
     }
 }

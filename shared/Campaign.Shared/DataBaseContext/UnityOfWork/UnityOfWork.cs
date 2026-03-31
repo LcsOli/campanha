@@ -19,27 +19,30 @@ namespace Campaign.Shared.DataBaseContext.Entities.UnityOfWork
             await _context.SaveChangesAsync();
         }
 
-        public async void SecureCommitAsync(Func<Task> func)
+        public async Task SecureCommitAsync(Func<Task> func)
         {
+            //TODO - Verificar a possibilidade de refatorar o código para evitar a repetição do bloco try/catch, visto que ele é o mesmo para ambos os métodos.
+
             try
             {
                 _transaction = await _context.Database.BeginTransactionAsync();
                 await func();
                 await _context.Database.CommitTransactionAsync();
             }
+            catch (CompaignCollectionMessagesExceptions ex)
+            {
+                await _transaction!.RollbackAsync();
+                throw new CompaignCollectionMessagesExceptions(ex.Code, ex.Messages);
+            }
             catch (CompaignException ex)
             {
+                await _transaction!.RollbackAsync();
                 throw new CompaignException(ex.Code, ex.Message);
             }
             catch (Exception ex)
             {
-                throw new CompaignException(HttpStatusCode.InternalServerError, "Ocorreu um erro ao persistir uma entidade no banco.");
-            }
-            finally
-            {
-
-                //TODO - Verificar se sempre vai cair aqui
                 await _transaction!.RollbackAsync();
+                throw new CompaignException(HttpStatusCode.InternalServerError, "Ocorreu um erro ao persistir uma entidade no banco.");
             }
         }
     }
