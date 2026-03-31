@@ -6,5 +6,6 @@ namespace Campaign.Pooling.Repositories.ProductPromotion.ReadOnly
     {
         Task<List<Product.ProductPromotion>> GetByPromotionCode(int promotionCode);
         Task<bool> Exists(int promotionCode);
+        Task<List<Product.ProductPromotionSummary>> GetByProductsIdsAndPromotionCode(int[] productsIds, int promotionCode);
     }
 }

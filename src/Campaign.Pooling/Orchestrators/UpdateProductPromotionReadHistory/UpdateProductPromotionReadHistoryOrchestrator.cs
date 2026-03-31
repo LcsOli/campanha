@@ -30,7 +30,7 @@ namespace Campaign.Pooling.Orchestrators.UpdateProductPromotionReadHistory
         public async Task Execute(int promotionCode)
         {
             await _productPromotionExistsHandler.Handle(new ProductPromotionExistsCommand(promotionCode));
-            //await _getProductPromotionReadDataHistoryHandler.Handle(new ProductPromotionWasReadCommand(promotionCode));
+            await _getProductPromotionReadDataHistoryHandler.Handle(new ProductPromotionWasReadCommand(promotionCode));
             await _registerProductPromotionReadDataHistoryHandler.Handle(new RegisterProductPromotionReadDataHistoryCommand(promotionCode));
         }
     }

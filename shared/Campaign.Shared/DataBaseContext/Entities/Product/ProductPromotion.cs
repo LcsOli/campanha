@@ -2,8 +2,6 @@
 {
     public class ProductPromotion
     {
-        
-
         public int Id { get; private set; }
         public DateTime CreateAt { get; private set; }
         public int PromotionCode { get; private set; }
@@ -21,17 +19,28 @@
 
         public ProductPromotion(int id, 
                                 int productId, 
-                                DateTime createAt, 
                                 int promotionCode, 
-                                decimal? valuePoints, 
-                                decimal quantityPoints, 
-                                decimal? quantityGoals, 
-                                decimal? maxPointsValue, 
-                                decimal? minPointsValue, 
+                                decimal? quantityPointsGoals)
+        {
+            Id = id;
+            ProductId = productId;
+            PromotionCode = promotionCode;
+            QuantityPointsGoals = quantityPointsGoals;
+        }
+
+        public ProductPromotion(int id,
+                                int productId,
+                                DateTime createAt,
+                                int promotionCode,
+                                decimal? valuePoints,
+                                decimal quantityPoints,
+                                decimal? quantityGoals,
+                                decimal? maxPointsValue,
+                                decimal? minPointsValue,
                                 decimal? quantityMinItem,
                                 decimal? quantityPointsGoals,
-                                decimal? quantityPointsValue, 
-                                decimal? quantityPointsWeight, 
+                                decimal? quantityPointsValue,
+                                decimal? quantityPointsWeight,
                                 decimal? quantityMinWeightPoints)
         {
             Id = id;

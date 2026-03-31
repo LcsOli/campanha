@@ -28,5 +28,23 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
                                                o.DateOfSale);
             return await query.ToListAsync();
         }
+
+        public async Task<List<OrderDetail>> GetByPromotionCodeAndDateInitAndEnd(int promotionCode, DateTime initIn, DateTime endIn)
+        {
+            var query = from o in _context.OrderDetails
+                        join sc in _context.SellerScores on o.SellerId equals sc.SellerId
+                        join pm in _context.ProductPromotions on o.ProductId equals pm.ProductId
+                        where
+                            pm.PromotionCode == promotionCode &&
+                            (o.DateOfSale.Date >= initIn.Date && o.DateOfSale.Date <= endIn.Date)
+                        select new OrderDetail(o.Id,
+                                               o.SellerId,
+                                               o.Price,
+                                               o.ProductId,
+                                               o.CustomerId,
+                                               o.Quantity,
+                                               o.DateOfSale);
+            return await query.ToListAsync();
+        }
     }
 }

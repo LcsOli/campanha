@@ -13,11 +13,11 @@ namespace Campaign.Pooling.Handlers.ProductPromotion.GetProductsPromotions
             _productPromotionReadOnlyRepository = productPromotionReadOnlyRepository;
         }
 
-        public async Task<List<Entity.ProductPromotion>> Handle(GetProductsPromotionsCommand cmd)
+        public async Task<List<Entity.ProductPromotionSummary>> Handle(GetProductsPromotionsCommand cmd)
         {
             new CommandValidator().Validate(cmd);
 
-            var productPromotions = await _productPromotionReadOnlyRepository.GetByPromotionCode(cmd.PromotionCode);
+            var productPromotions = await _productPromotionReadOnlyRepository.GetByProductsIdsAndPromotionCode(cmd.ProdutcsIds, cmd.PromotionCode);
 
             new FindedProductsPromotionsValidator()
                 .Validate(productPromotions);

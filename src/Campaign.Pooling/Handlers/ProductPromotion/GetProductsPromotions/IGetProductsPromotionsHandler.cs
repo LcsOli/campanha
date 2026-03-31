@@ -5,6 +5,6 @@ namespace Campaign.Pooling.Handlers.ProductPromotion.GetProductsPromotions
 {
     public interface IGetProductsPromotionsHandler
     {
-        Task<List<Entity.ProductPromotion>> Handle(GetProductsPromotionsCommand cmd);
+        Task<List<Entity.ProductPromotionSummary>> Handle(GetProductsPromotionsCommand cmd);
     }
 }

@@ -8,9 +8,9 @@ namespace Campaign.Pooling.Handlers.OrderDetail.GetOrdersDetail.Validator
     {
         public CommandValidator()
         {
-            RuleFor(o => o.productsIds.Length)
+            RuleFor(o => o.promotionCode)
                 .GreaterThan(0)
-                .WithMessage("Identificadores dos produtos devem ser informados.");
+                .WithMessage("Código da promoção deve ser definida.");
 
             RuleFor(o => o.initIn)
                 .GreaterThanOrEqualTo(default(DateTime))
@@ -21,8 +21,12 @@ namespace Campaign.Pooling.Handlers.OrderDetail.GetOrdersDetail.Validator
                 .WithMessage("Data final deve ser definida.");
 
             RuleFor(o => o.initIn)
-                .GreaterThan(o => o.endIn)
-                .WithMessage("Data inicial deve ser maior que a data final.");
+                .LessThan(o => o.endIn)
+                .WithMessage("Data inicial deve ser menor que a data final.");
+
+            RuleFor(o => o.endIn)
+                .GreaterThan(o => o.initIn)
+                .WithMessage("Data final deve ser maior que a data final.");
         }
     }
 }

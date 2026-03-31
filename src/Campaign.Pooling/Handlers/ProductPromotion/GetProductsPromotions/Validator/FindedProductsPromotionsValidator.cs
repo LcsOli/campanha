@@ -4,7 +4,7 @@ using Product = Campaign.Shared.DataBaseContext.Entities.Product;
 
 namespace Campaign.Pooling.Handlers.ProductPromotion.GetProductsPromotions.Validator
 {
-    public class FindedProductsPromotionsValidator : FluentValidator<List<Product.ProductPromotion>>
+    public class FindedProductsPromotionsValidator : FluentValidator<List<Product.ProductPromotionSummary>>
     {
         public FindedProductsPromotionsValidator()
         {
