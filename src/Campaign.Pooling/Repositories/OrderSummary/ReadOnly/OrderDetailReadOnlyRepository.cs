@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Campaign.Pooling.DTO.Response.Get;
 using Campaign.Shared.DataBaseContext.Entities;
 using Campaign.Shared.DataBaseContext.Entities.Order;
 
@@ -29,7 +30,7 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
             return await query.ToListAsync();
         }
 
-        public async Task<List<OrderDetail>> GetByPromotionCodeAndDateInitAndEnd(int promotionCode, DateTime initIn, DateTime endIn)
+        public async Task<List<OrderDetailResponse>> GetByPromotionCodeAndDateInitAndEnd(int promotionCode, DateTime initIn, DateTime endIn)
         {
             var query = from os in _context.OrderSummaries
                         join o in _context.OrderDetails on os.Id equals o.Id
@@ -38,13 +39,13 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
                         where
                             pm.PromotionCode == promotionCode &&
                             (os.DateOfSale.Date >= initIn.Date && os.DateOfSale.Date <= endIn.Date)
-                        select new OrderDetail(o.Id,
-                                               o.SellerId,
-                                               o.Price,
-                                               o.ProductId,
-                                               o.CustomerId,
-                                               o.Quantity,
-                                               o.DateOfSale);
+                        select new OrderDetailResponse(o.SellerId,
+                                                       o.Price,
+                                                       o.ProductId,
+                                                       o.CustomerId,
+                                                       o.Quantity,
+                                                       o.DateOfSale,
+                                                       pm.QuantityPointsGoals);
             return await query.ToListAsync();
         }
     }

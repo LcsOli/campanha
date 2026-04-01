@@ -8,9 +8,6 @@ namespace Campaign.Pooling.Handlers.CalculateScorePoints.Validator
     {
         public DataToCalcIsDefinedValidator()
         {
-            RuleFor(c => c.ProductsPromotions.Count)
-                .GreaterThan(0)
-                .WithMessage("Produtos da promoção devem ser definidos.");
 
             RuleFor(c => c.SellersScores.Count)
                 .GreaterThan(0)

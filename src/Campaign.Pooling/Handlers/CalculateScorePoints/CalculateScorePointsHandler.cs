@@ -30,15 +30,8 @@ namespace Campaign.Pooling.Handlers.CalculateScoreByProduct
                                                           };
                                                       }).ToList();
 
-                ordersByClient.ForEach(o =>
-                {
-                    var productsIds = o.Orders.Select(p => p.ProductId);
-
-                    var points = cmd.ProductsPromotions.Where(p => productsIds.Contains(p.ProductId))
-                                                   .Sum(p => p.QuantityPointsGoals);
-
-                    sellerScore.UpdateScore(points!.Value);
-                });
+                ordersByClient.ForEach(o => 
+                    sellerScore.UpdateScore((decimal)o.Orders.Sum(o => o.ProductPromotionPoints)!));
             });
 
             _sellerScoreWriteOnlyRepository.Update(cmd.SellersScores);

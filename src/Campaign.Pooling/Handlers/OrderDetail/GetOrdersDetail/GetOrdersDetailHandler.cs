@@ -1,6 +1,6 @@
-﻿using Campaign.Pooling.Commands.Orders.Get;
+﻿using Campaign.Pooling.DTO.Response.Get;
+using Campaign.Pooling.Commands.Orders.Get;
 using Campaign.Pooling.Repositories.OrderSummary.ReadOnly;
-using Entity = Campaign.Shared.DataBaseContext.Entities.Order;
 using Campaign.Pooling.Handlers.OrderDetail.GetOrdersDetail.Validator;
 
 namespace Campaign.Pooling.Handlers.OrderDetail.GetOrdersDetail
@@ -13,7 +13,7 @@ namespace Campaign.Pooling.Handlers.OrderDetail.GetOrdersDetail
             _orderDetailReadOnlyRepository = orderDetailReadOnlyRepository;
         }
 
-        public async Task<List<Entity.OrderDetail>> Handle(GetOrdersDetailCommand cmd)
+        public async Task<List<OrderDetailResponse>> Handle(GetOrdersDetailCommand cmd)
         {
             new CommandValidator()
                 .Validate(cmd);
