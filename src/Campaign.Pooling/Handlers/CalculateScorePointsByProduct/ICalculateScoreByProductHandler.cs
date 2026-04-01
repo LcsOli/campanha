@@ -2,7 +2,7 @@
 
 namespace Campaign.Pooling.Handlers.CalculateScoreByProduct
 {
-    public interface ICalculateScorePointsHandler
+    public interface ICalculateScoreByProductHandler
     {
         void Handle(CalculateScoreByProductCommand cmd);
     }

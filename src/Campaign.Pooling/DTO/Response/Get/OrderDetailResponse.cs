@@ -3,7 +3,7 @@
     public record OrderDetailResponse(int SellerId,
                                       decimal Price,
                                       int ProductId,
-                                      int CustomerId,
+                                      int ConsumerId,
                                       decimal Quantity,
                                       DateTime DateOfSale,
                                       decimal? ProductPromotionPoints);

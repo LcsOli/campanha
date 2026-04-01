@@ -13,6 +13,9 @@ namespace Campaign.Shared.DataBaseContext.Entities.EntitiesConfigurations
 
             builder.Property(c => c.Id)
                    .HasColumnName("CODCLI");
+
+            builder.Property(c => c.RegisteredAt)
+                   .HasColumnName("DTCADASTRO");
         }
     }
 }

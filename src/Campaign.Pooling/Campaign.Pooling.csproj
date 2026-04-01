@@ -12,7 +12,8 @@
 
   <ItemGroup>
     <Folder Include="Commands\SllerScore\Get\" />
-    <Folder Include="Orchestrators\CalcuateScoreByProduct\Validators\" />
+    <Folder Include="Orchestrators\CalcuateScore\Validators\" />
+    <Folder Include="Repositories\OrderDetail\WriteOnly\" />
     <Folder Include="Repositories\OrderSummary\WriteOnly\" />
     <Folder Include="Repositories\ProductPromotion\WriteOnly\" />
     <Folder Include="Repositories\SellerManager\WriteOnly\" />

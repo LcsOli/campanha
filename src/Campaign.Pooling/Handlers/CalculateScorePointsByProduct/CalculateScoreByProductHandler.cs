@@ -4,10 +4,10 @@ using Campaign.Pooling.Handlers.CalculateScorePoints.Validator;
 
 namespace Campaign.Pooling.Handlers.CalculateScoreByProduct
 {
-    public class CalculateScorePointsHandler : ICalculateScorePointsHandler
+    public class CalculateScoreByProductHandler : ICalculateScoreByProductHandler
     {
         private readonly ISellerScoreWriteOnlyRepository _sellerScoreWriteOnlyRepository;
-        public CalculateScorePointsHandler(ISellerScoreWriteOnlyRepository sellerScoreWriteOnlyRepository)
+        public CalculateScoreByProductHandler(ISellerScoreWriteOnlyRepository sellerScoreWriteOnlyRepository)
         {
             _sellerScoreWriteOnlyRepository = sellerScoreWriteOnlyRepository;
         }
@@ -20,7 +20,7 @@ namespace Campaign.Pooling.Handlers.CalculateScoreByProduct
             cmd.SellersScores.ForEach(sellerScore =>
             {
                 var ordersByClient = cmd.OrdersDetails.Where(o => o.SellerId == sellerScore.SellerId)
-                                                      .GroupBy(o => o.CustomerId)
+                                                      .GroupBy(o => o.ConsumerId)
                                                       .Select(o =>
                                                       {
                                                           return new
