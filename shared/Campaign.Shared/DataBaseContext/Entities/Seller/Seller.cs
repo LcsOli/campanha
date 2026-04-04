@@ -5,10 +5,11 @@
         public int Id { get; private set; }
         public int ManagerId { get; private set; }
         public string Name { get; private set; } = default!;
+        public char SellerType { get; private set; }
 
         public Seller(int id,
-              string name,
-              int managerId)
+                      string name,
+                      int managerId)
         {
             Id = id;
             Name = name;

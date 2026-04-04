@@ -2,6 +2,12 @@
 {
     public interface IOrderSummaryReadOnlyRepository
     {
-        Task<int[]> GetReactivatedClients(int[] clientsIds, DateTime cutoffDate);
+        Task<int[]> GetReactivatedClients(int[] clientsIds,
+                                          int promotionCode,
+                                          DateTime periodEnd,
+                                          DateTime initOfYear,
+                                          DateTime periodStart,
+                                          DateTime campaignEndIn,
+                                          DateTime campaignInitIn);
     }
 }

@@ -1,10 +1,10 @@
-﻿using Campaign.Pooling.Commands.CalculateScoreByProduct;
+﻿using Campaign.Pooling.Commands.Orders.Get;
 using Campaign.Pooling.Commands.Consumers.Get;
-using Campaign.Pooling.Commands.Orders.Get;
-using Campaign.Pooling.Handlers.CalculateReactivatedsConsummers;
+using Campaign.Pooling.Commands.CalculateScoreByProduct;
 using Campaign.Pooling.Handlers.CalculateScoreByProduct;
 using Campaign.Pooling.Handlers.OrderDetail.GetOrdersDetail;
 using Campaign.Pooling.Handlers.SellerScore.GetSellersScore;
+using Campaign.Pooling.Handlers.CalculateReactivatedsConsummers;
 
 namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
 {
@@ -35,7 +35,9 @@ namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
 
             var consumersIds = ordersDetail.Select(x => x.ConsumerId).ToHashSet();
 
-            await _calculateReactivatedsConsumersHandler.Handle(new CalculateReactivatedsConsumersCommand([.. consumersIds], new DateTime(2025, 01, 01), sellersScore));
+            await _calculateReactivatedsConsumersHandler.Handle(new CalculateReactivatedsConsumersCommand([.. consumersIds], 
+                                                                                                          SellersScores: sellersScore, 
+                                                                                                          CutoffDate: new DateTime(2026, 01, 01)));
         }
     }
 }
