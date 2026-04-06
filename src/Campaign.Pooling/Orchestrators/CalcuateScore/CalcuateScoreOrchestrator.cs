@@ -4,6 +4,7 @@ using Campaign.Pooling.Commands.CalculateScoreByProduct;
 using Campaign.Pooling.Handlers.CalculateScoreByProduct;
 using Campaign.Pooling.Handlers.OrderDetail.GetOrdersDetail;
 using Campaign.Pooling.Handlers.SellerScore.GetSellersScore;
+using Campaign.Pooling.Handlers.CalculatePositivatedsConsummers;
 using Campaign.Pooling.Handlers.CalculateReactivatedsConsummers;
 
 namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
@@ -14,14 +15,17 @@ namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
         private readonly IGetOrdersDetailHandler _getOrdersDetailHandler;
         private readonly ICalculateScoreByProductHandler _calculateScorePointsByProductHandler;
         private readonly ICalculateReactivatedsConsumersHandler _calculateReactivatedsConsumersHandler;
+        private readonly ICalculateRegisteredsConsumersHandler _calculateRegisteredsConsumersHandler;
 
         public CalcuateScoreOrchestrator(IGetSellerScoreHandler getSellerScoreHandler,
                                          IGetOrdersDetailHandler getOrdersDetailHandler,
                                          ICalculateScoreByProductHandler calculateScorePointsByProductHandler,
-                                         ICalculateReactivatedsConsumersHandler calculateReactivatedsConsumersHandler)
+                                         ICalculateReactivatedsConsumersHandler calculateReactivatedsConsumersHandler,
+                                         ICalculateRegisteredsConsumersHandler calculateRegisteredsConsumersHandler)
         {
             _getSellerScoreHandler = getSellerScoreHandler;
             _getOrdersDetailHandler = getOrdersDetailHandler;
+            _calculateRegisteredsConsumersHandler = calculateRegisteredsConsumersHandler;
             _calculateScorePointsByProductHandler = calculateScorePointsByProductHandler;
             _calculateReactivatedsConsumersHandler = calculateReactivatedsConsumersHandler;
         }
@@ -35,11 +39,20 @@ namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
 
             var consumersIds = ordersDetail.Select(x => x.ConsumerId).ToHashSet();
 
+            //TODO - Verificar a possibilidade de armazenar dados em cache para evitar que varios parametros
+            //sejam passados para o handler de calculo de reativados e registrados, visto que ambos precisam dos mesmos parametros.
+
             await _calculateReactivatedsConsumersHandler.Handle(new CalculateReactivatedsConsumersCommand(promotionCode,
-                                                                                                          [.. consumersIds], 
+                                                                                                          [.. consumersIds],
                                                                                                           SellersScores: sellersScore,
                                                                                                           DtWeekToStopProcess: dtWeekToStopProcess,
                                                                                                           DtWeekToStartProcess: dtWeekToStartProcess));
+
+            await _calculateRegisteredsConsumersHandler.Handler(new CalculateRegisteredsConsumersCommand(promotionCode,
+                                                                                                         [.. consumersIds],
+                                                                                                         SellersScores: sellersScore,
+                                                                                                         DtWeekToStopProcess: dtWeekToStopProcess,
+                                                                                                         DtWeekToStartProcess: dtWeekToStartProcess));
         }
     }
 }

@@ -30,7 +30,7 @@ namespace Campaign.Pooling.Handlers.CalculateScoreByProduct
                                                           };
                                                       }).ToList();
 
-                ordersByClient.ForEach(o => 
+                ordersByClient.ForEach(o =>
                     sellerScore.UpdateScore((decimal)o.Orders.Sum(o => o.ProductPromotionPoints)!));
             });
 

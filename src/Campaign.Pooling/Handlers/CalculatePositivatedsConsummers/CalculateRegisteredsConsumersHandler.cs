@@ -1,23 +1,23 @@
 ﻿using Campaign.Pooling.Commands.Consumers.Get;
 using Campaign.Pooling.Repositories.OrderSummary.ReadOnly;
 
-namespace Campaign.Pooling.Handlers.CalculateReactivatedsConsummers
+namespace Campaign.Pooling.Handlers.CalculatePositivatedsConsummers
 {
-    public class CalculateReactivatedsConsumersHandler : ICalculateReactivatedsConsumersHandler
+    public class CalculateRegisteredsConsumersHandler : ICalculateRegisteredsConsumersHandler
     {
-        private readonly int _pointsToAdd = 2000;
+        private readonly int _pointsToAdd = 10_000;
 
         private readonly IOrderSummaryReadOnlyRepository _orderSummaryReadOnlyRepository;
-        public CalculateReactivatedsConsumersHandler(IOrderSummaryReadOnlyRepository orderSummaryReadOnlyRepository)
+        public CalculateRegisteredsConsumersHandler(IOrderSummaryReadOnlyRepository orderSummaryReadOnlyRepository)
         {
             _orderSummaryReadOnlyRepository = orderSummaryReadOnlyRepository;
         }
 
-        public async Task Handle(CalculateReactivatedsConsumersCommand cmd)
+        public async Task Handler(CalculateRegisteredsConsumersCommand cmd)
         {
-            var sellersIds = await _orderSummaryReadOnlyRepository.GetSellersIdsThatReactivatedConsumers(cmd.ConsumersIds,
-                                                                                                         cmd.PromotionCode,
-                                                                                                         cmd.DtWeekToStopProcess,
+            var sellersIds = await _orderSummaryReadOnlyRepository.GetSellersIdsThatRegisteredsConsumers(cmd.ConsumersIds, 
+                                                                                                         cmd.PromotionCode, 
+                                                                                                         cmd.DtWeekToStopProcess, 
                                                                                                          cmd.DtWeekToStartProcess);
 
             var sellersScoresToUpdate = cmd.SellersScores.Where(s => sellersIds.Contains(s.Id)).ToList();

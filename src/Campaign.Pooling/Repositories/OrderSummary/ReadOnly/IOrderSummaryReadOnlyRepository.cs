@@ -2,9 +2,14 @@
 {
     public interface IOrderSummaryReadOnlyRepository
     {
-        Task<int[]> GetReactivatedClients(int[] clientsIds,
-                                          int promotionCode,
-                                          DateTime dtWeekToStopProcess,
-                                          DateTime dtWeekToStartProcess);
+        Task<int[]> GetSellersIdsThatReactivatedConsumers(int[] clientsIds,
+                                                       int promotionCode,
+                                                       DateTime dtWeekToStopProcess,
+                                                       DateTime dtWeekToStartProcess);
+
+        Task<int[]> GetSellersIdsThatRegisteredsConsumers(int[] clientsIds,
+                                                       int promotionCode,
+                                                       DateTime dtWeekToStopProcess,
+                                                       DateTime dtWeekToStartProcess);
     }
 }
