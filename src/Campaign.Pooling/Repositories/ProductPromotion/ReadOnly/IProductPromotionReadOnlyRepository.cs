@@ -1,4 +1,5 @@
-﻿using Product = Campaign.Shared.DataBaseContext.Entities.Product;
+﻿using Campaign.Shared.DTOs.Response.Product;
+using Product = Campaign.Shared.DataBaseContext.Entities.Product;
 
 namespace Campaign.Pooling.Repositories.ProductPromotion.ReadOnly
 {
@@ -6,6 +7,6 @@ namespace Campaign.Pooling.Repositories.ProductPromotion.ReadOnly
     {
         Task<List<Product.ProductPromotion>> GetByPromotionCode(int promotionCode);
         Task<bool> Exists(int promotionCode);
-        Task<List<Product.ProductPromotionSummary>> GetByProductsIdsAndPromotionCode(int[] productsIds, int promotionCode);
+        Task<List<ProductPromotionResponse>> GetByProductsIdsAndPromotionCode(int[] productsIds, int promotionCode);
     }
 }

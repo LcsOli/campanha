@@ -13,13 +13,16 @@ namespace Campaign.Pooling.Repositories.OrderDetail.ReadOnly
             _context = context;
         }
 
-        public async Task<List<Entity.OrderDetail>> GetByIdAndDateInitAndEnd(int[] productsIds, DateTime initIn, DateTime endIn)
+        public async Task<List<Entity.OrderDetail>> GetByIdAndDateInitAndEnd(int[] productsIds, DateTime dtWeekToStartProcess, DateTime dtWeekToStopProcess)
         {
             var query = from o in _context.OrderDetails
                         join sc in _context.SellerScores on o.SellerId equals sc.SellerId
                         where
                             productsIds.Contains(o.ProductId) &&
-                            (o.DateOfSale.Date >= initIn.Date && o.DateOfSale.Date <= endIn.Date)
+                            (
+                                o.DateOfSale.Date >= dtWeekToStartProcess.Date &&
+                                o.DateOfSale.Date <= dtWeekToStopProcess.Date
+                            )
                         select new Entity.OrderDetail(o.Id,
                                                       o.SellerId,
                                                       o.Price,
@@ -30,7 +33,7 @@ namespace Campaign.Pooling.Repositories.OrderDetail.ReadOnly
             return await query.ToListAsync();
         }
 
-        public async Task<List<OrderDetailResponse>> GetByPromotionCodeAndDateInitAndEnd(int promotionCode, DateTime initIn, DateTime endIn)
+        public async Task<List<OrderDetailResponse>> GetByPromotionCodeAndDateInitAndEnd(int promotionCode, DateTime dtWeekToStartProcess, DateTime dtWeekToStopProcess)
         {
             var query = from os in _context.OrderSummaries
                         join o in _context.OrderDetails on os.Id equals o.Id
@@ -38,7 +41,10 @@ namespace Campaign.Pooling.Repositories.OrderDetail.ReadOnly
                         join pm in _context.ProductPromotions on o.ProductId equals pm.ProductId
                         where
                             pm.PromotionCode == promotionCode &&
-                            (os.DateOfSale.Date >= initIn.Date && os.DateOfSale.Date <= endIn.Date)
+                            (
+                                os.DateOfSale.Date >= dtWeekToStartProcess.Date &&
+                                os.DateOfSale.Date <= dtWeekToStopProcess.Date
+                            )
                         select new OrderDetailResponse(o.SellerId,
                                                        o.Price,
                                                        o.ProductId,

@@ -14,7 +14,7 @@ namespace Campaign.Shared.DataBaseContextDI
                 throw new CompaignException(HttpStatusCode.InternalServerError, "Variável de ambient CAMPAIGN_HOMOLOGA_CONNECTION não encontrada.");
 
             services.AddDbContext<CampaingContextDb>(options => options.UseOracle(connectionString,
-                                                     options => options.MigrationsHistoryTable("CF_EF_HISTORICO_DE_MIGRACOES")));
+                                                     options => options.MigrationsHistoryTable("CF_EF_CAMPANHA_HISTORICO_DE_MIGRACOES")));
 
         }
     }

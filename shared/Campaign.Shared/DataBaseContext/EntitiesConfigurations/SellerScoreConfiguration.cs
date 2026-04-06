@@ -27,6 +27,13 @@ namespace Campaign.Shared.DataBaseContext.EntitiesConfigurations
 
             builder.Property(s => s.ManagerName)
                    .HasColumnName("NOME_GERENTE");
+
+            builder.Property(s => s.TeamId)
+                   .HasColumnName("EQUIPE_ID");
+
+            builder.HasOne(s => s.Team)
+                   .WithOne()
+                   .HasForeignKey<SellerScore>(s => s.TeamId);
         }
     }
 }

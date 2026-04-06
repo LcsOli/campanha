@@ -22,8 +22,4 @@
     <PackageReference Include="Oracle.EntityFrameworkCore" Version="10.23.26100" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="DTOs\Response\Product\" />
-  </ItemGroup>
-
 </Project>

@@ -12,20 +12,20 @@ namespace Campaign.Pooling.Handlers.OrderDetail.GetOrdersDetail.Validator
                 .GreaterThan(0)
                 .WithMessage("Código da promoção deve ser definida.");
 
-            RuleFor(o => o.initIn)
+            RuleFor(o => o.DtWeekToStartProcess)
                 .GreaterThanOrEqualTo(default(DateTime))
                 .WithMessage("Data inicial deve ser definida.");
 
-            RuleFor(o => o.endIn)
+            RuleFor(o => o.DtWeekToStopProcess)
                 .GreaterThanOrEqualTo(default(DateTime))
                 .WithMessage("Data final deve ser definida.");
 
-            RuleFor(o => o.initIn)
-                .LessThan(o => o.endIn)
+            RuleFor(o => o.DtWeekToStartProcess)
+                .LessThan(o => o.DtWeekToStopProcess)
                 .WithMessage("Data inicial deve ser menor que a data final.");
 
-            RuleFor(o => o.endIn)
-                .GreaterThan(o => o.initIn)
+            RuleFor(o => o.DtWeekToStopProcess)
+                .GreaterThan(o => o.DtWeekToStartProcess)
                 .WithMessage("Data final deve ser maior que a data final.");
         }
     }

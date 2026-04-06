@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Campaign.Shared.DataBaseContext.EntitiesConfigurations
 {
+    //TODO - Verificar necessidade desta tabela.
     public class SellerManagerConfiguration : IEntityTypeConfiguration<SellerManager>
     {
         public void Configure(EntityTypeBuilder<SellerManager> builder)

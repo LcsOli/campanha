@@ -1,10 +1,11 @@
 ﻿using FluentValidation;
 using Campaign.Shared.FluentValidator;
 using Product = Campaign.Shared.DataBaseContext.Entities.Product;
+using Campaign.Shared.DTOs.Response.Product;
 
 namespace Campaign.Pooling.Handlers.ProductPromotion.GetProductsPromotions.Validator
 {
-    public class FindedProductsPromotionsValidator : FluentValidator<List<Product.ProductPromotionSummary>>
+    public class FindedProductsPromotionsValidator : FluentValidator<List<ProductPromotionResponse>>
     {
         public FindedProductsPromotionsValidator()
         {

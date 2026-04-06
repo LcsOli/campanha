@@ -8,11 +8,13 @@ namespace Campaign.Pooling.Controllers.UpdateSellerScore
     [Route("api/[controller]")]
     public class UpdateSellerScoreController : ControllerBase
     {
-        [HttpPost]
-        public async Task<IActionResult> Update([FromBody] UpdateSellerScoreRequest request,
+        [HttpPatch]
+        public async Task<IActionResult> Update([FromBody] ProcessSellerScore request,
                                                 [FromServices] IMainOrchestrator mainOrchestrator)
         {
-            await mainOrchestrator.Execute(request.PromotionCode, request.InitIn, request.EndIn);
+            await mainOrchestrator.Execute(request.PromotionCode, 
+                                           request.DtWeekToStartProcess, 
+                                           request.DtWeekToStopProcess);
             return Ok();
         }
     }

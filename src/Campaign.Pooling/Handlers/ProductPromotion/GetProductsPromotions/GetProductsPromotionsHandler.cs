@@ -2,6 +2,7 @@
 using Campaign.Pooling.Repositories.ProductPromotion.ReadOnly;
 using Entity = Campaign.Shared.DataBaseContext.Entities.Product;
 using Campaign.Pooling.Handlers.ProductPromotion.GetProductsPromotions.Validator;
+using Campaign.Shared.DTOs.Response.Product;
 
 namespace Campaign.Pooling.Handlers.ProductPromotion.GetProductsPromotions
 {
@@ -13,7 +14,7 @@ namespace Campaign.Pooling.Handlers.ProductPromotion.GetProductsPromotions
             _productPromotionReadOnlyRepository = productPromotionReadOnlyRepository;
         }
 
-        public async Task<List<Entity.ProductPromotionSummary>> Handle(GetProductsPromotionsCommand cmd)
+        public async Task<List<ProductPromotionResponse>> Handle(GetProductsPromotionsCommand cmd)
         {
             new CommandValidator().Validate(cmd);
 

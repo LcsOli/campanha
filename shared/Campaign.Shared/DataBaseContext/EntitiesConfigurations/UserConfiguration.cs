@@ -22,7 +22,7 @@ namespace Campaign.Shared.DataBaseContext.Entities.EntitiesConfigurations
                    .IsRequired();
 
             builder.Property(t => t.Document)
-                   .HasColumnName("CPF")
+                   .HasColumnName("DOCUMENTO")
                    .HasMaxLength(14)
                    .IsRequired();
 
@@ -49,11 +49,11 @@ namespace Campaign.Shared.DataBaseContext.Entities.EntitiesConfigurations
 
             builder.HasOne(t => t.Team)
                    .WithOne()
-                   .HasForeignKey<Entities.Users.User>(t => t.TeamId);
+                   .HasForeignKey<Users.User>(t => t.TeamId);
 
             builder.HasOne(t => t.Manager)
                    .WithOne()
-                   .HasForeignKey<Entities.Users.User>(t => t.ManagerId);
+                   .HasForeignKey<Users.User>(t => t.ManagerId);
         }
     }
 }

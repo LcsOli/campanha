@@ -26,18 +26,20 @@ namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
             _calculateReactivatedsConsumersHandler = calculateReactivatedsConsumersHandler;
         }
 
-        public async Task Execute(int promotionCode, DateTime initIn, DateTime endIn)
+        public async Task Execute(int promotionCode, DateTime dtWeekToStartProcess, DateTime dtWeekToStopProcess)
         {
-            var ordersDetail = await _getOrdersDetailHandler.Handle(new GetOrdersDetailCommand(promotionCode, initIn, endIn));
+            var ordersDetail = await _getOrdersDetailHandler.Handle(new GetOrdersDetailCommand(promotionCode, dtWeekToStartProcess, dtWeekToStopProcess));
             var sellersScore = await _getSellerScoreHandler.Handle();
 
             _calculateScorePointsByProductHandler.Handle(new CalculateScoreByProductCommand(ordersDetail, sellersScore));
 
             var consumersIds = ordersDetail.Select(x => x.ConsumerId).ToHashSet();
 
-            await _calculateReactivatedsConsumersHandler.Handle(new CalculateReactivatedsConsumersCommand([.. consumersIds], 
-                                                                                                          SellersScores: sellersScore, 
-                                                                                                          CutoffDate: new DateTime(2026, 01, 01)));
+            await _calculateReactivatedsConsumersHandler.Handle(new CalculateReactivatedsConsumersCommand(promotionCode,
+                                                                                                          [.. consumersIds], 
+                                                                                                          SellersScores: sellersScore,
+                                                                                                          DtWeekToStopProcess: dtWeekToStopProcess,
+                                                                                                          DtWeekToStartProcess: dtWeekToStartProcess));
         }
     }
 }

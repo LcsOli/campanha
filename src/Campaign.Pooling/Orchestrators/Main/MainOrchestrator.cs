@@ -19,12 +19,12 @@ namespace Campaign.Pooling.Orchestrators.MainOrchestrator
             _updateProductPromotionReadHistoryOrchestrator = updateProductPromotionReadHistoryOrchestrator;
         }
 
-        public async Task Execute(int promotionCode, DateTime initIn, DateTime endIn)
+        public async Task Execute(int promotionCode, DateTime dtWeekToStartProcess, DateTime dtWeekToStopProcess)
         {
             await _unityOfWork.SecureCommitAsync(async () =>
             {
                 await _updateProductPromotionReadHistoryOrchestrator.Execute(promotionCode);
-                await _calcuateScoreByProductOrchestrator.Execute(promotionCode, initIn, endIn);
+                await _calcuateScoreByProductOrchestrator.Execute(promotionCode, dtWeekToStartProcess, dtWeekToStopProcess);
 
                 await _unityOfWork.SaveAsync();
             });

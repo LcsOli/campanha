@@ -3,18 +3,8 @@
     public class ProductPromotionSummary
     {
         public int Id { get; private set; }
-        public int ProductId { get; private set; }
-        public int PromotionCode { get; private set; }
-        public decimal? QuantityPointsGoals { get; private set; }
-        public ProductPromotionSummary(int id,
-                                       int productId,
-                                       int promotionCode,
-                                       decimal? quantityPointsGoals)
-        {
-            Id = id;
-            ProductId = productId;
-            PromotionCode = promotionCode;
-            QuantityPointsGoals = quantityPointsGoals;
-        }
+        public DateTime InitIn { get; private set; }
+        public DateTime EndIn { get; private set; }
+        public string Description { get; private set; } = default!;
     }
 }

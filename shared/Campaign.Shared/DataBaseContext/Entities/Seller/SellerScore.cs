@@ -7,6 +7,8 @@
         public decimal Score { get; private set; }
         public string Name { get; private set; } = default!;
         public string ManagerName { get; private set; } = default!;
+        public int TeamId { get; private set; }
+        public Team.Team? Team { get; private set; }
 
         public SellerScore(string name, 
                            int sellerId, 

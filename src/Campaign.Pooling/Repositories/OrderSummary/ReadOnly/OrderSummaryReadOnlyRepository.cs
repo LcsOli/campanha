@@ -13,70 +13,68 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
 
         public async Task<int[]> GetReactivatedClients(int[] clientsIds,
                                                        int promotionCode,
-                                                       DateTime periodEnd,
-                                                       DateTime initOfYear,
-                                                       DateTime periodStart,
-                                                       DateTime campaignEndIn,
-                                                       DateTime campaignInitIn)
+                                                       DateTime dtWeekToStopProcess,
+                                                       DateTime dtWeekToStartProcess)
         {
-            campaignInitIn = campaignInitIn.Date;
-            campaignEndIn = campaignEndIn.Date;
 
-            initOfYear = initOfYear.Date;
+            dtWeekToStartProcess = dtWeekToStartProcess.Date;
+            dtWeekToStopProcess = dtWeekToStopProcess.Date;
 
-            periodStart = periodStart.Date;
-            periodEnd = periodEnd.Date;
+            var yearOfCampaign = new DateTime(dtWeekToStartProcess.Year, 01, 01).Date;
 
-            var query = from os in _context.OrderSummaries
-                         join s in _context.Sellers on os.SellerId equals s.Id
-                         join od in _context.OrderDetails on os.Id equals od.Id
-                         join p in _context.ProductPromotions on od.ProductId equals p.ProductId
-                         join c in _context.Customers on os.CustomerId equals c.Id
-                         where
-                              s.SellerType == 'R' &&
-                              (
-                                os.DateOfSale.Date >= campaignInitIn &&
-                                os.DateOfSale.Date <= campaignEndIn
-                              ) &&
-                              (
+            var query = from ps in _context.ProductPromotionSummaries
+                        join p in _context.ProductPromotions on ps.Id equals p.PromotionCode
+                        join od in _context.OrderDetails on p.ProductId equals od.ProductId
+                        join s in _context.Sellers on od.SellerId equals s.Id
+                        join c in _context.Customers on od.CustomerId equals c.Id
+                        where
+                             clientsIds.Contains(c.Id) &&
+                             c.RegisteredAt.Date < yearOfCampaign &&
+                             ps.Id == promotionCode &&
+                             s.SellerType == 'R' &&
+                             (
+                               od.DateOfSale.Date >= ps.InitIn &&
+                               od.DateOfSale.Date <= ps.EndIn
+                             ) &&
+                             (
+                               from oss in _context.OrderSummaries
+                               where
+                                   oss.CustomerId == c.Id &&
+                                   oss.DateOfSale.Date < yearOfCampaign
+                               select 1
 
-                                from oss in _context.OrderSummaries
-                                where
-                                    oss.CustomerId == c.Id &&
-                                    oss.DateOfSale.Date < initOfYear
-                                select 1
+                             ).Take(1).Any() &&
+                             !(
 
-                              ).Any() &&
-                              !(
+                               from oss in _context.OrderSummaries
+                               where
+                                   oss.CustomerId == c.Id &&
+                                   (
+                                       oss.DateOfSale.Date >= yearOfCampaign &&
+                                       oss.DateOfSale.Date <= ps.InitIn.Date
+                                   )
+                               select 1
 
-                                from oss in _context.OrderSummaries
-                                where
-                                    oss.CustomerId == c.Id &&
-                                    (
-                                        oss.DateOfSale.Date >= initOfYear &&
-                                        oss.DateOfSale.Date <= campaignInitIn
-                                    )
-                                select 1
+                             ).Take(1).Any() &&
+                             (
 
-                              ).Any() &&
+                               from oss in _context.OrderSummaries
+                               where
+                                   oss.CustomerId == c.Id &&
+                                   (
+                                    oss.DateOfSale >= ps.InitIn.Date &&
+                                    oss.DateOfSale <= ps.EndIn.Date
+                                   )
+                               group oss by oss.CustomerId into g
+                               where
+                                   g.Min(os => os.DateOfSale.Date) >= dtWeekToStartProcess &&
+                                   g.Min(os => os.DateOfSale.Date) <= dtWeekToStopProcess
+                               select 1
 
-                              (
-                                from oss in _context.OrderSummaries
-                                where
-                                    oss.CustomerId == c.Id &&
-                                    oss.DateOfSale >= campaignInitIn &&
-                                    oss.DateOfSale <= campaignEndIn
-                                group oss by oss.CustomerId into g
-                                where
-                                    g.Min(os => os.DateOfSale.Date) >= periodStart &&
-                                    g.Min(os => os.DateOfSale.Date) <= periodEnd
-                                select 1
-
-
-                              ).Any()
-                         group os by os.SellerId into g
-                         select 
-                            g.Key;
+                             ).Any()
+                        group od by od.SellerId into g
+                        select
+                           g.Key;
 
             return await query.ToArrayAsync();
         }
