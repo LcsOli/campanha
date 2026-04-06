@@ -21,13 +21,10 @@ namespace Campaign.Pooling.Handlers.CalculateScoreByProduct
             {
                 var ordersByClient = cmd.OrdersDetails.Where(o => o.SellerId == sellerScore.SellerId)
                                                       .GroupBy(o => o.ConsumerId)
-                                                      .Select(o =>
+                                                      .Select(o => new
                                                       {
-                                                          return new
-                                                          {
-                                                              CustomerId = o.Key,
-                                                              Orders = o.DistinctBy(p => p.ProductId).ToList()
-                                                          };
+                                                          CustomerId = o.Key,
+                                                          Orders = o.DistinctBy(p => p.ProductId).ToList()
                                                       }).ToList();
 
                 ordersByClient.ForEach(o =>
