@@ -12,9 +12,9 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
         }
 
         public async Task<int[]> GetSellersIdsThatReactivatedConsumers(int[] clientsIds,
-                                                                    int promotionCode,
-                                                                    DateTime dtWeekToStopProcess,
-                                                                    DateTime dtWeekToStartProcess)
+                                                                       int promotionCode,
+                                                                       DateTime dtWeekToStopProcess,
+                                                                       DateTime dtWeekToStartProcess)
         {
 
             dtWeekToStartProcess = dtWeekToStartProcess.Date;
@@ -80,9 +80,9 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
         }
 
         public async Task<int[]> GetSellersIdsThatRegisteredsConsumers(int[] clientsIds,
-                                                                    int promotionCode,
-                                                                    DateTime dtWeekToStopProcess,
-                                                                    DateTime dtWeekToStartProcess)
+                                                                       int promotionCode,
+                                                                       DateTime dtWeekToStopProcess,
+                                                                       DateTime dtWeekToStartProcess)
         {
             dtWeekToStartProcess = dtWeekToStartProcess.Date;
             dtWeekToStopProcess = dtWeekToStopProcess.Date;

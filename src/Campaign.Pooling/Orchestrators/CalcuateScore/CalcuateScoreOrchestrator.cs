@@ -14,8 +14,8 @@ namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
         private readonly IGetSellerScoreHandler _getSellerScoreHandler;
         private readonly IGetOrdersDetailHandler _getOrdersDetailHandler;
         private readonly ICalculateScoreByProductHandler _calculateScorePointsByProductHandler;
-        private readonly ICalculateReactivatedsConsumersHandler _calculateReactivatedsConsumersHandler;
         private readonly ICalculateRegisteredsConsumersHandler _calculateRegisteredsConsumersHandler;
+        private readonly ICalculateReactivatedsConsumersHandler _calculateReactivatedsConsumersHandler;
 
         public CalcuateScoreOrchestrator(IGetSellerScoreHandler getSellerScoreHandler,
                                          IGetOrdersDetailHandler getOrdersDetailHandler,
