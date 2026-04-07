@@ -48,7 +48,7 @@ namespace Campaign.Pooling.Repositories.OrderDetail.ReadOnly
                                 pm.qtpontoscliente as ProductPromotionPoints
                             FROM
                                 cf_campanha_rca_score s
-                                JOIN pcpedc pc ON pc.codusur = s.usuario_id
+                                JOIN pcpedc pc ON pc.codusur = s.rca_id
                                 JOIN pcpedi pi ON pi.numped = pc.numped
                                 JOIN pcpromoi pm ON pm.codprod = pi.codprod
                             WHERE

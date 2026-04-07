@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Campaign.Shared.DataBaseContext.Entities;
+using Oracle.ManagedDataAccess.Client;
 
 namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
 {
@@ -11,10 +12,10 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
             _context = context;
         }
 
-        public async Task<int[]> GetSellersIdsThatReactivatedConsumers(int[] clientsIds,
-                                                                       int promotionCode,
-                                                                       DateTime dtWeekToStopProcess,
-                                                                       DateTime dtWeekToStartProcess)
+        public async Task<int[]> DemoEntityFrameworkQueryGetSellersIdsThatReactivatedConsumers(int[] clientsIds,
+                                                                                               int promotionCode,
+                                                                                               DateTime dtWeekToStopProcess,
+                                                                                               DateTime dtWeekToStartProcess)
         {
 
             dtWeekToStartProcess = dtWeekToStartProcess.Date;
@@ -75,6 +76,105 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
                         group od by od.SellerId into g
                         select
                            g.Key;
+
+            return await query.ToArrayAsync();
+        }
+
+        public async Task<int[]> GetSellersIdsThatReactivatedConsumers(int[] consumersIds,
+                                                                       int promotionCode,
+                                                                       DateTime dtWeekToStopProcess,
+                                                                       DateTime dtWeekToStartProcess)
+        {
+
+            dtWeekToStartProcess = dtWeekToStartProcess.Date;
+            dtWeekToStopProcess = dtWeekToStopProcess.Date;
+
+            /*
+             using Oracle.ManagedDataAccess.Client;
+             using Microsoft.EntityFrameworkCore;
+             
+             var ids = new[] { 1, 2, 3, 4 };
+             
+             var placeholders = string.Join(", ", ids.Select((_, i) => $":p{i}"));
+             var sql = $"""
+                 select id
+                 from minha_tabela
+                 where id in ({placeholders})
+             """;
+             
+             var parameters = ids
+                 .Select((v, i) => new OracleParameter($"p{i}", v))
+                 .ToArray();
+             
+             var resultado = await context.Database
+                 .SqlQueryRaw<int>(sql, parameters)
+                 .ToListAsync();
+             */
+
+
+
+            var parameters = consumersIds.Select((id, i) => new OracleParameter($"p{i}", id)).ToArray();
+
+            var query = _context.Database.SqlQuery<int>($@"
+                                                          SELECT
+                                                              c.codusur
+                                                          FROM
+                                                              pcpedc c
+                                                              JOIN pcusuari u on c.codusur = u.codusur
+                                                              JOIN pcpedi i on i.numped = c.numped
+                                                              JOIN pcpromoi p on p.codprod = i.codprod
+                                                              JOIN pcpromoc pc on pc.codpromocao = p.codpromocao
+                                                              JOIN pcclient client on c.codcli = client.codcli
+                                                          WHERE
+                                                              u.tipovend = 'R' AND
+                                                              c.codcli IN({string.Join(", ", consumersIds.Select((_, i) => $":p{i}"))}) AND
+                                                              p.codpromocao = {promotionCode} AND
+                                                              TO_CHAR(client.dtcadastro, 'yyyy-MM-DD') < concat(TO_CHAR(pc.dtinicio, 'yyyy'), '-01-01') AND
+                                                              (
+                                                                  TO_CHAR(c.data, 'yyyy-MM-DD') >= TO_CHAR(pc.dtinicio, 'yyyy-MM-DD') AND
+                                                                  TO_CHAR(c.data, 'yyyy-MM-DD') <= TO_CHAR(pc.dtfim, 'yyyy-MM-DD') 
+                                                              ) AND
+                                                              EXISTS(
+                                                                      SELECT 
+                                                                              1
+                                                                      FROM 
+                                                                          pcpedc cc 
+                                                                      WHERE 
+                                                                          cc.codcli = c.codcli AND
+                                                                          TO_CHAR(cc.data, 'yyyy-MM-DD') < concat(TO_CHAR(pc.dtinicio, 'yyyy'), '-01-01')
+                                                                      FETCH FIRST 1 ROW ONLY
+                                                              ) AND
+                                                              NOT EXISTS(
+                                                                          SELECT 
+                                                                              1
+                                                                          FROM 
+                                                                              pcpedc cc
+                                                                          WHERE 
+                                                                              cc.codcli = c.codcli AND
+                                                                              (
+                                                                                  TO_CHAR(cc.data, 'YYYY-MM-DD') >= concat(TO_CHAR(pc.dtinicio, 'yyyy'), '-01-01') AND
+                                                                                  TO_CHAR(cc.data, 'YYYY-MM-DD') < TO_CHAR(pc.dtinicio, 'yyyy-MM-DD')
+                                                                              )
+                                                                          FETCH FIRST 1 ROW ONLY
+                                                              ) AND
+                                                              EXISTS(
+                                                                    SELECT
+                                                                        cc.codcli
+                                                                    FROM
+                                                                        pcpedc cc
+                                                                    WHERE
+                                                                        cc.codcli = c.codcli AND
+                                                                        TO_CHAR(cc.data, 'yyyy-MM-DD') >= TO_CHAR(pc.dtinicio, 'yyyy-MM-DD') AND
+                                                                        TO_CHAR(cc.data, 'yyyy-MM-DD') <= TO_CHAR(pc.dtfim, 'yyyy-MM-DD') 
+                                                                    GROUP BY
+                                                                        cc.codcli
+                                                                    having
+                                                                        TO_CHAR(min(cc.data), yyyy-MM-DD) >= {dtWeekToStartProcess.ToString("yyyy-MM-dd")} AND
+                                                                        TO_CHAR(min(cc.data), yyyy-MM-DD) <= {dtWeekToStopProcess.ToString("yyyy-MM-dd")}
+                                                              )
+                                                          GROUP BY 
+                                                              c.codusur;
+            ");
 
             return await query.ToArrayAsync();
         }
