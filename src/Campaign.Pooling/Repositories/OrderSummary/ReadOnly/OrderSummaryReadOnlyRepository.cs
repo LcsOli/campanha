@@ -169,8 +169,8 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
                                                                     GROUP BY
                                                                         cc.codcli
                                                                     having
-                                                                        TO_CHAR(min(cc.data), yyyy-MM-DD) >= {dtWeekToStartProcess.ToString("yyyy-MM-dd")} AND
-                                                                        TO_CHAR(min(cc.data), yyyy-MM-DD) <= {dtWeekToStopProcess.ToString("yyyy-MM-dd")}
+                                                                        TO_CHAR(min(cc.data), 'yyyy-MM-DD') >= {dtWeekToStartProcess.ToString("yyyy-MM-dd")} AND
+                                                                        TO_CHAR(min(cc.data), 'yyyy-MM-DD') <= {dtWeekToStopProcess.ToString("yyyy-MM-dd")}
                                                               )
                                                           GROUP BY 
                                                               c.codusur;
