@@ -89,32 +89,6 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
             dtWeekToStartProcess = dtWeekToStartProcess.Date;
             dtWeekToStopProcess = dtWeekToStopProcess.Date;
 
-            /*
-             using Oracle.ManagedDataAccess.Client;
-             using Microsoft.EntityFrameworkCore;
-             
-             var ids = new[] { 1, 2, 3, 4 };
-             
-             var placeholders = string.Join(", ", ids.Select((_, i) => $":p{i}"));
-             var sql = $"""
-                 select id
-                 from minha_tabela
-                 where id in ({placeholders})
-             """;
-             
-             var parameters = ids
-                 .Select((v, i) => new OracleParameter($"p{i}", v))
-                 .ToArray();
-             
-             var resultado = await context.Database
-                 .SqlQueryRaw<int>(sql, parameters)
-                 .ToListAsync();
-             */
-
-
-
-            var parameters = consumersIds.Select((id, i) => new OracleParameter($"p{i}", id)).ToArray();
-
             var query = _context.Database.SqlQuery<int>($@"
                                                           SELECT
                                                               c.codusur
@@ -125,15 +99,32 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
                                                               JOIN pcpromoi p on p.codprod = i.codprod
                                                               JOIN pcpromoc pc on pc.codpromocao = p.codpromocao
                                                               JOIN pcclient client on c.codcli = client.codcli
+                                                              JOIN pcpromoc pcgeral on pcgeral.codpromocao = to_number(concat(to_char(pc.dtinicio, 'yyyy'), '00'))
                                                           WHERE
                                                               u.tipovend = 'R' AND
-                                                              c.codcli IN({string.Join(", ", consumersIds.Select((_, i) => $":p{i}"))}) AND
-                                                              p.codpromocao = {promotionCode} AND
-                                                              TO_CHAR(client.dtcadastro, 'yyyy-MM-DD') < concat(TO_CHAR(pc.dtinicio, 'yyyy'), '-01-01') AND
-                                                              (
-                                                                  TO_CHAR(c.data, 'yyyy-MM-DD') >= TO_CHAR(pc.dtinicio, 'yyyy-MM-DD') AND
-                                                                  TO_CHAR(c.data, 'yyyy-MM-DD') <= TO_CHAR(pc.dtfim, 'yyyy-MM-DD') 
+                                                              c.codcli IN(
+                                                                        SELECT 
+                                                                            TO_NUMBER(REGEXP_SUBSTR({string.Join(",", consumersIds)}, '[^,]+', 1, LEVEL))
+                                                                        FROM 
+                                                                            dual
+                                                                        CONNECT BY REGEXP_SUBSTR({string.Join(",", consumersIds)}, '[^,]+', 1, LEVEL) IS NOT NULL
                                                               ) AND
+
+
+
+                                                              p.codpromocao = {promotionCode} AND
+
+
+
+                                                              TO_CHAR(client.dtcadastro, 'yyyy-MM-DD') < CONCAT(TO_CHAR(pcgeral.dtinicio, 'yyyy'), '-01-01') AND
+
+
+                                                              (
+                                                                  TO_CHAR(c.data, 'yyyy-MM-DD') >= TO_CHAR(pcgeral.dtinicio, 'yyyy-MM-DD') AND
+                                                                  TO_CHAR(c.data, 'yyyy-MM-DD') <= TO_CHAR(pcgeral.dtfim, 'yyyy-MM-DD') 
+                                                              ) AND
+
+
                                                               EXISTS(
                                                                       SELECT 
                                                                               1
@@ -141,9 +132,11 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
                                                                           pcpedc cc 
                                                                       WHERE 
                                                                           cc.codcli = c.codcli AND
-                                                                          TO_CHAR(cc.data, 'yyyy-MM-DD') < concat(TO_CHAR(pc.dtinicio, 'yyyy'), '-01-01')
+                                                                          TO_CHAR(cc.data, 'yyyy-MM-DD') < CONCAT(TO_CHAR(pcgeral.dtinicio, 'yyyy'), '-01-01')
                                                                       FETCH FIRST 1 ROW ONLY
                                                               ) AND
+
+
                                                               NOT EXISTS(
                                                                           SELECT 
                                                                               1
@@ -153,7 +146,7 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
                                                                               cc.codcli = c.codcli AND
                                                                               (
                                                                                   TO_CHAR(cc.data, 'YYYY-MM-DD') >= concat(TO_CHAR(pc.dtinicio, 'yyyy'), '-01-01') AND
-                                                                                  TO_CHAR(cc.data, 'YYYY-MM-DD') < TO_CHAR(pc.dtinicio, 'yyyy-MM-DD')
+                                                                                  TO_CHAR(cc.data, 'YYYY-MM-DD') < TO_CHAR(pcgeral.dtinicio, 'yyyy-MM-DD')
                                                                               )
                                                                           FETCH FIRST 1 ROW ONLY
                                                               ) AND
@@ -164,13 +157,13 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
                                                                         pcpedc cc
                                                                     WHERE
                                                                         cc.codcli = c.codcli AND
-                                                                        TO_CHAR(cc.data, 'yyyy-MM-DD') >= TO_CHAR(pc.dtinicio, 'yyyy-MM-DD') AND
-                                                                        TO_CHAR(cc.data, 'yyyy-MM-DD') <= TO_CHAR(pc.dtfim, 'yyyy-MM-DD') 
+                                                                        TO_CHAR(cc.data, 'yyyy-MM-DD') >= TO_CHAR(pcgeral.dtinicio, 'yyyy-MM-DD') AND
+                                                                        TO_CHAR(cc.data, 'yyyy-MM-DD') <= TO_CHAR(pcgeral.dtfim, 'yyyy-MM-DD') 
                                                                     GROUP BY
                                                                         cc.codcli
                                                                     having
-                                                                        TO_CHAR(min(cc.data), 'yyyy-MM-DD') >= {dtWeekToStartProcess.ToString("yyyy-MM-dd")} AND
-                                                                        TO_CHAR(min(cc.data), 'yyyy-MM-DD') <= {dtWeekToStopProcess.ToString("yyyy-MM-dd")}
+                                                                        TO_CHAR(min(cc.data), 'yyyy-MM-DD') >= TO_CHAR(pc.dtinicio, 'yyyy-MM-DD') AND
+                                                                        TO_CHAR(min(cc.data), 'yyyy-MM-DD') <= TO_CHAR(pc.dtfim, 'yyyy-MM-DD')
                                                               )
                                                           GROUP BY 
                                                               c.codusur;
