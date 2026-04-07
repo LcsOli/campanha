@@ -15,8 +15,10 @@ namespace Campaign.Shared.DataBaseContext.EntitiesConfigurations
             builder.Property(s => s.Id)
                    .HasColumnName("ID");
 
+            //TODO - Verificar a possibilidade de mudar o nome deste campo pois faz referencia a tabela de RCAs.
+            //Atualmente, outras tabelas do banco chamam esta coluna de CODUSUARI
             builder.Property(s => s.SellerId)
-                   .HasColumnName("USUARI_ID")
+                   .HasColumnName("USUARIO_ID")
                    .IsRequired();
 
             builder.Property(s => s.Score)

@@ -18,8 +18,8 @@ namespace Campaign.Shared.DataBaseContext.Entities
         public DbSet<Product.ProductPromotionReadDataHistory> ProductPromotionReadDataHistories { get; private set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasDefaultSchema("HOMOLOGA");
-            //modelBuilder.HasDefaultSchema("COMPREFACIL");
+            //modelBuilder.HasDefaultSchema("HOMOLOGA");
+            modelBuilder.HasDefaultSchema("MATHEUS");
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(CampaingContextDb).Assembly);
         }
     }
