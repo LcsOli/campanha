@@ -32,7 +32,7 @@ namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
 
         public async Task Execute(int promotionCode, DateTime dtWeekToStartProcess, DateTime dtWeekToStopProcess)
         {
-            var ordersDetail = await _getOrdersDetailHandler.Handle(new GetOrdersDetailCommand(promotionCode, dtWeekToStartProcess, dtWeekToStopProcess));
+            var ordersDetail = await _getOrdersDetailHandler.Handle(new GetOrdersDetailCommand(promotionCode));
             var sellersScore = await _getSellerScoreHandler.Handle();
 
             _calculateScorePointsByProductHandler.Handle(new CalculateScoreByProductCommand(ordersDetail, sellersScore));
@@ -44,15 +44,11 @@ namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
 
             await _calculateReactivatedsConsumersHandler.Handle(new CalculateReactivatedsConsumersCommand(promotionCode,
                                                                                                           [.. consumersIds],
-                                                                                                          SellersScores: sellersScore,
-                                                                                                          DtWeekToStopProcess: dtWeekToStopProcess,
-                                                                                                          DtWeekToStartProcess: dtWeekToStartProcess));
+                                                                                                          SellersScores: sellersScore));
 
             await _calculateRegisteredsConsumersHandler.Handler(new CalculateRegisteredsConsumersCommand(promotionCode,
                                                                                                          [.. consumersIds],
-                                                                                                         SellersScores: sellersScore,
-                                                                                                         DtWeekToStopProcess: dtWeekToStopProcess,
-                                                                                                         DtWeekToStartProcess: dtWeekToStartProcess));
+                                                                                                         SellersScores: sellersScore));
         }
     }
 }

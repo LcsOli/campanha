@@ -1,4 +1,5 @@
 ﻿using Campaign.Pooling.DTO.Response.Get;
+using Campaign.Pooling.Repositories.ProductPromotionReadDataHistory.WriteOnly;
 using Campaign.Shared.DataBaseContext.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -79,12 +80,12 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
             return await query.ToArrayAsync();
         }
 
-        public async Task<List<SellersQuantityConsumersReactivatedsResponse>> GetSellersIdsThatReactivatedConsumers(int[] consumersIds, int promotionCode)
+        public async Task<List<SellersQuantityConsumersResponse>> GetSellersIdsThatReactivatedConsumers(int[] consumersIds, int promotionCode)
         {
-            var query = _context.Database.SqlQuery<SellersQuantityConsumersReactivatedsResponse>($@"
+            var query = _context.Database.SqlQuery<SellersQuantityConsumersResponse>($@"
                                                           SELECT 
                                                               codusur AS SellerId,
-                                                              COUNT(codusur) AS QtyReactivatedsConsumers
+                                                              COUNT(codcli) AS QtyReactivatedsConsumers
                                                           FROM
                                                           (
                                                                 SELECT
@@ -107,7 +108,7 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
                                                                                   dual
                                                                               CONNECT BY REGEXP_SUBSTR({string.Join(",", consumersIds)}, '[^,]+', 1, LEVEL) IS NOT NULL
                                                                     ) AND
-                                                                    p.codpromocao = {consumersIds} AND
+                                                                    p.codpromocao = {promotionCode} AND
                                                                     TO_CHAR(client.dtcadastro, 'yyyy-MM-DD') < CONCAT(TO_CHAR(pcgeral.dtinicio, 'yyyy'), '-01-01') AND
                                                                     (
                                                                         TO_CHAR(c.data, 'yyyy-MM-DD') >= TO_CHAR(pcgeral.dtinicio, 'yyyy-MM-DD') AND
@@ -162,10 +163,10 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
             return await query.ToListAsync();
         }
 
-        public async Task<int[]> GetSellersIdsThatRegisteredsConsumers(int[] clientsIds,
-                                                                       int promotionCode,
-                                                                       DateTime dtWeekToStopProcess,
-                                                                       DateTime dtWeekToStartProcess)
+        public async Task<int[]> BetaTeste(int[] clientsIds,
+                                           int promotionCode,
+                                           DateTime dtWeekToStopProcess,
+                                           DateTime dtWeekToStartProcess)
         {
             dtWeekToStartProcess = dtWeekToStartProcess.Date;
             dtWeekToStopProcess = dtWeekToStopProcess.Date;
@@ -205,6 +206,67 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
                            g.Key;
 
             return await query.ToArrayAsync();
+        }
+
+        public async Task<List<SellersQuantityConsumersResponse>> GetSellersIdsThatRegisteredsConsumers(int[] consumersIds, int promotionCode)
+        {
+            var query = _context.Database.SqlQuery<SellersQuantityConsumersResponse>($"""
+                        SELECT 
+                            codusur AS SellerId,
+                            COUNT(codcli) AS QtyReactivatedsConsumers
+                        FROM
+                        (
+                            SELECT
+                                c.codusur,
+                                c.codcli
+                            FROM
+                                pcpedc c
+                                JOIN pcusuari u on c.codusur = u.codusur
+                                JOIN pcpedi i on i.numped = c.numped
+                                JOIN pcpromoi p on p.codprod = i.codprod
+                                JOIN pcpromoc pc on pc.codpromocao = p.codpromocao
+                                JOIN pcclient client on c.codcli = client.codcli
+                                JOIN pcpromoc pcgeral on pcgeral.codpromocao = TO_NUMBER(CONCAT(to_char(pc.dtinicio, 'yyyy'), '00'))
+                            WHERE
+                                u.tipovend = 'R' AND
+                                p.codpromocao = {promotionCode} AND
+                                c.codcli IN(
+                                         SELECT 
+                                             TO_NUMBER(REGEXP_SUBSTR({string.Join(",", consumersIds)}, '[^,]+', 1, LEVEL))
+                                         FROM 
+                                             dual
+                                         CONNECT BY REGEXP_SUBSTR({string.Join(",", consumersIds)}, '[^,]+', 1, LEVEL) IS NOT NULL
+                                )AND
+                                TO_CHAR(client.dtcadastro, 'yyyy-MM-DD') >= TO_CHAR(pcgeral.dtinicio, 'yyyy-MM-DD') AND
+                                (
+                                    TO_CHAR(c.data, 'yyyy-MM-DD') >= TO_CHAR(pcgeral.dtinicio, 'yyyy-MM-DD') AND
+                                    TO_CHAR(c.data, 'yyyy-MM-DD') <= TO_CHAR(pcgeral.dtfim, 'yyyy-MM-DD')
+                                ) AND
+                                EXISTS(
+                                      SELECT
+                                          cc.codcli
+                                      FROM
+                                          pcpedc cc
+                                      WHERE
+                                          cc.codcli = c.codcli AND
+                                          TO_CHAR(cc.data,'yyyy-MM-DD') >= TO_CHAR(pcgeral.dtinicio, 'yyyy-MM-DD') AND
+                                          TO_CHAR(cc.data, 'yyyy-MM-DD') <= TO_CHAR(pcgeral.dtfim, 'yyyy-MM-DD')
+                                      GROUP BY
+                                          cc.codcli
+                                      HAVING
+                                          TO_CHAR(MIN(cc.data), 'yyyy-MM-DD') >= TO_CHAR(pc.dtinicio, 'yyyy-MM-DD') AND
+                                          TO_CHAR(MIN(cc.data), 'yyyy-MM-DD') <= TO_CHAR(pc.dtfim, 'yyyy-MM-DD')
+                                )
+                            GROUP BY 
+                                c.codusur,
+                                c.codcli
+                        )
+                        GROUP BY 
+                            codusur
+
+                        """);
+
+            return await query.ToListAsync();
         }
     }
 }

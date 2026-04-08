@@ -25,8 +25,6 @@ namespace Campaign.Pooling.Handlers.CalculateReactivatedsConsummers
                 if (sellerScoreToUpdate is not null)
                     sellerScoreToUpdate.UpdateScore(sellerQuantityReactivated.QtyReactivatedsConsumers * _pointsToAdd);
             });
-
-
         }
     }
 }

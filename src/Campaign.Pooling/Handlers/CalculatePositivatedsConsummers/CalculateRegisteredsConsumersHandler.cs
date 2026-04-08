@@ -15,15 +15,15 @@ namespace Campaign.Pooling.Handlers.CalculatePositivatedsConsummers
 
         public async Task Handler(CalculateRegisteredsConsumersCommand cmd)
         {
-            var sellersIds = await _orderSummaryReadOnlyRepository.GetSellersIdsThatRegisteredsConsumers(cmd.ConsumersIds, 
-                                                                                                         cmd.PromotionCode, 
-                                                                                                         cmd.DtWeekToStopProcess, 
-                                                                                                         cmd.DtWeekToStartProcess);
+            var sellersQuantityReactivateds = await _orderSummaryReadOnlyRepository.GetSellersIdsThatRegisteredsConsumers(cmd.ConsumersIds, cmd.PromotionCode);
 
-            var sellersScoresToUpdate = cmd.SellersScores.Where(s => sellersIds.Contains(s.Id)).ToList();
+            sellersQuantityReactivateds.ForEach(sellerQuantityReactivated =>
+            {
+                var sellerScoreToUpdate = cmd.SellersScores.FirstOrDefault(s => s.Id == sellerQuantityReactivated.SellerId);
 
-            //TODO - Pensar em uma forma de deixar a quantidade de pontos a serem somados flexiveis a alterações sem a necessidade de alterar o código fonte.
-            sellersScoresToUpdate.ForEach(sellerScore => sellerScore.UpdateScore(_pointsToAdd));
+                if (sellerScoreToUpdate is not null)
+                    sellerScoreToUpdate.UpdateScore(sellerQuantityReactivated.QtyReactivatedsConsumers * _pointsToAdd);
+            });
         }
     }
 }
