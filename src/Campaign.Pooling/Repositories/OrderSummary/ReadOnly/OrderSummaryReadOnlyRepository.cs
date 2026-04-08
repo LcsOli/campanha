@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Campaign.Pooling.DTO.Response.Get;
 using Campaign.Shared.DataBaseContext.Entities;
-using Oracle.ManagedDataAccess.Client;
+using Microsoft.EntityFrameworkCore;
 
 namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
 {
@@ -17,7 +17,6 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
                                                                                                DateTime dtWeekToStopProcess,
                                                                                                DateTime dtWeekToStartProcess)
         {
-
             dtWeekToStartProcess = dtWeekToStartProcess.Date;
             dtWeekToStopProcess = dtWeekToStopProcess.Date;
 
@@ -80,19 +79,12 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
             return await query.ToArrayAsync();
         }
 
-        public async Task<int[]> GetSellersIdsThatReactivatedConsumers(int[] consumersIds,
-                                                                       int promotionCode,
-                                                                       DateTime dtWeekToStopProcess,
-                                                                       DateTime dtWeekToStartProcess)
+        public async Task<List<SellersQuantityConsumersReactivatedsResponse>> GetSellersIdsThatReactivatedConsumers(int[] consumersIds, int promotionCode)
         {
-
-            dtWeekToStartProcess = dtWeekToStartProcess.Date;
-            dtWeekToStopProcess = dtWeekToStopProcess.Date;
-
-            var query = _context.Database.SqlQuery<int>($@"
+            var query = _context.Database.SqlQuery<SellersQuantityConsumersReactivatedsResponse>($@"
                                                           SELECT 
-                                                              codusur,
-                                                              COUNT(codusur) AS qtd_clientes_reativados
+                                                              codusur AS SellerId,
+                                                              COUNT(codusur) AS QtyReactivatedsConsumers
                                                           FROM
                                                           (
                                                                 SELECT
@@ -105,7 +97,7 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
                                                                     JOIN pcpromoi p on p.codprod = i.codprod
                                                                     JOIN pcpromoc pc on pc.codpromocao = p.codpromocao
                                                                     JOIN pcclient client on c.codcli = client.codcli
-                                                                    JOIN pcpromoc pcgeral on pcgeral.codpromocao = to_number(concat(to_char(pc.dtinicio, 'yyyy'), '00'))
+                                                                    JOIN pcpromoc pcgeral on pcgeral.codpromocao = TO_NUMBER(CONCAT(to_char(pc.dtinicio, 'yyyy'), '00'))
                                                                 WHERE
                                                                     u.tipovend = 'R' AND
                                                                     c.codcli IN(
@@ -139,7 +131,7 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
                                                                                 WHERE 
                                                                                     cc.codcli = c.codcli AND
                                                                                     (
-                                                                                        TO_CHAR(cc.data, 'YYYY-MM-DD') >= concat(TO_CHAR(pc.dtinicio, 'yyyy'), '-01-01') AND
+                                                                                        TO_CHAR(cc.data, 'YYYY-MM-DD') >= CONCAT(TO_CHAR(pc.dtinicio, 'yyyy'), '-01-01') AND
                                                                                         TO_CHAR(cc.data, 'YYYY-MM-DD') < TO_CHAR(pcgeral.dtinicio, 'yyyy-MM-DD')
                                                                                     )
                                                                                 FETCH FIRST 1 ROW ONLY
@@ -167,7 +159,7 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
                                                              codusur
             ");
 
-            return await query.ToArrayAsync();
+            return await query.ToListAsync();
         }
 
         public async Task<int[]> GetSellersIdsThatRegisteredsConsumers(int[] clientsIds,
