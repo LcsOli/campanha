@@ -4,8 +4,8 @@ using Campaign.Pooling.Commands.CalculateScoreByProduct;
 using Campaign.Pooling.Handlers.CalculateScoreByProduct;
 using Campaign.Pooling.Handlers.OrderDetail.GetOrdersDetail;
 using Campaign.Pooling.Handlers.SellerScore.GetSellersScore;
-using Campaign.Pooling.Handlers.CalculatePositivatedsConsummers;
 using Campaign.Pooling.Handlers.CalculateReactivatedsConsummers;
+using Campaign.Pooling.Handlers.CalculateRegisteredsConsummers;
 
 namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
 {

@@ -5,12 +5,12 @@ using Campaign.Pooling.Handlers.SellerManager.GetSellers;
 using Campaign.Pooling.Handlers.Seller.GetSellersToCreate;
 using Campaign.Pooling.Handlers.OrderDetail.GetOrdersDetail;
 using Campaign.Pooling.Handlers.SellerScore.GetSellersScore;
-using Campaign.Pooling.Handlers.CalculatePositivatedsConsummers;
 using Campaign.Pooling.Handlers.CalculateReactivatedsConsummers;
 using Campaign.Pooling.Handlers.ProductPromotion.GetProductsPromotions;
 using Campaign.Pooling.Handlers.ProductPromotion.ProductPromotionExists;
 using Campaign.Pooling.Handlers.ProductPromotionReadDataHistory.RegisterNewHistory;
 using Campaign.Pooling.Handlers.ProductPromotionHistory.GetLastProductPromotionsHistory;
+using Campaign.Pooling.Handlers.CalculateRegisteredsConsummers;
 
 namespace Campaign.Pooling.Configurations.ContainerDI.Handlers
 {

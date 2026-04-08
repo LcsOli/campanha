@@ -85,7 +85,7 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
             var query = _context.Database.SqlQuery<SellersQuantityConsumersResponse>($@"
                                                           SELECT 
                                                               codusur AS SellerId,
-                                                              COUNT(codcli) AS QtyReactivatedsConsumers
+                                                              COUNT(codcli) AS QtyConsumers
                                                           FROM
                                                           (
                                                                 SELECT
@@ -168,7 +168,7 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
             var query = _context.Database.SqlQuery<SellersQuantityConsumersResponse>($"""
                         SELECT 
                             codusur AS SellerId,
-                            COUNT(codcli) AS QtyReactivatedsConsumers
+                            COUNT(codcli) AS QtyConsumers
                         FROM
                         (
                             SELECT
