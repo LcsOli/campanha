@@ -20,7 +20,7 @@ namespace Campaign.Pooling.Handlers.CalculateReactivatedsConsummers
             //TODO - Pensar em uma forma de deixar a quantidade de pontos a serem somados flexiveis a alterações sem a necessidade de alterar o código fonte.
             sellersQuantityReactivateds.ForEach(sellerQuantityReactivated =>
             {
-                var sellerScoreToUpdate = cmd.SellersScores.FirstOrDefault(s => s.Id == sellerQuantityReactivated.SellerId);
+                var sellerScoreToUpdate = cmd.SellersScores.FirstOrDefault(seller => seller.Id == sellerQuantityReactivated.SellerId);
 
                 if (sellerScoreToUpdate is not null)
                     sellerScoreToUpdate.UpdateScore(sellerQuantityReactivated.QtyReactivatedsConsumers * _pointsToAdd);

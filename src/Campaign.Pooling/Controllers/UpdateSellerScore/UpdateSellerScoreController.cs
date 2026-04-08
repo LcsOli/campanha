@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Campaign.Pooling.DTO.Request;
 using Campaign.Pooling.Orchestrators.MainOrchestrator;
 
 namespace Campaign.Pooling.Controllers.UpdateSellerScore
@@ -9,12 +8,9 @@ namespace Campaign.Pooling.Controllers.UpdateSellerScore
     public class UpdateSellerScoreController : ControllerBase
     {
         [HttpPatch]
-        public async Task<IActionResult> Update([FromBody] ProcessSellerScore request,
-                                                [FromServices] IMainOrchestrator mainOrchestrator)
+        public async Task<IActionResult> Update([FromQuery] int promotionCode, [FromServices] IMainOrchestrator mainOrchestrator)
         {
-            await mainOrchestrator.Execute(request.PromotionCode, 
-                                           request.DtWeekToStartProcess, 
-                                           request.DtWeekToStopProcess);
+            await mainOrchestrator.Execute(promotionCode);
             return Ok();
         }
     }

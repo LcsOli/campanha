@@ -2,6 +2,6 @@
 {
     public interface ICalcuateScoreOrchestrator
     {
-        Task Execute(int promotionCode, DateTime initIn, DateTime endIn);
+        Task Execute(int promotionCode);
     }
 }
