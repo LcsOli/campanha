@@ -23,7 +23,7 @@ namespace Campaign.Pooling.Handlers.CalculateReactivatedsConsummers
                 var sellerScoreToUpdate = cmd.SellersScores.FirstOrDefault(seller => seller.Id == sellerQuantityReactivated.SellerId);
 
                 if (sellerScoreToUpdate is not null)
-                    sellerScoreToUpdate.UpdateScore(sellerQuantityReactivated.QtyReactivatedsConsumers * _pointsToAdd);
+                    sellerScoreToUpdate.UpdateScore(sellerQuantityReactivated.QtyConsumers * _pointsToAdd);
             });
         }
     }

@@ -1,7 +1,7 @@
 ﻿using Campaign.Pooling.Commands.Consumers.Get;
 using Campaign.Pooling.Repositories.OrderSummary.ReadOnly;
 
-namespace Campaign.Pooling.Handlers.CalculatePositivatedsConsummers
+namespace Campaign.Pooling.Handlers.CalculateRegisteredsConsummers
 {
     public class CalculateRegisteredsConsumersHandler : ICalculateRegisteredsConsumersHandler
     {
@@ -19,10 +19,8 @@ namespace Campaign.Pooling.Handlers.CalculatePositivatedsConsummers
 
             sellersQuantityReactivateds.ForEach(sellerQuantityReactivated =>
             {
-                var sellerScoreToUpdate = cmd.SellersScores.FirstOrDefault(s => s.Id == sellerQuantityReactivated.SellerId);
-
-                if (sellerScoreToUpdate is not null)
-                    sellerScoreToUpdate.UpdateScore(sellerQuantityReactivated.QtyReactivatedsConsumers * _pointsToAdd);
+                var sellerScoreToUpdate = cmd.SellersScores.FirstOrDefault(sellerScore => sellerScore.Id == sellerQuantityReactivated.SellerId);
+                sellerScoreToUpdate?.UpdateScore(sellerQuantityReactivated.QtyConsumers * _pointsToAdd);
             });
         }
     }
