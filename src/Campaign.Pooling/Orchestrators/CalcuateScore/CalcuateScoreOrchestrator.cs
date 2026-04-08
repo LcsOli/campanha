@@ -20,8 +20,8 @@ namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
         public CalcuateScoreOrchestrator(IGetSellerScoreHandler getSellerScoreHandler,
                                          IGetOrdersDetailHandler getOrdersDetailHandler,
                                          ICalculateScoreByProductHandler calculateScorePointsByProductHandler,
-                                         ICalculateReactivatedsConsumersHandler calculateReactivatedsConsumersHandler,
-                                         ICalculateRegisteredsConsumersHandler calculateRegisteredsConsumersHandler)
+                                         ICalculateRegisteredsConsumersHandler calculateRegisteredsConsumersHandler,
+                                         ICalculateReactivatedsConsumersHandler calculateReactivatedsConsumersHandler)
         {
             _getSellerScoreHandler = getSellerScoreHandler;
             _getOrdersDetailHandler = getOrdersDetailHandler;
@@ -44,6 +44,8 @@ namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
 
             await _calculateReactivatedsConsumersHandler.Handle(new CalculateReactivatedsConsumersCommand(promotionCode, [.. consumersIds], sellersScore));
             await _calculateRegisteredsConsumersHandler.Handler(new CalculateRegisteredsConsumersCommand(promotionCode, [.. consumersIds], sellersScore));
+
+
         }
     }
 }

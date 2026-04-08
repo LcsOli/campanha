@@ -7,9 +7,10 @@ namespace Campaign.Pooling.Orchestrators.MainOrchestrator
     public class MainOrchestrator : IMainOrchestrator
     {
         private readonly IUnityOfWork _unityOfWork;
-        private readonly ICalcuateScoreOrchestrator _calcuateScoreByProductOrchestrator;
 
+        private readonly ICalcuateScoreOrchestrator _calcuateScoreByProductOrchestrator;
         private readonly IUpdateProductPromotionReadHistoryOrchestrator _updateProductPromotionReadHistoryOrchestrator;
+
         public MainOrchestrator(IUnityOfWork unityOfWork,
                                 ICalcuateScoreOrchestrator calcuateScoreByProductOrchestrator,
                                 IUpdateProductPromotionReadHistoryOrchestrator updateProductPromotionReadHistoryOrchestrator)

@@ -35,6 +35,38 @@ namespace Campaign.Shared.DataBaseContext.EntitiesConfigurations
             builder.HasOne(s => s.Team)
                    .WithOne()
                    .HasForeignKey<SellerScore>(s => s.TeamId);
+
+            builder.Property(s => s.Coupons)
+                   .HasColumnName("CUPONS")
+                   .HasDefaultValue(0);
+
+            builder.Property(s => s.CurrentRevenue)
+                   .HasColumnName("FATURAMENTO_ATUAL")
+                   .HasDefaultValue(0);
+
+            builder.Property(s => s.RevenueTarget)
+                   .HasColumnName("META_FATURAMENTO")
+                   .HasDefaultValue(0);
+
+            builder.Property(s => s.RevenueMonth1)
+                   .HasColumnName("FATURAMENTO_MES_1")
+                   .HasDefaultValue(0);
+
+            builder.Property(s => s.RevenueMonth2)
+                   .HasColumnName("FATURAMENTO_MES_2")
+                   .HasDefaultValue(0);
+
+            builder.Property(s => s.RevenueMonth3)
+                   .HasColumnName("FATURAMENTO_MES_3")
+                   .HasDefaultValue(0);
+
+            builder.Property(s => s.RevenueMonth4)
+                   .HasColumnName("FATURAMENTO_MES_4")
+                   .HasDefaultValue(0);
+
+            builder.Property(s => s.RevenueMonth5)
+                   .HasColumnName("FATURAMENTO_MES_5")
+                   .HasDefaultValue(0);
         }
     }
 }

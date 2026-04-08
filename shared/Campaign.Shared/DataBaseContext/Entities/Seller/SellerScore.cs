@@ -9,6 +9,14 @@
         public string ManagerName { get; private set; } = default!;
         public int TeamId { get; private set; }
         public Team.Team? Team { get; private set; }
+        public short Coupons { get; private set; }
+        public decimal RevenueTarget { get; private set; }
+        public decimal CurrentRevenue { get; private set; }
+        public decimal RevenueMonth1 { get; private set; }
+        public decimal RevenueMonth2 { get; private set; }
+        public decimal RevenueMonth3 { get; private set; }
+        public decimal RevenueMonth4 { get; private set; }
+        public decimal RevenueMonth5 { get; private set; }
 
         public SellerScore(string name, 
                            int sellerId, 
@@ -19,22 +27,14 @@
             ManagerName = managerName;
         }
 
-        public SellerScore(int id, 
-                           string name, 
-                           int sellerId, 
-                           decimal score, 
-                           string managerName)
-        {
-            Id = id;
-            Name = name;
-            Score = score;
-            SellerId = sellerId;
-            ManagerName = managerName;
-        }
-
         public void UpdateScore(decimal score)
         {
             Score += score;
+        }
+
+        public void UpdateCoupons(short coupons)
+        {
+            Coupons = coupons;
         }
     }
 }
