@@ -6,6 +6,8 @@ using Campaign.Pooling.Handlers.OrderDetail.GetOrdersDetail;
 using Campaign.Pooling.Handlers.SellerScore.GetSellersScore;
 using Campaign.Pooling.Handlers.CalculateReactivatedsConsummers;
 using Campaign.Pooling.Handlers.CalculateRegisteredsConsummers;
+using Campaign.Pooling.Handlers.CalculateCoupons;
+using Campaign.Pooling.Commands.Calculate;
 
 namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
 {
@@ -13,18 +15,21 @@ namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
     {
         private readonly IGetSellerScoreHandler _getSellerScoreHandler;
         private readonly IGetOrdersDetailHandler _getOrdersDetailHandler;
+        private readonly ICalculateCouponsHandler _calculateCouponsHandler;
         private readonly ICalculateScoreByProductHandler _calculateScorePointsByProductHandler;
         private readonly ICalculateRegisteredsConsumersHandler _calculateRegisteredsConsumersHandler;
         private readonly ICalculateReactivatedsConsumersHandler _calculateReactivatedsConsumersHandler;
 
         public CalcuateScoreOrchestrator(IGetSellerScoreHandler getSellerScoreHandler,
                                          IGetOrdersDetailHandler getOrdersDetailHandler,
+                                         ICalculateCouponsHandler calculateCouponsHandler,
                                          ICalculateScoreByProductHandler calculateScorePointsByProductHandler,
                                          ICalculateRegisteredsConsumersHandler calculateRegisteredsConsumersHandler,
                                          ICalculateReactivatedsConsumersHandler calculateReactivatedsConsumersHandler)
         {
             _getSellerScoreHandler = getSellerScoreHandler;
             _getOrdersDetailHandler = getOrdersDetailHandler;
+            _calculateCouponsHandler = calculateCouponsHandler;
             _calculateRegisteredsConsumersHandler = calculateRegisteredsConsumersHandler;
             _calculateScorePointsByProductHandler = calculateScorePointsByProductHandler;
             _calculateReactivatedsConsumersHandler = calculateReactivatedsConsumersHandler;
@@ -46,6 +51,10 @@ namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
             await _calculateRegisteredsConsumersHandler.Handler(new CalculateRegisteredsConsumersCommand(promotionCode, [.. consumersIds], sellersScore));
 
 
+
+
+            //Ultimo calculo
+            _calculateCouponsHandler.Handle(new CalculateCouponsCommand(sellersScore));
         }
     }
 }

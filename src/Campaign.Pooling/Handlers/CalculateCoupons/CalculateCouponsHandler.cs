@@ -5,16 +5,13 @@ namespace Campaign.Pooling.Handlers.CalculateCoupons
     public class CalculateCouponsHandler : ICalculateCouponsHandler
     {
         private readonly int _scoreToValidate = 500_000;
-        public CalculateCouponsHandler()
-        {
 
-        }
-
-        public async Task Handle(CalculateCouponsCommand cmd)
+        public void Handle(CalculateCouponsCommand cmd)
         {
             cmd.SellerScore.ForEach(sellerScore =>
             {
-                sellerScore.UpdateCoupons((short)(sellerScore.Score / _scoreToValidate));
+                var couponsToUpdate = (short)(sellerScore.Score / _scoreToValidate);
+                sellerScore.UpdateCoupons(couponsToUpdate);
             });
         }
     }
