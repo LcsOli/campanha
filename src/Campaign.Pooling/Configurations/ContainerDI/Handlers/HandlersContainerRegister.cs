@@ -1,6 +1,7 @@
 ﻿using Campaign.Pooling.Handlers.CalculateCoupons;
 using Campaign.Pooling.Handlers.CalculateReactivatedsConsummers;
 using Campaign.Pooling.Handlers.CalculateRegisteredsConsummers;
+using Campaign.Pooling.Handlers.CalculateRevenueTarget;
 using Campaign.Pooling.Handlers.CalculateScoreByProduct;
 using Campaign.Pooling.Handlers.OrderDetail.GetOrdersDetail;
 using Campaign.Pooling.Handlers.ProductPromotion.GetProductsPromotions;
@@ -24,6 +25,7 @@ namespace Campaign.Pooling.Configurations.ContainerDI.Handlers
             services.AddScoped<IGetSellersHandler, GetSellersHandler>();
             services.AddScoped<IGetSellerScoreHandler, GetSellerScoreHandler>();
             services.AddScoped<IGetOrdersDetailHandler, GetOrdersDetailHandler>();
+            services.AddScoped<ICalculateRevenueHandler, CalculateRevenueHandler>();
             services.AddScoped<ICalculateCouponsHandler, CalculateCouponsHandler>();
             services.AddScoped<IInsertSellerScoreHandler, InsertSellerScoreHandler>();
             services.AddScoped<IGetSellersManagersHandler, GetSellersManagersHandler>();

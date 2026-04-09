@@ -1,4 +1,4 @@
-﻿using Campaign.Pooling.DTO.Response.Get;
+﻿using Campaign.Pooling.DTO.Response.Order;
 using EntitySellerScore = Campaign.Shared.DataBaseContext.Entities.Seller;
 
 namespace Campaign.Pooling.Commands.CalculateScoreByProduct

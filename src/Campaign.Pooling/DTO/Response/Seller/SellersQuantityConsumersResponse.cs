@@ -1,4 +1,4 @@
-﻿namespace Campaign.Pooling.DTO.Response.Get
+﻿namespace Campaign.Pooling.DTO.Response.Seller
 {
     public record SellersQuantityConsumersResponse(int SellerId, int QtyConsumers);
 }

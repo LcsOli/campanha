@@ -18,8 +18,8 @@
         public decimal RevenueMonth4 { get; private set; }
         public decimal RevenueMonth5 { get; private set; }
 
-        public SellerScore(string name, 
-                           int sellerId, 
+        public SellerScore(string name,
+                           int sellerId,
                            string managerName)
         {
             Name = name;
@@ -35,6 +35,33 @@
         public void UpdateCoupons(short coupons)
         {
             Coupons = coupons;
+        }
+
+        public void UpdateCurrentRevenue(decimal revenue)
+        {
+            CurrentRevenue = revenue;
+        }
+
+        public void UpdateRevenueByMonth(decimal revenue, int month)
+        {
+            switch (month)
+            {
+                case 6:
+                    RevenueMonth1 = revenue;
+                    break;
+                case 7:
+                    RevenueMonth2 = revenue;
+                    break;
+                case 8:
+                    RevenueMonth3 = revenue;
+                    break;
+                case 9:
+                    RevenueMonth4 = revenue;
+                    break;
+                case 10:
+                    RevenueMonth5 = revenue;
+                    break;
+            }
         }
     }
 }

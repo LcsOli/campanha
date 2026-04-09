@@ -1,4 +1,4 @@
-﻿using Campaign.Pooling.DTO.Response.Get;
+﻿using Campaign.Pooling.DTO.Response.Seller;
 using Campaign.Pooling.Repositories.ProductPromotionReadDataHistory.WriteOnly;
 using Campaign.Shared.DataBaseContext.Entities;
 using Microsoft.EntityFrameworkCore;

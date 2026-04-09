@@ -28,5 +28,10 @@ namespace Campaign.Pooling.Repositories.ProductPromotionReadDataHistory.ReadOnly
             return await _context.ProductPromotionReadDataHistories.AnyAsync(p => p.PromotionCode == promotionCode);
         }
 
+        public async Task<Product.ProductPromotionReadDataHistory?> GetLast()
+        {
+            return await _context.ProductPromotionReadDataHistories.OrderByDescending(p => p.ReadAt).FirstOrDefaultAsync();
+        }
+
     }
 }

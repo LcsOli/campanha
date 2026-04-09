@@ -1,4 +1,4 @@
-﻿using Campaign.Pooling.DTO.Response.Get;
+﻿using Campaign.Pooling.DTO.Response.Seller;
 
 namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
 {
