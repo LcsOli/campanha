@@ -44,6 +44,8 @@
 
         public void UpdateRevenueByMonth(decimal revenue, int month)
         {
+            //TODO - Verificar a possibilidade de decidir qual coluna preencher de forma dinamica sem depender de switch case.
+
             switch (month)
             {
                 case 6:
@@ -62,6 +64,7 @@
                     RevenueMonth5 = revenue;
                     break;
             }
+            //TODO - Verificar a possibilidade de criar uma tabela de receita mensal para evitar a necessidade de criar uma coluna para cada mês, visto que isso pode gerar problemas de manutenção no futuro.
         }
     }
 }

@@ -40,9 +40,9 @@ namespace Campaign.Pooling.Handlers.CalculateRevenueTarget
             var productsPromotionsSummariesDates = await _productPromotionSummaryReadOnlyRepository.GetProductPromotionSummariesDates(cmd.PromotionCode);
 
             var isNewMonth = productsPromotionsSummariesDates!.PreviousPromotionDtInit.Month < productsPromotionsSummariesDates.CurrentPromotionDtInit.Month;
-            var isLastMonth = productsPromotionsSummariesDates.CurrentPromotionDtEnd >= productsPromotionsSummariesDates.LastPromotionDtEnd;
+            var isLastMonthOfCampaign = productsPromotionsSummariesDates.CurrentPromotionDtEnd >= productsPromotionsSummariesDates.LastPromotionDtEnd;
 
-            if (!isNewMonth && !isLastMonth)
+            if (!isNewMonth && !isLastMonthOfCampaign)
                 return;
 
             var year = productsPromotionsSummariesDates.PreviousPromotionDtInit.Year;
