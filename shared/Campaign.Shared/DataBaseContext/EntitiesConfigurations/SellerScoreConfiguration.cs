@@ -67,6 +67,14 @@ namespace Campaign.Shared.DataBaseContext.EntitiesConfigurations
             builder.Property(s => s.RevenueMonth5)
                    .HasColumnName("FATURAMENTO_MES_5")
                    .HasDefaultValue(0);
+
+            builder.Property(s => s.QtyConsumersReactivateds)
+                   .HasColumnName("QT_CLIENTES_REATIVADOS")
+                   .HasDefaultValue(0);
+
+            builder.Property(s => s.QtyConsumersRegistereds)
+                   .HasColumnName("QT_CLIENTES_POSITIVADOS")
+                   .HasDefaultValue(0);
         }
     }
 }

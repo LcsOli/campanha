@@ -17,10 +17,11 @@ namespace Campaign.Pooling.Handlers.CalculateRegisteredsConsummers
         {
             var sellersQuantityReactivateds = await _orderSummaryReadOnlyRepository.GetSellersIdsThatRegisteredsConsumers(cmd.ConsumersIds, cmd.PromotionCode);
 
-            sellersQuantityReactivateds.ForEach(sellerQuantityReactivated =>
+            sellersQuantityReactivateds.ForEach(sellerQuantityRegistereds =>
             {
-                var sellerScoreToUpdate = cmd.SellersScores.FirstOrDefault(sellerScore => sellerScore.SellerId == sellerQuantityReactivated.SellerId);
-                sellerScoreToUpdate?.UpdateScore(sellerQuantityReactivated.QtyConsumers * _pointsToAdd);
+                var sellerScoreToUpdate = cmd.SellersScores.FirstOrDefault(sellerScore => sellerScore.SellerId == sellerQuantityRegistereds.SellerId);
+                sellerScoreToUpdate?.UpdateScore(sellerQuantityRegistereds.QtyConsumers * _pointsToAdd);
+                sellerScoreToUpdate?.UpdateQtyRegistereds((short)sellerQuantityRegistereds.QtyConsumers);
             });
         }
     }

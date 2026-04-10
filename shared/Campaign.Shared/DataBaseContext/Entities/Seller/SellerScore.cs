@@ -17,6 +17,8 @@
         public decimal RevenueMonth3 { get; private set; }
         public decimal RevenueMonth4 { get; private set; }
         public decimal RevenueMonth5 { get; private set; }
+        public short QtyConsumersReactivateds { get; private set; }
+        public short QtyConsumersRegistereds { get; private set; }
 
         public SellerScore(string name,
                            int sellerId,
@@ -40,6 +42,16 @@
         public void UpdateCurrentRevenue(decimal revenue)
         {
             CurrentRevenue = revenue;
+        }
+
+        public void UpdateQtyReactivateds(short qtyReactivateds)
+        {
+            QtyConsumersReactivateds += qtyReactivateds;
+        }
+
+        public void UpdateQtyRegistereds(short qtyRegistereds)
+        {
+            QtyConsumersRegistereds += qtyRegistereds;
         }
 
         public void UpdateRevenueByMonth(decimal revenue, int month)
