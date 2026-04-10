@@ -44,8 +44,7 @@ namespace Campaign.Pooling.Repositories.OrderDetail.ReadOnly
                                 pi.qt as Quantity,
                                 pi.data as DateOfSale,
                                 pm.qtpontoscliente as ProductPromotionPoints,
-                                pc.numped as OrderId,
-                                pc.vlatend as TotalValueOfTheSale
+                                pc.numped as OrderId
                             FROM
                                 cf_campanha_rca_score s
                                 JOIN pcpedc pc ON pc.codusur = s.rca_id

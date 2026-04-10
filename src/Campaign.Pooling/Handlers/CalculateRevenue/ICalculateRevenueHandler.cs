@@ -5,5 +5,6 @@ namespace Campaign.Pooling.Handlers.CalculateRevenueTarget
     public interface ICalculateRevenueHandler
     {
         Task Handle(CalculateRevenueCommand cmd);
+        Task Handle(CalculateRevenueMonthCommand cmd);
     }
 }

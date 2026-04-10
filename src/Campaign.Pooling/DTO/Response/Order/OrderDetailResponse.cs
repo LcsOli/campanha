@@ -8,6 +8,5 @@
                                       int ConsumerId,
                                       decimal Quantity,
                                       DateTime DateOfSale,
-                                      decimal TotalValueOfTheSale,
                                       decimal? ProductPromotionPoints);
 }

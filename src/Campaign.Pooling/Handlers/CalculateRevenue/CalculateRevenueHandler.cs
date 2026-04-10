@@ -21,44 +21,42 @@ namespace Campaign.Pooling.Handlers.CalculateRevenueTarget
 
         public async Task Handle(CalculateRevenueCommand cmd)
         {
-            var currentVRevenue = await _orderDetailReadOnlyRepository.CalculateCurrentRevenue(cmd.PromotionCode);
+            var currentRevenue = await _orderDetailReadOnlyRepository.CalculateCurrentRevenue(cmd.PromotionCode);
 
             cmd.SellersScore.ForEach(sellerScore =>
             {
-                var revenueSeller = currentVRevenue?.FirstOrDefault(revenue => revenue.SellerId == sellerScore.SellerId);
+                var revenueSeller = currentRevenue?.FirstOrDefault(revenue => revenue.SellerId == sellerScore.SellerId);
                 sellerScore?.UpdateCurrentRevenue(revenueSeller!.Revenue);
             });
+        }
 
-
+        public async Task Handle(CalculateRevenueMonthCommand cmd)
+        {
             var lastPromotionRead = await _productPromotionReadDataHistoryRepositorie.GetLast();
 
-            if (lastPromotionRead != null)
+            if (lastPromotionRead == null)
+                return;
+
+            var productsPromotionsSummariesDates = await _productPromotionSummaryReadOnlyRepository.GetProductPromotionSummariesDates(cmd.PromotionCode);
+
+            var isNewMonth = productsPromotionsSummariesDates!.PreviousPromotionDtInit.Month < productsPromotionsSummariesDates.CurrentPromotionDtInit.Month;
+            var isLastMonth = productsPromotionsSummariesDates.CurrentPromotionDtEnd >= productsPromotionsSummariesDates.LastPromotionDtEnd;
+
+            if (!isNewMonth && !isLastMonth)
+                return;
+
+            var year = productsPromotionsSummariesDates.PreviousPromotionDtInit.Year;
+            var month = productsPromotionsSummariesDates.PreviousPromotionDtInit.Month;
+
+            var lastDayOfMonth = DateTime.DaysInMonth(year, month);
+
+            var revenueByMonth = await _orderDetailReadOnlyRepository.CalculateRevenueByMonth(new DateTime(year, month, 01), new DateTime(year, month, lastDayOfMonth));
+
+            cmd.SellersScore.ForEach(sellerScore =>
             {
-                var productsPromotionsSummariesDates = await _productPromotionSummaryReadOnlyRepository.GetOldAndNewProductPromotionsCodeDates(lastPromotionRead.PromotionCode,
-                                                                                                                                               cmd.PromotionCode);
-
-                var isDirerentMonths = productsPromotionsSummariesDates.OldProductPromotionInitDate.Month < productsPromotionsSummariesDates.NewProductPromotionInitDate.Month ||
-                                       productsPromotionsSummariesDates.OldProductPromotionEndDate.Month < productsPromotionsSummariesDates.NewProductPromotionInitDate.Month;
-
-                if (isDirerentMonths)
-                {
-                    var dateInit = new DateTime(productsPromotionsSummariesDates.OldProductPromotionInitDate.Year,
-                                                productsPromotionsSummariesDates.OldProductPromotionInitDate.Month, 01);
-
-                    var dateEnd = new DateTime(productsPromotionsSummariesDates.OldProductPromotionInitDate.Year,
-                                               productsPromotionsSummariesDates.OldProductPromotionInitDate.Month,
-                                               DateTime.DaysInMonth(dateInit.Year, dateInit.Month));
-
-                    var revenueByMonth = await _orderDetailReadOnlyRepository.CalculateRevenueByMonth(dateInit, dateEnd);
-
-                    cmd.SellersScore.ForEach(sellerScore =>
-                    {
-                        var revenueByMonthSeller = revenueByMonth?.FirstOrDefault(revenue => revenue.SellerId == sellerScore.SellerId);
-                        sellerScore?.UpdateRevenueByMonth(revenueByMonthSeller!.Revenue, Math.Min(productsPromotionsSummariesDates.OldProductPromotionInitDate.Month, 
-                                                                                                  productsPromotionsSummariesDates.NewProductPromotionEndDate.Month));
-                    });
-                }
-            }
+                var revenueByMonthSeller = revenueByMonth?.FirstOrDefault(revenue => revenue.SellerId == sellerScore.SellerId);
+                sellerScore?.UpdateRevenueByMonth(revenueByMonthSeller!.Revenue, month);
+            });
         }
     }
 }

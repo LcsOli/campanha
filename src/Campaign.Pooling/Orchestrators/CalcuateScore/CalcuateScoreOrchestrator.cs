@@ -54,8 +54,8 @@ namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
             await _calculateReactivatedsConsumersHandler.Handle(new CalculateReactivatedsConsumersCommand(promotionCode, [.. consumersIds], sellersScore));
             await _calculateRegisteredsConsumersHandler.Handler(new CalculateRegisteredsConsumersCommand(promotionCode, [.. consumersIds], sellersScore));
 
-
             await _calculateRevenueHandler.Handle(new CalculateRevenueCommand(promotionCode, sellersScore));
+            await _calculateRevenueHandler.Handle(new CalculateRevenueMonthCommand(promotionCode, sellersScore));
 
             //Ultimo calculo
             _calculateCouponsHandler.Handle(new CalculateCouponsCommand(sellersScore));
