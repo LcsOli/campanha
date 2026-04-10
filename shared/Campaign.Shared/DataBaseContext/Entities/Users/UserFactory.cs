@@ -8,6 +8,7 @@ namespace Campaign.Shared.DataBaseContext.Entities.Users
         public static User Factory(Roles role,
                                    int? teamId,
                                    string name,
+                                   int sellerId,
                                    int? managerId,
                                    string document,
                                    string password)
@@ -15,11 +16,11 @@ namespace Campaign.Shared.DataBaseContext.Entities.Users
             document = Regex.Replace(document, @"[^\d]", "");
 
             if (role == Roles.Supplier)
-                return Supplier.Generate(role, name, document, password);
+                return Supplier.Generate(role, name, sellerId, document, password);
             else if (role == Roles.Manager)
-                return Manager.Generate(teamId, role, name, document, password);
+                return Manager.Generate(teamId, role, name, sellerId, document, password);
             else
-                return User.Generate(teamId, role, name, managerId, document, password);
+                return User.Generate(teamId, role, name, sellerId, managerId, document, password);
         }
     }
 }

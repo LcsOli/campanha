@@ -1,4 +1,6 @@
-﻿using Campaign.Shared.Enums.Role;
+﻿using Campaign.Shared.DataBaseContext.Entities.Seller;
+using Campaign.Shared.Enums.Role;
+using SellerEntity = Campaign.Shared.DataBaseContext.Entities.Seller;
 
 namespace Campaign.Shared.DataBaseContext.Entities.Users
 {
@@ -12,8 +14,10 @@ namespace Campaign.Shared.DataBaseContext.Entities.Users
         public DateTime? LastAccess { get; protected set; }
         public int? TeamId { get; protected set; }
         public int? ManagerId { get; protected set; }
+        public int SellerId { get; protected set; }
         public Team.Team? Team { get; protected set; }
         public User? Manager { get; protected set; }
+        public SellerEntity.Seller? Seller { get; protected set; }
 
         public User() { }
 
@@ -21,6 +25,7 @@ namespace Campaign.Shared.DataBaseContext.Entities.Users
                     Roles roles,
                     int? teamId,
                     string name,
+                    int sellerId,
                     int? managerId,
                     string document,
                     string password,
@@ -30,6 +35,7 @@ namespace Campaign.Shared.DataBaseContext.Entities.Users
             Name = name;
             Roles = roles;
             TeamId = teamId;
+            SellerId = sellerId;
             Document = document;
             ManagerId = managerId;
             LastAccess = lastAccess;
@@ -39,6 +45,7 @@ namespace Campaign.Shared.DataBaseContext.Entities.Users
         public static User Generate(int? teamId,
                                     Roles roles,
                                     string name,
+                                    int sellerId,
                                     int? managerId,
                                     string document,
                                     string password)
@@ -48,6 +55,7 @@ namespace Campaign.Shared.DataBaseContext.Entities.Users
                 Name = name,
                 Roles = roles,
                 TeamId = teamId,
+                SellerId = sellerId,
                 Document = document,
                 ManagerId = managerId,
                 HashedPassword = password

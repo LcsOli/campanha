@@ -1,9 +1,9 @@
 ﻿using Campaign.API.Commands.User.Auth;
 using Campaign.API.Handlers.User.Auth;
 using Campaign.API.Commands.User.Update;
+using Campaign.Shared.DTOs.Response.User;
 using Campaign.API.Handlers.User.UpdateLastAccess;
 using Campaign.Shared.DataBaseContext.Entities.UnityOfWork;
-using Campaign.Shared.DTOs.Response.User;
 
 namespace Campaign.API.Handlers.User.AuthOrchestrator
 {

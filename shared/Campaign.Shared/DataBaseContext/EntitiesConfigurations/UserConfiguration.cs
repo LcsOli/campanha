@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Campaign.Shared.Extensions.Enums;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
+
 namespace Campaign.Shared.DataBaseContext.Entities.EntitiesConfigurations
 {
     public class UserConfiguration : IEntityTypeConfiguration<Users.User>
@@ -47,6 +48,9 @@ namespace Campaign.Shared.DataBaseContext.Entities.EntitiesConfigurations
             builder.Property(t => t.ManagerId)
                    .HasColumnName("GERENTE_ID");
 
+            builder.Property(t => t.SellerId)
+                   .HasColumnName("RCA_ID");
+
             builder.HasOne(t => t.Team)
                    .WithOne()
                    .HasForeignKey<Users.User>(t => t.TeamId);
@@ -54,6 +58,10 @@ namespace Campaign.Shared.DataBaseContext.Entities.EntitiesConfigurations
             builder.HasOne(t => t.Manager)
                    .WithOne()
                    .HasForeignKey<Users.User>(t => t.ManagerId);
+
+            builder.HasOne(t => t.Seller)
+                   .WithOne()
+                   .HasForeignKey<Users.User>(t => t.SellerId);
         }
     }
 }

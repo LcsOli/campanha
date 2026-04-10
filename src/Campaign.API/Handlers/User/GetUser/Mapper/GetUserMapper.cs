@@ -7,7 +7,7 @@ namespace Campaign.API.Handlers.User.GetUser.Mapper
     {
         public static UserDetailsResponse ToResponse(Entities.Users.User entity)
         {
-            return new(entity.Id, entity.Name, entity.LastAccess);
+            return new(entity.Id, entity.Name, entity.SellerId, entity.LastAccess);
         }
     }
 }

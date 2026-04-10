@@ -2,5 +2,6 @@
 {
     public record UserDetailsResponse(int Id,
                                       string Name,
+                                      int SellerId,
                                       DateTime? LastAccess);
 }

@@ -6,13 +6,15 @@ namespace Campaign.Shared.DataBaseContext.Entities.Users
     {
         public static User Generate(Roles roles,
                                     string name,
+                                    int sellerId,
                                     string document,
                                     string password)
         {
             return new Supplier
             {
-                Roles = roles,
                 Name = name,
+                Roles = roles,
+                SellerId = sellerId,
                 Document = document,
                 HashedPassword = password
             };
