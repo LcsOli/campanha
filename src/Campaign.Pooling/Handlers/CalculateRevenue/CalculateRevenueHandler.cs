@@ -1,5 +1,6 @@
 ﻿using Campaign.Pooling.Commands.Calculate;
 using Campaign.Pooling.Repositories.OrderDetail.ReadOnly;
+using Campaign.Pooling.Handlers.CalculateRevenue.Validator;
 using Campaign.Pooling.Repositories.ProductPromotionSummary.ReadOnly;
 using Campaign.Pooling.Repositories.ProductPromotionReadDataHistory.ReadOnly;
 
@@ -21,13 +22,22 @@ namespace Campaign.Pooling.Handlers.CalculateRevenueTarget
 
         public async Task Handle(CalculateRevenueCommand cmd)
         {
-            var currentRevenue = await _orderDetailReadOnlyRepository.CalculateCurrentRevenue(cmd.PromotionCode);
+            var productsPromotionsSummariesDates = await _productPromotionSummaryReadOnlyRepository.GetProductPromotionSummariesDates(cmd.PromotionCode);
 
-            cmd.SellersScore.ForEach(sellerScore =>
+            if (!IsNewOrLastMonthOfCampaignValidator.Validate(productsPromotionsSummariesDates!))
             {
-                var revenueSeller = currentRevenue?.FirstOrDefault(revenue => revenue.SellerId == sellerScore.SellerId);
-                sellerScore?.UpdateCurrentRevenue(revenueSeller!.Revenue);
-            });
+                var currentRevenue = await _orderDetailReadOnlyRepository.CalculateCurrentRevenue(cmd.PromotionCode);
+
+                cmd.SellersScore.ForEach(sellerScore =>
+                {
+                    var revenueSeller = currentRevenue?.FirstOrDefault(revenue => revenue.SellerId == sellerScore.SellerId);
+                    sellerScore?.UpdateCurrentRevenue(revenueSeller!.Revenue);
+                });
+
+                return;
+            }
+
+            cmd.SellersScore.ForEach(sellerScore => sellerScore.UpdateCurrentRevenue(0));
         }
 
         public async Task Handle(CalculateRevenueMonthCommand cmd)
@@ -39,18 +49,13 @@ namespace Campaign.Pooling.Handlers.CalculateRevenueTarget
 
             var productsPromotionsSummariesDates = await _productPromotionSummaryReadOnlyRepository.GetProductPromotionSummariesDates(cmd.PromotionCode);
 
-            var isNewMonth = productsPromotionsSummariesDates!.PreviousPromotionDtInit.Month < productsPromotionsSummariesDates.CurrentPromotionDtInit.Month;
-            var isLastMonthOfCampaign = productsPromotionsSummariesDates.CurrentPromotionDtEnd >= productsPromotionsSummariesDates.LastPromotionDtEnd;
-
-            if (!isNewMonth && !isLastMonthOfCampaign)
+            if (!IsNewOrLastMonthOfCampaignValidator.Validate(productsPromotionsSummariesDates!))
                 return;
 
-            var year = productsPromotionsSummariesDates.PreviousPromotionDtInit.Year;
-            var month = productsPromotionsSummariesDates.PreviousPromotionDtInit.Month;
+            var year = productsPromotionsSummariesDates!.PreviousDtInit.Year;
+            var month = productsPromotionsSummariesDates.PreviousDtInit.Month;
 
-            var lastDayOfMonth = DateTime.DaysInMonth(year, month);
-
-            var revenueByMonth = await _orderDetailReadOnlyRepository.CalculateRevenueByMonth(new DateTime(year, month, 01), new DateTime(year, month, lastDayOfMonth));
+            var revenueByMonth = await _orderDetailReadOnlyRepository.CalculateRevenueByMonth(new DateTime(year, month, 01), new DateTime(year, month, DateTime.DaysInMonth(year, month)));
 
             cmd.SellersScore.ForEach(sellerScore =>
             {
@@ -61,5 +66,6 @@ namespace Campaign.Pooling.Handlers.CalculateRevenueTarget
                     sellerScore.UpdateCouponsByRevenue();
             });
         }
+
     }
 }

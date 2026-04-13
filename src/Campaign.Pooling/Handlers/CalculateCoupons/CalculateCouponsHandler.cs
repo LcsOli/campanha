@@ -4,16 +4,14 @@ namespace Campaign.Pooling.Handlers.CalculateCoupons
 {
     public class CalculateCouponsHandler : ICalculateCouponsHandler
     {
-        private readonly int _scoreToValidate = 500_000;
-
         public void Handle(CalculateCouponsCommand cmd)
         {
             cmd.SellerScore.ForEach(sellerScore =>
             {
-                var couponsToUpdate = (short)(sellerScore.Score / _scoreToValidate);
+                var coupons = (short)(sellerScore.CouponsByScore + sellerScore.CouponsByRevenue);
 
-                if (couponsToUpdate > sellerScore.Coupons)
-                    sellerScore.UpdateCouponsByScore();
+                if (coupons > 0)
+                    sellerScore.UpdateCoupons(coupons);
             });
         }
     }

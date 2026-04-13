@@ -1,7 +1,7 @@
-﻿using Campaign.Pooling.Commands.Orders.Get;
+﻿using Campaign.Pooling.DTO.Response.Order;
+using Campaign.Pooling.Commands.Orders.Get;
 using Campaign.Pooling.Repositories.OrderDetail.ReadOnly;
 using Campaign.Pooling.Handlers.OrderDetail.GetOrdersDetail.Validator;
-using Campaign.Pooling.DTO.Response.Order;
 
 namespace Campaign.Pooling.Handlers.OrderDetail.GetOrdersDetail
 {

@@ -1,6 +1,7 @@
 ﻿using Campaign.Pooling.Commands.CalculateScoreByProduct;
 using Campaign.Pooling.Repositories.SellerScore.WriteOnly;
 using Campaign.Pooling.Handlers.CalculateScorePoints.Validator;
+using EntitySellerScore = Campaign.Shared.DataBaseContext.Entities.Seller;
 
 namespace Campaign.Pooling.Handlers.CalculateScoreByProduct
 {
@@ -27,12 +28,25 @@ namespace Campaign.Pooling.Handlers.CalculateScoreByProduct
                                                           Orders = o.DistinctBy(p => p.ProductId).ToList()
                                                       }).ToList();
 
-                ordersByClient.ForEach(o =>
-                    sellerScore.UpdateScore((decimal)o.Orders.Sum(o => o.ProductPromotionPoints)!));
+                ordersByClient.ForEach(o => sellerScore.UpdateScore((decimal)o.Orders.Sum(o => o.ProductPromotionPoints)!));
+
+                CalculateCouponsByScore(sellerScore);
             });
 
             //TODO - Verificar a necessidade de utilizar update. Caso realmente for necessário, chamar o update no final da rotina para pegar todas as atualizações da entidade.
             _sellerScoreWriteOnlyRepository.Update(cmd.SellersScores);
+        }
+
+        private void CalculateCouponsByScore(EntitySellerScore.SellerScore sellerScore)
+        {
+            //TODO - Verificar a possibilidade de extrair para um handler, o calculo de cupons por score.
+
+            const int _scoreToValidate = 500_000;
+
+            var couponsToUpdate = (short)(sellerScore.Score / _scoreToValidate);
+
+            if (couponsToUpdate > sellerScore.Coupons)
+                sellerScore.UpdateCouponsByScore();
         }
     }
 }

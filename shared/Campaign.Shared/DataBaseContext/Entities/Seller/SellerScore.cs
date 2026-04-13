@@ -44,7 +44,7 @@ namespace Campaign.Shared.DataBaseContext.Entities.Seller
 
         public void UpdateCoupons(short coupons)
         {
-            Coupons = coupons;
+            Coupons += coupons;
         }
 
         public void UpdateCouponsByRevenue()
