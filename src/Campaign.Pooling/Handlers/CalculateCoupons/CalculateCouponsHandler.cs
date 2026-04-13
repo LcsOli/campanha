@@ -11,7 +11,9 @@ namespace Campaign.Pooling.Handlers.CalculateCoupons
             cmd.SellerScore.ForEach(sellerScore =>
             {
                 var couponsToUpdate = (short)(sellerScore.Score / _scoreToValidate);
-                sellerScore.UpdateCoupons(couponsToUpdate);
+
+                if (couponsToUpdate > sellerScore.Coupons)
+                    sellerScore.UpdateCouponsByScore();
             });
         }
     }

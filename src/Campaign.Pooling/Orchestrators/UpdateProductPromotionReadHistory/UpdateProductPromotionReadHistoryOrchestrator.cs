@@ -10,18 +10,14 @@ namespace Campaign.Pooling.Orchestrators.UpdateProductPromotionReadHistory
 {
     public class UpdateProductPromotionReadHistoryOrchestrator : IUpdateProductPromotionReadHistoryOrchestrator
     {
-        private readonly IUnityOfWork _unityOfWork;
-
         private readonly IProductPromotionExistsHandler _productPromotionExistsHandler;
         private readonly IGetProductPromotionReadDataHistoryHandler _getProductPromotionReadDataHistoryHandler;
         private readonly IRegisterProductPromotionReadDataHistoryHandler _registerProductPromotionReadDataHistoryHandler;
 
-        public UpdateProductPromotionReadHistoryOrchestrator(IUnityOfWork unityOfWork,
-                                                             IProductPromotionExistsHandler productPromotionExistsHandler,
+        public UpdateProductPromotionReadHistoryOrchestrator(IProductPromotionExistsHandler productPromotionExistsHandler,
                                                              IGetProductPromotionReadDataHistoryHandler getProductPromotionReadDataHistoryHandler,
                                                              IRegisterProductPromotionReadDataHistoryHandler registerProductPromotionReadDataHistoryHandler)
         {
-            _unityOfWork = unityOfWork;
             _productPromotionExistsHandler = productPromotionExistsHandler;
             _getProductPromotionReadDataHistoryHandler = getProductPromotionReadDataHistoryHandler;
             _registerProductPromotionReadDataHistoryHandler = registerProductPromotionReadDataHistoryHandler;

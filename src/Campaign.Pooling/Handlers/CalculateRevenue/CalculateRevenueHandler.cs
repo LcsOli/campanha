@@ -58,7 +58,7 @@ namespace Campaign.Pooling.Handlers.CalculateRevenueTarget
                 sellerScore?.UpdateRevenueByMonth(revenueByMonthSeller!.Revenue, month);
 
                 if (revenueByMonthSeller!.Revenue >= sellerScore!.RevenueTarget)
-                    sellerScore.UpdateCoupons((short)(sellerScore.Coupons + 1));
+                    sellerScore.UpdateCouponsByRevenue();
             });
         }
     }

@@ -77,7 +77,7 @@ namespace Campaign.Pooling.Repositories.OrderDetail.ReadOnly
                                     JOIN pcpromoc pc on pc.codpromocao = p.codpromocao
                                     JOIN pcpromoc pcgeral on pcgeral.codpromocao = to_number(concat(to_char(pc.dtinicio, 'yyyy'), '00'))
                                 WHERE
-                                    c.dtcancel is null AND
+                                    c.dtcancel IS NULL AND
                                     pc.codpromocao = {promotionCode} AND
                                     u.tipovend = 'R' AND
                                     (

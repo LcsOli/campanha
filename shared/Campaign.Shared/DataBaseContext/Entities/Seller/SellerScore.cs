@@ -1,4 +1,6 @@
-﻿namespace Campaign.Shared.DataBaseContext.Entities.Seller
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Campaign.Shared.DataBaseContext.Entities.Seller
 {
     public class SellerScore
     {
@@ -20,6 +22,12 @@
         public short QtyConsumersReactivateds { get; private set; }
         public short QtyConsumersRegistereds { get; private set; }
 
+        [NotMapped]
+        public decimal CouponsByRevenue { get; private set; }
+
+        [NotMapped]
+        public decimal CouponsByScore { get; private set; }
+
         public SellerScore(string name,
                            int sellerId,
                            string managerName)
@@ -37,6 +45,16 @@
         public void UpdateCoupons(short coupons)
         {
             Coupons = coupons;
+        }
+
+        public void UpdateCouponsByRevenue()
+        {
+            CouponsByRevenue++;
+        }
+
+        public void UpdateCouponsByScore()
+        {
+            CouponsByScore++;
         }
 
         public void UpdateCurrentRevenue(decimal revenue)

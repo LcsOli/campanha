@@ -31,6 +31,7 @@ namespace Campaign.Pooling.Handlers.CalculateScoreByProduct
                     sellerScore.UpdateScore((decimal)o.Orders.Sum(o => o.ProductPromotionPoints)!));
             });
 
+            //TODO - Verificar a necessidade de utilizar update. Caso realmente for necessário, chamar o update no final da rotina para pegar todas as atualizações da entidade.
             _sellerScoreWriteOnlyRepository.Update(cmd.SellersScores);
         }
     }
