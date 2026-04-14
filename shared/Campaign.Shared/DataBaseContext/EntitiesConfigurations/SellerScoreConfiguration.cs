@@ -41,7 +41,7 @@ namespace Campaign.Shared.DataBaseContext.EntitiesConfigurations
                    .HasDefaultValue(0);
 
             builder.Property(s => s.CurrentRevenue)
-                   .HasColumnName("FATURAMENTO_ATUAL")
+                   .HasColumnName("FATURAMENTO_MENSAL")
                    .HasDefaultValue(0);
 
             builder.Property(s => s.RevenueTarget)

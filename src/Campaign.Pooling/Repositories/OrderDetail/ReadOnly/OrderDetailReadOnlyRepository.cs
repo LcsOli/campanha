@@ -66,22 +66,19 @@ namespace Campaign.Pooling.Repositories.OrderDetail.ReadOnly
         {
             var query = _context.Database.SqlQuery<TotalRevenueResponse>($"""
                                 SELECT
-                                    c.codusur AS SellerId,
-                                    SUM(i.qt * i.pvenda) AS Revenue
+                                     c.codusur AS SellerId,
+                                     sum(i.qt * i.pvenda) AS Revenue
                                 FROM
                                     cf_campanha_rca_score crs
                                     JOIN pcpedc c on c.codusur = crs.rca_id
-                                    JOIN pcusuari u on c.codusur = u.codusur
                                     JOIN pcpedi i on i.numped = c.numped
                                     JOIN pcpromoi p on p.codprod = i.codprod
                                     JOIN pcpromoc pc on pc.codpromocao = p.codpromocao
-                                    JOIN pcpromoc pcgeral on pcgeral.codpromocao = to_number(concat(to_char(pc.dtinicio, 'yyyy'), '00'))
                                 WHERE
-                                    c.dtcancel IS NULL AND
-                                    pc.codpromocao = {promotionCode} AND
-                                    u.tipovend = 'R' AND
+                                    p.codpromocao = {promotionCode} AND
+                                    c.dtcancel is null AND
                                     (
-                                        TO_CHAR(c.data, 'yyyy-MM-DD') >= TO_CHAR(pcgeral.dtinicio, 'yyyy-MM-DD') AND
+                                        TO_CHAR(c.data, 'yyyy-MM-DD') >= TO_CHAR(pc.dtinicio, 'yyyy-MM-DD') AND
                                         TO_CHAR(c.data, 'yyyy-MM-DD') <= TO_CHAR(pc.dtfim, 'yyyy-MM-DD')
                                     )
                                 GROUP BY 
@@ -110,7 +107,7 @@ namespace Campaign.Pooling.Repositories.OrderDetail.ReadOnly
                                     c.dtcancel is null AND
                                     (
                                         TO_CHAR(c.data, 'yyyy-MM-DD') >= {init.ToString("yyyy-MM-dd")} AND
-                                        TO_CHAR(c.data, 'yyyy-MM-DD') <= {end.ToString("yyyy-MM-DD")}
+                                        TO_CHAR(c.data, 'yyyy-MM-DD') <= {end.ToString("yyyy-MM-dd")}
                                     )
                                 GROUP BY 
                                     c.codusur

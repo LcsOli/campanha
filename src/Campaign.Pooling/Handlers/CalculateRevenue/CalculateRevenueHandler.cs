@@ -24,20 +24,24 @@ namespace Campaign.Pooling.Handlers.CalculateRevenueTarget
         {
             var productsPromotionsSummariesDates = await _productPromotionSummaryReadOnlyRepository.GetProductPromotionSummariesDates(cmd.PromotionCode);
 
-            if (!IsNewOrLastMonthOfCampaignValidator.Validate(productsPromotionsSummariesDates!))
+            if (productsPromotionsSummariesDates!.PreviousDtInit.Month < productsPromotionsSummariesDates.CurrentDtInit.Month)
+                cmd.SellersScore.ForEach(sellerScore => sellerScore.ClearCurrentRevenue());
+
+            var year = productsPromotionsSummariesDates!.CurrentDtInit.Year;
+
+            var month = (productsPromotionsSummariesDates.CurrentDtInit.Month < productsPromotionsSummariesDates.CurrentDtEnd.Month) ?
+                                        productsPromotionsSummariesDates.CurrentDtInit.Month : productsPromotionsSummariesDates.CurrentDtEnd.Month;
+
+            var day = (productsPromotionsSummariesDates.CurrentDtInit.Month < productsPromotionsSummariesDates.CurrentDtEnd.Month) ?
+                                        DateTime.DaysInMonth(year, month) : productsPromotionsSummariesDates.CurrentDtEnd.Day;
+
+            var currentRevenue = await _orderDetailReadOnlyRepository.CalculateRevenueByMonth(new DateTime(year, month, 01), new DateTime(year, month, day));
+
+            cmd.SellersScore.ForEach(sellerScore =>
             {
-                var currentRevenue = await _orderDetailReadOnlyRepository.CalculateCurrentRevenue(cmd.PromotionCode);
-
-                cmd.SellersScore.ForEach(sellerScore =>
-                {
-                    var revenueSeller = currentRevenue?.FirstOrDefault(revenue => revenue.SellerId == sellerScore.SellerId);
-                    sellerScore?.UpdateCurrentRevenue(revenueSeller!.Revenue);
-                });
-
-                return;
-            }
-
-            cmd.SellersScore.ForEach(sellerScore => sellerScore.UpdateCurrentRevenue(0));
+                var revenueSeller = currentRevenue?.FirstOrDefault(revenue => revenue.SellerId == sellerScore.SellerId);
+                sellerScore?.UpdateCurrentRevenue(revenueSeller!.Revenue);
+            });
         }
 
         public async Task Handle(CalculateRevenueMonthCommand cmd)
@@ -66,6 +70,5 @@ namespace Campaign.Pooling.Handlers.CalculateRevenueTarget
                     sellerScore.UpdateCouponsByRevenue();
             });
         }
-
     }
 }

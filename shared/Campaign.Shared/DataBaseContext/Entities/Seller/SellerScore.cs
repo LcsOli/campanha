@@ -62,6 +62,11 @@ namespace Campaign.Shared.DataBaseContext.Entities.Seller
             CurrentRevenue = revenue;
         }
 
+        public void ClearCurrentRevenue()
+        {
+            CurrentRevenue = 0;
+        }
+
         public void UpdateQtyReactivateds(short qtyReactivateds)
         {
             QtyConsumersReactivateds += qtyReactivateds;
