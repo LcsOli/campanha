@@ -9,7 +9,7 @@ namespace Campaign.Pooling.Configurations.ContainerDI.Orchestrators
         public static void AddOrchestrators(this IServiceCollection services)
         {
             services.AddScoped<IMainOrchestrator, MainOrchestrator>();
-            services.AddScoped<ICalcuateScoreOrchestrator, CalcuateScoreOrchestrator>();
+            services.AddScoped<ICalculateScoreOrchestrator, CalculateScoreOrchestrator>();
             services.AddScoped<IUpdateProductPromotionReadHistoryOrchestrator, UpdateProductPromotionReadHistoryOrchestrator>();
         }
     }

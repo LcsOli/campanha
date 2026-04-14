@@ -15,7 +15,7 @@ namespace Campaign.Pooling.Handlers.CalculateReactivatedsConsummers
 
         public async Task Handle(CalculateReactivatedsConsumersCommand cmd)
         {
-            var sellersQuantityReactivateds = await _orderSummaryReadOnlyRepository.GetSellersIdsThatReactivatedConsumers(cmd.ConsumersIds, cmd.PromotionCode);
+            var sellersQuantityReactivateds = await _orderSummaryReadOnlyRepository.GetSellersIdsThatReactivatedConsumers(cmd.PromotionCode);
 
             //TODO - Pensar em uma forma de deixar a quantidade de pontos a serem somados flexiveis a alterações sem a necessidade de alterar o código fonte.
             sellersQuantityReactivateds.ForEach(sellerQuantityReactivated =>

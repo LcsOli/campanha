@@ -80,7 +80,7 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
             return await query.ToArrayAsync();
         }
 
-        public async Task<List<SellersQuantityConsumersResponse>> GetSellersIdsThatReactivatedConsumers(int[] consumersIds, int promotionCode)
+        public async Task<List<SellersQuantityConsumersResponse>> GetSellersIdsThatReactivatedConsumers(int promotionCode)
         {
             var query = _context.Database.SqlQuery<SellersQuantityConsumersResponse>($@"
                                                           SELECT 
@@ -92,22 +92,16 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
                                                                     c.codusur,
                                                                     c.codcli
                                                                 FROM
-                                                                    pcpedc c
-                                                                    JOIN pcusuari u on c.codusur = u.codusur
-                                                                    JOIN pcpedi i on i.numped = c.numped
-                                                                    JOIN pcpromoi p on p.codprod = i.codprod
-                                                                    JOIN pcpromoc pc on pc.codpromocao = p.codpromocao
-                                                                    JOIN pcclient client on c.codcli = client.codcli
-                                                                    JOIN pcpromoc pcgeral on pcgeral.codpromocao = TO_NUMBER(CONCAT(to_char(pc.dtinicio, 'yyyy'), '00'))
+                                                                    cf_campanha_rca_score crs
+                                                                    JOIN pcpedc c ON c.codusur = crs.rca_id
+                                                                    JOIN pcusuari u ON c.codusur = u.codusur
+                                                                    JOIN pcpedi i ON i.numped = c.numped
+                                                                    JOIN pcpromoi p ON p.codprod = i.codprod
+                                                                    JOIN pcpromoc pc ON pc.codpromocao = p.codpromocao
+                                                                    JOIN pcclient client ON c.codcli = client.codcli
+                                                                    JOIN pcpromoc pcgeral ON pcgeral.codpromocao = TO_NUMBER(CONCAT(to_char(pc.dtinicio, 'yyyy'), '00'))
                                                                 WHERE
                                                                     u.tipovend = 'R' AND
-                                                                    c.codcli IN(
-                                                                              SELECT 
-                                                                                  TO_NUMBER(REGEXP_SUBSTR({string.Join(",", consumersIds)}, '[^,]+', 1, LEVEL))
-                                                                              FROM 
-                                                                                  dual
-                                                                              CONNECT BY REGEXP_SUBSTR({string.Join(",", consumersIds)}, '[^,]+', 1, LEVEL) IS NOT NULL
-                                                                    ) AND
                                                                     p.codpromocao = {promotionCode} AND
                                                                     TO_CHAR(client.dtcadastro, 'yyyy-MM-DD') < CONCAT(TO_CHAR(pcgeral.dtinicio, 'yyyy'), '-01-01') AND
                                                                     (
@@ -163,7 +157,7 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
             return await query.ToListAsync();
         }
 
-        public async Task<List<SellersQuantityConsumersResponse>> GetSellersIdsThatRegisteredsConsumers(int[] consumersIds, int promotionCode)
+        public async Task<List<SellersQuantityConsumersResponse>> GetSellersIdsThatRegisteredsConsumers(int promotionCode)
         {
             var query = _context.Database.SqlQuery<SellersQuantityConsumersResponse>($"""
                         SELECT 
@@ -175,23 +169,17 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
                                 c.codusur,
                                 c.codcli
                             FROM
-                                pcpedc c
-                                JOIN pcusuari u on c.codusur = u.codusur
-                                JOIN pcpedi i on i.numped = c.numped
-                                JOIN pcpromoi p on p.codprod = i.codprod
-                                JOIN pcpromoc pc on pc.codpromocao = p.codpromocao
-                                JOIN pcclient client on c.codcli = client.codcli
-                                JOIN pcpromoc pcgeral on pcgeral.codpromocao = TO_NUMBER(CONCAT(to_char(pc.dtinicio, 'yyyy'), '00'))
+                                cf_campanha_rca_score crs
+                                JOIN pcpedc c ON c.codusur = crs.rca_id
+                                JOIN pcusuari u ON c.codusur = u.codusur
+                                JOIN pcpedi i ON i.numped = c.numped
+                                JOIN pcpromoi p ON p.codprod = i.codprod
+                                JOIN pcpromoc pc ON pc.codpromocao = p.codpromocao
+                                JOIN pcclient client ON c.codcli = client.codcli
+                                JOIN pcpromoc pcgeral ON pcgeral.codpromocao = TO_NUMBER(CONCAT(to_char(pc.dtinicio, 'yyyy'), '00'))
                             WHERE
                                 u.tipovend = 'R' AND
                                 p.codpromocao = {promotionCode} AND
-                                c.codcli IN(
-                                         SELECT 
-                                             TO_NUMBER(REGEXP_SUBSTR({string.Join(",", consumersIds)}, '[^,]+', 1, LEVEL))
-                                         FROM 
-                                             dual
-                                         CONNECT BY REGEXP_SUBSTR({string.Join(",", consumersIds)}, '[^,]+', 1, LEVEL) IS NOT NULL
-                                )AND
                                 TO_CHAR(client.dtcadastro, 'yyyy-MM-DD') >= TO_CHAR(pcgeral.dtinicio, 'yyyy-MM-DD') AND
                                 (
                                     TO_CHAR(c.data, 'yyyy-MM-DD') >= TO_CHAR(pcgeral.dtinicio, 'yyyy-MM-DD') AND

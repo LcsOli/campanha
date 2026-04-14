@@ -8,12 +8,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Orchestrators\CalculateScore\Validators\**" />
+    <Content Remove="Orchestrators\CalculateScore\Validators\**" />
+    <EmbeddedResource Remove="Orchestrators\CalculateScore\Validators\**" />
+    <None Remove="Orchestrators\CalculateScore\Validators\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.5" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Commands\SllerScore\Get\" />
-    <Folder Include="Orchestrators\CalcuateScore\Validators\" />
     <Folder Include="Repositories\OrderDetail\WriteOnly\" />
     <Folder Include="Repositories\OrderSummary\WriteOnly\" />
     <Folder Include="Repositories\ProductPromotion\WriteOnly\" />

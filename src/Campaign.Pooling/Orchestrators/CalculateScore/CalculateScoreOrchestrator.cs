@@ -12,7 +12,7 @@ using Campaign.Pooling.Handlers.CalculateReactivatedsConsummers;
 
 namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
 {
-    public class CalcuateScoreOrchestrator : ICalcuateScoreOrchestrator
+    public class CalculateScoreOrchestrator : ICalculateScoreOrchestrator
     {
         private readonly IGetSellerScoreHandler _getSellerScoreHandler;
         private readonly IGetOrdersDetailHandler _getOrdersDetailHandler;
@@ -22,7 +22,7 @@ namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
         private readonly ICalculateRegisteredsConsumersHandler _calculateRegisteredsConsumersHandler;
         private readonly ICalculateReactivatedsConsumersHandler _calculateReactivatedsConsumersHandler;
 
-        public CalcuateScoreOrchestrator(IGetSellerScoreHandler getSellerScoreHandler,
+        public CalculateScoreOrchestrator(IGetSellerScoreHandler getSellerScoreHandler,
                                          IGetOrdersDetailHandler getOrdersDetailHandler,
                                          ICalculateRevenueHandler calculateRevenueHandler,
                                          ICalculateCouponsHandler calculateCouponsHandler,
@@ -46,13 +46,11 @@ namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
 
             _calculateScorePointsByProductHandler.Handle(new CalculateScoreByProductCommand(ordersDetail, sellersScore));
 
-            var consumersIds = ordersDetail.Select(o => o.ConsumerId).ToHashSet();
-
             //TODO - Verificar a possibilidade de armazenar dados em cache para evitar que varios parametros
             //sejam passados para o handler de calculo de reativados e registrados, visto que ambos precisam dos mesmos parametros.
 
-            await _calculateReactivatedsConsumersHandler.Handle(new CalculateReactivatedsConsumersCommand(promotionCode, [.. consumersIds], sellersScore));
-            await _calculateRegisteredsConsumersHandler.Handler(new CalculateRegisteredsConsumersCommand(promotionCode, [.. consumersIds], sellersScore));
+            await _calculateReactivatedsConsumersHandler.Handle(new CalculateReactivatedsConsumersCommand(promotionCode, sellersScore));
+            await _calculateRegisteredsConsumersHandler.Handler(new CalculateRegisteredsConsumersCommand(promotionCode, sellersScore));
 
             await _calculateRevenueHandler.Handle(new CalculateRevenueCommand(promotionCode, sellersScore));
             await _calculateRevenueHandler.Handle(new CalculateRevenueMonthCommand(promotionCode, sellersScore));

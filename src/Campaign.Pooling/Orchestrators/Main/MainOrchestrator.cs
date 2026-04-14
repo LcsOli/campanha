@@ -8,11 +8,11 @@ namespace Campaign.Pooling.Orchestrators.MainOrchestrator
     {
         private readonly IUnityOfWork _unityOfWork;
 
-        private readonly ICalcuateScoreOrchestrator _calcuateScoreByProductOrchestrator;
+        private readonly ICalculateScoreOrchestrator _calcuateScoreByProductOrchestrator;
         private readonly IUpdateProductPromotionReadHistoryOrchestrator _updateProductPromotionReadHistoryOrchestrator;
 
         public MainOrchestrator(IUnityOfWork unityOfWork,
-                                ICalcuateScoreOrchestrator calcuateScoreByProductOrchestrator,
+                                ICalculateScoreOrchestrator calcuateScoreByProductOrchestrator,
                                 IUpdateProductPromotionReadHistoryOrchestrator updateProductPromotionReadHistoryOrchestrator)
         {
             _unityOfWork = unityOfWork;

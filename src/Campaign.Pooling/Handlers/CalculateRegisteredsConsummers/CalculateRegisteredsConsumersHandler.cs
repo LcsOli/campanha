@@ -15,7 +15,7 @@ namespace Campaign.Pooling.Handlers.CalculateRegisteredsConsummers
 
         public async Task Handler(CalculateRegisteredsConsumersCommand cmd)
         {
-            var sellersQuantityReactivateds = await _orderSummaryReadOnlyRepository.GetSellersIdsThatRegisteredsConsumers(cmd.ConsumersIds, cmd.PromotionCode);
+            var sellersQuantityReactivateds = await _orderSummaryReadOnlyRepository.GetSellersIdsThatRegisteredsConsumers(cmd.PromotionCode);
 
             sellersQuantityReactivateds.ForEach(sellerQuantityRegistereds =>
             {

@@ -1,6 +1,6 @@
 ﻿namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
 {
-    public interface ICalcuateScoreOrchestrator
+    public interface ICalculateScoreOrchestrator
     {
         Task Execute(int promotionCode);
     }
