@@ -34,7 +34,7 @@ namespace Campaign.Pooling.Repositories.OrderDetail.ReadOnly
             return await query.ToListAsync();
         }
 
-        public async Task<List<OrderDetailResponse>> GetByPromotionCodeAndDateInitAndEnd(int promotionCode)
+        public async Task<List<OrderDetailResponse>> GetByPromotionCode(int promotionCode)
         {
             var query = _context.Database.SqlQuery<OrderDetailResponse>($"""
                             SELECT

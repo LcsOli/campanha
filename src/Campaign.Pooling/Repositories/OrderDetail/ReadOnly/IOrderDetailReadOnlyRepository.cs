@@ -7,7 +7,7 @@ namespace Campaign.Pooling.Repositories.OrderDetail.ReadOnly
     public interface IOrderDetailReadOnlyRepository
     {
         Task<List<Entity.OrderDetail>> GetByIdAndDateInitAndEnd(int[] productsIds, DateTime initIn, DateTime endIn);
-        Task<List<OrderDetailResponse>> GetByPromotionCodeAndDateInitAndEnd(int promotionCode);
+        Task<List<OrderDetailResponse>> GetByPromotionCode(int promotionCode);
         Task<List<TotalRevenueResponse>> CalculateCurrentRevenue(int promotionCode);
         Task<List<TotalRevenueResponse>> CalculateRevenueByMonth(DateTime init, DateTime end);
     }

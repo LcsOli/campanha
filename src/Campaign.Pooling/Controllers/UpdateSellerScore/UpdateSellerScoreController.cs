@@ -8,7 +8,8 @@ namespace Campaign.Pooling.Controllers.UpdateSellerScore
     public class UpdateSellerScoreController : ControllerBase
     {
         [HttpPatch]
-        public async Task<IActionResult> Update([FromQuery] int promotionCode, [FromServices] IMainOrchestrator mainOrchestrator)
+        public async Task<IActionResult> Update([FromQuery] int promotionCode, 
+                                                [FromServices] IMainOrchestrator mainOrchestrator)
         {
             await mainOrchestrator.Execute(promotionCode);
             return Ok();

@@ -18,7 +18,7 @@ namespace Campaign.Pooling.Handlers.CalculateScoreByProduct
             new DataToCalcIsDefinedValidator()
                 .Validate(cmd);
 
-            var ordersDetails = await _orderDetailReadOnlyRepository.GetByPromotionCodeAndDateInitAndEnd(cmd.PromotionCode);
+            var ordersDetails = await _orderDetailReadOnlyRepository.GetByPromotionCode(cmd.PromotionCode);
 
             cmd.SellersScores.ForEach(sellerScore =>
             {
