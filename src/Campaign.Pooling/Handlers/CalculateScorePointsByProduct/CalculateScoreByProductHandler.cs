@@ -1,5 +1,5 @@
 ﻿using Campaign.Pooling.Commands.CalculateScoreByProduct;
-using Campaign.Pooling.Repositories.SellerScore.WriteOnly;
+using Campaign.Pooling.Repositories.OrderDetail.ReadOnly;
 using Campaign.Pooling.Handlers.CalculateScorePoints.Validator;
 using EntitySellerScore = Campaign.Shared.DataBaseContext.Entities.Seller;
 
@@ -7,34 +7,33 @@ namespace Campaign.Pooling.Handlers.CalculateScoreByProduct
 {
     public class CalculateScoreByProductHandler : ICalculateScoreByProductHandler
     {
-        private readonly ISellerScoreWriteOnlyRepository _sellerScoreWriteOnlyRepository;
-        public CalculateScoreByProductHandler(ISellerScoreWriteOnlyRepository sellerScoreWriteOnlyRepository)
+        private readonly IOrderDetailReadOnlyRepository _orderDetailReadOnlyRepository;
+        public CalculateScoreByProductHandler(IOrderDetailReadOnlyRepository orderDetailReadOnlyRepository)
         {
-            _sellerScoreWriteOnlyRepository = sellerScoreWriteOnlyRepository;
+            _orderDetailReadOnlyRepository = orderDetailReadOnlyRepository;
         }
 
-        public void Handle(CalculateScoreByProductCommand cmd)
+        public async Task Handle(CalculateScoreByProductCommand cmd)
         {
             new DataToCalcIsDefinedValidator()
                 .Validate(cmd);
 
+            var ordersDetails = await _orderDetailReadOnlyRepository.GetByPromotionCodeAndDateInitAndEnd(cmd.PromotionCode);
+
             cmd.SellersScores.ForEach(sellerScore =>
             {
-                var ordersByClient = cmd.OrdersDetails.Where(o => o.SellerId == sellerScore.SellerId)
-                                                      .GroupBy(o => o.ConsumerId)
-                                                      .Select(o => new
-                                                      {
-                                                          CustomerId = o.Key,
-                                                          Orders = o.DistinctBy(p => p.ProductId).ToList()
-                                                      }).ToList();
+                var ordersByClient = ordersDetails.Where(o => o.SellerId == sellerScore.SellerId)
+                                                  .GroupBy(o => o.ConsumerId)
+                                                  .Select(o => new
+                                                  {
+                                                      CustomerId = o.Key,
+                                                      Orders = o.DistinctBy(p => p.ProductId).ToList()
+                                                  }).ToList();
 
                 ordersByClient.ForEach(o => sellerScore.UpdateScore((decimal)o.Orders.Sum(o => o.ProductPromotionPoints)!));
 
                 CalculateCouponsByScore(sellerScore);
             });
-
-            //TODO - Verificar a necessidade de utilizar update. Caso realmente for necessário, chamar o update no final da rotina para pegar todas as atualizações da entidade.
-            _sellerScoreWriteOnlyRepository.Update(cmd.SellersScores);
         }
 
         private void CalculateCouponsByScore(EntitySellerScore.SellerScore sellerScore)

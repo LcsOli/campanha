@@ -1,5 +1,4 @@
 ﻿using Campaign.Pooling.Commands.Calculate;
-using Campaign.Pooling.Commands.Orders.Get;
 using Campaign.Pooling.Commands.Consumers.Get;
 using Campaign.Pooling.Handlers.CalculateCoupons;
 using Campaign.Pooling.Handlers.CalculateRevenueTarget;
@@ -15,7 +14,6 @@ namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
     public class CalculateScoreOrchestrator : ICalculateScoreOrchestrator
     {
         private readonly IGetSellerScoreHandler _getSellerScoreHandler;
-        private readonly IGetOrdersDetailHandler _getOrdersDetailHandler;
         private readonly ICalculateRevenueHandler _calculateRevenueHandler;
         private readonly ICalculateCouponsHandler _calculateCouponsHandler;
         private readonly ICalculateScoreByProductHandler _calculateScorePointsByProductHandler;
@@ -23,7 +21,6 @@ namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
         private readonly ICalculateReactivatedsConsumersHandler _calculateReactivatedsConsumersHandler;
 
         public CalculateScoreOrchestrator(IGetSellerScoreHandler getSellerScoreHandler,
-                                         IGetOrdersDetailHandler getOrdersDetailHandler,
                                          ICalculateRevenueHandler calculateRevenueHandler,
                                          ICalculateCouponsHandler calculateCouponsHandler,
                                          ICalculateScoreByProductHandler calculateScorePointsByProductHandler,
@@ -31,7 +28,6 @@ namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
                                          ICalculateReactivatedsConsumersHandler calculateReactivatedsConsumersHandler)
         {
             _getSellerScoreHandler = getSellerScoreHandler;
-            _getOrdersDetailHandler = getOrdersDetailHandler;
             _calculateCouponsHandler = calculateCouponsHandler;
             _calculateRevenueHandler = calculateRevenueHandler;
             _calculateRegisteredsConsumersHandler = calculateRegisteredsConsumersHandler;
@@ -41,13 +37,9 @@ namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
 
         public async Task Execute(int promotionCode)
         {
-            var ordersDetail = await _getOrdersDetailHandler.Handle(new GetOrdersDetailCommand(promotionCode));
             var sellersScore = await _getSellerScoreHandler.Handle();
 
-            _calculateScorePointsByProductHandler.Handle(new CalculateScoreByProductCommand(ordersDetail, sellersScore));
-
-            //TODO - Verificar a possibilidade de armazenar dados em cache para evitar que varios parametros
-            //sejam passados para o handler de calculo de reativados e registrados, visto que ambos precisam dos mesmos parametros.
+            await _calculateScorePointsByProductHandler.Handle(new CalculateScoreByProductCommand(promotionCode, sellersScore));
 
             await _calculateReactivatedsConsumersHandler.Handle(new CalculateReactivatedsConsumersCommand(promotionCode, sellersScore));
             await _calculateRegisteredsConsumersHandler.Handler(new CalculateRegisteredsConsumersCommand(promotionCode, sellersScore));

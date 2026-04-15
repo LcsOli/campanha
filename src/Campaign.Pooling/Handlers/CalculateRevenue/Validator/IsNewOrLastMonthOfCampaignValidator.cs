@@ -10,7 +10,7 @@ namespace Campaign.Pooling.Handlers.CalculateRevenue.Validator
                 return false;
 
             var isNewMonth = entity!.PreviousDtInit.Month < entity.CurrentDtInit.Month;
-            var isLastMonthOfCampaign = entity.CurrentDtEnd >= entity.LastDtEnd;
+            var isLastMonthOfCampaign = entity.CurrentDtEnd >= entity.DtEndOfCampaign;
 
             return isNewMonth || isLastMonthOfCampaign;
         }

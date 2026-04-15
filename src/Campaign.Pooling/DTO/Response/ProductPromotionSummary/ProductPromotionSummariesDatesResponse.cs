@@ -4,5 +4,5 @@
                                                          DateTime PreviousDtEnd,
                                                          DateTime CurrentDtInit,
                                                          DateTime CurrentDtEnd,
-                                                         DateTime LastDtEnd);
+                                                         DateTime DtEndOfCampaign);
 }

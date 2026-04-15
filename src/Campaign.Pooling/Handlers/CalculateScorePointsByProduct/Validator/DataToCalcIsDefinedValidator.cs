@@ -13,7 +13,7 @@ namespace Campaign.Pooling.Handlers.CalculateScorePoints.Validator
                 .GreaterThan(0)
                 .WithMessage("Lista de vendedores devem ser definidos.");
 
-            RuleFor(c => c.OrdersDetails.Count)
+            RuleFor(c => c.PromotionCode)
                 .GreaterThan(0)
                 .WithMessage("Detalhes da venda devem ser definidos.");
         }

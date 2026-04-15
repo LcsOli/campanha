@@ -20,7 +20,7 @@ namespace Campaign.Pooling.Repositories.ProductPromotionSummary.ReadOnly
                          pprevious.dtfim AS "PreviousDtEnd",
                          pcurrent.dtinicio AS "CurrentDtInit",
                          pcurrent.dtfim AS "CurrentDtEnd",
-                         plast.dtfim AS "LastDtEnd"
+                         plast.dtfim AS "DtEndOfCampaign"
                      FROM
                          pcpromoc pcurrent
                          JOIN pcpromoc pprevious ON pprevious.codpromocao = pcurrent.codpromocao - 1

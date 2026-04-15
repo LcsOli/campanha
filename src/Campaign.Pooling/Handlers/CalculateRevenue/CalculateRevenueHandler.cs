@@ -22,18 +22,18 @@ namespace Campaign.Pooling.Handlers.CalculateRevenueTarget
 
         public async Task Handle(CalculateRevenueCommand cmd)
         {
-            var productsPromotionsSummariesDates = await _productPromotionSummaryReadOnlyRepository.GetProductPromotionSummariesDates(cmd.PromotionCode);
+            var promotionsDates = await _productPromotionSummaryReadOnlyRepository.GetProductPromotionSummariesDates(cmd.PromotionCode);
 
-            if (productsPromotionsSummariesDates!.PreviousDtInit.Month < productsPromotionsSummariesDates.CurrentDtInit.Month)
+            if (promotionsDates!.PreviousDtInit.Month < promotionsDates.CurrentDtInit.Month)
                 cmd.SellersScore.ForEach(sellerScore => sellerScore.ClearCurrentRevenue());
 
-            var year = productsPromotionsSummariesDates!.CurrentDtInit.Year;
+            var year = promotionsDates!.CurrentDtInit.Year;
 
-            var month = (productsPromotionsSummariesDates.CurrentDtInit.Month < productsPromotionsSummariesDates.CurrentDtEnd.Month) ?
-                                        productsPromotionsSummariesDates.CurrentDtInit.Month : productsPromotionsSummariesDates.CurrentDtEnd.Month;
+            var monthOfDtInitIsLessOfDtEnd = promotionsDates.CurrentDtInit.Month < promotionsDates.CurrentDtEnd.Month;
 
-            var day = (productsPromotionsSummariesDates.CurrentDtInit.Month < productsPromotionsSummariesDates.CurrentDtEnd.Month) ?
-                                        DateTime.DaysInMonth(year, month) : productsPromotionsSummariesDates.CurrentDtEnd.Day;
+            var month = monthOfDtInitIsLessOfDtEnd ? promotionsDates.CurrentDtInit.Month : promotionsDates.CurrentDtEnd.Month;
+
+            var day = monthOfDtInitIsLessOfDtEnd ? DateTime.DaysInMonth(year, month) : promotionsDates.CurrentDtEnd.Day;
 
             var currentRevenue = await _orderDetailReadOnlyRepository.CalculateRevenueByMonth(new DateTime(year, month, 01), new DateTime(year, month, day));
 
@@ -47,13 +47,9 @@ namespace Campaign.Pooling.Handlers.CalculateRevenueTarget
         public async Task Handle(CalculateRevenueMonthCommand cmd)
         {
             var lastPromotionRead = await _productPromotionReadDataHistoryRepositorie.GetLast();
-
-            if (lastPromotionRead == null)
-                return;
-
             var productsPromotionsSummariesDates = await _productPromotionSummaryReadOnlyRepository.GetProductPromotionSummariesDates(cmd.PromotionCode);
 
-            if (!IsNewOrLastMonthOfCampaignValidator.Validate(productsPromotionsSummariesDates!))
+            if (lastPromotionRead == null || !IsNewOrLastMonthOfCampaignValidator.Validate(productsPromotionsSummariesDates!))
                 return;
 
             var year = productsPromotionsSummariesDates!.PreviousDtInit.Year;
