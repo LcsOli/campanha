@@ -6,5 +6,6 @@ namespace Campaign.API.Repositories.User.ReadOnly
     {
         Task<Entities.Users.User?> GetById(int id);
         Task<Entities.Users.User?> GetByDocument(string document);
+        Task<DateTime?> GetLastAccess(int id);
     }
 }

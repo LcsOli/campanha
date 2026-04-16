@@ -1,5 +1,4 @@
 ﻿using Campaign.Pooling.Commands.ProductPromotions.Get;
-using Campaign.Shared.DataBaseContext.Entities.UnityOfWork;
 using Campaign.Pooling.Commands.ProductPromotionReadHistory.Get;
 using Campaign.Pooling.Commands.ProductPromotionReadHistory.Create;
 using Campaign.Pooling.Handlers.ProductPromotion.ProductPromotionExists;

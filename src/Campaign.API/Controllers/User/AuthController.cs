@@ -13,10 +13,10 @@ namespace Campaign.API.Controllers.User
         [HttpPost]
         [AllowAnonymous]
         public async Task<IActionResult> Auth([FromBody] AuthRequest request,
-                                              [FromServices] IAuthOrchestratorHandler authOrchestratorHandler)
+                                              [FromServices] IAuthOrchestrator authOrchestratorHandler)
         {
             var cmd = new AuthOrchestratorCommand(request.Document, request.Password);
-            return Accepted(await authOrchestratorHandler.Handle(cmd));
+            return Accepted(await authOrchestratorHandler.Execute(cmd));
         }
     }
 }

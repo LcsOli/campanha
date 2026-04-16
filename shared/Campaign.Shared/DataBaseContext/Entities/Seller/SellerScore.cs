@@ -21,6 +21,7 @@ namespace Campaign.Shared.DataBaseContext.Entities.Seller
         public decimal RevenueMonth5 { get; private set; }
         public short QtyConsumersReactivateds { get; private set; }
         public short QtyConsumersRegistereds { get; private set; }
+        public DateTime? LastScoreByAccess { get; private set; }
 
         [NotMapped]
         public decimal CouponsByRevenue { get; private set; }
@@ -100,6 +101,11 @@ namespace Campaign.Shared.DataBaseContext.Entities.Seller
                     break;
             }
             //TODO - Verificar a possibilidade de criar uma tabela de receita mensal para evitar a necessidade de criar uma coluna para cada mês, visto que isso pode gerar problemas de manutenção no futuro.
+        }
+
+        public void UpdateLastScoreByAccess()
+        {
+            LastScoreByAccess = DateTime.Now;
         }
     }
 }

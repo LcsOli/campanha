@@ -6,7 +6,6 @@ namespace Campaign.API.DTOs.Request.User.Create
                                       int TeamId,
                                       string Name,
                                       int SellerId,
-                                      int? ManagerId,
                                       string Document,
                                       string Password);
 }

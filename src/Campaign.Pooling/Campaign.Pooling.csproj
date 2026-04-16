@@ -8,9 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Commands\SllerScore\**" />
     <Compile Remove="Orchestrators\CalculateScore\Validators\**" />
+    <Content Remove="Commands\SllerScore\**" />
     <Content Remove="Orchestrators\CalculateScore\Validators\**" />
+    <EmbeddedResource Remove="Commands\SllerScore\**" />
     <EmbeddedResource Remove="Orchestrators\CalculateScore\Validators\**" />
+    <None Remove="Commands\SllerScore\**" />
     <None Remove="Orchestrators\CalculateScore\Validators\**" />
   </ItemGroup>
 
@@ -19,7 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Commands\SllerScore\Get\" />
     <Folder Include="Repositories\OrderDetail\WriteOnly\" />
     <Folder Include="Repositories\OrderSummary\WriteOnly\" />
     <Folder Include="Repositories\ProductPromotion\WriteOnly\" />

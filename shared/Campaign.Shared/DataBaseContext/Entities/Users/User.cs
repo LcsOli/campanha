@@ -13,10 +13,8 @@ namespace Campaign.Shared.DataBaseContext.Entities.Users
         public Roles Roles { get; protected set; }
         public DateTime? LastAccess { get; protected set; }
         public int? TeamId { get; protected set; }
-        public int? ManagerId { get; protected set; }
         public int SellerId { get; protected set; }
         public Team.Team? Team { get; protected set; }
-        public User? Manager { get; protected set; }
         public SellerEntity.Seller? Seller { get; protected set; }
 
         public User() { }
@@ -26,7 +24,6 @@ namespace Campaign.Shared.DataBaseContext.Entities.Users
                     int? teamId,
                     string name,
                     int sellerId,
-                    int? managerId,
                     string document,
                     string password,
                     DateTime? lastAccess)
@@ -37,7 +34,6 @@ namespace Campaign.Shared.DataBaseContext.Entities.Users
             TeamId = teamId;
             SellerId = sellerId;
             Document = document;
-            ManagerId = managerId;
             LastAccess = lastAccess;
             HashedPassword = password;
         }
@@ -46,7 +42,6 @@ namespace Campaign.Shared.DataBaseContext.Entities.Users
                                     Roles roles,
                                     string name,
                                     int sellerId,
-                                    int? managerId,
                                     string document,
                                     string password)
         {
@@ -57,7 +52,6 @@ namespace Campaign.Shared.DataBaseContext.Entities.Users
                 TeamId = teamId,
                 SellerId = sellerId,
                 Document = document,
-                ManagerId = managerId,
                 HashedPassword = password
             };
         }

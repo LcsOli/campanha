@@ -12,11 +12,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
-builder.Services.AddHandlerInjection();
-builder.Services.AddIdentityInjection();
-builder.Services.AddServicesInjection();
+builder.Services.AddHandler();
+builder.Services.AddIdentity();
+builder.Services.AddServices();
 builder.Services.AddDataBase();
-builder.Services.AddRepositoriesInjection();
+builder.Services.AddRepositories();
 builder.Services.AddUnityOfWork();
 builder.Services.AddAuthorizationConfiguration();
 builder.Services.AddAuthenticationConfigurations();

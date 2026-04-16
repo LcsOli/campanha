@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Campaign.Shared.DataBaseContext.Entities;
 using Campaign.Pooling.DTO.Response.ProductPromotionSummary;
+using Entity = Campaign.Shared.DataBaseContext.Entities.Product;
 
 namespace Campaign.Pooling.Repositories.ProductPromotionSummary.ReadOnly
 {
@@ -30,6 +31,11 @@ namespace Campaign.Pooling.Repositories.ProductPromotionSummary.ReadOnly
             """);
 
             return await query.FirstOrDefaultAsync();
+        }
+
+        public async Task<Entity.ProductPromotionSummary?> GetByPromotionCode(int promotionCode)
+        {
+            return await _context.ProductPromotionSummaries.FirstOrDefaultAsync(p => p.Id == promotionCode);
         }
     }
 }

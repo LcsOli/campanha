@@ -4,7 +4,7 @@ using Entities = Campaign.Shared.DataBaseContext.Entities;
 
 namespace Campaign.API.Repositories.User.ReadOnly
 {
-    public class UserReadOnlyRepository : IUserReadOnlyRepository 
+    public class UserReadOnlyRepository : IUserReadOnlyRepository
     {
         private readonly CampaingContextDb _context;
         public UserReadOnlyRepository(CampaingContextDb context)
@@ -20,6 +20,15 @@ namespace Campaign.API.Repositories.User.ReadOnly
         public async Task<Entities.Users.User?> GetByDocument(string document)
         {
             return await _context.Users.FirstOrDefaultAsync(u => u.Document == document);
+        }
+
+        public async Task<DateTime?> GetLastAccess(int id)
+        {
+            return (await _context.Users
+                                  .Where(u => u.Id == id)
+                                  .Select(u => new { u.LastAccess })
+                                  .FirstOrDefaultAsync())
+                                  ?.LastAccess;
         }
     }
 }

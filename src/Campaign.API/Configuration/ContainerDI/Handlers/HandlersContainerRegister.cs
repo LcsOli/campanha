@@ -2,17 +2,19 @@
 using Campaign.API.Handlers.User.GetUser;
 using Campaign.API.Handlers.User.RegisterUser;
 using Campaign.API.Handlers.User.AuthOrchestrator;
+using Campaign.API.Handlers.User.InsertScoreByAccess;
 
 namespace Campaign.API.Configuration.ContainerDI.Handlers
 {
-    public static class HandlerInjection
+    public static class HandlersContainerRegister
     {
-        public static void AddHandlerInjection(this IServiceCollection services)
+        public static void AddHandler(this IServiceCollection services)
         {
             services.AddScoped<IAuthHandler, AuthHandler>();
             services.AddScoped<IGetUserHandler, GetUserHandler>();
             services.AddScoped<IRegisterUserHandler, RegisterUserHandler>();
-            services.AddScoped<IAuthOrchestratorHandler, AuthOrchestratorHandler>();
+            services.AddScoped<IAuthOrchestrator, AuthOrchestrator>();
+            services.AddScoped<IInsertScoreByAccessHandler, InsertScoreByAccessHandler>();
         }
     }
 }

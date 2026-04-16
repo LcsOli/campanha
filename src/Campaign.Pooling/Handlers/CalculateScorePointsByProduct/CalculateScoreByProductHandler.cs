@@ -44,8 +44,11 @@ namespace Campaign.Pooling.Handlers.CalculateScoreByProduct
 
             var couponsToUpdate = (short)(sellerScore.Score / _scoreToValidate);
 
-            if (couponsToUpdate > sellerScore.Coupons)
-                sellerScore.UpdateCouponsByScore();
+            if (couponsToUpdate < sellerScore.Coupons)
+                return;
+
+
+            sellerScore.UpdateCouponsByScore();
         }
     }
 }

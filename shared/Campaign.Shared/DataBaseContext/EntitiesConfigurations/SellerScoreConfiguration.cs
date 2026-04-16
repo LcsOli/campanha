@@ -75,6 +75,9 @@ namespace Campaign.Shared.DataBaseContext.EntitiesConfigurations
             builder.Property(s => s.QtyConsumersRegistereds)
                    .HasColumnName("QT_CLIENTES_POSITIVADOS")
                    .HasDefaultValue(0);
+
+            builder.Property(s => s.LastScoreByAccess)
+                   .HasColumnName("DT_ULTIMA_PONTUACAO_ACESSO");
         }
     }
 }

@@ -45,23 +45,12 @@ namespace Campaign.Shared.DataBaseContext.Entities.EntitiesConfigurations
                    .HasColumnName("EQUIPE_ID")
                    .IsRequired();
 
-            builder.Property(t => t.ManagerId)
-                   .HasColumnName("GERENTE_ID");
-
             builder.Property(t => t.SellerId)
                    .HasColumnName("RCA_ID");
 
             builder.HasOne(t => t.Team)
                    .WithOne()
                    .HasForeignKey<Users.User>(t => t.TeamId);
-
-            builder.HasOne(t => t.Manager)
-                   .WithOne()
-                   .HasForeignKey<Users.User>(t => t.ManagerId);
-
-            builder.HasOne(t => t.Seller)
-                   .WithOne()
-                   .HasForeignKey<Users.User>(t => t.SellerId);
         }
     }
 }

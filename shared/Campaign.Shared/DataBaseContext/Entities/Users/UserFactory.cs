@@ -9,7 +9,6 @@ namespace Campaign.Shared.DataBaseContext.Entities.Users
                                    int? teamId,
                                    string name,
                                    int sellerId,
-                                   int? managerId,
                                    string document,
                                    string password)
         {
@@ -20,7 +19,7 @@ namespace Campaign.Shared.DataBaseContext.Entities.Users
             else if (role == Roles.Manager)
                 return Manager.Generate(teamId, role, name, sellerId, document, password);
             else
-                return User.Generate(teamId, role, name, sellerId, managerId, document, password);
+                return User.Generate(teamId, role, name, sellerId, document, password);
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Campaign.API.Controllers.User
         public async Task<IActionResult> Register([FromBody] RegisterUserRequest dto,
                                                   [FromServices] IRegisterUserHandler registerUserHandler)
         {
-            var cmd = new RegisterUserCommand(dto.Role, dto.TeamId, dto.Name, dto.SellerId, dto.ManagerId, dto.Document, dto.Password);
+            var cmd = new RegisterUserCommand(dto.Role, dto.TeamId, dto.Name, dto.SellerId, dto.Document, dto.Password);
             return Created(string.Empty, await registerUserHandler.Handle(cmd));
         }
 

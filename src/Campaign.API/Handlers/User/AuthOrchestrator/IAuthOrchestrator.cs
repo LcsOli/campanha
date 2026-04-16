@@ -3,8 +3,8 @@ using Campaign.Shared.DTOs.Response.User;
 
 namespace Campaign.API.Handlers.User.AuthOrchestrator
 {
-    public interface IAuthOrchestratorHandler
+    public interface IAuthOrchestrator
     {
-        Task<TokenJwtResponse> Handle(AuthOrchestratorCommand cmd);
+        Task<TokenJwtResponse> Execute(AuthOrchestratorCommand cmd);
     }
 }
