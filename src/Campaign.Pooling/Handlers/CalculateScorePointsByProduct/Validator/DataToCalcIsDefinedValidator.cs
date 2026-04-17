@@ -8,7 +8,6 @@ namespace Campaign.Pooling.Handlers.CalculateScorePoints.Validator
     {
         public DataToCalcIsDefinedValidator()
         {
-
             RuleFor(c => c.SellersScores.Count)
                 .GreaterThan(0)
                 .WithMessage("Lista de vendedores devem ser definidos.");

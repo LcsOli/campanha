@@ -12,12 +12,6 @@ namespace Campaign.Pooling.Repositories.ProductPromotionReadDataHistory.ReadOnly
             _context = context;
         }
 
-        public async Task<DateTime?> GetDateOfMostRecent()
-        {
-            //TODO - Verificar como a busca irá se comportar caso não seja encontrado nada.
-            return await _context.ProductPromotionReadDataHistories.MaxAsync(p => p.ReadAt);
-        }
-
         public async Task<Product.ProductPromotionReadDataHistory?> Get(int promotionCode)
         {
             return await _context.ProductPromotionReadDataHistories.FirstOrDefaultAsync(p => p.PromotionCode == promotionCode);

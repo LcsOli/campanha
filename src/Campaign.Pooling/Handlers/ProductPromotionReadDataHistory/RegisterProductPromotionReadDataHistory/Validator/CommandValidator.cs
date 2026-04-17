@@ -4,7 +4,6 @@ using Campaign.Pooling.Commands.ProductPromotionReadHistory.Create;
 
 namespace Campaign.Pooling.Handlers.ProductPromotionReadDataHistory.RegisterNewHistory.Validator
 {
-    //TODO - Verificar nomes de validadores e deixar no madrão: Objeto_a_ser_validado + Validator.
     public class CommandValidator : FluentValidator<RegisterProductPromotionReadDataHistoryCommand>
     {
         public CommandValidator()

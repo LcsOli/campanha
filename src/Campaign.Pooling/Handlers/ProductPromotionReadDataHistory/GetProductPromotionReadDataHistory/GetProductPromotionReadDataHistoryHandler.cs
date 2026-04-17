@@ -1,7 +1,8 @@
-﻿using Campaign.Pooling.Commands.ProductPromotionReadHistory.Get;
+﻿using System.Net;
+using Campaign.Shared.Exceptions;
 using Entity = Campaign.Shared.DataBaseContext.Entities.Product;
+using Campaign.Pooling.Commands.ProductPromotionReadHistory.Get;
 using Campaign.Pooling.Repositories.ProductPromotionReadDataHistory.ReadOnly;
-using Campaign.Pooling.Handlers.ProductPromotionReadDataHistory.GetProductPromotionReadDataHistory.Validator;
 
 namespace Campaign.Pooling.Handlers.ProductPromotionHistory.GetLastProductPromotionsHistory
 {
@@ -15,8 +16,10 @@ namespace Campaign.Pooling.Handlers.ProductPromotionHistory.GetLastProductPromot
 
         public async Task Handle(ProductPromotionWasReadCommand cmd)
         {
-            var command = await Handle(new GetProductPromotionReadHistoryCommand(cmd.promotionCode));
-            ProductPromotionWasReadValidator.Validate(command!);
+            var productPromotionReadDataHistory = await Handle(new GetProductPromotionReadHistoryCommand(cmd.promotionCode));
+
+            if (productPromotionReadDataHistory != null)
+                throw new CompaignException(HttpStatusCode.Forbidden, $"A promoção {productPromotionReadDataHistory.PromotionCode} foi processada em: {productPromotionReadDataHistory.ReadAt:dd/MM/yyyy}");
         }
 
         public async Task<Entity.ProductPromotionReadDataHistory?> Handle(GetProductPromotionReadHistoryCommand cmd)

@@ -6,7 +6,7 @@ namespace Campaign.Pooling.Repositories.ProductPromotion.ReadOnly
     public interface IProductPromotionReadOnlyRepository
     {
         Task<List<Product.ProductPromotion>> GetByPromotionCode(int promotionCode);
-        Task<bool> Exists(int promotionCode);
         Task<List<ProductPromotionResponse>> GetByProductsIdsAndPromotionCode(int[] productsIds, int promotionCode);
+        Task<Product.ProductPromotion?> Get(int promotionCode);
     }
 }

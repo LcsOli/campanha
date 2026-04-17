@@ -1,4 +1,6 @@
-﻿using Campaign.Pooling.Commands.ProductPromotions.Get;
+﻿using System.Net;
+using Campaign.Shared.Exceptions;
+using Campaign.Pooling.Commands.ProductPromotions.Get;
 using Campaign.Pooling.Repositories.ProductPromotion.ReadOnly;
 using Campaign.Pooling.Handlers.ProductPromotion.ProductPromotionExists.Validator;
 
@@ -16,10 +18,8 @@ namespace Campaign.Pooling.Handlers.ProductPromotion.ProductPromotionExists
         {
             new CommandValidator().Validate(cmd);
 
-            var promotionExist = await _productPromotionReadOnlyRepository.Exists(cmd.PromotionCode);
-
-            ProductPromotionExistsValidator
-                .Validate(promotionExist);
+            var productPromotion = await _productPromotionReadOnlyRepository.Get(cmd.PromotionCode) ?? 
+                throw new CompaignException(HttpStatusCode.BadRequest, "O código da promoção é inválido.");
         }
     }
 }

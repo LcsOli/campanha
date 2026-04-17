@@ -1,7 +1,7 @@
 ﻿using Campaign.API.Commands.User.Auth;
 using Campaign.Shared.DTOs.Response.User;
 
-namespace Campaign.API.Handlers.User.AuthOrchestrator
+namespace Campaign.API.Orchestrators.Auth
 {
     public interface IAuthOrchestrator
     {

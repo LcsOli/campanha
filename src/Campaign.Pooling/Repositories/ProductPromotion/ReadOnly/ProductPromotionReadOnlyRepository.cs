@@ -34,9 +34,9 @@ namespace Campaign.Pooling.Repositories.ProductPromotion.ReadOnly
             return [.. productsPromotionSummary.Select(p => new ProductPromotionResponse(p.Id, p.ProductId, p.PromotionCode, p.QuantityPointsGoals))];
         }
 
-        public async Task<bool> Exists(int promotionCode)
+        public async Task<Product.ProductPromotion?> Get(int promotionCode)
         {
-            return await _context.ProductPromotions.CountAsync(p => p.PromotionCode == promotionCode) > 0;
+            return await _context.ProductPromotions.FirstOrDefaultAsync(p => p.PromotionCode == promotionCode);
         }
     }
 }

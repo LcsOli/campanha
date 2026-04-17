@@ -6,7 +6,7 @@ using Campaign.API.Handlers.User.UpdateLastAccess;
 using Campaign.API.Handlers.User.InsertScoreByAccess;
 using Campaign.Shared.DataBaseContext.Entities.UnityOfWork;
 
-namespace Campaign.API.Handlers.User.AuthOrchestrator
+namespace Campaign.API.Orchestrators.Auth
 {
     public class AuthOrchestrator : IAuthOrchestrator
     {
