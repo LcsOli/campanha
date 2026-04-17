@@ -4,7 +4,6 @@ using Campaign.Pooling.Handlers.CalculateCoupons;
 using Campaign.Pooling.Handlers.CalculateRevenueTarget;
 using Campaign.Pooling.Commands.CalculateScoreByProduct;
 using Campaign.Pooling.Handlers.CalculateScoreByProduct;
-using Campaign.Pooling.Handlers.OrderDetail.GetOrdersDetail;
 using Campaign.Pooling.Handlers.SellerScore.GetSellersScore;
 using Campaign.Pooling.Handlers.CalculateRegisteredsConsummers;
 using Campaign.Pooling.Handlers.CalculateReactivatedsConsummers;
