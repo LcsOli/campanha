@@ -1,6 +1,6 @@
 ﻿using Campaign.Pooling.Orchestrators.MainOrchestrator;
-using Campaign.Pooling.Orchestrators.UpdateProductPromotionReadHistory;
 using Campaign.Pooling.Orchestrators.UpdateSellerScore;
+using Campaign.Pooling.Orchestrators.UpdateProductPromotionReadHistory;
 
 namespace Campaign.Pooling.Configurations.ContainerDI.Orchestrators
 {

@@ -1,8 +1,8 @@
-﻿using Campaign.API.Handlers.User.UpdateLastAccess;
+﻿using Campaign.API.Repositories.User.ReadOnly;
+using Campaign.API.Repositories.User.WriteOnly;
+using Campaign.API.Handlers.User.UpdateLastAccess;
 using Campaign.API.Repositories.ProductPromotion.ReadOnly;
 using Campaign.API.Repositories.ProductPromotion.WriteOnly;
-using Campaign.API.Repositories.User.ReadOnly;
-using Campaign.API.Repositories.User.WriteOnly;
 using Campaign.Pooling.Repositories.ProductPromotionSummary.ReadOnly;
 
 namespace Campaign.API.Configuration.ContainerDI.Repositories

@@ -1,23 +1,21 @@
 ﻿using Campaign.Pooling.Handlers.CalculateCoupons;
-using Campaign.Pooling.Handlers.CalculateReactivatedsConsummers;
-using Campaign.Pooling.Handlers.CalculateRegisteredsConsummers;
+using Campaign.Pooling.Handlers.Seller.GetSellers;
+using Campaign.Pooling.Handlers.Seller.InsertSeller;
 using Campaign.Pooling.Handlers.CalculateRevenueTarget;
 using Campaign.Pooling.Handlers.CalculateScoreByProduct;
+using Campaign.Pooling.Handlers.SellerManager.GetSellers;
+using Campaign.Pooling.Handlers.Seller.GetSellersToCreate;
 using Campaign.Pooling.Handlers.OrderDetail.GetOrdersDetail;
+using Campaign.Pooling.Handlers.SellerScore.GetSellersScore;
+using Campaign.Pooling.Handlers.CalculateRegisteredsConsummers;
+using Campaign.Pooling.Handlers.CalculateReactivatedsConsummers;
 using Campaign.Pooling.Handlers.ProductPromotion.GetProductsPromotions;
 using Campaign.Pooling.Handlers.ProductPromotion.ProductPromotionExists;
-using Campaign.Pooling.Handlers.ProductPromotionHistory.GetLastProductPromotionsHistory;
 using Campaign.Pooling.Handlers.ProductPromotionReadDataHistory.RegisterNewHistory;
-using Campaign.Pooling.Handlers.Seller.GetSellers;
-using Campaign.Pooling.Handlers.Seller.GetSellersToCreate;
-using Campaign.Pooling.Handlers.Seller.InsertSeller;
-using Campaign.Pooling.Handlers.SellerManager.GetSellers;
-using Campaign.Pooling.Handlers.SellerScore.GetSellersScore;
+using Campaign.Pooling.Handlers.ProductPromotionHistory.GetLastProductPromotionsHistory;
 
 namespace Campaign.Pooling.Configurations.ContainerDI.Handlers
 {
-
-    //TODO - Verificar todos os registros de serviço e verificar se estão no padrão: Nome_do_tipo + ContainerRegister.
     public static class HandlersContainerRegister
     {
         public static void AddHandlers(this IServiceCollection services)

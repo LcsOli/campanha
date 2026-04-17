@@ -9,6 +9,7 @@ using Campaign.API.Configuration.Container_DI;
 using Campaign.API.Configuration.ContainerDI.Handlers;
 using Campaign.API.Configuration.ContainerDI.Identity;
 using Campaign.API.Configuration.ContainerDI.Repositories;
+using Campaign.API.Configuration.ContainerDI.Orchestrator;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +21,7 @@ builder.Services.AddIdentity();
 builder.Services.AddServices();
 builder.Services.AddDataBase();
 builder.Services.AddUnityOfWork();
+builder.Services.AddOrchestrator();
 builder.Services.AddRepositories();
 builder.Services.AddAuthorizationConfiguration();
 builder.Services.AddAuthenticationConfigurations();
