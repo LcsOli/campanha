@@ -1,12 +1,14 @@
 ﻿using Campaign.Pooling.Commands.Calculate;
 using Campaign.Pooling.Commands.Consumers.Get;
 using Campaign.Pooling.Handlers.CalculateCoupons;
+using Campaign.Pooling.Commands.SellerManager.Update;
 using Campaign.Pooling.Handlers.CalculateRevenueTarget;
 using Campaign.Pooling.Commands.CalculateScoreByProduct;
 using Campaign.Pooling.Handlers.CalculateScoreByProduct;
 using Campaign.Pooling.Handlers.SellerScore.GetSellersScore;
 using Campaign.Pooling.Handlers.CalculateRegisteredsConsummers;
 using Campaign.Pooling.Handlers.CalculateReactivatedsConsummers;
+using Campaign.Pooling.Handlers.UpdateCurrentRevenueSellerManager;
 
 namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
 {
@@ -20,6 +22,7 @@ namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
         private readonly ICalculateScoreByProductHandler _calculateScorePointsByProductHandler;
         private readonly ICalculateRegisteredsConsumersHandler _calculateRegisteredsConsumersHandler;
         private readonly ICalculateReactivatedsConsumersHandler _calculateReactivatedsConsumersHandler;
+        private readonly IUpdateCurrentRevenueSellerManagerHandler _updateCurrentRevenueSellerManagerHandler;
 
         public CalculateScoreOrchestrator(ILogger<CalculateScoreOrchestrator> logger,
                                           IGetSellerScoreHandler getSellerScoreHandler,
@@ -27,7 +30,8 @@ namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
                                           ICalculateCouponsHandler calculateCouponsHandler,
                                           ICalculateScoreByProductHandler calculateScorePointsByProductHandler,
                                           ICalculateRegisteredsConsumersHandler calculateRegisteredsConsumersHandler,
-                                          ICalculateReactivatedsConsumersHandler calculateReactivatedsConsumersHandler)
+                                          ICalculateReactivatedsConsumersHandler calculateReactivatedsConsumersHandler,
+                                          IUpdateCurrentRevenueSellerManagerHandler updateCurrentRevenueSellerManagerHandler)
         {
             _logger = logger;
             _getSellerScoreHandler = getSellerScoreHandler;
@@ -36,6 +40,7 @@ namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
             _calculateRegisteredsConsumersHandler = calculateRegisteredsConsumersHandler;
             _calculateScorePointsByProductHandler = calculateScorePointsByProductHandler;
             _calculateReactivatedsConsumersHandler = calculateReactivatedsConsumersHandler;
+            _updateCurrentRevenueSellerManagerHandler = updateCurrentRevenueSellerManagerHandler;
         }
 
         public async Task Execute(int promotionCode)
@@ -57,6 +62,9 @@ namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
 
             _logger.LogWarning("Calculating revenue of month.");
             await _calculateRevenueHandler.Handle(new CalculateRevenueMonthCommand(promotionCode, sellersScore));
+            
+            _logger.LogWarning("Calculating seller manager revenue.");
+            await _updateCurrentRevenueSellerManagerHandler.Handle(new UpdateCurrentRevenueSellerManagerCommand(sellersScore));
 
             _logger.LogWarning("Calculating coupons.");
             _calculateCouponsHandler.Handle(new CalculateCouponsCommand(sellersScore));

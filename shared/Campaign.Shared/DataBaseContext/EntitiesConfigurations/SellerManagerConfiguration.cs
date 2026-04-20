@@ -16,7 +16,7 @@ namespace Campaign.Shared.DataBaseContext.EntitiesConfigurations
                    .HasColumnName("ID");
 
             builder.Property(s => s.Code)
-                   .HasColumnName("CODSUPERVISOR")
+                   .HasColumnName("COD_SUPERVISOR")
                    .IsRequired();
 
             builder.Property(s => s.Name)

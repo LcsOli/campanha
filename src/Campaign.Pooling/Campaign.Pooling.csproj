@@ -35,7 +35,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Repositories\SellerManager\WriteOnly\" />
     <Folder Include="Repositories\Sellers\Seller\WriteOnly\" />
   </ItemGroup>
 

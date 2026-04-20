@@ -22,6 +22,7 @@ namespace Campaign.Shared.DataBaseContext.Entities.Seller
         public short QtyConsumersReactivateds { get; private set; }
         public short QtyConsumersRegistereds { get; private set; }
         public DateTime? LastScoreByAccess { get; private set; }
+        public int SellerManagerId { get; private set; }
 
         [NotMapped]
         public decimal CouponsByRevenue { get; private set; }
@@ -32,12 +33,14 @@ namespace Campaign.Shared.DataBaseContext.Entities.Seller
         public SellerScore(int teamId,
                            string name,
                            int sellerId,
-                           string managerName)
+                           string managerName,
+                           int sellerManagerId)
         {
             Name = name;
             TeamId = teamId;
             SellerId = sellerId;
             ManagerName = managerName;
+            SellerManagerId = sellerManagerId;
         }
 
         public void UpdateScore(decimal score)

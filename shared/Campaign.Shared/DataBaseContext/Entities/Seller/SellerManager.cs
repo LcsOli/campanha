@@ -23,7 +23,7 @@
 
         public void UpdateCurrentRevenue(decimal revenue)
         {
-            CurrentRevenue += revenue;
+            CurrentRevenue = revenue;
         }
     }
 }

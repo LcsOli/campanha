@@ -26,7 +26,7 @@ namespace Campaign.Shared.DataBaseContext.EntitiesConfigurations
                    .HasColumnName("NOME");
 
             builder.Property(s => s.ManagerName)
-                   .HasColumnName("NOME_GERENTE");
+                   .HasColumnName("NOME_SUPERVISOR");
 
             builder.Property(s => s.TeamId)
                    .HasColumnName("EQUIPE_ID")
@@ -78,6 +78,9 @@ namespace Campaign.Shared.DataBaseContext.EntitiesConfigurations
 
             builder.Property(s => s.LastScoreByAccess)
                    .HasColumnName("DT_ULTIMA_PONTUACAO_ACESSO");
+
+            builder.Property(s => s.SellerManagerId)
+                   .HasColumnName("COD_SUPERVISOR");
         }
     }
 }

@@ -2,5 +2,5 @@
 
 namespace Campaign.Pooling.Commands.SellerManager.Update
 {
-    public record UpdateCurrentRevenueSellerManagerCommand(List<Entity.SellerManager> SellersManagers);
+    public record UpdateCurrentRevenueSellerManagerCommand(List<Entity.SellerScore> SellersScores);
 }

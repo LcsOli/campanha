@@ -17,7 +17,7 @@ namespace Campaign.Program.CreateSellersScore
         public async Task Create()
         {
             var sellersScore = await SellersToRegister();
-            await CreateSellerScore(sellersScore);
+           // await CreateSellerScore(sellersScore);
 
         }
 
@@ -26,15 +26,17 @@ namespace Campaign.Program.CreateSellersScore
             return await _context.Database.SqlQuery<SellersScoreToRegisterModel>($"""
 
                     SELECT 
-                       u.codusur AS SellerId,
-                       u.nome AS SellerName,
-                       cs.nome AS  SellerManagerName
+                        u.codusur AS "SellerId",
+                        u.nome AS "SellerName",
+                        cs.nome AS "SellerManagerName",
+                        cs.cod_supervisor AS "SellerManagerId"
                     FROM 
-                       pcusuari u
-                       join cf_campanha_supervisores cs on cs.cod_supervisor = u.codsupervisor
+                        pcusuari u
+                        JOIN cf_campanha_supervisores cs ON cs.cod_supervisor = u.codsupervisor
                     WHERE 
-                       u.tipovend = 'R' and
-                       u.dttermino is null;
+                        u.tipovend = 'R' AND
+                        u.dttermino IS NULL AND
+                        u.codusur IN (1893, 1624)
 
                 """).ToListAsync();
         }
@@ -45,8 +47,8 @@ namespace Campaign.Program.CreateSellersScore
             //Atualmente eu estou atribuindo qualquer valor para a equipe a fim de testes. Quando a regra de equipes for definido, vou alterar o algorítimo para colocar o 
             //RCA em equipes específicas.
 
-           await _context.SellerScores.AddRangeAsync(sellers.Select(s => new SellerScore(new Random().Next(1, 4), s.SellerName, s.SellerId, s.SellerManagerName)));
-           await _context.SaveChangesAsync();
+            await _context.SellerScores.AddRangeAsync(sellers.Select(s => new SellerScore(new Random().Next(1, 4), s.SellerName, s.SellerId, s.SellerManagerName, s.SellerManagerId)));
+            await _context.SaveChangesAsync();
         }
     }
 }

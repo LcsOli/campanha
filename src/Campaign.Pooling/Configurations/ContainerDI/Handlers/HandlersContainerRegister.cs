@@ -1,18 +1,19 @@
 ﻿using Campaign.Pooling.Handlers.CalculateCoupons;
-using Campaign.Pooling.Handlers.Seller.GetSellers;
-using Campaign.Pooling.Handlers.Seller.InsertSeller;
+using Campaign.Pooling.Handlers.CalculateReactivatedsConsummers;
+using Campaign.Pooling.Handlers.CalculateRegisteredsConsummers;
 using Campaign.Pooling.Handlers.CalculateRevenueTarget;
 using Campaign.Pooling.Handlers.CalculateScoreByProduct;
-using Campaign.Pooling.Handlers.SellerManager.GetSellers;
-using Campaign.Pooling.Handlers.Seller.GetSellersToCreate;
 using Campaign.Pooling.Handlers.OrderDetail.GetOrdersDetail;
-using Campaign.Pooling.Handlers.SellerScore.GetSellersScore;
-using Campaign.Pooling.Handlers.CalculateRegisteredsConsummers;
-using Campaign.Pooling.Handlers.CalculateReactivatedsConsummers;
 using Campaign.Pooling.Handlers.ProductPromotion.GetProductsPromotions;
 using Campaign.Pooling.Handlers.ProductPromotion.ProductPromotionExists;
-using Campaign.Pooling.Handlers.ProductPromotionReadDataHistory.RegisterNewHistory;
 using Campaign.Pooling.Handlers.ProductPromotionHistory.GetLastProductPromotionsHistory;
+using Campaign.Pooling.Handlers.ProductPromotionReadDataHistory.RegisterNewHistory;
+using Campaign.Pooling.Handlers.Seller.GetSellers;
+using Campaign.Pooling.Handlers.Seller.GetSellersToCreate;
+using Campaign.Pooling.Handlers.Seller.InsertSeller;
+using Campaign.Pooling.Handlers.SellerManager.GetSellers;
+using Campaign.Pooling.Handlers.SellerScore.GetSellersScore;
+using Campaign.Pooling.Handlers.UpdateCurrentRevenueSellerManager;
 
 namespace Campaign.Pooling.Configurations.ContainerDI.Handlers
 {
@@ -33,6 +34,7 @@ namespace Campaign.Pooling.Configurations.ContainerDI.Handlers
             services.AddScoped<ICalculateScoreByProductHandler, CalculateScoreByProductHandler>();
             services.AddScoped<ICalculateRegisteredsConsumersHandler, CalculateRegisteredsConsumersHandler>();
             services.AddScoped<ICalculateReactivatedsConsumersHandler, CalculateReactivatedsConsumersHandler>();
+            services.AddScoped<IUpdateCurrentRevenueSellerManagerHandler, UpdateCurrentRevenueSellerManagerHandler>();
             services.AddScoped<IGetProductPromotionReadDataHistoryHandler, GetProductPromotionReadDataHistoryHandler>();
             services.AddScoped<IRegisterProductPromotionReadDataHistoryHandler, RegisterProductPromotionReadDataHistoryHandler>();
         }
