@@ -33,7 +33,8 @@ namespace Campaign.Shared.DataBaseContext.EntitiesConfigurations
                    .HasDefaultValue(0)
                    .IsRequired();
 
-            builder.HasData(new SellerManager(1, 25, "Neto", 0, 0),
+            builder.HasData(new SellerManager(1, 9, "Marcia", 0, 0),
+                            new SellerManager(1, 25, "Neto", 0, 0),
                             new SellerManager(2, 3, "Bruno", 0, 0),
                             new SellerManager(3, 11, "Bruno", 0, 0),
                             new SellerManager(4, 12, "Bruno", 0, 0),

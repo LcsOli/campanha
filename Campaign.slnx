@@ -1,5 +1,6 @@
 <Solution>
   <Folder Name="/Shared/">
+    <Project Path="Campaign.Program/Campaign.Program.csproj" Id="1d0254a8-a666-4312-a0bb-97028c0960d0" />
     <Project Path="shared/Campaign.Shared/Campaign.Shared.csproj" />
   </Folder>
   <Folder Name="/src/">

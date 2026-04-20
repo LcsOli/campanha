@@ -12,6 +12,8 @@ namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
 {
     public class CalculateScoreOrchestrator : ICalculateScoreOrchestrator
     {
+        private readonly ILogger<CalculateScoreOrchestrator> _logger;
+
         private readonly IGetSellerScoreHandler _getSellerScoreHandler;
         private readonly ICalculateRevenueHandler _calculateRevenueHandler;
         private readonly ICalculateCouponsHandler _calculateCouponsHandler;
@@ -19,13 +21,15 @@ namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
         private readonly ICalculateRegisteredsConsumersHandler _calculateRegisteredsConsumersHandler;
         private readonly ICalculateReactivatedsConsumersHandler _calculateReactivatedsConsumersHandler;
 
-        public CalculateScoreOrchestrator(IGetSellerScoreHandler getSellerScoreHandler,
-                                         ICalculateRevenueHandler calculateRevenueHandler,
-                                         ICalculateCouponsHandler calculateCouponsHandler,
-                                         ICalculateScoreByProductHandler calculateScorePointsByProductHandler,
-                                         ICalculateRegisteredsConsumersHandler calculateRegisteredsConsumersHandler,
-                                         ICalculateReactivatedsConsumersHandler calculateReactivatedsConsumersHandler)
+        public CalculateScoreOrchestrator(ILogger<CalculateScoreOrchestrator> logger,
+                                          IGetSellerScoreHandler getSellerScoreHandler,
+                                          ICalculateRevenueHandler calculateRevenueHandler,
+                                          ICalculateCouponsHandler calculateCouponsHandler,
+                                          ICalculateScoreByProductHandler calculateScorePointsByProductHandler,
+                                          ICalculateRegisteredsConsumersHandler calculateRegisteredsConsumersHandler,
+                                          ICalculateReactivatedsConsumersHandler calculateReactivatedsConsumersHandler)
         {
+            _logger = logger;
             _getSellerScoreHandler = getSellerScoreHandler;
             _calculateCouponsHandler = calculateCouponsHandler;
             _calculateRevenueHandler = calculateRevenueHandler;
@@ -36,16 +40,25 @@ namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
 
         public async Task Execute(int promotionCode)
         {
+            _logger.LogWarning("Getting Sellers Scores.");
             var sellersScore = await _getSellerScoreHandler.Handle();
 
+            _logger.LogWarning("Calculating points by products.");
             await _calculateScorePointsByProductHandler.Handle(new CalculateScoreByProductCommand(promotionCode, sellersScore));
 
+            _logger.LogCritical("Calculating reactivateds cosummers.");
             await _calculateReactivatedsConsumersHandler.Handle(new CalculateReactivatedsConsumersCommand(promotionCode, sellersScore));
+
+            _logger.LogWarning("Calculating registereds cosummers.");
             await _calculateRegisteredsConsumersHandler.Handler(new CalculateRegisteredsConsumersCommand(promotionCode, sellersScore));
 
+            _logger.LogWarning("Calculating revenue.");
             await _calculateRevenueHandler.Handle(new CalculateRevenueCommand(promotionCode, sellersScore));
+
+            _logger.LogWarning("Calculating revenue of month.");
             await _calculateRevenueHandler.Handle(new CalculateRevenueMonthCommand(promotionCode, sellersScore));
 
+            _logger.LogWarning("Calculating coupons.");
             _calculateCouponsHandler.Handle(new CalculateCouponsCommand(sellersScore));
         }
     }

@@ -8,7 +8,8 @@ namespace Campaign.Pooling.Handlers.SellerScore.InsertSeller.Mapper
     {
         public override Entity.SellerScore Parse(MapperParam<SellersScoreToCreateCommand> param)
         {
-            return new(param.Model.Name,
+            return new(param.Model.TeamId,
+                       param.Model.Name,
                        param.Model.SellerId,
                        param.Model.ManagerName);
         }

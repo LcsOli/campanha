@@ -29,11 +29,13 @@ namespace Campaign.Shared.DataBaseContext.Entities.Seller
         [NotMapped]
         public decimal CouponsByScore { get; private set; }
 
-        public SellerScore(string name,
+        public SellerScore(int teamId,
+                           string name,
                            int sellerId,
                            string managerName)
         {
             Name = name;
+            TeamId = teamId;
             SellerId = sellerId;
             ManagerName = managerName;
         }
@@ -45,17 +47,7 @@ namespace Campaign.Shared.DataBaseContext.Entities.Seller
 
         public void UpdateCoupons(short coupons)
         {
-            Coupons += coupons;
-        }
-
-        public void UpdateCouponsByRevenue()
-        {
-            CouponsByRevenue++;
-        }
-
-        public void UpdateCouponsByScore()
-        {
-            CouponsByScore++;
+            Coupons = coupons;
         }
 
         public void UpdateCurrentRevenue(decimal revenue)

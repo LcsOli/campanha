@@ -1,6 +1,6 @@
-﻿namespace Campaign.Pooling.Commands.SellerManager.Update
+﻿using Entity = Campaign.Shared.DataBaseContext.Entities.Seller;
+
+namespace Campaign.Pooling.Commands.SellerManager.Update
 {
-    public record UpdateCurrentRevenueSellerManagerCommand()
-    {
-    }
+    public record UpdateCurrentRevenueSellerManagerCommand(List<Entity.SellerManager> SellersManagers);
 }

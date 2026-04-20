@@ -30,25 +30,11 @@ namespace Campaign.Pooling.Handlers.CalculateScoreByProduct
                                                       Orders = o.DistinctBy(p => p.ProductId).ToList()
                                                   }).ToList();
 
+                if (ordersByClient.Count <= 0)
+                    return;
+
                 ordersByClient.ForEach(o => sellerScore.UpdateScore((decimal)o.Orders.Sum(o => o.ProductPromotionPoints)!));
-
-                CalculateCouponsByScore(sellerScore);
             });
-        }
-
-        private void CalculateCouponsByScore(EntitySellerScore.SellerScore sellerScore)
-        {
-            //TODO - Verificar a possibilidade de extrair para um handler, o calculo de cupons por score.
-
-            const int _scoreToValidate = 500_000;
-
-            var couponsToUpdate = (short)(sellerScore.Score / _scoreToValidate);
-
-            if (couponsToUpdate < sellerScore.Coupons)
-                return;
-
-
-            sellerScore.UpdateCouponsByScore();
         }
     }
 }

@@ -40,7 +40,11 @@ namespace Campaign.Pooling.Handlers.CalculateRevenueTarget
             cmd.SellersScore.ForEach(sellerScore =>
             {
                 var revenueSeller = currentRevenue?.FirstOrDefault(revenue => revenue.SellerId == sellerScore.SellerId);
-                sellerScore?.UpdateCurrentRevenue(revenueSeller!.Revenue);
+
+                if (revenueSeller == null)
+                    return;
+
+                sellerScore.UpdateCurrentRevenue(revenueSeller!.Revenue);
             });
         }
 
@@ -60,10 +64,14 @@ namespace Campaign.Pooling.Handlers.CalculateRevenueTarget
             cmd.SellersScore.ForEach(sellerScore =>
             {
                 var revenueByMonthSeller = revenueByMonth?.FirstOrDefault(revenue => revenue.SellerId == sellerScore.SellerId);
-                sellerScore?.UpdateRevenueByMonth(revenueByMonthSeller!.Revenue, month);
 
-                if (revenueByMonthSeller!.Revenue >= sellerScore!.RevenueTarget)
-                    sellerScore.UpdateCouponsByRevenue();
+                if (revenueByMonthSeller == null)
+                    return;
+
+                sellerScore.UpdateRevenueByMonth(revenueByMonthSeller!.Revenue, month);
+
+                //if (revenueByMonthSeller!.Revenue >= sellerScore!.RevenueTarget)
+                //    sellerScore.UpdateCouponsByRevenue();
             });
         }
     }
