@@ -20,5 +20,10 @@
             TargetRevenue = targetRevenue;
             CurrentRevenue = currentRevenue;
         }
+
+        public void UpdateCurrentRevenue(decimal revenue)
+        {
+            CurrentRevenue += revenue;
+        }
     }
 }
