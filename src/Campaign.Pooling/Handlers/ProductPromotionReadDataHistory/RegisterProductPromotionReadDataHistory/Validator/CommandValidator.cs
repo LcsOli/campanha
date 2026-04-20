@@ -8,7 +8,7 @@ namespace Campaign.Pooling.Handlers.ProductPromotionReadDataHistory.RegisterNewH
     {
         public CommandValidator()
         {
-            RuleFor(r => r.promotionCode)
+            RuleFor(r => r.PromotionCode)
                 .GreaterThan(0)
                 .WithMessage("Código da promoção deve ser definido.");
         }

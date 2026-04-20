@@ -8,7 +8,7 @@ namespace Campaign.Pooling.Handlers.OrderDetail.GetOrdersDetail.Validator
     {
         public CommandValidator()
         {
-            RuleFor(o => o.promotionCode)
+            RuleFor(o => o.PromotionCode)
                 .GreaterThan(0)
                 .WithMessage("Código da promoção deve ser definida.");
         }

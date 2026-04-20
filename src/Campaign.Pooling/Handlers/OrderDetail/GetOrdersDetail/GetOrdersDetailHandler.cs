@@ -18,7 +18,7 @@ namespace Campaign.Pooling.Handlers.OrderDetail.GetOrdersDetail
             new CommandValidator()
                 .Validate(cmd);
 
-            var ordersDetails = await _orderDetailReadOnlyRepository.GetByPromotionCode(cmd.promotionCode);
+            var ordersDetails = await _orderDetailReadOnlyRepository.GetByPromotionCode(cmd.PromotionCode);
 
             new OrdersFindedValidator()
                 .Validate(ordersDetails);

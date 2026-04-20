@@ -1,4 +1,4 @@
 ﻿namespace Campaign.Pooling.Commands.Orders.Get
 {
-    public record GetOrdersDetailCommand(int promotionCode);
+    public record GetOrdersDetailCommand(int PromotionCode);
 }

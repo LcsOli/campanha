@@ -5,18 +5,20 @@
         public int Id { get; private set; }
         public int Code { get; private set; }
         public string Name { get; private set; } = default!;
+        public decimal TargetRevenue { get; private set; }
+        public decimal CurrentRevenue { get; private set; }
 
-        public SellerManager(int code, string name)
-        {
-            Code = code;
-            Name = name;
-        }
-
-        public SellerManager(int id, int code, string name)
+        public SellerManager(int id,
+                             int code, 
+                             string name,
+                             decimal targetRevenue,
+                             decimal currentRevenue)
         {
             Id = id;
             Code = code;
             Name = name;
+            TargetRevenue = targetRevenue;
+            CurrentRevenue = currentRevenue;
         }
     }
 }

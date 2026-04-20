@@ -2,6 +2,5 @@
 
 namespace Campaign.Pooling.Commands.Consumers.Get
 {
-    public record CalculateReactivatedsConsumersCommand(int PromotionCode,
-                                                        List<Entity.SellerScore> SellersScores);
+    public record CalculateReactivatedsConsumersCommand(int PromotionCode, List<Entity.SellerScore> SellersScores);
 }

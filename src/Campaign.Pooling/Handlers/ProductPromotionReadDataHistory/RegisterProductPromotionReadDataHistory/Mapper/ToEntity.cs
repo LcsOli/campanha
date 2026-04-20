@@ -8,7 +8,7 @@ namespace Campaign.Pooling.Handlers.ProductPromotionReadDataHistory.RegisterNewH
     {
         public override Entity.ProductPromotionReadDataHistory Parse(MapperParam<RegisterProductPromotionReadDataHistoryCommand> param)
         {
-            return new(param.Model.promotionCode, DateTime.Now);
+            return new(param.Model.PromotionCode, DateTime.Now);
         }
     }
 }

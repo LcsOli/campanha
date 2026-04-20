@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Campaign.Shared.DataBaseContext.EntitiesConfigurations
 {
-    //TODO - Verificar necessidade desta tabela.
     public class SellerManagerConfiguration : IEntityTypeConfiguration<SellerManager>
     {
         public void Configure(EntityTypeBuilder<SellerManager> builder)
@@ -24,18 +23,28 @@ namespace Campaign.Shared.DataBaseContext.EntitiesConfigurations
                    .HasColumnName("NOME")
                    .IsRequired();
 
-            builder.HasData(new SellerManager(1, 25, "Neto"),
-                            new SellerManager(2, 3, "Bruno"),
-                            new SellerManager(3, 11, "Bruno"),
-                            new SellerManager(4, 12, "Bruno"),
-                            new SellerManager(5, 13, "Bruno"),
-                            new SellerManager(6, 33, "Bruno"),
-                            new SellerManager(7, 27, "Rodrigo"),
-                            new SellerManager(8, 30, "Leandro"),
-                            new SellerManager(9, 34, "Leandro"),
-                            new SellerManager(10, 14, "Zé Rubens"),
-                            new SellerManager(11, 15, "Zé Rubens"),
-                            new SellerManager(12, 28, "Zé Rubens"));
+            builder.Property(s => s.TargetRevenue)
+                   .HasColumnName("META_FATURAMENTO")
+                   .HasDefaultValue(0)
+                   .IsRequired();
+
+            builder.Property(s => s.CurrentRevenue)
+                   .HasColumnName("FATURAMENTO_MENSAL")
+                   .HasDefaultValue(0)
+                   .IsRequired();
+
+            builder.HasData(new SellerManager(1, 25, "Neto", 0, 0),
+                            new SellerManager(2, 3, "Bruno", 0, 0),
+                            new SellerManager(3, 11, "Bruno", 0, 0),
+                            new SellerManager(4, 12, "Bruno", 0, 0),
+                            new SellerManager(5, 13, "Bruno", 0, 0),
+                            new SellerManager(6, 33, "Bruno", 0, 0),
+                            new SellerManager(7, 27, "Rodrigo", 0, 0),
+                            new SellerManager(8, 30, "Leandro", 0, 0),
+                            new SellerManager(9, 34, "Leandro", 0, 0),
+                            new SellerManager(10, 14, "Zé Rubens", 0, 0),
+                            new SellerManager(11, 15, "Zé Rubens", 0, 0),
+                            new SellerManager(12, 28, "Zé Rubens", 0, 0));
         }
     }
 }
