@@ -8,10 +8,7 @@
             {
                 options.AddPolicy("cors", policy =>
                 {
-                    policy.WithOrigins("http://0.0.0.0:5024",
-                                       "http://localhost:8083",
-                                       "http://192.168.10.9:8083",
-                                       "https://chamados.grupocomprefacil.com.br")
+                    policy.WithOrigins("http://0.0.0.0:8082")
                           .AllowAnyHeader()
                           .AllowAnyMethod();
                 });
