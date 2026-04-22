@@ -5,7 +5,7 @@ namespace Campaign.Pooling.Handlers.CalculateReactivatedsConsummers
 {
     public class CalculateReactivatedsConsumersHandler : ICalculateReactivatedsConsumersHandler
     {
-        private readonly int _pointsToAdd = 2_000;
+        private readonly int _pointsToAdd = 1_000;
 
         private readonly IOrderSummaryReadOnlyRepository _orderSummaryReadOnlyRepository;
         public CalculateReactivatedsConsumersHandler(IOrderSummaryReadOnlyRepository orderSummaryReadOnlyRepository)

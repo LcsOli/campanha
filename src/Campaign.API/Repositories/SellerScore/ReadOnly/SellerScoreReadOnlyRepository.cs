@@ -16,5 +16,11 @@ namespace Campaign.API.Repositories.ProductPromotion.ReadOnly
         {
             return await _context.SellerScores.FirstOrDefaultAsync(p => p.SellerId == sellerId);
         }
+
+        public async Task<List<Entity.SellerScore>> GetAll()
+        {
+            return await _context.SellerScores.Include(s => s.Team)
+                                              .ToListAsync();
+        }
     }
 }

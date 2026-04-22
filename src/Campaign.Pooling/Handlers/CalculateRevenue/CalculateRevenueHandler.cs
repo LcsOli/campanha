@@ -53,13 +53,13 @@ namespace Campaign.Pooling.Handlers.CalculateRevenueTarget
             var lastPromotionRead = await _productPromotionReadDataHistoryRepositorie.GetLast();
             var productsPromotionsSummariesDates = await _productPromotionSummaryReadOnlyRepository.GetProductPromotionSummariesDates(cmd.PromotionCode);
 
-            if (lastPromotionRead == null || !IsNewOrLastMonthOfCampaignValidator.Validate(productsPromotionsSummariesDates!))
+            if (lastPromotionRead == null || !IsEndMonthOrCampaingValidator.Validate(productsPromotionsSummariesDates!))
                 return;
 
             var year = productsPromotionsSummariesDates!.PreviousDtInit.Year;
             var month = productsPromotionsSummariesDates.PreviousDtInit.Month;
 
-            var revenueByMonth = await _orderDetailReadOnlyRepository.CalculateRevenueByMonth(new DateTime(year, month, 01), new DateTime(year, month, DateTime.DaysInMonth(year, month)));
+            var revenueByMonth = await _orderDetailReadOnlyRepository.CalculateRevenueByMonth(new DateTime(year, month, 01), productsPromotionsSummariesDates.CurrentDtEnd);
 
             cmd.SellersScore.ForEach(sellerScore =>
             {

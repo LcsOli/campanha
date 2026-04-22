@@ -15,7 +15,7 @@ namespace Campaign.API.Handlers.SellerManagerScore.GetRevenue.Mapper
                                                   {
                                                       return new SellerManagerScoreResponse(
                                                           Name: s.Key,
-                                                          Ranking: string.Concat((i + 1), "º"),
+                                                          Ranking: string.Concat((i + 1), 'º'),
                                                           CurrentRevenue: s.Select(r => r.CurrentRevenue).Sum(),
                                                           TargetRevenue: s.Select(r => r.TargetRevenue).First()
                                                   
