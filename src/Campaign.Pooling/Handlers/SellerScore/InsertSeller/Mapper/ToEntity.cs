@@ -11,7 +11,8 @@ namespace Campaign.Pooling.Handlers.SellerScore.InsertSeller.Mapper
             return new(param.Model.TeamId,
                        param.Model.Name,
                        param.Model.SellerId,
-                       param.Model.ManagerName);
+                       param.Model.ManagerName,
+                       param.Model.SellerManagerId);
         }
     }
 }

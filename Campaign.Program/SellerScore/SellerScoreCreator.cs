@@ -17,7 +17,7 @@ namespace Campaign.Program.CreateSellersScore
         public async Task Create()
         {
             var sellersScore = await SellersToRegister();
-           // await CreateSellerScore(sellersScore);
+            await CreateSellerScore(sellersScore);
 
         }
 

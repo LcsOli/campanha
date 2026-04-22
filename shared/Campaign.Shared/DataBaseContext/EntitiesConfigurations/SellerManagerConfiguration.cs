@@ -33,8 +33,7 @@ namespace Campaign.Shared.DataBaseContext.EntitiesConfigurations
                    .HasDefaultValue(0)
                    .IsRequired();
 
-            builder.HasData(new SellerManager(1, 9, "Marcia", 0, 0),
-                            new SellerManager(1, 25, "Neto", 0, 0),
+            builder.HasData(new SellerManager(1, 25, "Neto", 0, 0),
                             new SellerManager(2, 3, "Bruno", 0, 0),
                             new SellerManager(3, 11, "Bruno", 0, 0),
                             new SellerManager(4, 12, "Bruno", 0, 0),
@@ -45,7 +44,8 @@ namespace Campaign.Shared.DataBaseContext.EntitiesConfigurations
                             new SellerManager(9, 34, "Leandro", 0, 0),
                             new SellerManager(10, 14, "Zé Rubens", 0, 0),
                             new SellerManager(11, 15, "Zé Rubens", 0, 0),
-                            new SellerManager(12, 28, "Zé Rubens", 0, 0));
+                            new SellerManager(12, 28, "Zé Rubens", 0, 0),
+                            new SellerManager(13, 9, "Marcia", 0, 0));
         }
     }
 }
