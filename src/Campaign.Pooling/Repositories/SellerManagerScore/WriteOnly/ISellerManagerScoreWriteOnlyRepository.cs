@@ -2,8 +2,8 @@
 
 namespace Campaign.Pooling.Repositories.SellerManager.WriteOnly
 {
-    public interface ISellerManagerWriteOnlyRepository
+    public interface ISellerManagerScoreWriteOnlyRepository
     {
-        void UpdateAll(List<Entity.SellerManager> entities);
+        void UpdateAll(List<Entity.SellerManagerScore> entities);
     }
 }

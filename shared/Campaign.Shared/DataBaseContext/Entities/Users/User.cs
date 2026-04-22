@@ -13,7 +13,7 @@ namespace Campaign.Shared.DataBaseContext.Entities.Users
         public Roles Roles { get; protected set; }
         public DateTime? LastAccess { get; protected set; }
         public int? TeamId { get; protected set; }
-        public int SellerId { get; protected set; }
+        public int? SellerId { get; protected set; }
         public Team.Team? Team { get; protected set; }
         public SellerEntity.Seller? Seller { get; protected set; }
 
@@ -41,7 +41,7 @@ namespace Campaign.Shared.DataBaseContext.Entities.Users
         public static User Generate(int? teamId,
                                     Roles roles,
                                     string name,
-                                    int sellerId,
+                                    int? sellerId,
                                     string document,
                                     string password)
         {

@@ -22,4 +22,8 @@
     <ProjectReference Include="..\..\shared\Campaign.Shared\Campaign.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Commands\SellerManager\Get\" />
+  </ItemGroup>
+
 </Project>

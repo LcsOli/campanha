@@ -5,7 +5,7 @@ namespace Campaign.API.DTOs.Request.User.Create
     public record RegisterUserRequest(Roles Role,
                                       int TeamId,
                                       string Name,
-                                      int SellerId,
+                                      int? SellerId,
                                       string Document,
                                       string Password);
 }

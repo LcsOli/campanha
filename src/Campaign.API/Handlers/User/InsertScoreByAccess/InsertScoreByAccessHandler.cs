@@ -32,7 +32,10 @@ namespace Campaign.API.Handlers.User.InsertScoreByAccess
             var user = await _userReadOnlyRepository.GetByDocument(cmd.Document) ??
                 throw new CompaignException(HttpStatusCode.NotFound, "Usuário não encontrado.");
 
-            var sellerScore = await _sellerScoreReadOnlyRepository.GetBySellerId(user.SellerId) ??
+            if (user.Roles != Shared.Enums.Role.Roles.User)
+                return;
+
+            var sellerScore = await _sellerScoreReadOnlyRepository.GetBySellerId(user.SellerId!.Value) ??
                 throw new CompaignException(HttpStatusCode.NotFound, "Score não encontrado para este vendedor.");
 
             var dateToFindProductPromotio = sellerScore.LastScoreByAccess ?? DateTime.Now;
@@ -42,9 +45,9 @@ namespace Campaign.API.Handlers.User.InsertScoreByAccess
             if (productPromotion == null)
                 return;
 
-            var hasRegisteredScore = sellerScore.LastScoreByAccess.HasValue && 
+            var hasRegisteredScore = sellerScore.LastScoreByAccess.HasValue &&
                                      (
-                                       productPromotion.InitIn <= sellerScore.LastScoreByAccess && 
+                                       productPromotion.InitIn <= sellerScore.LastScoreByAccess &&
                                        productPromotion.EndIn >= sellerScore.LastScoreByAccess
                                      );
 

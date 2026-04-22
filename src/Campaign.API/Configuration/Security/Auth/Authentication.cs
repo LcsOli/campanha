@@ -2,7 +2,7 @@
 using Campaign.API.Services.SecretKey;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 
-namespace Campaign.API.Configuration.Security
+namespace Campaign.API.Configuration.Security.Auth
 {
     public static class Authentication
     {

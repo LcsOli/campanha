@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 
-namespace Campaign.API.Configuration.Security
+namespace Campaign.API.Configuration.Security.Auth
 {
     public static class ControllerSecurityConfiguration
     {

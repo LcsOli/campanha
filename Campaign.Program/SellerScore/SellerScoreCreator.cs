@@ -32,11 +32,11 @@ namespace Campaign.Program.CreateSellersScore
                         cs.cod_supervisor AS "SellerManagerId"
                     FROM 
                         pcusuari u
-                        JOIN cf_campanha_supervisores cs ON cs.cod_supervisor = u.codsupervisor
+                        JOIN cf_campanha_score_supervisores cs ON cs.cod_supervisor = u.codsupervisor
                     WHERE 
                         u.tipovend = 'R' AND
                         u.dttermino IS NULL AND
-                        u.codusur IN (1893, 1624)
+                        u.codusur IN (1602, 1735)
 
                 """).ToListAsync();
         }

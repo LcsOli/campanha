@@ -1,6 +1,6 @@
 ﻿namespace Campaign.Shared.DataBaseContext.Entities.Seller
 {
-    public class SellerManager
+    public class SellerManagerScore
     {
         public int Id { get; private set; }
         public int Code { get; private set; }
@@ -8,7 +8,7 @@
         public decimal TargetRevenue { get; private set; }
         public decimal CurrentRevenue { get; private set; }
 
-        public SellerManager(int id,
+        public SellerManagerScore(int id,
                              int code, 
                              string name,
                              decimal targetRevenue,

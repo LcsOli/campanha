@@ -22,7 +22,7 @@ namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
         private readonly ICalculateScoreByProductHandler _calculateScorePointsByProductHandler;
         private readonly ICalculateRegisteredsConsumersHandler _calculateRegisteredsConsumersHandler;
         private readonly ICalculateReactivatedsConsumersHandler _calculateReactivatedsConsumersHandler;
-        private readonly IUpdateCurrentRevenueSellerManagerHandler _updateCurrentRevenueSellerManagerHandler;
+        private readonly IUpdateCurrentRevenueSellerManagerScoreHandler _updateCurrentRevenueSellerManagerHandler;
 
         public CalculateScoreOrchestrator(ILogger<CalculateScoreOrchestrator> logger,
                                           IGetSellerScoreHandler getSellerScoreHandler,
@@ -31,7 +31,7 @@ namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
                                           ICalculateScoreByProductHandler calculateScorePointsByProductHandler,
                                           ICalculateRegisteredsConsumersHandler calculateRegisteredsConsumersHandler,
                                           ICalculateReactivatedsConsumersHandler calculateReactivatedsConsumersHandler,
-                                          IUpdateCurrentRevenueSellerManagerHandler updateCurrentRevenueSellerManagerHandler)
+                                          IUpdateCurrentRevenueSellerManagerScoreHandler updateCurrentRevenueSellerManagerHandler)
         {
             _logger = logger;
             _getSellerScoreHandler = getSellerScoreHandler;

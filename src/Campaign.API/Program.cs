@@ -3,13 +3,14 @@ using Campaign.Shared.Middlewares;
 using Campaign.Shared.UnitOfWorkDI;
 using StackTraceInternalLibrary.Client;
 using Campaign.Shared.DataBaseContextDI;
-using Campaign.API.Configuration.Security;
 using StackTraceInternalLibrary.ContainerDI;
 using Campaign.API.Configuration.Container_DI;
 using Campaign.API.Configuration.ContainerDI.Handlers;
 using Campaign.API.Configuration.ContainerDI.Identity;
 using Campaign.API.Configuration.ContainerDI.Repositories;
 using Campaign.API.Configuration.ContainerDI.Orchestrator;
+using Campaign.API.Configuration.Security.Auth;
+using Campaign.API.Configuration.Security.Cors;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +24,7 @@ builder.Services.AddDataBase();
 builder.Services.AddUnityOfWork();
 builder.Services.AddOrchestrator();
 builder.Services.AddRepositories();
+builder.Services.AddCorsConfiguration();
 builder.Services.AddAuthorizationConfiguration();
 builder.Services.AddAuthenticationConfigurations();
 builder.Services.AddControllerSecurityConfiguration();
@@ -41,8 +43,10 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
 app.UseAuthentication();
+app.UseAuthorization();
+
+app.UseCors("cors");
 
 app.MapControllers();
 

@@ -9,7 +9,7 @@ namespace Campaign.Pooling.Handlers.SellerScore.InsertSeller.Mapper
         public override List<Entity.SellerScore> Parse(MapperParam<List<SellersScoreToCreateCommand>> param)
         {
             var mapper = new ToEntity();
-            return [.. param.Model.Select(seller => mapper.Parse(new MapperParamImplement<SellersScoreToCreateCommand>(seller)))];
+            return [.. param.Model.Select(seller => mapper.Parse(new MapperParam<SellersScoreToCreateCommand>(seller)))];
         }
     }
 }

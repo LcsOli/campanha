@@ -2,7 +2,7 @@
 
 namespace Campaign.Pooling.Handlers.UpdateCurrentRevenueSellerManager
 {
-    public interface IUpdateCurrentRevenueSellerManagerHandler
+    public interface IUpdateCurrentRevenueSellerManagerScoreHandler
     {
         Task Handle(UpdateCurrentRevenueSellerManagerCommand cmd);
     }

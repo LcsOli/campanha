@@ -12,7 +12,7 @@ namespace Campaign.Shared.DataBaseContext.Entities
         public DbSet<Order.OrderDetail> OrderDetails { get; private set; }
         public DbSet<Seller.SellerScore> SellerScores { get; private set; }
         public DbSet<Order.OrderSummary> OrderSummaries { get; private set; }
-        public DbSet<Seller.SellerManager> SellerManagers { get; private set; }
+        public DbSet<Seller.SellerManagerScore> SellerManagers { get; private set; }
         public DbSet<Product.ProductPromotion> ProductPromotions { get; private set; }
         public DbSet<Product.ProductPromotionSummary> ProductPromotionSummaries { get; private set; }
         public DbSet<Product.ProductPromotionReadDataHistory> ProductPromotionReadDataHistories { get; private set; }

@@ -18,7 +18,7 @@ namespace Campaign.Pooling.Handlers.ProductPromotionReadDataHistory.RegisterNewH
         {
             new CommandValidator().Validate(cmd);
             
-            var mapperParam = new MapperParamImplement<RegisterProductPromotionReadDataHistoryCommand>(cmd);
+            var mapperParam = new MapperParam<RegisterProductPromotionReadDataHistoryCommand>(cmd);
             await _productPromotionReadDataHistoryWriteOnlyRepository.AddAsync(new ToEntity().Parse(mapperParam));
         }
     }

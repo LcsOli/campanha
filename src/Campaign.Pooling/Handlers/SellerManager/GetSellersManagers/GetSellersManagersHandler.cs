@@ -5,13 +5,13 @@ namespace Campaign.Pooling.Handlers.SellerManager.GetSellers
 {
     public class GetSellersManagersHandler : IGetSellersManagersHandler
     {
-        private readonly ISellerMangerReadOnlyRepository _sellerMangerReadOnlyRepository;
-        public GetSellersManagersHandler(ISellerMangerReadOnlyRepository sellerMangerReadOnlyRepository)
+        private readonly ISellerMangerScoreReadOnlyRepository _sellerMangerReadOnlyRepository;
+        public GetSellersManagersHandler(ISellerMangerScoreReadOnlyRepository sellerMangerReadOnlyRepository)
         {
             _sellerMangerReadOnlyRepository = sellerMangerReadOnlyRepository;
         }
 
-        public async Task<List<Entity.SellerManager>> Handle()
+        public async Task<List<Entity.SellerManagerScore>> Handle()
         {
             return await _sellerMangerReadOnlyRepository.GetAll();
         }

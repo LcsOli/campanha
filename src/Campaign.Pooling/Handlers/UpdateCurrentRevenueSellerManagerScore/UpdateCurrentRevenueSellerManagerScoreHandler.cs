@@ -4,12 +4,12 @@ using Campaign.Pooling.Repositories.SellerManager.WriteOnly;
 
 namespace Campaign.Pooling.Handlers.UpdateCurrentRevenueSellerManager
 {
-    public class UpdateCurrentRevenueSellerManagerHandler : IUpdateCurrentRevenueSellerManagerHandler
+    public class UpdateCurrentRevenueSellerManagerScoreHandler : IUpdateCurrentRevenueSellerManagerScoreHandler
     {
-        private readonly ISellerMangerReadOnlyRepository _sellerMangerReadOnlyRepository;
-        private readonly ISellerManagerWriteOnlyRepository _sellerManagerWriteOnlyRepository;
-        public UpdateCurrentRevenueSellerManagerHandler(ISellerMangerReadOnlyRepository sellerMangerReadOnlyRepository,
-                                                        ISellerManagerWriteOnlyRepository sellerManagerWriteOnlyRepository)
+        private readonly ISellerMangerScoreReadOnlyRepository _sellerMangerReadOnlyRepository;
+        private readonly ISellerManagerScoreWriteOnlyRepository _sellerManagerWriteOnlyRepository;
+        public UpdateCurrentRevenueSellerManagerScoreHandler(ISellerMangerScoreReadOnlyRepository sellerMangerReadOnlyRepository,
+                                                        ISellerManagerScoreWriteOnlyRepository sellerManagerWriteOnlyRepository)
         {
             _sellerMangerReadOnlyRepository = sellerMangerReadOnlyRepository;
             _sellerManagerWriteOnlyRepository = sellerManagerWriteOnlyRepository;

@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Campaign.Shared.DataBaseContext.EntitiesConfigurations
 {
-    public class SellerManagerConfiguration : IEntityTypeConfiguration<SellerManager>
+    public class SellerManagerConfiguration : IEntityTypeConfiguration<SellerManagerScore>
     {
-        public void Configure(EntityTypeBuilder<SellerManager> builder)
+        public void Configure(EntityTypeBuilder<SellerManagerScore> builder)
         {
-            builder.ToTable("CF_CAMPANHA_SUPERVISORES");
+            builder.ToTable("CF_CAMPANHA_SCORE_SUPERVISORES");
 
             builder.HasKey(s => s.Id);
 
@@ -33,19 +33,19 @@ namespace Campaign.Shared.DataBaseContext.EntitiesConfigurations
                    .HasDefaultValue(0)
                    .IsRequired();
 
-            builder.HasData(new SellerManager(1, 25, "Neto", 0, 0),
-                            new SellerManager(2, 3, "Bruno", 0, 0),
-                            new SellerManager(3, 11, "Bruno", 0, 0),
-                            new SellerManager(4, 12, "Bruno", 0, 0),
-                            new SellerManager(5, 13, "Bruno", 0, 0),
-                            new SellerManager(6, 33, "Bruno", 0, 0),
-                            new SellerManager(7, 27, "Rodrigo", 0, 0),
-                            new SellerManager(8, 30, "Leandro", 0, 0),
-                            new SellerManager(9, 34, "Leandro", 0, 0),
-                            new SellerManager(10, 14, "Zé Rubens", 0, 0),
-                            new SellerManager(11, 15, "Zé Rubens", 0, 0),
-                            new SellerManager(12, 28, "Zé Rubens", 0, 0),
-                            new SellerManager(13, 9, "Marcia", 0, 0));
+            builder.HasData(new SellerManagerScore(1, 25, "Neto", 0, 0),
+                            new SellerManagerScore(2, 3, "Bruno", 0, 0),
+                            new SellerManagerScore(3, 11, "Bruno", 0, 0),
+                            new SellerManagerScore(4, 12, "Bruno", 0, 0),
+                            new SellerManagerScore(5, 13, "Bruno", 0, 0),
+                            new SellerManagerScore(6, 33, "Bruno", 0, 0),
+                            new SellerManagerScore(7, 27, "Rodrigo", 0, 0),
+                            new SellerManagerScore(8, 30, "Leandro", 0, 0),
+                            new SellerManagerScore(9, 34, "Leandro", 0, 0),
+                            new SellerManagerScore(10, 14, "Zé Rubens", 0, 0),
+                            new SellerManagerScore(11, 15, "Zé Rubens", 0, 0),
+                            new SellerManagerScore(12, 28, "Zé Rubens", 0, 0),
+                            new SellerManagerScore(13, 9, "Marcia", 0, 0));
         }
     }
 }

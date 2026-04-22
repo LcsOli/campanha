@@ -42,8 +42,7 @@ namespace Campaign.Shared.DataBaseContext.Entities.EntitiesConfigurations
                    .HasColumnName("ULTIMO_ACESSO");
 
             builder.Property(t => t.TeamId)
-                   .HasColumnName("EQUIPE_ID")
-                   .IsRequired();
+                   .HasColumnName("EQUIPE_ID");
 
             builder.Property(t => t.SellerId)
                    .HasColumnName("RCA_ID");

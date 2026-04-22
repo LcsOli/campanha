@@ -5,7 +5,7 @@ namespace Campaign.API.Commands.User.Create
     public record RegisterUserCommand(Roles Role,
                                       int? TeamId,
                                       string Name,
-                                      int SellerId,
+                                      int? SellerId,
                                       string Document,
                                       string Password);
 }

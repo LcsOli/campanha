@@ -2,17 +2,17 @@
 using Campaign.Shared.DataBaseContext.Entities;
 using Entity = Campaign.Shared.DataBaseContext.Entities.Seller;
 
-namespace Campaign.Pooling.Repositories.SellerManager.ReadOnly
+namespace Campaign.API.Repositories.SellerManager.ReadOnly
 {
-    public class SellerMangerReadOnlyRepository : ISellerMangerReadOnlyRepository
+    public class SellerManagerReadOnlyRepository : ISellerManagerReadOnlyRepository
     {
         private readonly CampaingContextDb _context;
-        public SellerMangerReadOnlyRepository(CampaingContextDb context)
+        public SellerManagerReadOnlyRepository(CampaingContextDb context)
         {
             _context = context;
         }
 
-        public async Task<List<Entity.SellerManager>> GetAll()
+        public async Task<List<Entity.SellerManagerScore>> GetAll()
         {
             return await _context.SellerManagers.ToListAsync();
         }

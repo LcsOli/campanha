@@ -8,7 +8,7 @@ namespace Campaign.Shared.DataBaseContext.Entities.Users
         public static User Factory(Roles role,
                                    int? teamId,
                                    string name,
-                                   int sellerId,
+                                   int? sellerId,
                                    string document,
                                    string password)
         {

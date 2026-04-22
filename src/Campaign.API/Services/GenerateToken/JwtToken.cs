@@ -3,7 +3,6 @@ using Campaign.Shared.Enums.Role;
 using Microsoft.IdentityModel.Tokens;
 using Campaign.API.Services.SecretKey;
 using System.IdentityModel.Tokens.Jwt;
-using Campaign.Shared.Extensions.Enums;
 
 namespace Campaign.API.Services.GenerateToken
 {
@@ -17,7 +16,7 @@ namespace Campaign.API.Services.GenerateToken
                {
                   new Claim("id", userId),
                   new Claim("name", name),
-                  new Claim(ClaimTypes.Role, role.GetTranslatedDescription()),
+                  new Claim(ClaimTypes.Role, role.ToString().ToLower()),
              }),
 
                 Expires = DateTime.UtcNow.AddHours(8),
