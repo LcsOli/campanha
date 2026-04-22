@@ -10,7 +10,7 @@ using Campaign.API.Configuration.ContainerDI.Identity;
 using Campaign.API.Configuration.ContainerDI.Repositories;
 using Campaign.API.Configuration.ContainerDI.Orchestrator;
 using Campaign.API.Configuration.Security.Auth;
-using Campaign.API.Configuration.Security.Cors;
+using Campaign.Shared.cors;
 
 var builder = WebApplication.CreateBuilder(args);
 

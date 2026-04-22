@@ -1,4 +1,6 @@
-﻿namespace Campaign.API.Configuration.Security.Cors
+﻿using Microsoft.Extensions.DependencyInjection;
+
+namespace Campaign.Shared.cors
 {
     public static class Cors
     {
