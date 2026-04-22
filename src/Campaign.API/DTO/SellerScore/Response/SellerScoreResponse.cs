@@ -1,4 +1,4 @@
-﻿namespace Campaign.API.DTO.SellerScore.Get
+﻿namespace Campaign.API.DTO.SellerScore.Response
 {
     public record SellerScoreResponse(int SellerId,
                                       decimal Score,

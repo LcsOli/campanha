@@ -7,6 +7,9 @@ namespace Campaign.Shared.FluentValidator
 {
     public abstract class FluentValidator<T> : AbstractValidator<T> where T : class
     {
+
+        //TODO - Verificar a possibilidade de capturar codigo de erro para retornar na mensagem.
+
         public override ValidationResult Validate(ValidationContext<T> context)
         {
             var result = base.Validate(context);

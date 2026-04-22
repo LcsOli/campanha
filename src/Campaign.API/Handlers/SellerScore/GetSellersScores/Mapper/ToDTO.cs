@@ -1,6 +1,6 @@
 ﻿using Campaign.Shared.Mappers;
-using Campaign.API.DTO.SellerScore.Get;
 using Entity = Campaign.Shared.DataBaseContext.Entities.Seller;
+using Campaign.API.DTO.SellerScore.Response;
 
 namespace Campaign.API.Handlers.SellerScore.GetSellersScores.Mapper
 {

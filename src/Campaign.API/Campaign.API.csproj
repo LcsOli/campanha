@@ -7,10 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Repositories\Team\ReadOnly\**" />
-    <Content Remove="Repositories\Team\ReadOnly\**" />
-    <EmbeddedResource Remove="Repositories\Team\ReadOnly\**" />
-    <None Remove="Repositories\Team\ReadOnly\**" />
+    <Compile Remove="Commands\SellerManager\**" />
+    <Content Remove="Commands\SellerManager\**" />
+    <EmbeddedResource Remove="Commands\SellerManager\**" />
+    <None Remove="Commands\SellerManager\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,10 +20,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\shared\Campaign.Shared\Campaign.Shared.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Commands\SellerManager\Get\" />
   </ItemGroup>
 
 </Project>
