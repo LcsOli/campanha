@@ -83,75 +83,72 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
         public async Task<List<SellersQuantityConsumersResponse>> GetSellersIdsThatReactivatedConsumers(int promotionCode)
         {
             var query = _context.Database.SqlQuery<SellersQuantityConsumersResponse>($@"
-                SELECT 
-                    codusur AS SellerId,
-                    COUNT(codcli) AS QtyConsumers
-                FROM
-                (
-                    SELECT
-                        c.codusur,
-                        c.codcli
-                    FROM
-                        cf_campanha_rca_score crs
-                        JOIN pcpedc c ON c.codusur = crs.rca_id
-                        JOIN pcusuari u ON c.codusur = u.codusur
-                        JOIN pcpedi i ON i.numped = c.numped
-                        JOIN pcpromoi p ON p.codprod = i.codprod
-                        JOIN pcpromoc pc ON pc.codpromocao = p.codpromocao
-                        JOIN pcclient client ON c.codcli = client.codcli
-                        JOIN pcpromoc pcgeral ON pcgeral.codpromocao = TO_NUMBER(CONCAT(EXTRACT(YEAR FROM pc.dtinicio), '00'))
-                    WHERE
-                        u.tipovend = 'R' AND
-                        p.codpromocao = {promotionCode} AND
-                        TO_CHAR(client.dtcadastro, 'yyyy-MM-DD') < CONCAT(EXTRACT(YEAR FROM pcgeral.dtinicio), '-01-01') AND
+                        SELECT 
+                            codusur AS SellerId,
+                            COUNT(codcli) AS QtyConsumers
+                        FROM
                         (
-                            TO_CHAR(c.data, 'yyyy-MM-DD') >= TO_CHAR(pcgeral.dtinicio, 'yyyy-MM-DD') AND
-                            TO_CHAR(c.data, 'yyyy-MM-DD') <= TO_CHAR(pcgeral.dtfim, 'yyyy-MM-DD') 
-                        ) AND
-                        EXISTS(
-                                SELECT 
-                                        1
-                                FROM 
-                                    pcpedc cc 
-                                WHERE 
-                                    cc.codcli = c.codcli AND
-                                    TO_CHAR(cc.data, 'yyyy-MM-DD') < CONCAT(EXTRACT(YEAR FROM pcgeral.dtinicio), '-01-01')
-                                FETCH FIRST 1 ROW ONLY
-                        ) AND
-                        NOT EXISTS(
-                                    SELECT 
-                                        1
-                                    FROM 
-                                        pcpedc cc
-                                    WHERE 
-                                        cc.codcli = c.codcli AND
-                                        (
-                                            TO_CHAR(cc.data, 'YYYY-MM-DD') >= CONCAT(EXTRACT(YEAR FROM pc.dtinicio), '-01-01') AND
-                                            TO_CHAR(cc.data, 'YYYY-MM-DD') < TO_CHAR(pcgeral.dtinicio, 'yyyy-MM-DD')
-                                        )
-                                    FETCH FIRST 1 ROW ONLY
-                        ) AND
-                        EXISTS(
-                                SELECT
-                                    cc.codcli
-                                FROM
-                                    pcpedc cc
-                                WHERE
-                                    cc.codcli = c.codcli AND
-                                    TO_CHAR(cc.data, 'yyyy-MM-DD') >= TO_CHAR(pcgeral.dtinicio, 'yyyy-MM-DD') AND
-                                    TO_CHAR(cc.data, 'yyyy-MM-DD') <= TO_CHAR(pcgeral.dtfim, 'yyyy-MM-DD') 
-                                GROUP BY
-                                    cc.codcli
-                                having
-                                    TO_CHAR(min(cc.data), 'yyyy-MM-DD') >= to_char(pc.dtinicio, 'yyyy-MM-DD') AND
-                                    TO_CHAR(min(cc.data), 'yyyy-MM-DD') <= to_char(pc.dtfim, 'yyyy-MM-DD')
+                            SELECT
+                                c.codusur,
+                                c.codcli
+                            FROM
+                                cf_campanha_rca_score crs
+                                JOIN pcpedc c ON c.codusur = crs.rca_id
+                                JOIN pcusuari u ON c.codusur = u.codusur
+                                JOIN pcpedi i ON i.numped = c.numped
+                                JOIN pcpromoi p ON p.codprod = i.codprod
+                                JOIN pcpromoc pc ON pc.codpromocao = p.codpromocao
+                                JOIN pcclient client ON c.codcli = client.codcli
+                                JOIN pcpromoc pcgeral ON pcgeral.codpromocao = TO_NUMBER(EXTRACT(YEAR FROM pc.dtinicio) || '00')
+                            WHERE
+                                u.tipovend = 'R' AND
+                                p.codpromocao = {promotionCode} AND
+                                TO_CHAR(client.dtcadastro, 'yyyy-MM-DD') < CONCAT(EXTRACT(YEAR FROM pcgeral.dtinicio), '-01-01') AND
+                                c.data BETWEEN pcgeral.dtinicio AND pcgeral.dtfim AND
+                                EXISTS(
+                                        SELECT 
+                                                1
+                                        FROM 
+                                            pcpedc cc 
+                                        WHERE 
+                                            cc.codcli = c.codcli AND
+                                            TO_CHAR(cc.data, 'yyyy-MM-DD') < EXTRACT(YEAR FROM pcgeral.dtinicio) || '-01-01'
+                                        FETCH FIRST 1 ROW ONLY
+                                ) AND
+                                NOT EXISTS(
+                                            SELECT 
+                                                1
+                                            FROM 
+                                                pcpedc cc
+                                            WHERE 
+                                                cc.codcli = c.codcli AND
+                                                (
+                                                    TO_CHAR(cc.data, 'YYYY-MM-DD') >= EXTRACT(YEAR FROM pc.dtinicio) || '-01-01' AND
+                                                    cc.data < pcgeral.dtinicio
+                                                )
+                                            FETCH FIRST 1 ROW ONLY
+                                ) AND
+                                EXISTS(
+                                        SELECT
+                                            cc.codcli
+                                        FROM
+                                            pcpedc cc
+                                        WHERE
+                                            cc.codcli = c.codcli AND
+                                            cc.data >= pcgeral.dtinicio AND
+                                            cc.data <= pcgeral.dtfim
+                                        GROUP BY
+                                            cc.codcli
+                                        having
+                                            min(cc.data) >= pc.dtinicio AND
+                                            min(cc.data) <= pc.dtfim
+                                )
+                            GROUP BY 
+                                c.codusur,
+                                c.codcli
                         )
-                    GROUP BY 
-                        c.codusur,
-                        c.codcli
-                )
-                GROUP BY 
-                    codusur
+                        GROUP BY 
+                            codusur
             ");
 
             return await query.ToListAsync();
@@ -180,10 +177,10 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
                     WHERE
                         u.tipovend = 'R' AND
                         p.codpromocao = {promotionCode} AND
-                        TO_CHAR(client.dtcadastro, 'yyyy-MM-DD') >= TO_CHAR(pcgeral.dtinicio, 'yyyy-MM-DD') AND
+                        client.dtcadastro >= pcgeral.dtinicio AND
                         (
-                            TO_CHAR(c.data, 'yyyy-MM-DD') >= TO_CHAR(pcgeral.dtinicio, 'yyyy-MM-DD') AND
-                            TO_CHAR(c.data, 'yyyy-MM-DD') <= TO_CHAR(pcgeral.dtfim, 'yyyy-MM-DD')
+                            c.data >= pcgeral.dtinicio AND
+                            c.data <= pcgeral.dtfim
                         ) AND
                         EXISTS(
                               SELECT
@@ -192,13 +189,13 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
                                   pcpedc cc
                               WHERE
                                   cc.codcli = c.codcli AND
-                                  TO_CHAR(cc.data,'yyyy-MM-DD') >= TO_CHAR(pcgeral.dtinicio, 'yyyy-MM-DD') AND
-                                  TO_CHAR(cc.data, 'yyyy-MM-DD') <= TO_CHAR(pcgeral.dtfim, 'yyyy-MM-DD')
+                                  cc.data >= pcgeral.dtinicio AND
+                                  cc.data <= pcgeral.dtfim
                               GROUP BY
                                   cc.codcli
                               HAVING
-                                  TO_CHAR(MIN(cc.data), 'yyyy-MM-DD') >= TO_CHAR(pc.dtinicio, 'yyyy-MM-DD') AND
-                                  TO_CHAR(MIN(cc.data), 'yyyy-MM-DD') <= TO_CHAR(pc.dtfim, 'yyyy-MM-DD')
+                                  MIN(cc.data) >= pc.dtinicio AND
+                                  MIN(cc.data) <= pc.dtfim
                         )
                     GROUP BY 
                         c.codusur,
