@@ -90,9 +90,6 @@ namespace Campaign.Pooling.Repositories.OrderDetail.ReadOnly
 
         public async Task<List<TotalRevenueResponse>> CalculateRevenueByMonth(DateTime init, DateTime end)
         {
-            init = init.Date;
-            end = end.Date;
-
             var query = _context.Database.SqlQuery<TotalRevenueResponse>($"""
                                 SELECT
                                      c.codusur AS SellerId,
@@ -103,7 +100,7 @@ namespace Campaign.Pooling.Repositories.OrderDetail.ReadOnly
                                     JOIN pcpedi i on i.numped = c.numped
                                     JOIN pcpromoi p on p.codprod = i.codprod
                                 WHERE
-                                    p.codpromocao = CONCAT({init.Year}, '00') AND
+                                    p.codpromocao = {init.Year * 100} AND
                                     c.dtcancel is null AND
                                     (
                                         TO_CHAR(c.data, 'yyyy-MM-DD') >= {init.ToString("yyyy-MM-dd")} AND

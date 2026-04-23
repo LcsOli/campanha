@@ -10,7 +10,7 @@ namespace Campaign.Shared.cors
             {
                 options.AddPolicy("cors", policy =>
                 {
-                    policy.WithOrigins("http://0.0.0.0:8082")
+                    policy.WithOrigins("http://localhost:8082")
                           .AllowAnyHeader()
                           .AllowAnyMethod();
                 });

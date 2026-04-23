@@ -83,15 +83,15 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
         public async Task<List<SellersQuantityConsumersResponse>> GetSellersIdsThatReactivatedConsumers(int promotionCode)
         {
             var query = _context.Database.SqlQuery<SellersQuantityConsumersResponse>($@"
-                        SELECT 
-                            codusur AS SellerId,
-                            COUNT(codcli) AS QtyConsumers
+                        SELECT
+                            x.SellerId,
+                            COUNT(x.codcli) AS QtyConsumers
                         FROM
                         (
                             SELECT
-                                c.codusur,
+                                c.codusur AS SellerId,
                                 c.codcli
-                            FROM
+                            FROM 
                                 cf_campanha_rca_score crs
                                 JOIN pcpedc c ON c.codusur = crs.rca_id
                                 JOIN pcusuari u ON c.codusur = u.codusur
@@ -99,56 +99,54 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
                                 JOIN pcpromoi p ON p.codprod = i.codprod
                                 JOIN pcpromoc pc ON pc.codpromocao = p.codpromocao
                                 JOIN pcclient client ON c.codcli = client.codcli
-                                JOIN pcpromoc pcgeral ON pcgeral.codpromocao = TO_NUMBER(EXTRACT(YEAR FROM pc.dtinicio) || '00')
-                            WHERE
-                                u.tipovend = 'R' AND
-                                p.codpromocao = {promotionCode} AND
-                                TO_CHAR(client.dtcadastro, 'yyyy-MM-DD') < CONCAT(EXTRACT(YEAR FROM pcgeral.dtinicio), '-01-01') AND
-                                c.data BETWEEN pcgeral.dtinicio AND pcgeral.dtfim AND
-                                EXISTS(
-                                        SELECT 
-                                                1
-                                        FROM 
-                                            pcpedc cc 
-                                        WHERE 
-                                            cc.codcli = c.codcli AND
-                                            TO_CHAR(cc.data, 'yyyy-MM-DD') < EXTRACT(YEAR FROM pcgeral.dtinicio) || '-01-01'
-                                        FETCH FIRST 1 ROW ONLY
-                                ) AND
-                                NOT EXISTS(
-                                            SELECT 
-                                                1
-                                            FROM 
-                                                pcpedc cc
-                                            WHERE 
-                                                cc.codcli = c.codcli AND
-                                                (
-                                                    TO_CHAR(cc.data, 'YYYY-MM-DD') >= EXTRACT(YEAR FROM pc.dtinicio) || '-01-01' AND
-                                                    cc.data < pcgeral.dtinicio
-                                                )
-                                            FETCH FIRST 1 ROW ONLY
-                                ) AND
-                                EXISTS(
-                                        SELECT
-                                            cc.codcli
-                                        FROM
-                                            pcpedc cc
-                                        WHERE
-                                            cc.codcli = c.codcli AND
-                                            cc.data >= pcgeral.dtinicio AND
-                                            cc.data <= pcgeral.dtfim
+                                JOIN pcpromoc pcgeral ON pcgeral.codpromocao = EXTRACT(YEAR FROM pc.dtinicio) * 100
+                                JOIN
+                                (
+                                    SELECT
+                                        cc.codcli,
+                                        MIN(CASE
+                                                WHEN cc.data < TRUNC(pcg.dtinicio, 'YEAR')
+                                                THEN cc.data
+                                            END
+                                            ) AS dt_antes_ano,
+                                        MIN(CASE
+                                                WHEN 
+                                                    cc.data >= TRUNC(pcg.dtinicio, 'YEAR') AND cc.data < pcg.dtinicio
+                                                THEN cc.data
+                                            END
+                                            ) AS dt_entre_ano_e_promocao,
+                                        MIN(CASE
+                                                WHEN 
+                                                    cc.data >= pcg.dtinicio AND cc.data <= pcg.dtfim
+                                                THEN cc.data
+                                            END
+                                            ) AS dt_primeira_compra_periodo
+                                    FROM 
+                                        pcpedc cc
+                                        CROSS JOIN (
+                                            SELECT
+                                                dtinicio,
+                                                dtfim
+                                            FROM pcpromoc
+                                            WHERE codpromocao = 202500
+                                        ) pcg
                                         GROUP BY
                                             cc.codcli
-                                        having
-                                            min(cc.data) >= pc.dtinicio AND
-                                            min(cc.data) <= pc.dtfim
-                                )
-                            GROUP BY 
+                                ) hist ON hist.codcli = c.codcli
+                            WHERE
+                                u.tipovend = 'R'
+                                AND p.codpromocao = {promotionCode}
+                                AND client.dtcadastro < TRUNC(pcgeral.dtinicio, 'YEAR')
+                                AND c.data BETWEEN pcgeral.dtinicio AND pcgeral.dtfim
+                                AND hist.dt_antes_ano IS NOT NULL
+                                AND hist.dt_entre_ano_e_promocao IS NULL
+                                AND hist.dt_primeira_compra_periodo BETWEEN pc.dtinicio AND pc.dtfim
+                            GROUP BY
                                 c.codusur,
                                 c.codcli
-                        )
-                        GROUP BY 
-                            codusur
+                        ) x
+                        GROUP BY
+                            x.SellerId
             ");
 
             return await query.ToListAsync();
@@ -157,52 +155,44 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
         public async Task<List<SellersQuantityConsumersResponse>> GetSellersIdsThatRegisteredsConsumers(int promotionCode)
         {
             var query = _context.Database.SqlQuery<SellersQuantityConsumersResponse>($"""
-                SELECT 
-                    codusur AS SellerId,
-                    COUNT(codcli) AS QtyConsumers
+                SELECT
+                    x.SellerId,
+                    COUNT(x.codcli) AS QtyConsumers
                 FROM
                 (
                     SELECT
-                        c.codusur,
+                        c.codusur AS SellerId,
                         c.codcli
-                    FROM
-                        cf_campanha_rca_score crs
-                        JOIN pcpedc c ON c.codusur = crs.rca_id
+                    FROM 
+                		cf_campanha_rca_score crs
+                		JOIN pcpedc c ON c.codusur = crs.rca_id
                         JOIN pcusuari u ON c.codusur = u.codusur
                         JOIN pcpedi i ON i.numped = c.numped
                         JOIN pcpromoi p ON p.codprod = i.codprod
                         JOIN pcpromoc pc ON pc.codpromocao = p.codpromocao
                         JOIN pcclient client ON c.codcli = client.codcli
-                        JOIN pcpromoc pcgeral ON pcgeral.codpromocao = TO_NUMBER(CONCAT(EXTRACT(YEAR FROM pc.dtinicio), '00'))
+                        JOIN pcpromoc pcgeral ON pcgeral.codpromocao = EXTRACT(YEAR FROM pc.dtinicio) * 100
+                        JOIN (
+                            SELECT
+                                cc.codcli,
+                                MIN(cc.data) AS primeira_compra
+                            FROM pcpedc cc
+                            GROUP BY cc.codcli
+                    ) hist ON hist.codcli = c.codcli
                     WHERE
-                        u.tipovend = 'R' AND
-                        p.codpromocao = {promotionCode} AND
-                        client.dtcadastro >= pcgeral.dtinicio AND
-                        (
-                            c.data >= pcgeral.dtinicio AND
-                            c.data <= pcgeral.dtfim
-                        ) AND
-                        EXISTS(
-                              SELECT
-                                  cc.codcli
-                              FROM
-                                  pcpedc cc
-                              WHERE
-                                  cc.codcli = c.codcli AND
-                                  cc.data >= pcgeral.dtinicio AND
-                                  cc.data <= pcgeral.dtfim
-                              GROUP BY
-                                  cc.codcli
-                              HAVING
-                                  MIN(cc.data) >= pc.dtinicio AND
-                                  MIN(cc.data) <= pc.dtfim
-                        )
-                    GROUP BY 
+                        u.tipovend = 'R'
+                        AND p.codpromocao = {promotionCode}
+                        AND client.dtcadastro >= pcgeral.dtinicio
+                        AND c.data >= pcgeral.dtinicio
+                        AND c.data <= pcgeral.dtfim
+                        AND hist.primeira_compra >= pc.dtinicio
+                        AND hist.primeira_compra <= pc.dtfim
+                    GROUP BY
                         c.codusur,
                         c.codcli
-                )
-                GROUP BY 
-                    codusur
+                ) x
+                GROUP BY
+                    x.SellerId
 
                 """);
 

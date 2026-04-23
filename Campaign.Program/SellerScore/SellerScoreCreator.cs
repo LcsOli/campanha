@@ -18,7 +18,6 @@ namespace Campaign.Program.CreateSellersScore
         {
             var sellersScore = await SellersToRegister();
             await CreateSellerScore(sellersScore);
-
         }
 
         private async Task<List<SellersScoreToRegisterModel>> SellersToRegister()
@@ -35,8 +34,7 @@ namespace Campaign.Program.CreateSellersScore
                         JOIN cf_campanha_score_supervisores cs ON cs.cod_supervisor = u.codsupervisor
                     WHERE 
                         u.tipovend = 'R' AND
-                        u.dttermino IS NULL AND
-                        u.codusur IN (1602, 1735)
+                        u.dttermino IS NULL 
 
                 """).ToListAsync();
         }
