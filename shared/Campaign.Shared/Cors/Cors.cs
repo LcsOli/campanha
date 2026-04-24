@@ -6,8 +6,7 @@ namespace Campaign.Shared.cors
     {
         public static void AddCorsConfiguration(this IServiceCollection services)
         {
-            services.AddCors(options =>
-            {
+            services.AddCors(options =>            {
                 options.AddPolicy("cors", policy =>
                 {
                     policy.WithOrigins("http://localhost:8082")

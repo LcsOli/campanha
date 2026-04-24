@@ -1,16 +1,13 @@
 using Campaign.Shared.cors;
-using StackTraceLib.Middleware;
 using Campaign.Shared.Middlewares;
 using Campaign.Shared.UnitOfWorkDI;
-using StackTraceInternalLibrary.Client;
 using Campaign.Shared.DataBaseContextDI;
-using StackTraceInternalLibrary.ContainerDI;
 using Campaign.API.Configuration.Container_DI;
+using Campaign.API.Configuration.Security.Auth;
 using Campaign.API.Configuration.ContainerDI.Handlers;
 using Campaign.API.Configuration.ContainerDI.Identity;
 using Campaign.API.Configuration.ContainerDI.Repositories;
 using Campaign.API.Configuration.ContainerDI.Orchestrator;
-using Campaign.API.Configuration.Security.Auth;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,10 +26,10 @@ builder.Services.AddAuthorizationConfiguration();
 builder.Services.AddAuthenticationConfigurations();
 builder.Services.AddControllerSecurityConfiguration();
 
-builder.Services.AddHttpClient<ILogClient, LogClient>();
-builder.Services.AddHttpContextAccessor();
+//builder.Services.AddHttpClient<ILogClient, LogClient>();
+//builder.Services.AddHttpContextAccessor();
 
-builder.Services.AddStackTraceServices();
+//builder.Services.AddStackTraceServices();
 
 builder.WebHost.UseUrls("http://0.0.0.0:7025");
 
@@ -53,6 +50,6 @@ app.UseCors("cors");
 app.MapControllers();
 
 app.UseMiddleware<ExceptionMiddleware>();
-app.UseMiddleware<RequestBodyMiddleware>();
+//app.UseMiddleware<RequestBodyMiddleware>();
 
 app.Run();
