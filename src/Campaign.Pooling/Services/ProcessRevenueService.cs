@@ -17,11 +17,11 @@ namespace Campaign.Pooling.Services
         private static readonly short _year = 2025;
         private readonly static PeriodRevenue[] _periods = [
 
-         new PeriodRevenue(new(_year, 06, 01), new(_year, 06, 28)),
-         new PeriodRevenue(new(_year, 06, 29), new(_year, 08, 02)),
-         new PeriodRevenue(new(_year, 08, 03), new(_year, 08, 30)),
-         new PeriodRevenue(new(_year, 08, 31), new(_year, 09, 27)),
-         new PeriodRevenue(new(_year, 09, 28), new(_year, 11, 01))
+            new PeriodRevenue(new(_year, 06, 01), new(_year, 06, 28)),
+            new PeriodRevenue(new(_year, 06, 29), new(_year, 08, 02)),
+            new PeriodRevenue(new(_year, 08, 03), new(_year, 08, 30)),
+            new PeriodRevenue(new(_year, 08, 31), new(_year, 09, 27)),
+            new PeriodRevenue(new(_year, 09, 28), new(_year, 11, 01))
 
         ];
 
@@ -35,7 +35,7 @@ namespace Campaign.Pooling.Services
             var period = _periods.FirstOrDefault(p => p.Init <= date && p.end >= date);
 
             if (period == null)
-                throw new CompaignException(HttpStatusCode.InternalServerError, $"Data {date} não representa o fim de um período.");
+                throw new CompaignException(HttpStatusCode.InternalServerError, $"Data {date:dd/MM/yyyy} não representa um período.");
 
             return period;
         }
