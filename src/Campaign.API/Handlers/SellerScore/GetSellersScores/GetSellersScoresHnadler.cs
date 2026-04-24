@@ -1,5 +1,4 @@
 ﻿using System.Net;
-using Campaign.Shared.Mappers;
 using Campaign.Shared.Exceptions;
 using Campaign.API.DTO.Page.Response;
 using Campaign.API.Commands.SellerScore.Get;

@@ -9,7 +9,7 @@ namespace Campaign.API.Controllers.SellerScore
     [Route("api/[controller]")]
     public class SellerScoreController : ControllerBase
     {
-        [HttpGet("by-team")]
+        [HttpGet("by-filter")]
         [Authorize(Roles = "manager")]
         public async Task<IActionResult> GetRankingByTeam([FromQuery] int? teamId,
                                                           [FromQuery] string? filter,
