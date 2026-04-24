@@ -1,8 +1,7 @@
-﻿using Campaign.API.Commands.SellerScore.Get;
-using Campaign.API.DTO.Page.Request;
-using Campaign.API.Handlers.SellerScore.GetSellersScores;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+using Campaign.API.Commands.SellerScore.Get;
+using Campaign.API.Handlers.SellerScore.GetSellersScores;
 
 namespace Campaign.API.Controllers.SellerScore
 {
@@ -10,21 +9,15 @@ namespace Campaign.API.Controllers.SellerScore
     [Route("api/[controller]")]
     public class SellerScoreController : ControllerBase
     {
-        [HttpGet]
-        [Authorize(Roles = "manager")]
-        public async Task<IActionResult> GetRanking(IGetSellersScoresHnadler getSellersScoresHnadler)
-        {
-            return Ok(await getSellersScoresHnadler.Handle());
-        }
-
         [HttpGet("by-team")]
         [Authorize(Roles = "manager")]
-        public async Task<IActionResult> GetRankingByTeam([FromQuery] int teamId,
+        public async Task<IActionResult> GetRankingByTeam([FromQuery] int? teamId,
                                                           [FromQuery] string? filter,
-                                                          [FromQuery] PageRequest page,
+                                                          [FromQuery] short? page,
+                                                          [FromQuery] short? size,
                                                           IGetSellersScoresHnadler getSellersScoresHnadler)
         {
-            var command = new GetSellersScoresByTeamCommand(teamId, filter!, page.Page, page.Size);
+            var command = new GetSellersScoresByFiltersCommand(teamId, filter!, page, size);
             return Ok(await getSellersScoresHnadler.Handle(command));
         }
     }

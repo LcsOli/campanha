@@ -1,10 +1,11 @@
 ﻿using FluentValidation;
 using Campaign.Shared.FluentValidator;
-using Entity = Campaign.Shared.DataBaseContext.Entities.Seller;
+using Campaign.API.DTO.SellerManagerScore.Response;
+using Campaign.API.DTO.SellerScore.Response;
 
 namespace Campaign.API.Handlers.SellerScore.GetSellersScores.Validator
 {
-    public class SellersScoresAreFindedValidator : FluentValidator<List<Entity.SellerScore>>
+    public class SellersScoresAreFindedValidator : FluentValidator<List<SellerScoreResponse>>
     {
         public SellersScoresAreFindedValidator()
         {

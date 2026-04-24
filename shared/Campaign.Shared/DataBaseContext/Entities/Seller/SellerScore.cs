@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using Campaign.Shared.DataBaseContext.Entities.Team;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Campaign.Shared.DataBaseContext.Entities.Seller
 {
@@ -41,6 +42,33 @@ namespace Campaign.Shared.DataBaseContext.Entities.Seller
             SellerId = sellerId;
             ManagerName = managerName;
             SellerManagerId = sellerManagerId;
+        }
+
+        public SellerScore(string name,
+                           int sellerId,
+                           decimal score,
+                           Team.Team team,
+                           string managerName,
+                           decimal revenueTarget,
+                           decimal currentRevenue,
+                           decimal revenueMonth1,
+                           decimal revenueMonth2,
+                           decimal revenueMonth3,
+                           decimal revenueMonth4,
+                           decimal revenueMonth5)
+        {
+            Name = name;
+            Team = team;
+            Score = score;
+            SellerId = sellerId;
+            ManagerName = managerName;
+            RevenueTarget = revenueTarget;
+            CurrentRevenue = currentRevenue;
+            RevenueMonth1 = revenueMonth1;
+            RevenueMonth2 = revenueMonth2;
+            RevenueMonth3 = revenueMonth3;
+            RevenueMonth4 = revenueMonth4;
+            RevenueMonth5 = revenueMonth5;
         }
 
         public void UpdateScore(decimal score)
