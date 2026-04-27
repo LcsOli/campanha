@@ -7,5 +7,6 @@ namespace Campaign.API.Handlers.SellerScore.GetSellersScores
     public interface IGetSellersScoresHnadler
     {
         Task<PageResponse<SellerScoreResponse>> Handle(GetSellersScoresByFiltersCommand cmd);
+        Task<SellerScoreResponse> Handle(GetSellerScoreByIdCommand cmd);
     }
 }

@@ -1,9 +1,12 @@
 ﻿using System.Net;
+using Campaign.Shared.Mappers;
 using Campaign.Shared.Exceptions;
 using Campaign.API.DTO.Page.Response;
 using Campaign.API.Commands.SellerScore.Get;
 using Campaign.API.DTO.SellerScore.Response;
 using Campaign.API.Repositories.ProductPromotion.ReadOnly;
+using Entity = Campaign.Shared.DataBaseContext.Entities.Seller;
+using Campaign.API.Handlers.SellerScore.GetSellersScores.Mapper;
 using Campaign.API.Handlers.SellerScore.GetSellersScores.Validator;
 
 namespace Campaign.API.Handlers.SellerScore.GetSellersScores
@@ -32,6 +35,15 @@ namespace Campaign.API.Handlers.SellerScore.GetSellersScores
                        totalElements: (int)count,
                        currentPage: cmd?.Page ?? 1,
                        totalPages: cmd!.Size.HasValue ? (int)(count / cmd.Size.Value) : 1);
+        }
+
+        public async Task<SellerScoreResponse> Handle(GetSellerScoreByIdCommand cmd)
+        {
+            var sellerScore = await _sellerScoreReadOnlyRepository.GetById(cmd.SellerScoreId) ??
+                throw new CompaignException(HttpStatusCode.BadRequest, "Score de vendedor não encontrado.");
+
+            var response = new ToDTO();
+            return response.Parse(new MapperParam<Entity.SellerScore>(sellerScore));
         }
     }
 }

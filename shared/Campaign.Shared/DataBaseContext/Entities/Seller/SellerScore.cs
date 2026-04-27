@@ -1,5 +1,4 @@
-﻿using Campaign.Shared.DataBaseContext.Entities.Team;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Campaign.Shared.DataBaseContext.Entities.Seller
 {
@@ -45,6 +44,7 @@ namespace Campaign.Shared.DataBaseContext.Entities.Seller
         }
 
         public SellerScore(string name,
+                           short coupons,
                            int sellerId,
                            decimal score,
                            Team.Team team,
@@ -60,6 +60,7 @@ namespace Campaign.Shared.DataBaseContext.Entities.Seller
             Name = name;
             Team = team;
             Score = score;
+            Coupons = coupons;
             SellerId = sellerId;
             ManagerName = managerName;
             RevenueTarget = revenueTarget;

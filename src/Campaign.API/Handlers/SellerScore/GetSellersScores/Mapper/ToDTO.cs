@@ -4,40 +4,28 @@ using Entity = Campaign.Shared.DataBaseContext.Entities.Seller;
 
 namespace Campaign.API.Handlers.SellerScore.GetSellersScores.Mapper
 {
-    public class ToDTO : Mapper<List<SellerScoreResponse>, List<Entity.SellerScore>>
+    public class ToDTO : Mapper<SellerScoreResponse, Entity.SellerScore>
     {
-        public override List<SellerScoreResponse> Parse(MapperParam<List<Entity.SellerScore>> param)
+        public override SellerScoreResponse Parse(MapperParam<Entity.SellerScore> param)
         {
             var model = param.Model;
-            var sellersScores = model.OrderByDescending(s => s.Score)
-                                     .Select((s, index) =>
-                                     {
-                                         var revenue = DefineRevenue(s);
-                                         return new SellerScoreResponse(
-                                             Score: s.Score,
-                                             SellerName: s.Name,
-                                             SellerId: s.SellerId,
-                                             TeamName: s.Team!.Name,
-                                             CurrentRevenue: revenue,
-                                             RevenueTarget: s.RevenueTarget,
-                                             SellerManagerName: s.ManagerName,
-                                             Ranking: string.Concat((index + 1), 'º'),
-                                             RevenueTargetPercentage: revenue > 0 ? string.Concat((revenue * 100) / s.RevenueTarget, '%') : "0%");
-                                        }
-                                     );
+            var revenue = model.CurrentRevenue > 0 ? model.CurrentRevenue :
+                          model.RevenueMonth5 > 0 ? model.RevenueMonth5 :
+                          model.RevenueMonth4 > 0 ? model.RevenueMonth4 :
+                          model.RevenueMonth3 > 0 ? model.RevenueMonth3 :
+                          model.RevenueMonth2 > 0 ? model.RevenueMonth2 :
+                          model.RevenueMonth1 > 0 ? model.RevenueMonth1 : 0;
 
-            return [.. sellersScores];
-        }
-
-        private decimal DefineRevenue(Entity.SellerScore sellerScore)
-        {
-            return sellerScore.CurrentRevenue > 0 ? sellerScore.CurrentRevenue :
-                   sellerScore.RevenueMonth5 > 0 ? sellerScore.RevenueMonth5 :
-                   sellerScore.RevenueMonth4 > 0 ? sellerScore.RevenueMonth4 :
-                   sellerScore.RevenueMonth3 > 0 ? sellerScore.RevenueMonth3 :
-                   sellerScore.RevenueMonth2 > 0 ? sellerScore.RevenueMonth2 :
-                   sellerScore.RevenueMonth1 > 0 ? sellerScore.RevenueMonth1 :
-                   0;
+            return new(Ranking: null!,
+                       Score: model.Score,
+                       Coupons: model.Coupons,
+                       SellerName: model.Name,
+                       CurrentRevenue: revenue,
+                       SellerId: model.SellerId,
+                       TeamName: model.Team!.Name,
+                       RevenueTarget: model.RevenueTarget,
+                       SellerManagerName: model.ManagerName,
+                       RevenueTargetPercentage: revenue > 0 ? $"{(revenue * 100) / model.RevenueTarget}:%" : "0%");
         }
     }
 }

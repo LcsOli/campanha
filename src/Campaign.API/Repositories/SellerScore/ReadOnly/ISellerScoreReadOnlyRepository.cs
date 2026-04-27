@@ -1,4 +1,5 @@
 ﻿using Campaign.API.DTO.SellerScore.Response;
+using Campaign.Shared.DataBaseContext.Entities.Seller;
 using Entity = Campaign.Shared.DataBaseContext.Entities.Seller;
 
 namespace Campaign.API.Repositories.ProductPromotion.ReadOnly
@@ -9,5 +10,6 @@ namespace Campaign.API.Repositories.ProductPromotion.ReadOnly
         Task<List<Entity.SellerScore>> GetAll();
         Task<List<SellerScoreResponse>> GetByFilters(int? teamId, string? filter, int? page, int? size);
         Task<decimal> GetByTeamIdCount(int? teamId, string? filter, int? page, int? size);
+        Task<SellerScore?> GetById(int id);
     }
 }

@@ -10,7 +10,7 @@ namespace Campaign.API.Controllers.SellerScore
     public class SellerScoreController : ControllerBase
     {
         [HttpGet("by-filter")]
-        [Authorize(Roles = "manager")]
+        [Authorize(Roles = "manager, user")]
         public async Task<IActionResult> GetRankingByTeam([FromQuery] int? teamId,
                                                           [FromQuery] string? filter,
                                                           [FromQuery] short? page,
@@ -18,6 +18,14 @@ namespace Campaign.API.Controllers.SellerScore
                                                           IGetSellersScoresHnadler getSellersScoresHnadler)
         {
             var command = new GetSellersScoresByFiltersCommand(teamId, filter!, page, size);
+            return Ok(await getSellersScoresHnadler.Handle(command));
+        }
+
+        [HttpGet("{id}")]
+        [Authorize(Roles = "manager, user")]
+        public async Task<IActionResult> Get(int id ,IGetSellersScoresHnadler getSellersScoresHnadler)
+        {
+            var command = new GetSellerScoreByIdCommand(id);
             return Ok(await getSellersScoresHnadler.Handle(command));
         }
     }
