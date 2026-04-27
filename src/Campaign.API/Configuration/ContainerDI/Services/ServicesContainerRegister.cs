@@ -1,5 +1,5 @@
-﻿using Campaign.API.Services.Password;
-using Campaign.API.Services.GenerateToken;
+﻿using Campaign.API.Services.Token;
+using Campaign.API.Services.Password;
 
 namespace Campaign.API.Configuration.Container_DI
 {

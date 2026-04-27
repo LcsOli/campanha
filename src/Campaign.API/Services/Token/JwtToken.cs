@@ -4,11 +4,11 @@ using Microsoft.IdentityModel.Tokens;
 using Campaign.API.Services.SecretKey;
 using System.IdentityModel.Tokens.Jwt;
 
-namespace Campaign.API.Services.GenerateToken
+namespace Campaign.API.Services.Token
 {
     public class JwtToken : IJwtToken
     {
-        public string Generate(string userId, string name, string? teamId, Roles role)
+        public string Generate(string userId, string name, string? teamId, string? sellerId, Roles role)
         {
             var tokenDescriptor = new SecurityTokenDescriptor
             {
@@ -25,6 +25,9 @@ namespace Campaign.API.Services.GenerateToken
 
             if (!string.IsNullOrEmpty(teamId))
                 tokenDescriptor.Subject.AddClaim(new Claim("teamId", teamId));
+
+            if (!string.IsNullOrEmpty(sellerId))
+                tokenDescriptor.Subject.AddClaim(new Claim("sellerId", sellerId));
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var token = tokenHandler.CreateToken(tokenDescriptor);

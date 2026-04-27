@@ -1,8 +1,8 @@
 ﻿using System.Net;
 using Campaign.Shared.Exceptions;
+using Campaign.API.Services.Token;
 using Campaign.API.Services.Password;
 using Campaign.API.Commands.User.Auth;
-using Campaign.API.Services.GenerateToken;
 using Campaign.Shared.DTOs.Response.User;
 using Campaign.API.Repositories.User.ReadOnly;
 using Campaign.API.Handlers.User.Auth.Validator;
@@ -37,7 +37,7 @@ namespace Campaign.API.Handlers.User.Auth
             if (!passwordIsValid)
                 throw new CompaignException(HttpStatusCode.Forbidden, "Senha inválida.");
 
-            return new(_jwtToken.Generate(user.Id.ToString(), user.Name, user.TeamId?.ToString() , user.Roles));
+            return new(_jwtToken.Generate(user.Id.ToString(), user.Name, user.TeamId?.ToString(), user.SellerId?.ToString(), user.Roles));
         }
     }
 }
