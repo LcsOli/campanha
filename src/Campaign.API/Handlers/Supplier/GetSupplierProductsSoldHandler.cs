@@ -17,7 +17,10 @@ namespace Campaign.API.Handlers.Supplier
         {
             new DataValidator().Validate(cmd);
 
-            var supplierProducts = await _supplierProductSoldReadOnlyRepository.Get(cmd.SupplierId, cmd.InitIn, cmd.EndIn);
+            var initIn = new DateTime(2025, cmd.Month, 1);
+            var endIn = initIn.AddMonths(1).AddSeconds(-1); 
+
+            var supplierProducts = await _supplierProductSoldReadOnlyRepository.Get(cmd.SupplierId, initIn, endIn);
 
             new SupplierProductsFindedValidator().Validate(supplierProducts);
 

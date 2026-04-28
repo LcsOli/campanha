@@ -12,9 +12,9 @@ namespace Campaign.API.Handlers.Supplier.Validator
                 .GreaterThan(0)
                 .WithMessage("O Id do fornecedor deve ser maior que zero.");
 
-            RuleFor(s => s.InitIn)
-                .LessThanOrEqualTo(s => s.EndIn)
-                .WithMessage("A data de início deve ser menor ou igual à data de término.");
+            RuleFor(s => s.Month)
+                .LessThanOrEqualTo(12)
+                .WithMessage("O mês deve estar entre 1 e 12.");
         }
     }
 }
