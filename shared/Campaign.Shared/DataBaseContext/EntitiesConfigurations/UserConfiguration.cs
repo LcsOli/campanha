@@ -50,6 +50,9 @@ namespace Campaign.Shared.DataBaseContext.Entities.EntitiesConfigurations
             builder.HasOne(t => t.Team)
                    .WithOne()
                    .HasForeignKey<Users.User>(t => t.TeamId);
+
+            builder.Property(t => t.SupplierId)
+                   .HasColumnName("FORNECEDOR_ID");
         }
     }
 }

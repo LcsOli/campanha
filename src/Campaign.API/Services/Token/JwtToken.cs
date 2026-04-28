@@ -1,5 +1,4 @@
 ﻿using System.Security.Claims;
-using Campaign.Shared.Enums.Role;
 using Microsoft.IdentityModel.Tokens;
 using Campaign.API.Services.SecretKey;
 using System.IdentityModel.Tokens.Jwt;
@@ -8,31 +7,56 @@ namespace Campaign.API.Services.Token
 {
     public class JwtToken : IJwtToken
     {
-        public string Generate(string userId, string name, string? teamId, string? sellerId, Roles role)
+        public string Generate(string userId, string name, string teamId, string sellerId, string role)
         {
-            var tokenDescriptor = new SecurityTokenDescriptor
+            return Token(new SecurityTokenDescriptor
             {
-                Subject = new(new[]
-               {
+                Subject = new([
+
+                  new Claim("id", userId),
+                  new Claim("name", name),
+                  new Claim("teamId", teamId),
+                  new Claim("sellerId", sellerId),
+                  new Claim(ClaimTypes.Role, role.ToString().ToLower())
+               ])
+            });
+        }
+
+        public string Generate(string userId, string name, string supplierId, string role)
+        {
+            return Token(new SecurityTokenDescriptor
+            {
+                Subject = new([
+
+                  new Claim("id", userId),
+                  new Claim("name", name),
+                  new Claim("supplierId", supplierId),
+                  new Claim(ClaimTypes.Role, role)
+               ])
+            });
+        }
+
+        public string Generate(string userId, string name, string role)
+        {
+            return Token(new SecurityTokenDescriptor
+            {
+                Subject = new([
+
                   new Claim("id", userId),
                   new Claim("name", name),
                   new Claim(ClaimTypes.Role, role.ToString().ToLower()),
-             }),
+               ])
+            });
+        }
 
-                Expires = DateTime.UtcNow.AddHours(8),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(SecretKeyService.GetBytes()), SecurityAlgorithms.HmacSha256Signature)
-            };
-
-            if (!string.IsNullOrEmpty(teamId))
-                tokenDescriptor.Subject.AddClaim(new Claim("teamId", teamId));
-
-            if (!string.IsNullOrEmpty(sellerId))
-                tokenDescriptor.Subject.AddClaim(new Claim("sellerId", sellerId));
+        private static string Token(SecurityTokenDescriptor tokenDescriptor)
+        {
+            tokenDescriptor.Expires = DateTime.UtcNow.AddHours(8);
+            tokenDescriptor.SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(SecretKeyService.GetBytes()), SecurityAlgorithms.HmacSha256Signature);
 
             var tokenHandler = new JwtSecurityTokenHandler();
-            var token = tokenHandler.CreateToken(tokenDescriptor);
 
-            return tokenHandler.WriteToken(token);
+            return tokenHandler.WriteToken(tokenHandler.CreateToken(tokenDescriptor));
         }
     }
 }

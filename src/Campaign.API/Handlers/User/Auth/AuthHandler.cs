@@ -1,5 +1,6 @@
 ﻿using System.Net;
 using Campaign.Shared.Exceptions;
+using Campaign.Shared.Enums.Role;
 using Campaign.API.Services.Token;
 using Campaign.API.Services.Password;
 using Campaign.API.Commands.User.Auth;
@@ -37,7 +38,17 @@ namespace Campaign.API.Handlers.User.Auth
             if (!passwordIsValid)
                 throw new CompaignException(HttpStatusCode.Forbidden, "Senha inválida.");
 
-            return new(_jwtToken.Generate(user.Id.ToString(), user.Name, user.TeamId?.ToString(), user.SellerId?.ToString(), user.Roles));
+            //TODO - Criar factory para gerar o token de acordo com a role do usuário
+
+            return user.Roles switch
+            {
+                Roles.User => 
+                    new(_jwtToken.Generate(user.Id.ToString(), user.Name, user.TeamId?.ToString()!, user.SellerId?.ToString()!, user.Roles.ToString().ToLower())),
+                Roles.Supplier => 
+                    new(_jwtToken.Generate(user.Id.ToString(), user.Name, user.SellerId.ToString()!, user.Roles.ToString().ToLower())),
+                _ => 
+                    new(_jwtToken.Generate(user.Id.ToString(), user.Name, user.Roles.ToString().ToLower())),
+            };
         }
     }
 }

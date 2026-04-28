@@ -8,7 +8,7 @@ namespace Campaign.API.Handlers.User.RegisterUser.Mapper
     {
         public static Entities.Users.User ToEntity(RegisterUserCommand cmd)
         {
-            return UserFactory.Factory(cmd.Role, cmd.TeamId, cmd.Name, cmd.SellerId, cmd.Document, cmd.Password);
+            return UserFactory.Create(cmd.Role, cmd.TeamId, cmd.Name, cmd.SellerId, cmd.SupplierId, cmd.Document, cmd.Password);
         }
     }
 }

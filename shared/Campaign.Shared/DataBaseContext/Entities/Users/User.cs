@@ -1,5 +1,4 @@
-﻿using Campaign.Shared.DataBaseContext.Entities.Seller;
-using Campaign.Shared.Enums.Role;
+﻿using Campaign.Shared.Enums.Role;
 using SellerEntity = Campaign.Shared.DataBaseContext.Entities.Seller;
 
 namespace Campaign.Shared.DataBaseContext.Entities.Users
@@ -14,29 +13,11 @@ namespace Campaign.Shared.DataBaseContext.Entities.Users
         public DateTime? LastAccess { get; protected set; }
         public int? TeamId { get; protected set; }
         public int? SellerId { get; protected set; }
+        public int? SupplierId { get; protected set; }
         public Team.Team? Team { get; protected set; }
         public SellerEntity.Seller? Seller { get; protected set; }
 
         public User() { }
-
-        public User(int id,
-                    Roles roles,
-                    int? teamId,
-                    string name,
-                    int sellerId,
-                    string document,
-                    string password,
-                    DateTime? lastAccess)
-        {
-            Id = id;
-            Name = name;
-            Roles = roles;
-            TeamId = teamId;
-            SellerId = sellerId;
-            Document = document;
-            LastAccess = lastAccess;
-            HashedPassword = password;
-        }
 
         public static User Generate(int? teamId,
                                     Roles roles,

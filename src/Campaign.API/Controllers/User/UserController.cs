@@ -14,10 +14,10 @@ namespace Campaign.API.Controllers.User
     {
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> Register([FromBody] RegisterUserRequest dto,
+        public async Task<IActionResult> Register([FromBody] RegisterUserRequest request,
                                                   [FromServices] IRegisterUserHandler registerUserHandler)
         {
-            var cmd = new RegisterUserCommand(dto.Role, dto.TeamId, dto.Name, dto.SellerId, dto.Document, dto.Password);
+            var cmd = new RegisterUserCommand(request.Role, request.TeamId, request.Name, request.SellerId, request.SupplierId, request.Document, request.Password);
             return Created(string.Empty, await registerUserHandler.Handle(cmd));
         }
 
