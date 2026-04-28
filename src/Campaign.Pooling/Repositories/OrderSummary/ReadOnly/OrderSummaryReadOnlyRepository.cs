@@ -82,6 +82,9 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
 
         public async Task<List<SellersQuantityConsumersResponse>> GetSellersIdsThatReactivatedConsumers(int promotionCode)
         {
+            var headerPromotionCode = promotionCode.ToString()[..4].PadRight(6, '0');
+
+
             var query = _context.Database.SqlQuery<SellersQuantityConsumersResponse>($@"
                         SELECT
                             x.SellerId,
@@ -128,7 +131,7 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
                                                 dtinicio,
                                                 dtfim
                                             FROM pcpromoc
-                                            WHERE codpromocao = 202500
+                                            WHERE codpromocao = {headerPromotionCode}
                                         ) pcg
                                         GROUP BY
                                             cc.codcli
