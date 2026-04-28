@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Campaign.API.DTO.SellerScore.Response;
 using Campaign.Shared.DataBaseContext.Entities;
-using Entity = Campaign.Shared.DataBaseContext.Entities.Seller;
 using Campaign.Shared.DataBaseContext.Entities.Seller;
 
 namespace Campaign.API.Repositories.ProductPromotion.ReadOnly
@@ -14,12 +13,12 @@ namespace Campaign.API.Repositories.ProductPromotion.ReadOnly
             _context = context;
         }
 
-        public async Task<Entity.SellerScore?> GetBySellerId(int sellerId)
+        public async Task<SellerScore?> GetBySellerId(int sellerId)
         {
             return await _context.SellerScores.FirstOrDefaultAsync(p => p.SellerId == sellerId);
         }
 
-        public async Task<List<Entity.SellerScore>> GetAll()
+        public async Task<List<SellerScore>> GetAll()
         {
             return await _context.SellerScores.Include(s => s.Team)
                                               .ToListAsync();
@@ -32,13 +31,13 @@ namespace Campaign.API.Repositories.ProductPromotion.ReadOnly
 
             var query = _context.SellerScores.Include(s => s.Team)
                                              .Where(s => (teamId == null || s.TeamId == teamId) &&
-                                                        (
-                                                          filter == null ||
-                                                          (
-                                                              s.Name.ToLower().Contains(filter) ||
-                                                              s.SellerId.ToString() == filter
-                                                          )
-                                                        )
+                                                         (
+                                                           filter == null ||
+                                                           (
+                                                               s.Name.ToLower().Contains(filter) ||
+                                                               s.SellerId.ToString() == filter
+                                                           )
+                                                         )
                                              )
                                              .OrderByDescending(s => s.Score)
                                              .Select(s => new SellerScore(name: s.Name,
@@ -80,7 +79,7 @@ namespace Campaign.API.Repositories.ProductPromotion.ReadOnly
 
             var ranking = allSellersScores.Select((s, i) => new
             {
-                Index = i,
+                Index = i + 1,
                 s.SellerId,
                 s.Score
             });
@@ -104,27 +103,26 @@ namespace Campaign.API.Repositories.ProductPromotion.ReadOnly
                     CurrentRevenue: revenue,
                     RevenueTarget: s.RevenueTarget,
                     SellerManagerName: s.ManagerName,
-                    RevenueTargetPercentage: revenue > 0 ? $"{(revenue * 100) / s.RevenueTarget}:%": "0%",
-                    Ranking: string.Concat(ranking.FirstOrDefault(r => r.SellerId == s.SellerId)?.Index + 1, '°'));
+                    RevenueTargetPercentage: revenue > 0 ? $"{((revenue * 100) / s.RevenueTarget).ToString("F2")}%": "0%",
+                    Ranking: string.Concat(ranking.FirstOrDefault(r => r.SellerId == s.SellerId)?.Index, '°'));
             })];
         }
 
         public async Task<decimal> GetByTeamIdCount(int? teamId, string? filter, int? page, int? size)
         {
-            var query = _context.SellerScores.Include(s => s.Team)
-                                                         .Where(s => (teamId == null || s.TeamId == teamId) &&
-                                                                    (
-                                                                      filter == null ||
-                                                                      (
-                                                                          s.Name.ToLower().Contains(filter) ||
-                                                                          s.SellerId.ToString() == filter
-                                                                      )
-                                                                    )
-                                                         )
-                                                         .OrderByDescending(s => s.Score)
-                                                         .Select(s => s.Id);
+            filter = filter?.ToLower() ?? null;
 
-            if (page != null && size != null)
+            var query = _context.SellerScores.Where(s => (teamId == null || s.TeamId == teamId) &&
+                                                         (
+                                                           filter == null ||
+                                                           (
+                                                               s.Name.ToLower().Contains(filter) ||
+                                                               s.SellerId.ToString() == filter
+                                                           )
+                                                         )
+                                                         ).Select(s => s.Id);
+
+            if (filter == null && (page != null && size != null))
             {
                 query = query.Skip((page.Value - 1) * size.Value)
                              .Take(size.Value);

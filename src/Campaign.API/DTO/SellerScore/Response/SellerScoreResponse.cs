@@ -14,6 +14,6 @@ namespace Campaign.API.DTO.SellerScore.Response
                                       string RevenueTargetPercentage)
     {
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public string Ranking = Ranking;
+        public string Ranking { get; } = Ranking;
     }
 }
