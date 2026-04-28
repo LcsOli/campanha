@@ -48,8 +48,6 @@ namespace Campaign.Pooling.Handlers.CalculateRevenueTarget
             if (!ProcessRevenueService.IsEndOfPeriod(promotionsDates!.CurrentDtEnd))
                 return;
 
-            var month = promotionsDates.PreviousDtInit.Month;
-
             var period = ProcessRevenueService.GetPeriod(promotionsDates!.CurrentDtEnd);
 
             var revenueByMonth = await _orderDetailReadOnlyRepository.CalculateRevenueByMonth(period.Init, period.end);
@@ -61,7 +59,7 @@ namespace Campaign.Pooling.Handlers.CalculateRevenueTarget
                 if (revenueByMonthSeller == null)
                     return;
 
-                sellerScore.UpdateRevenueByMonth(revenueByMonthSeller!.Revenue, month);
+                sellerScore.UpdateRevenueByMonth(revenueByMonthSeller!.Revenue);
             });
         }
     }

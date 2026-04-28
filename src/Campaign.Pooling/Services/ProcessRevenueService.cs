@@ -12,6 +12,8 @@ namespace Campaign.Pooling.Services
         new PeriodRevenue(new(_year, 10, 04), new(_year, 10, 31))
      */
 
+    // MUDAR ANTES DE IR PARA PRODUÇÃO
+
     public static class ProcessRevenueService
     {
         private static readonly short _year = 2025;

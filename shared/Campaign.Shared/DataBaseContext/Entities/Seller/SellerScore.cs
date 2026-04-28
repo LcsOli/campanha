@@ -102,28 +102,36 @@ namespace Campaign.Shared.DataBaseContext.Entities.Seller
             QtyConsumersRegistereds += qtyRegistereds;
         }
 
-        public void UpdateRevenueByMonth(decimal revenue, int month)
+        public void UpdateRevenueByMonth(decimal revenue)
         {
             //TODO - Verificar a possibilidade de decidir qual coluna preencher de forma dinamica sem depender de switch case.
 
-            switch (month)
+            if (RevenueMonth1 == 0)
             {
-                case 6:
-                    RevenueMonth1 = revenue;
-                    break;
-                case 7:
-                    RevenueMonth2 = revenue;
-                    break;
-                case 8:
-                    RevenueMonth3 = revenue;
-                    break;
-                case 9:
-                    RevenueMonth4 = revenue;
-                    break;
-                case 10:
-                    RevenueMonth5 = revenue;
-                    break;
+                RevenueMonth1 = revenue;
+                return;
             }
+
+            if (RevenueMonth2 == 0)
+            {
+                RevenueMonth2 = revenue;
+                return;
+            }
+
+            if (RevenueMonth3 == 0)
+            {
+                RevenueMonth3 = revenue;
+                return;
+            }
+
+            if (RevenueMonth4 == 0)
+            {
+                RevenueMonth4 = revenue;
+                return;
+            }
+
+            RevenueMonth5 = revenue;
+
             //TODO - Verificar a possibilidade de criar uma tabela de receita mensal para evitar a necessidade de criar uma coluna para cada mês, visto que isso pode gerar problemas de manutenção no futuro.
         }
 

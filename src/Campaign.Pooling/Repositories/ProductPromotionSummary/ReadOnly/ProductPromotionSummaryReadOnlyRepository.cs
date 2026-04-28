@@ -25,7 +25,7 @@ namespace Campaign.Pooling.Repositories.ProductPromotionSummary.ReadOnly
                      FROM
                          pcpromoc pcurrent
                          JOIN pcpromoc pprevious ON pprevious.codpromocao = pcurrent.codpromocao - 1
-                         JOIN pcpromoc plast ON plast.codpromocao = CONCAT(EXTRACT(YEAR FROM pcurrent.dtinicio), '00')
+                         JOIN pcpromoc plast ON plast.codpromocao = EXTRACT(YEAR FROM pcurrent.dtinicio) * 100
                      WHERE
                          pcurrent.codpromocao = {currentPromotionCode}
             """);
