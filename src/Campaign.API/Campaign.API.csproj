@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\Supplier\" />
+    <Folder Include="Repositories\Supplier\SupplierProductSold\WriteOnly\" />
   </ItemGroup>
 
 </Project>
