@@ -50,7 +50,7 @@ namespace Campaign.Pooling.Repositories.OrderDetail.ReadOnly
                                 JOIN pcpedc pc ON pc.codusur = s.rca_id
                                 JOIN pcpedi pi ON pi.numped = pc.numped
                                 JOIN pcpromoi pm ON pm.codprod = pi.codprod
-                                JOIN pcpromoc pmc on pmc.codpromocao = pm.codpromocao
+                                JOIN pcpromoc pmc ON pmc.codpromocao = pm.codpromocao
                             WHERE
                                 pc.dtcancel IS NULL AND
                                 pm.codpromocao = {promotionCode} AND
@@ -67,16 +67,16 @@ namespace Campaign.Pooling.Repositories.OrderDetail.ReadOnly
             var query = _context.Database.SqlQuery<TotalRevenueResponse>($"""
                                 SELECT
                                      c.codusur AS SellerId,
-                                     sum(i.qt * i.pvenda) AS Revenue
+                                     SUM(i.qt * i.pvenda) AS Revenue
                                 FROM
                                     cf_campanha_rca_score crs
-                                    JOIN pcpedc c on c.codusur = crs.rca_id
-                                    JOIN pcpedi i on i.numped = c.numped
-                                    JOIN pcpromoi p on p.codprod = i.codprod
-                                    JOIN pcpromoc pc on pc.codpromocao = p.codpromocao
+                                    JOIN pcpedc c ON c.codusur = crs.rca_id
+                                    JOIN pcpedi i ON i.numped = c.numped
+                                    JOIN pcpromoi p ON p.codprod = i.codprod
+                                    JOIN pcpromoc pc ON pc.codpromocao = p.codpromocao
                                 WHERE
                                     p.codpromocao = {promotionCode} AND
-                                    c.dtcancel is null AND
+                                    c.dtcancel IS NULL AND
                                     (
                                         TO_CHAR(c.data, 'yyyy-MM-DD') >= TO_CHAR(pc.dtinicio, 'yyyy-MM-DD') AND
                                         TO_CHAR(c.data, 'yyyy-MM-DD') <= TO_CHAR(pc.dtfim, 'yyyy-MM-DD')
@@ -93,15 +93,15 @@ namespace Campaign.Pooling.Repositories.OrderDetail.ReadOnly
             var query = _context.Database.SqlQuery<TotalRevenueResponse>($"""
                                 SELECT
                                      c.codusur AS SellerId,
-                                     sum(i.qt * i.pvenda) AS Revenue
+                                     SUM(i.qt * i.pvenda) AS Revenue
                                 FROM
                                     cf_campanha_rca_score crs
-                                    JOIN pcpedc c on c.codusur = crs.rca_id
-                                    JOIN pcpedi i on i.numped = c.numped
-                                    JOIN pcpromoi p on p.codprod = i.codprod
+                                    JOIN pcpedc c ON c.codusur = crs.rca_id
+                                    JOIN pcpedi i ON i.numped = c.numped
+                                    JOIN pcpromoi p ON p.codprod = i.codprod
                                 WHERE
                                     p.codpromocao = {init.Year * 100} AND
-                                    c.dtcancel is null AND
+                                    c.dtcancel IS NULL AND
                                     (
                                         TO_CHAR(c.data, 'yyyy-MM-DD') >= {init.ToString("yyyy-MM-dd")} AND
                                         TO_CHAR(c.data, 'yyyy-MM-DD') <= {end.ToString("yyyy-MM-dd")}

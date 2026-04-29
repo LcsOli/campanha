@@ -5,8 +5,8 @@ namespace Campaign.Pooling.Handlers.SellerManager.GetSellers
 {
     public class GetSellersManagersHandler : IGetSellersManagersHandler
     {
-        private readonly ISellerMangerScoreReadOnlyRepository _sellerMangerReadOnlyRepository;
-        public GetSellersManagersHandler(ISellerMangerScoreReadOnlyRepository sellerMangerReadOnlyRepository)
+        private readonly ISellerManagerScoreReadOnlyRepository _sellerMangerReadOnlyRepository;
+        public GetSellersManagersHandler(ISellerManagerScoreReadOnlyRepository sellerMangerReadOnlyRepository)
         {
             _sellerMangerReadOnlyRepository = sellerMangerReadOnlyRepository;
         }

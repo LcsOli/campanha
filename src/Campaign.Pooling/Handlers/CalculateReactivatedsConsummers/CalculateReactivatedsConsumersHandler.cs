@@ -15,8 +15,6 @@ namespace Campaign.Pooling.Handlers.CalculateReactivatedsConsummers
 
         public async Task Handle(CalculateReactivatedsConsumersCommand cmd)
         {
-            //TODO - Verificar calculo de reativados e positivados!!!!!!!!!!!!!!!
-
             var clientsReactivatedsBySellers = await _orderSummaryReadOnlyRepository.GetSellersIdsThatReactivatedConsumers(cmd.PromotionCode);
 
             clientsReactivatedsBySellers.ForEach(clientsReactivatedsBySeller =>

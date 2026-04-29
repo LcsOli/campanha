@@ -4,10 +4,10 @@ using Entity = Campaign.Shared.DataBaseContext.Entities.Seller;
 
 namespace Campaign.Pooling.Repositories.SellerManager.ReadOnly
 {
-    public class SellerMangerScoreReadOnlyRepository : ISellerMangerScoreReadOnlyRepository
+    public class SellerManagerScoreReadOnlyRepository : ISellerManagerScoreReadOnlyRepository
     {
         private readonly CampaingContextDb _context;
-        public SellerMangerScoreReadOnlyRepository(CampaingContextDb context)
+        public SellerManagerScoreReadOnlyRepository(CampaingContextDb context)
         {
             _context = context;
         }

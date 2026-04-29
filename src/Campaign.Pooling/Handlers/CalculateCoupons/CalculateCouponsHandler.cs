@@ -21,7 +21,7 @@ namespace Campaign.Pooling.Handlers.CalculateCoupons
             });
         }
 
-        private short CouponsByScore(Entity.SellerScore sellerScore)
+        private static short CouponsByScore(Entity.SellerScore sellerScore)
         {
             const int _scoreToValidate = 500_000;
             return  (short)(sellerScore.Score / _scoreToValidate);

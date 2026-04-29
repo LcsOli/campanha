@@ -1,7 +1,6 @@
 ﻿using Campaign.Pooling.Commands.CalculateScoreByProduct;
 using Campaign.Pooling.Repositories.OrderDetail.ReadOnly;
 using Campaign.Pooling.Handlers.CalculateScorePoints.Validator;
-using EntitySellerScore = Campaign.Shared.DataBaseContext.Entities.Seller;
 
 namespace Campaign.Pooling.Handlers.CalculateScoreByProduct
 {
@@ -18,11 +17,11 @@ namespace Campaign.Pooling.Handlers.CalculateScoreByProduct
             new DataToCalcIsDefinedValidator()
                 .Validate(cmd);
 
-            var ordersDetails = await _orderDetailReadOnlyRepository.GetByPromotionCode(cmd.PromotionCode);
+            var orders = await _orderDetailReadOnlyRepository.GetByPromotionCode(cmd.PromotionCode);
 
             cmd.SellersScores.ForEach(sellerScore =>
             {
-                var ordersByClient = ordersDetails.Where(o => o.SellerId == sellerScore.SellerId)
+                var ordersByClient = orders.Where(o => o.SellerId == sellerScore.SellerId)
                                                   .GroupBy(o => o.ConsumerId)
                                                   .Select(o => new
                                                   {

@@ -2,7 +2,7 @@
 
 namespace Campaign.Pooling.Repositories.SellerManager.ReadOnly
 {
-    public interface ISellerMangerScoreReadOnlyRepository
+    public interface ISellerManagerScoreReadOnlyRepository
     {
         Task<List<Entity.SellerManagerScore>> GetAll();
     }

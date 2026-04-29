@@ -6,10 +6,10 @@ namespace Campaign.Pooling.Handlers.UpdateCurrentRevenueSellerManager
 {
     public class UpdateCurrentRevenueSellerManagerScoreHandler : IUpdateCurrentRevenueSellerManagerScoreHandler
     {
-        private readonly ISellerMangerScoreReadOnlyRepository _sellerMangerReadOnlyRepository;
+        private readonly ISellerManagerScoreReadOnlyRepository _sellerMangerReadOnlyRepository;
         private readonly ISellerManagerScoreWriteOnlyRepository _sellerManagerWriteOnlyRepository;
-        public UpdateCurrentRevenueSellerManagerScoreHandler(ISellerMangerScoreReadOnlyRepository sellerMangerReadOnlyRepository,
-                                                        ISellerManagerScoreWriteOnlyRepository sellerManagerWriteOnlyRepository)
+        public UpdateCurrentRevenueSellerManagerScoreHandler(ISellerManagerScoreReadOnlyRepository sellerMangerReadOnlyRepository,
+                                                             ISellerManagerScoreWriteOnlyRepository sellerManagerWriteOnlyRepository)
         {
             _sellerMangerReadOnlyRepository = sellerMangerReadOnlyRepository;
             _sellerManagerWriteOnlyRepository = sellerManagerWriteOnlyRepository;
