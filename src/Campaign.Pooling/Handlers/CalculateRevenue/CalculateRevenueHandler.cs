@@ -1,5 +1,6 @@
 ﻿using Campaign.Pooling.Services;
 using Campaign.Pooling.Commands.Calculate;
+using Campaign.Pooling.Repositories.Period.ReadOnly;
 using Campaign.Pooling.Repositories.OrderDetail.ReadOnly;
 using Campaign.Pooling.Repositories.ProductPromotionSummary.ReadOnly;
 
@@ -7,11 +8,14 @@ namespace Campaign.Pooling.Handlers.CalculateRevenueTarget
 {
     public class CalculateRevenueHandler : ICalculateRevenueHandler
     {
+        private readonly IPeriodReadOnlyRepository _periodReadOnlyRepository;
         private readonly IOrderDetailReadOnlyRepository _orderDetailReadOnlyRepository;
         private readonly IProductPromotionSummaryReadOnlyRepository _productPromotionSummaryReadOnlyRepository;
-        public CalculateRevenueHandler(IOrderDetailReadOnlyRepository orderDetailReadOnlyRepository,
+        public CalculateRevenueHandler(IPeriodReadOnlyRepository periodReadOnlyRepository,
+                                       IOrderDetailReadOnlyRepository orderDetailReadOnlyRepository,
                                        IProductPromotionSummaryReadOnlyRepository productPromotionSummaryReadOnlyRepository)
         {
+            _periodReadOnlyRepository = periodReadOnlyRepository;
             _orderDetailReadOnlyRepository = orderDetailReadOnlyRepository;
             _productPromotionSummaryReadOnlyRepository = productPromotionSummaryReadOnlyRepository;
         }
@@ -19,14 +23,17 @@ namespace Campaign.Pooling.Handlers.CalculateRevenueTarget
         public async Task Handle(CalculateRevenueCommand cmd)
         {
             var promotionsDates = await _productPromotionSummaryReadOnlyRepository.GetProductPromotionSummariesDates(cmd.PromotionCode);
+            var periods = await _periodReadOnlyRepository.GetByYear(promotionsDates!.CurrentDtEnd.Year);
 
-            if (ProcessRevenueService.IsEndOfPeriod(promotionsDates!.CurrentDtEnd))
+            var periodService = new PeriodService(periods);
+
+            if (periodService.IsEndOfPeriod(promotionsDates!.CurrentDtEnd))
             {
                 cmd.SellersScore.ForEach(sellerScore => sellerScore.ClearCurrentRevenue());
                 return;
             }
 
-            var period = ProcessRevenueService.GetPeriod(promotionsDates!.CurrentDtEnd);
+            var period = periodService.GetPeriod(promotionsDates!.CurrentDtEnd);
 
             var currentRevenue = await _orderDetailReadOnlyRepository.CalculateRevenueByMonth(period.Init, promotionsDates.CurrentDtEnd);
 
@@ -44,13 +51,16 @@ namespace Campaign.Pooling.Handlers.CalculateRevenueTarget
         public async Task Handle(CalculateRevenueMonthCommand cmd)
         {
             var promotionsDates = await _productPromotionSummaryReadOnlyRepository.GetProductPromotionSummariesDates(cmd.PromotionCode);
+            var periods = await _periodReadOnlyRepository.GetByYear(promotionsDates!.CurrentDtEnd.Year);
 
-            if (!ProcessRevenueService.IsEndOfPeriod(promotionsDates!.CurrentDtEnd))
+            var periodService = new PeriodService(periods);
+
+            if (!periodService.IsEndOfPeriod(promotionsDates!.CurrentDtEnd))
                 return;
 
-            var period = ProcessRevenueService.GetPeriod(promotionsDates!.CurrentDtEnd);
+            var period = periodService.GetPeriod(promotionsDates!.CurrentDtEnd);
 
-            var revenueByMonth = await _orderDetailReadOnlyRepository.CalculateRevenueByMonth(period.Init, period.end);
+            var revenueByMonth = await _orderDetailReadOnlyRepository.CalculateRevenueByMonth(period.Init, period.End);
 
             cmd.SellersScore.ForEach(sellerScore =>
             {

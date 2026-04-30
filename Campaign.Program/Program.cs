@@ -5,6 +5,7 @@ using Campaign.Shared.DataBaseContext.Entities;
 using Campaign.Shared.DataBaseContextDI;
 using Microsoft.Extensions.DependencyInjection;
 
+return;
 
 var services = new ServiceCollection();
 services.AddDataBase();
