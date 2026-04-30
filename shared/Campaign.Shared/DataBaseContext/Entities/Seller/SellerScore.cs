@@ -104,8 +104,6 @@ namespace Campaign.Shared.DataBaseContext.Entities.Seller
 
         public void UpdateRevenueByMonth(decimal revenue)
         {
-            //TODO - Verificar a possibilidade de decidir qual coluna preencher de forma dinamica sem depender de switch case.
-
             if (RevenueMonth1 == 0)
             {
                 RevenueMonth1 = revenue;

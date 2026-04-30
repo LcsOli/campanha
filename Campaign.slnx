@@ -5,6 +5,6 @@
   </Folder>
   <Folder Name="/src/">
     <Project Path="src/Campaign.API/Campaign.API.csproj" />
-    <Project Path="src/Campaign.Pooling/Campaign.Pooling.csproj" />
+    <Project Path="src/Campaign.Pooling/Campaign.Processor.API.csproj" />
   </Folder>
 </Solution>
