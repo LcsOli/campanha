@@ -18,9 +18,9 @@ namespace Campaign.API.Orchestrators.Auth
         private readonly IUserUpdateLastAccessHandler _userUpdateLastAccessHandler;
 
         public AuthOrchestrator(IUnityOfWork unityOfWork,
-                                       IAuthHandler authHandler,
-                                       IInsertScoreByAccessHandler insertScoreByAccessHandler,
-                                       IUserUpdateLastAccessHandler userUpdateLastAccessHandler)
+                                IAuthHandler authHandler,
+                                IInsertScoreByAccessHandler insertScoreByAccessHandler,
+                                IUserUpdateLastAccessHandler userUpdateLastAccessHandler)
         {
             _unityOfWork = unityOfWork;
             _authHandler = authHandler;
