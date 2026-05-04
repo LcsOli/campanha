@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using Campaign.Shared.Enums.Role;
 using Campaign.Shared.Exceptions;
 using Campaign.API.Commands.User.Update;
 using Campaign.API.Repositories.User.ReadOnly;
@@ -32,7 +33,7 @@ namespace Campaign.API.Handlers.User.InsertScoreByAccess
             var user = await _userReadOnlyRepository.GetByDocument(cmd.Document) ??
                 throw new CompaignException(HttpStatusCode.NotFound, "Usuário não encontrado.");
 
-            if (user.Roles != Shared.Enums.Role.Roles.User)
+            if (user.Roles != Roles.User)
                 return;
 
             var sellerScore = await _sellerScoreReadOnlyRepository.GetBySellerId(user.SellerId!.Value) ??
