@@ -1,5 +1,6 @@
-﻿using Campaign.Shared.Exceptions;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
+using Campaign.Shared.Exceptions;
+using StackTraceInternalLibrary.Service;
 using Campaign.Shared.Extensions.HttpCtx;
 
 namespace Campaign.Shared.Middlewares
@@ -12,7 +13,7 @@ namespace Campaign.Shared.Middlewares
             _next = next;
         }
 
-        public async Task InvokeAsync(HttpContext context/*, IRegisterTraceService stackTraceService*/)
+        public async Task InvokeAsync(HttpContext context, IRegisterTraceService stackTraceService)
         {
             try
             {
@@ -20,17 +21,17 @@ namespace Campaign.Shared.Middlewares
             }
             catch (CompaignCollectionMessagesExceptions ex)
             {
-                //stackTraceService.RegisterTrace(ex);
+                stackTraceService.RegisterTrace(ex);
                 await context.ExceptionResponse(ex);
             }
             catch (CompaignException ex)
             {
-                //stackTraceService.RegisterTrace(ex);
+                stackTraceService.RegisterTrace(ex);
                 await context.ExceptionResponse(ex);
             }
             catch (Exception ex)
             {
-                //stackTraceService.RegisterTrace(ex);
+                stackTraceService.RegisterTrace(ex);
                 await context.ExceptionResponse();
             }
         }

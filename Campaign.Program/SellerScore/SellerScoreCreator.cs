@@ -2,7 +2,7 @@
 using Campaign.Program.Models;
 using Microsoft.EntityFrameworkCore;
 using Campaign.Shared.DataBaseContext.Entities;
-using Campaign.Shared.DataBaseContext.Entities.Seller;
+using Entity = Campaign.Shared.DataBaseContext.Entities.Seller;
 
 namespace Campaign.Program.CreateSellersScore
 {
@@ -45,7 +45,7 @@ namespace Campaign.Program.CreateSellersScore
             //Atualmente eu estou atribuindo qualquer valor para a equipe a fim de testes. Quando a regra de equipes for definido, vou alterar o algorítimo para colocar o 
             //RCA em equipes específicas.
 
-            await _context.SellerScores.AddRangeAsync(sellers.Select(s => new SellerScore(new Random().Next(1, 4), s.SellerName, s.SellerId, s.SellerManagerName, s.SellerManagerId)));
+            await _context.SellerScores.AddRangeAsync(sellers.Select(s => new Entity.SellerScore(new Random().Next(1, 4), s.SellerName, s.SellerId, s.SellerManagerName, s.SellerManagerId)));
             await _context.SaveChangesAsync();
         }
     }

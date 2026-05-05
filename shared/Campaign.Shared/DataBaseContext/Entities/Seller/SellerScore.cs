@@ -24,12 +24,6 @@ namespace Campaign.Shared.DataBaseContext.Entities.Seller
         public DateTime? LastScoreByAccess { get; private set; }
         public int SellerManagerId { get; private set; }
 
-        [NotMapped]
-        public decimal CouponsByRevenue { get; private set; }
-
-        [NotMapped]
-        public decimal CouponsByScore { get; private set; }
-
         public SellerScore(int teamId,
                            string name,
                            int sellerId,
@@ -136,6 +130,16 @@ namespace Campaign.Shared.DataBaseContext.Entities.Seller
         public void UpdateLastScoreByAccess()
         {
             LastScoreByAccess = DateTime.Now;
+        }
+
+        public void ResetRevenue()
+        {
+            CurrentRevenue = 0;
+            RevenueMonth1 = 0;
+            RevenueMonth2 = 0;
+            RevenueMonth3 = 0;
+            RevenueMonth4 = 0;
+            RevenueMonth5 = 0;
         }
     }
 }

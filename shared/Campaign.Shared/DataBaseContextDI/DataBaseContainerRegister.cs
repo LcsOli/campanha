@@ -10,8 +10,8 @@ namespace Campaign.Shared.DataBaseContextDI
     {
         public static void AddDataBase(this IServiceCollection services)
         {
-            var connectionString = Environment.GetEnvironmentVariable("CAMPAIGN_HOMOLOGA_CONNECTION") ??
-                throw new CompaignException(HttpStatusCode.InternalServerError, "Variável de ambient CAMPAIGN_HOMOLOGA_CONNECTION não encontrada.");
+            var connectionString = Environment.GetEnvironmentVariable("DATABASE_WINT") ??
+                throw new CompaignException(HttpStatusCode.InternalServerError, "Variável de ambient DATABASE_WINT não encontrada.");
 
             services.AddDbContext<CampaingContextDb>(options => options.UseOracle(connectionString,
                                                      options => options.MigrationsHistoryTable("CF_EF_CAMPANHA_HISTORICO_DE_MIGRACOES")));
