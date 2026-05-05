@@ -131,15 +131,5 @@ namespace Campaign.Shared.DataBaseContext.Entities.Seller
         {
             LastScoreByAccess = DateTime.Now;
         }
-
-        public void ResetRevenue()
-        {
-            CurrentRevenue = 0;
-            RevenueMonth1 = 0;
-            RevenueMonth2 = 0;
-            RevenueMonth3 = 0;
-            RevenueMonth4 = 0;
-            RevenueMonth5 = 0;
-        }
     }
 }
