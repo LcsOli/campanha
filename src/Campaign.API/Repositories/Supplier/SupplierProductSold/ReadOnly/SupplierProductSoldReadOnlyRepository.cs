@@ -12,7 +12,6 @@ namespace Campaign.API.Repositories.Supplier.SupplierProductSold.ReadOnly
             _context = context;
         }
 
-        //TODO - Pensar na possibilidade de criar um arquivo de configuracao para centralizar os locais de definição de datas.
         public async Task<List<SupplierProductSoldResponse>> Get(int supplierId, DateTime initIn, DateTime endIn)
         {
             var query = _context.Database.SqlQueryRaw<SupplierProductSoldResponse>($"""

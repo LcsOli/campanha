@@ -29,7 +29,7 @@ namespace Campaign.API.Handlers.SellerScore.GetSellersScores
             new SellersScoresAreFindedValidator()
                 .Validate(sellersScores);
 
-            var count = await _sellerScoreReadOnlyRepository.GetByTeamIdCount(cmd.TeamId, cmd.Filter, cmd.Page, cmd.Size);
+            var count = await _sellerScoreReadOnlyRepository.GetByFiltersCount(cmd.TeamId, cmd.Filter, cmd.Page, cmd.Size);
 
             return new(content: sellersScores,
                        totalElements: (int)count,

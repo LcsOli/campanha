@@ -1,4 +1,5 @@
 ﻿using Campaign.API.Handlers.User.UpdateLastAccess;
+using Campaign.API.Repositories.Period.ReadOnly;
 using Campaign.API.Repositories.ProductPromotion.ReadOnly;
 using Campaign.API.Repositories.ProductPromotion.WriteOnly;
 using Campaign.API.Repositories.SellerManager.ReadOnly;
@@ -16,6 +17,7 @@ namespace Campaign.API.Configuration.ContainerDI.Repositories
             services.AddScoped<ITeamReadOnlyRepository, TeamReadOnlyRepository>();
             services.AddScoped<IUserReadOnlyRepository, UserReadOnlyRepository>();
             services.AddScoped<IUserWriteOnlyRepository, UserWriteOnlyRepository>();
+            services.AddScoped<IPeriodReadOnlyRepository, PeriodReadOnlyRepository>();
             services.AddScoped<IUserUpdateLastAccessHandler, UserUpdateLastAccessHandler>();
             services.AddScoped<ISellerScoreReadOnlyRepository, SellerScoreReadOnlyRepository>();
             services.AddScoped<ISellerScoreWriteOnlyRepository, SellerScoreWriteOnlyRepository>();

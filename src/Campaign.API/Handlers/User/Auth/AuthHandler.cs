@@ -45,7 +45,7 @@ namespace Campaign.API.Handlers.User.Auth
                 Roles.User => 
                     new(_jwtToken.Generate(user.Id.ToString(), user.Name, user.TeamId?.ToString()!, user.SellerId?.ToString()!, user.Roles.ToString().ToLower())),
                 Roles.Supplier => 
-                    new(_jwtToken.Generate(user.Id.ToString(), user.Name, user.SellerId.ToString()!, user.Roles.ToString().ToLower())),
+                    new(_jwtToken.Generate(user.Id.ToString(), user.Name, user.SupplierId.ToString()!, user.Roles.ToString().ToLower())),
                 _ => 
                     new(_jwtToken.Generate(user.Id.ToString(), user.Name, user.Roles.ToString().ToLower()))
             };

@@ -9,7 +9,7 @@ namespace Campaign.API.Repositories.ProductPromotion.ReadOnly
         Task<Entity.SellerScore?> GetBySellerId(int sellerId);
         Task<List<Entity.SellerScore>> GetAll();
         Task<List<SellerScoreResponse>> GetByFilters(int? teamId, string? filter, int? page, int? size);
-        Task<decimal> GetByTeamIdCount(int? teamId, string? filter, int? page, int? size);
+        Task<decimal> GetByFiltersCount(int? teamId, string? filter, int? page, int? size);
         Task<SellerScore?> GetById(int id);
     }
 }

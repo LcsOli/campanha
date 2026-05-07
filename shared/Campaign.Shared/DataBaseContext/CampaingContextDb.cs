@@ -19,7 +19,6 @@ namespace Campaign.Shared.DataBaseContext.Entities
         public DbSet<Product.ProductPromotionReadDataHistory> ProductPromotionReadDataHistories { get; private set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.HasDefaultSchema("MATHEUS");
             modelBuilder.HasDefaultSchema("COMPREFACIL");
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(CampaingContextDb).Assembly);
         }

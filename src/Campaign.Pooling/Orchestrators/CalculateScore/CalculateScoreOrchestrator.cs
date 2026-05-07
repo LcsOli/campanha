@@ -51,11 +51,11 @@ namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
             _logger.LogWarning("Calculating points by products.");
             await _calculateScorePointsByProductHandler.Handle(new CalculateScoreByProductCommand(promotionCode, sellersScore));
 
-            _logger.LogCritical("Calculating reactivateds cosummers.");
+            _logger.LogCritical("Calculating reactivateds cosumers.");
             await _calculateReactivatedsConsumersHandler.Handle(new CalculateReactivatedsConsumersCommand(promotionCode, sellersScore));
 
-            _logger.LogWarning("Calculating registereds cosummers.");
-            await _calculateRegisteredsConsumersHandler.Handler(new CalculateRegisteredsConsumersCommand(promotionCode, sellersScore));
+            _logger.LogWarning("Calculating registereds cosumers.");
+            await _calculateRegisteredsConsumersHandler.Handle(new CalculateRegisteredsConsumersCommand(promotionCode, sellersScore));
 
             _logger.LogWarning("Calculating revenue.");
             await _calculateRevenueHandler.Handle(new CalculateRevenueCommand(promotionCode, sellersScore));

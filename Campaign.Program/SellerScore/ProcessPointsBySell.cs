@@ -1,17 +1,17 @@
-﻿using Campaign.Pooling.Commands.CalculateScoreByProduct;
-using Campaign.Pooling.Commands.Consumers.Get;
-using Campaign.Pooling.Handlers.CalculateReactivatedsConsummers;
-using Campaign.Pooling.Handlers.CalculateRegisteredsConsummers;
-using Campaign.Pooling.Handlers.CalculateScoreByProduct;
-using Campaign.Pooling.Handlers.SellerScore.GetSellersScore;
-using Campaign.Pooling.Repositories.OrderDetail.ReadOnly;
-using Campaign.Pooling.Repositories.OrderSummary.ReadOnly;
-using Campaign.Pooling.Repositories.SellerScore.ReadOnly;
-using Campaign.Shared.DataBaseContext.Entities;
+﻿using System.Text;
 using Campaign.Shared.Services;
 using Microsoft.EntityFrameworkCore;
-using System.Text;
+using Campaign.Pooling.Commands.Consumers.Get;
+using Campaign.Shared.DataBaseContext.Entities;
+using Campaign.Pooling.Commands.CalculateScoreByProduct;
+using Campaign.Pooling.Handlers.CalculateScoreByProduct;
+using Campaign.Pooling.Repositories.OrderDetail.ReadOnly;
+using Campaign.Pooling.Repositories.SellerScore.ReadOnly;
+using Campaign.Pooling.Repositories.OrderSummary.ReadOnly;
+using Campaign.Pooling.Handlers.SellerScore.GetSellersScore;
+using Campaign.Pooling.Handlers.CalculateRegisteredsConsummers;
 using Entity = Campaign.Shared.DataBaseContext.Entities.Seller;
+using Campaign.Pooling.Handlers.CalculateReactivatedsConsummers;
 
 namespace Campaign.Program.SellerScore
 {
@@ -32,6 +32,10 @@ namespace Campaign.Program.SellerScore
 
             var promotionsCodes = await ProductsPromotions();
             var sellersScore = await getSellerScoreHandler.Handle();
+
+            var sellersToFind = new int[] { 1660, 1663 };
+
+            sellersScore = sellersScore.Where(s => sellersToFind.Contains(s.SellerId)).ToList();
 
             sellersScore.ForEach(s =>
             {
@@ -59,21 +63,20 @@ namespace Campaign.Program.SellerScore
                 Console.WriteLine("Step.1");
                 await calculateScoreByProductHandler.Handle(new CalculateScoreByProductCommand(promotionCode, sellersScore));
 
-                Console.WriteLine("Step.2");
-                await calculateRegisteredsConsumersHandler.Handler(new CalculateRegisteredsConsumersCommand(promotionCode, sellersScore));
+                //Console.WriteLine("Step.2");
+                //await calculateRegisteredsConsumersHandler.Handle(new CalculateRegisteredsConsumersCommand(promotionCode, sellersScore));
 
-                Console.WriteLine("Step.3");
-                await calculateReactivatedsConsumersHandler.Handle(new CalculateReactivatedsConsumersCommand(promotionCode, sellersScore));
+                //Console.WriteLine("Step.3");
+                //await calculateReactivatedsConsumersHandler.Handle(new CalculateReactivatedsConsumersCommand(promotionCode, sellersScore));
 
-                CreateCsv(sellersScore, promotionCode);
-
-                Console.WriteLine(promotionsCodes);
+                //CreateCsv(sellersScore, promotionCode);
             }
         }
 
         private async Task<List<int>> ProductsPromotions()
         {
-            var productsPromotions = await _context.ProductPromotionSummaries.Where(p => p.InitIn.Date.Year == _year)
+            var productsPromotions = await _context.ProductPromotionSummaries
+                                                   .Where(p => p.InitIn.Date.Year == _year)
                                                    .OrderBy(p => p.Id)
                                                    .ToListAsync();
             productsPromotions.RemoveAt(0);

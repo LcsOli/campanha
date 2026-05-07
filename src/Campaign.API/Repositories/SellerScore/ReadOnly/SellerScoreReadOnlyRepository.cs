@@ -103,12 +103,12 @@ namespace Campaign.API.Repositories.ProductPromotion.ReadOnly
                     CurrentRevenue: revenue,
                     RevenueTarget: s.RevenueTarget,
                     SellerManagerName: s.ManagerName,
-                    RevenueTargetPercentage: revenue > 0 ? $"{((revenue * 100) / s.RevenueTarget).ToString("F2")}%": "0%",
+                    RevenueTargetPercentage: revenue > 0 ? $"{(revenue * 100) / s.RevenueTarget:F2}%": "0%",
                     Ranking: string.Concat(ranking.FirstOrDefault(r => r.SellerId == s.SellerId)?.Index, '°'));
             })];
         }
 
-        public async Task<decimal> GetByTeamIdCount(int? teamId, string? filter, int? page, int? size)
+        public async Task<decimal> GetByFiltersCount(int? teamId, string? filter, int? page, int? size)
         {
             filter = filter?.ToLower() ?? null;
 

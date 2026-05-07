@@ -4,6 +4,6 @@ namespace Campaign.Pooling.Handlers.CalculateRegisteredsConsummers
 {
     public interface ICalculateRegisteredsConsumersHandler
     {
-        Task Handler(CalculateRegisteredsConsumersCommand cmd);
+        Task Handle(CalculateRegisteredsConsumersCommand cmd);
     }
 }

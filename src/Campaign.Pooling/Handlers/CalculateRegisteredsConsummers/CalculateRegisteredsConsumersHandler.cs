@@ -13,7 +13,7 @@ namespace Campaign.Pooling.Handlers.CalculateRegisteredsConsummers
             _orderSummaryReadOnlyRepository = orderSummaryReadOnlyRepository;
         }
 
-        public async Task Handler(CalculateRegisteredsConsumersCommand cmd)
+        public async Task Handle(CalculateRegisteredsConsumersCommand cmd)
         {
             var sellersQuantityReactivateds = await _orderSummaryReadOnlyRepository.GetSellersIdsThatRegisteredsConsumers(cmd.PromotionCode);
 
