@@ -12,10 +12,9 @@ namespace Campaign.API.Controllers.Supplier
         [HttpGet]
         [Authorize(Roles = "supplier")]
         public async Task<IActionResult> GetProductsSold([FromQuery] int month,
-                                                         [FromQuery] int supplierId, 
                                                          [FromServices] IGetSupplierProductsSoldHandler getSupplierProductsSoldHandler)
         {
-            var cmd = new GetSupplierProductsSoldCommand(supplierId, month);
+            var cmd = new GetSupplierProductsSoldCommand(month);
             return Ok(await getSupplierProductsSoldHandler.Handle(cmd));
         }
     }

@@ -27,7 +27,7 @@ builder.Services.AddAuthenticationConfigurations();
 builder.Services.AddControllerSecurityConfiguration();
 
 //builder.Services.AddHttpClient<ILogClient, LogClient>();
-//builder.Services.AddHttpContextAccessor();
+builder.Services.AddHttpContextAccessor();
 
 //builder.Services.AddStackTraceServices();
 

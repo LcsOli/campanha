@@ -1,4 +1,4 @@
 ﻿namespace Campaign.API.Commands.Supplier.Get
 {
-    public record GetSupplierProductsSoldCommand(int SupplierId, int Month);
+    public record GetSupplierProductsSoldCommand(int Month);
 }
