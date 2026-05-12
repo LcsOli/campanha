@@ -1,7 +1,6 @@
 ﻿using System.Text;
 using Campaign.Shared.Services;
 using Microsoft.EntityFrameworkCore;
-using Campaign.Pooling.Commands.Consumers.Get;
 using Campaign.Shared.DataBaseContext.Entities;
 using Campaign.Pooling.Commands.CalculateScoreByProduct;
 using Campaign.Pooling.Handlers.CalculateScoreByProduct;

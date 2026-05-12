@@ -11,7 +11,7 @@ namespace Campaign.API.Handlers.User.InsertScoreByAccess
 {
     public class InsertScoreByAccessHandler : IInsertScoreByAccessHandler
     {
-        private readonly int _scoreToAdd = 10_000;
+        private readonly int _scoreToAdd = 5_000;
 
         private readonly IUserReadOnlyRepository _userReadOnlyRepository;
         private readonly ISellerScoreReadOnlyRepository _sellerScoreReadOnlyRepository;

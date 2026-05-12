@@ -21,18 +21,23 @@ namespace Campaign.Pooling.Handlers.CalculateScoreByProduct
 
             cmd.SellersScores.ForEach(sellerScore =>
             {
-                var ordersByClient = orders.Where(o => o.SellerId == sellerScore.SellerId)
-                                                  .GroupBy(o => o.ConsumerId)
-                                                  .Select(o => new
-                                                  {
-                                                      CustomerId = o.Key,
-                                                      Orders = o.DistinctBy(p => p.ProductId).ToList()
-                                                  }).ToList();
+                var clients = orders.Where(o => o.SellerId == sellerScore.SellerId)
+                                                 .GroupBy(o => o.ConsumerId)
+                                                 .Select(o => new
+                                                 {
+                                                     CustomerId = o.Key,
+                                                     Orders = o.DistinctBy(p => p.ProductId).ToList()
+                                                 }).ToList();
 
-                if (ordersByClient.Count <= 0)
+                if (clients.Count <= 0)
                     return;
 
-                ordersByClient.ForEach(o => sellerScore.UpdateScore((decimal)o.Orders.Sum(o => o.ProductPromotionPoints)!));
+                var points = clients.SelectMany(o => o.Orders)
+                                    .Sum(o => o.ProductPromotionPoints);
+
+                var pointsByClients = points * clients.Count;
+
+                sellerScore.UpdateScore((decimal)pointsByClients!);
             });
         }
     }
