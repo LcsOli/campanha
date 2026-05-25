@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\shared\Campaign.Shared\Campaign.Shared.csproj" />
+    <ProjectReference Include="..\src\Campaign.API\Campaign.API.csproj" />
     <ProjectReference Include="..\src\Campaign.Pooling\Campaign.Processor.API.csproj" />
   </ItemGroup>
 

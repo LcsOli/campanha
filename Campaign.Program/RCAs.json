@@ -1,0 +1,2214 @@
+{
+
+  "sellers": [
+    {
+      "sellerId": 1934,
+      "name": "LUIS HENRIQUE SORIO",
+      "sellerManagerId": 14,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1825,
+      "name": "GEDEANE DOS SANTOS OLIVEIRA MOTA",
+      "sellerManagerId": 27,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1933,
+      "name": "ALESSANDRO GARCIA DE GIULI",
+      "sellerManagerId": 13,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1799,
+      "name": "MARCIO CESAR PEREIRA DO LAGO",
+      "sellerManagerId": 27,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1910,
+      "name": "CARLOS SERGIO GALLO  ( GALLO )",
+      "sellerManagerId": 12,
+      "teamId": 4
+    },
+    {
+      "sellerId": 560,
+      "name": "GUSTAVO NASCIMENTO DE OLIVEIRA",
+      "sellerManagerId": 13,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1830,
+      "name": "MARCELO FERREIRA LINS",
+      "sellerManagerId": 27,
+      "teamId": 4
+    },
+    {
+      "sellerId": 227,
+      "name": "ARNALDO AUGUSTO DE ALMEIDA",
+      "sellerManagerId": 12,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1666,
+      "name": "LUCINEI SILVA BATISTA",
+      "sellerManagerId": 27,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1913,
+      "name": "MARCO ANTONIO BERALDI",
+      "sellerManagerId": 13,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1822,
+      "name": "MARCELO MARQUES DOS  SANTOS JUNIOR",
+      "sellerManagerId": 13,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1838,
+      "name": "LUIZ EDNEU CAMILLI",
+      "sellerManagerId": 11,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1717,
+      "name": "CLEITON PEREIRA DE OLIVEIRA",
+      "sellerManagerId": 25,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1886,
+      "name": "JOAO JOSE DE OLIVEIRA",
+      "sellerManagerId": 12,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1914,
+      "name": "ALEX ADRIANO RUELA",
+      "sellerManagerId": 14,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1642,
+      "name": "ANA PAULA VAZ DOS SANTOS",
+      "sellerManagerId": 14,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1607,
+      "name": "RODRIGO FALASQUE",
+      "sellerManagerId": 34,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1801,
+      "name": "LUIS GUSTAVO SOARES MOURA",
+      "sellerManagerId": 27,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1856,
+      "name": "ALESSANDRO PAULINO DOS SANTOS",
+      "sellerManagerId": 14,
+      "teamId": 4
+    },
+    {
+      "sellerId": 921,
+      "name": "CARLOS FERNANDO VERONI",
+      "sellerManagerId": 13,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1900,
+      "name": "SILVANA APARECIDA SEREGATE ( SINIBALDO)",
+      "sellerManagerId": 34,
+      "teamId": 4
+    },
+    {
+      "sellerId": 895,
+      "name": "CASSIMIRO IZAIAS DO NASCIMENTO",
+      "sellerManagerId": 30,
+      "teamId": 4
+    },
+    {
+      "sellerId": 777,
+      "name": "ELIANA CARDOSO",
+      "sellerManagerId": 30,
+      "teamId": 4
+    },
+    {
+      "sellerId": 527,
+      "name": "GILBERTO JOSE PAGNOCCA",
+      "sellerManagerId": 14,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1897,
+      "name": "WAGNER  DA SILVA SOUZA",
+      "sellerManagerId": 30,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1821,
+      "name": "IARA  RODRIGUES DOS SANTOS XAVIER",
+      "sellerManagerId": 30,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1712,
+      "name": "LUCELIA FERREIRA BARROS",
+      "sellerManagerId": 25,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1677,
+      "name": "JOAO BATISTA NOGUEIRA DE SOUZA",
+      "sellerManagerId": 25,
+      "teamId": 4
+    },
+    {
+      "sellerId": 17,
+      "name": "MARCIA SOUZA",
+      "sellerManagerId": 9,
+      "teamId": 4
+    },
+    {
+      "sellerId": 973,
+      "name": "ANTONIO FLORENCIO DA SILVA FILHO",
+      "sellerManagerId": 30,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1725,
+      "name": "NATALIA MOREIRA DA SILVA SANTOS",
+      "sellerManagerId": 30,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1908,
+      "name": "GUILHERME APARECIDO MOREIRA ALVES",
+      "sellerManagerId": 14,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1739,
+      "name": "RAPHAEL FRANCISCO PEREIRA AMARAL",
+      "sellerManagerId": 25,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1819,
+      "name": "EDVALDO RAMOS LEONCIO",
+      "sellerManagerId": 27,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1683,
+      "name": "WALDIR BRAZ DE OLIVEIRA",
+      "sellerManagerId": 27,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1794,
+      "name": "FABIO OLIVEIRA ANTONIO",
+      "sellerManagerId": 25,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1643,
+      "name": "JULIO GOMES DA COSTA",
+      "sellerManagerId": 25,
+      "teamId": 4
+    },
+    {
+      "sellerId": 883,
+      "name": "VALTER BECKER",
+      "sellerManagerId": 25,
+      "teamId": 4
+    },
+    {
+      "sellerId": 865,
+      "name": "WALTER DIAS DOS SANTOS",
+      "sellerManagerId": 25,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1633,
+      "name": "MARIA APARECIDA DA SILVA",
+      "sellerManagerId": 25,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1861,
+      "name": "RAFAEL RANGEL LOPES",
+      "sellerManagerId": 14,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1852,
+      "name": "JULIO ALEXANDRE RAHAL",
+      "sellerManagerId": 25,
+      "teamId": 4
+    },
+    {
+      "sellerId": 963,
+      "name": "JOSE OSMAR BARBOSA",
+      "sellerManagerId": 14,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1829,
+      "name": "VINICIUS ALVES DOS SANTOS",
+      "sellerManagerId": 30,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1516,
+      "name": "IVAN GARCIA DE SOUZA",
+      "sellerManagerId": 3,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1577,
+      "name": "ANDRES DURAN Y PENABAD",
+      "sellerManagerId": 34,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1701,
+      "name": "JOSE RIBEIRO SOUZA",
+      "sellerManagerId": 30,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1678,
+      "name": "DANIEL FERNANDES SOLDAN",
+      "sellerManagerId": 14,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1562,
+      "name": "EDMUNDO GOMES CORREIA",
+      "sellerManagerId": 25,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1738,
+      "name": "ALCIDES MOURA",
+      "sellerManagerId": 14,
+      "teamId": 4
+    },
+    {
+      "sellerId": 611,
+      "name": "ADELINO BRAGA DOS SANTOS",
+      "sellerManagerId": 14,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1743,
+      "name": "CLAUDIO SANTOS MIGUEL",
+      "sellerManagerId": 30,
+      "teamId": 4
+    },
+    {
+      "sellerId": 833,
+      "name": "EGUIMAR  AUGUSTO DA COSTA",
+      "sellerManagerId": 14,
+      "teamId": 4
+    },
+    {
+      "sellerId": 655,
+      "name": "ALCENIR NEVES DIAS",
+      "sellerManagerId": 14,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1669,
+      "name": "JOSE MARIA PEREIRA NUNES",
+      "sellerManagerId": 25,
+      "teamId": 4
+    },
+    {
+      "sellerId": 657,
+      "name": "CLEONICE ROCHA ALBOREDO",
+      "sellerManagerId": 30,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1563,
+      "name": "PAULO GARDINO DE OLIVEIRA  ( P)",
+      "sellerManagerId": 15,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1884,
+      "name": "VINICIUS WADSON GONCALVES",
+      "sellerManagerId": 13,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1698,
+      "name": "RENATO TOMAZ DE AQUINO FILHO",
+      "sellerManagerId": 30,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1576,
+      "name": "IOLANDA FRANCISCA DE ALENCAR",
+      "sellerManagerId": 25,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1839,
+      "name": "PEDRO PAULO OLIVEIRA DA SILVA",
+      "sellerManagerId": 13,
+      "teamId": 4
+    },
+    {
+      "sellerId": 830,
+      "name": "SONIA MARIA FONTES",
+      "sellerManagerId": 30,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1569,
+      "name": "LUIS ANTONIO MOREIRA MACHADO",
+      "sellerManagerId": 25,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1762,
+      "name": "REGINALDO GOMES NOGUEIRA",
+      "sellerManagerId": 27,
+      "teamId": 4
+    },
+    {
+      "sellerId": 674,
+      "name": "MAURICI VINICIUS PEREIRA MAIA DE SOUZA",
+      "sellerManagerId": 11,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1772,
+      "name": "ANTONIO CARLOS BUENO DE MAGALHAES",
+      "sellerManagerId": 3,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1697,
+      "name": "RENATO FREITAS BHERING",
+      "sellerManagerId": 30,
+      "teamId": 4
+    },
+    {
+      "sellerId": 808,
+      "name": "LUIZ RODRIGUES MACHADO",
+      "sellerManagerId": 25,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1681,
+      "name": "JOSE MARCELO DE OLIVEIRA  (FARMA )",
+      "sellerManagerId": 25,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1814,
+      "name": "GEORGE HENRIQUE MADI PEREIRA",
+      "sellerManagerId": 34,
+      "teamId": 4
+    },
+    {
+      "sellerId": 977,
+      "name": "SANDRA REGINA  CARDOSO",
+      "sellerManagerId": 25,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1615,
+      "name": "SAULO SANTOS BRANDAO",
+      "sellerManagerId": 34,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1763,
+      "name": "AILTON ALVES MACEDO",
+      "sellerManagerId": 27,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1778,
+      "name": "MARLENE CARLOS RODRIGUES",
+      "sellerManagerId": 27,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1629,
+      "name": "JOSE RAMOS JUNIOR",
+      "sellerManagerId": 25,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1837,
+      "name": "ADELICIO  APARECIDO DOS SANTOS",
+      "sellerManagerId": 14,
+      "teamId": 4
+    },
+    {
+      "sellerId": 925,
+      "name": "HELDER OLIVEIRA DE ALEXANDRINO",
+      "sellerManagerId": 25,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1840,
+      "name": "EMERSON HENRIQUE BIAZON",
+      "sellerManagerId": 11,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1885,
+      "name": "VINICIUS ALVES DE ARAUJO",
+      "sellerManagerId": 27,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1602,
+      "name": "LEONIL FURLAN JUNIOR",
+      "sellerManagerId": 14,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1585,
+      "name": "CLAUDIO JOSE RIBEIRO",
+      "sellerManagerId": 25,
+      "teamId": 4
+    },
+    {
+      "sellerId": 216,
+      "name": "WALFRIDO DA SILVA FILHO",
+      "sellerManagerId": 12,
+      "teamId": 4
+    },
+    {
+      "sellerId": 231,
+      "name": "PAULO GERDAL DA COSTA AZEVEDO",
+      "sellerManagerId": 13,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1688,
+      "name": "IVAN RODRIGUES DE SOUZA",
+      "sellerManagerId": 14,
+      "teamId": 4
+    },
+    {
+      "sellerId": 717,
+      "name": "EMERSON TARINI",
+      "sellerManagerId": 25,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1741,
+      "name": "RITA APARECIDA DE ARAUJO CAMARA ROCHA",
+      "sellerManagerId": 30,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1702,
+      "name": "MIGUEL ADÃO CARBONE",
+      "sellerManagerId": 25,
+      "teamId": 4
+    },
+    {
+      "sellerId": 458,
+      "name": "JOAO GUIMARAES FILHOS",
+      "sellerManagerId": 15,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1876,
+      "name": "RENATO BATISTA CARDOSO",
+      "sellerManagerId": 30,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1834,
+      "name": "ELIANE MENDES DA SILVA",
+      "sellerManagerId": 25,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1682,
+      "name": "THAMIRES CRISTINA SERGIO DE OLIVEIRA",
+      "sellerManagerId": 14,
+      "teamId": 4
+    },
+    {
+      "sellerId": 966,
+      "name": "CARLOS EDUARDO DA SILVA BEZERRA",
+      "sellerManagerId": 27,
+      "teamId": 4
+    },
+    {
+      "sellerId": 917,
+      "name": "ADEILSON CALADO DE LIMA",
+      "sellerManagerId": 25,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1757,
+      "name": "CLAUDECI BARALDI",
+      "sellerManagerId": 14,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1867,
+      "name": "LEONARDO DA SILVA BALANCO",
+      "sellerManagerId": 12,
+      "teamId": 4
+    },
+    {
+      "sellerId": 869,
+      "name": "HELIO MARQUES PIMENTEL",
+      "sellerManagerId": 3,
+      "teamId": 4
+    },
+    {
+      "sellerId": 656,
+      "name": "REINALDO ALVES LUNA",
+      "sellerManagerId": 25,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1644,
+      "name": "KLEBER DE ALMEIDA ANDRADE",
+      "sellerManagerId": 34,
+      "teamId": 4
+    },
+    {
+      "sellerId": 586,
+      "name": "FLAVIA BOTOSSI BALDINI",
+      "sellerManagerId": 15,
+      "teamId": 4
+    },
+    {
+      "sellerId": 1855,
+      "name": "SANDRO ROCHA DOS SANTOS",
+      "sellerManagerId": 14,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1892,
+      "name": "ANDRE LUIZ CHINARELLI",
+      "sellerManagerId": 13,
+      "teamId": 3
+    },
+    {
+      "sellerId": 508,
+      "name": "MARCELO ROSA DA SILVA",
+      "sellerManagerId": 14,
+      "teamId": 3
+    },
+    {
+      "sellerId": 934,
+      "name": "ERICA JANAINA MARTINS NEVES",
+      "sellerManagerId": 25,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1893,
+      "name": "THAMYRES HELENA J. F. JEPES  ( FARMA )",
+      "sellerManagerId": 3,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1865,
+      "name": "CARLOS ALBERTO RAMOS",
+      "sellerManagerId": 14,
+      "teamId": 3
+    },
+    {
+      "sellerId": 803,
+      "name": "MARIA JOSE CERVEIRA MAXIMO(MIGUEL)",
+      "sellerManagerId": 34,
+      "teamId": 3
+    },
+    {
+      "sellerId": 210,
+      "name": "LUIZ CARLOS BORGONOVI",
+      "sellerManagerId": 3,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1782,
+      "name": "DIEGO RODRIGO DE CARVALHO",
+      "sellerManagerId": 30,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1561,
+      "name": "JOSE CORREIA SOARES",
+      "sellerManagerId": 25,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1735,
+      "name": "DEUSDETE FRANCISCO PAES",
+      "sellerManagerId": 25,
+      "teamId": 3
+    },
+    {
+      "sellerId": 733,
+      "name": "IVAN CARLOS VENANCIO PIRES",
+      "sellerManagerId": 11,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1730,
+      "name": "CLODOMIRO AURELIANO DE MEDEIROS GUERRA",
+      "sellerManagerId": 30,
+      "teamId": 3
+    },
+    {
+      "sellerId": 540,
+      "name": "WILSON ROBERTO SANTOS GASPARI",
+      "sellerManagerId": 14,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1873,
+      "name": "MAYSA PEREIRA PINHEIRO",
+      "sellerManagerId": 3,
+      "teamId": 3
+    },
+    {
+      "sellerId": 983,
+      "name": "MARCOS SERGIO BAGLIONI",
+      "sellerManagerId": 25,
+      "teamId": 3
+    },
+    {
+      "sellerId": 518,
+      "name": "EUCLIDES DOS REIS SILVA",
+      "sellerManagerId": 14,
+      "teamId": 3
+    },
+    {
+      "sellerId": 420,
+      "name": "JOSE ARNALDO LUCA",
+      "sellerManagerId": 3,
+      "teamId": 3
+    },
+    {
+      "sellerId": 972,
+      "name": "THADEU VICENTE ZINETTI",
+      "sellerManagerId": 14,
+      "teamId": 3
+    },
+    {
+      "sellerId": 426,
+      "name": "EDER DE OLIVEIRA",
+      "sellerManagerId": 15,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1720,
+      "name": "ESTELA SILVA CORREA DOS SANTOS",
+      "sellerManagerId": 25,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1565,
+      "name": "STELA CRISTINA DE FREITAS ROBERTO",
+      "sellerManagerId": 34,
+      "teamId": 3
+    },
+    {
+      "sellerId": 124,
+      "name": "BALCAO",
+      "sellerManagerId": 9,
+      "teamId": 3
+    },
+    {
+      "sellerId": 793,
+      "name": "MARIA DE LOURDES DE ANDRADE VULCAO(JOSE)",
+      "sellerManagerId": 27,
+      "teamId": 3
+    },
+    {
+      "sellerId": 797,
+      "name": "WESLEY ALMEIDA DOS SANTOS",
+      "sellerManagerId": 25,
+      "teamId": 3
+    },
+    {
+      "sellerId": 359,
+      "name": "FERNANDO GERALDO FERREIRA",
+      "sellerManagerId": 27,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1848,
+      "name": "DANIEL PERGENTINO DOS SANTOS",
+      "sellerManagerId": 34,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1539,
+      "name": "MAURICIO ROBERTO NAVARRO CORREIA",
+      "sellerManagerId": 25,
+      "teamId": 3
+    },
+    {
+      "sellerId": 765,
+      "name": "ANDRE ALVES RIBEIRO",
+      "sellerManagerId": 30,
+      "teamId": 3
+    },
+    {
+      "sellerId": 610,
+      "name": "AGUINALDO JOSE DOMINGUES",
+      "sellerManagerId": 25,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1637,
+      "name": "ODIRLEI KLEBER DE ARAUJO",
+      "sellerManagerId": 27,
+      "teamId": 3
+    },
+    {
+      "sellerId": 276,
+      "name": "GISELE CRUZ CHERUBIM",
+      "sellerManagerId": 12,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1842,
+      "name": "ANA CAROLINA MARSILI LENHARO",
+      "sellerManagerId": 13,
+      "teamId": 3
+    },
+    {
+      "sellerId": 890,
+      "name": "JOSE LUIZ DEL VECCHIO",
+      "sellerManagerId": 13,
+      "teamId": 3
+    },
+    {
+      "sellerId": 783,
+      "name": "RICHARD ROCHA PINHEIRO",
+      "sellerManagerId": 25,
+      "teamId": 3
+    },
+    {
+      "sellerId": 763,
+      "name": "JOSE CARLOS BATISTA DAS NEVES",
+      "sellerManagerId": 27,
+      "teamId": 3
+    },
+    {
+      "sellerId": 942,
+      "name": "MARCELO LOPES",
+      "sellerManagerId": 30,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1780,
+      "name": "CLAYTON JOSE DA SILVA",
+      "sellerManagerId": 27,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1695,
+      "name": "CLAUDIA OLIVEIRA SILVA",
+      "sellerManagerId": 13,
+      "teamId": 3
+    },
+    {
+      "sellerId": 638,
+      "name": "STELLA CREJOINAS FRANCO  -",
+      "sellerManagerId": 11,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1798,
+      "name": "ERRISON DE PAULA GUIMARAES OLIVEIRA",
+      "sellerManagerId": 13,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1857,
+      "name": "RODRIGO FESSORI VERTONI ( FARMA)",
+      "sellerManagerId": 3,
+      "teamId": 3
+    },
+    {
+      "sellerId": 536,
+      "name": "SONIA REGINA SIMOES SILVA",
+      "sellerManagerId": 14,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1580,
+      "name": "SILVIO  PEREIRA BOA SORTE",
+      "sellerManagerId": 12,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1625,
+      "name": "WESLEY LOPES DA SILVA",
+      "sellerManagerId": 30,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1788,
+      "name": "RICARDO TADEU PRADO",
+      "sellerManagerId": 13,
+      "teamId": 3
+    },
+    {
+      "sellerId": 543,
+      "name": "VALDIR APARECIDO DOS SANTOS",
+      "sellerManagerId": 15,
+      "teamId": 3
+    },
+    {
+      "sellerId": 561,
+      "name": "LUIZ CARLOS RODRIGUES",
+      "sellerManagerId": 13,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1525,
+      "name": "PAULO JOSE GONCALVES",
+      "sellerManagerId": 30,
+      "teamId": 3
+    },
+    {
+      "sellerId": 62,
+      "name": "PAULO SERGIO PINTO",
+      "sellerManagerId": 14,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1598,
+      "name": "MARIO SERGIO DE REZENDE",
+      "sellerManagerId": 14,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1901,
+      "name": "ENADIO ROCHA DE OLIVEIRA",
+      "sellerManagerId": 34,
+      "teamId": 3
+    },
+    {
+      "sellerId": 915,
+      "name": "LEONEL GOMES DE OLIVEIRA",
+      "sellerManagerId": 14,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1512,
+      "name": "JANIENE DOMINGOS FELICIO",
+      "sellerManagerId": 13,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1660,
+      "name": "VALDIR BRUNO DE CAMARGO",
+      "sellerManagerId": 25,
+      "teamId": 3
+    },
+    {
+      "sellerId": 796,
+      "name": "JOSE DONIZETE DA CONCEIÇÃO CANDIDO",
+      "sellerManagerId": 30,
+      "teamId": 3
+    },
+    {
+      "sellerId": 868,
+      "name": "CARLOS SERAPIAO DA ROCHA",
+      "sellerManagerId": 30,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1768,
+      "name": "FERNANDO HENRIQUE SANTOS",
+      "sellerManagerId": 13,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1601,
+      "name": "ANTONIO PEDRO DA SILVA JUNIOR",
+      "sellerManagerId": 30,
+      "teamId": 3
+    },
+    {
+      "sellerId": 727,
+      "name": "PAULO DE SOUZA",
+      "sellerManagerId": 25,
+      "teamId": 3
+    },
+    {
+      "sellerId": 981,
+      "name": "MARCELO DA SILVA AMORIM",
+      "sellerManagerId": 27,
+      "teamId": 3
+    },
+    {
+      "sellerId": 320,
+      "name": "JADER ANTONIO RUARO",
+      "sellerManagerId": 13,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1534,
+      "name": "VALMIR RODRIGUES DA SILVA",
+      "sellerManagerId": 15,
+      "teamId": 3
+    },
+    {
+      "sellerId": 952,
+      "name": "GUILHERME ANDRELLO RODRIGUES",
+      "sellerManagerId": 15,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1622,
+      "name": "ROGERIO MOTA BORTONE",
+      "sellerManagerId": 15,
+      "teamId": 3
+    },
+    {
+      "sellerId": 901,
+      "name": "VALDEMAR INACIO DA SILVA",
+      "sellerManagerId": 27,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1686,
+      "name": "LUIZ CARLOS DOMINGUES",
+      "sellerManagerId": 25,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1503,
+      "name": "JOAO EUDO GONCALVES",
+      "sellerManagerId": 25,
+      "teamId": 3
+    },
+    {
+      "sellerId": 335,
+      "name": "ANDERSON ANTULINE XAVIER",
+      "sellerManagerId": 14,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1547,
+      "name": "MAUZICLEIDE FLORENTINO DE SOUSA MENDES",
+      "sellerManagerId": 15,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1552,
+      "name": "DENIS CARVALHO DA SILVA",
+      "sellerManagerId": 15,
+      "teamId": 3
+    },
+    {
+      "sellerId": 240,
+      "name": "BEATRIZ MARIA GUEDES COSTA",
+      "sellerManagerId": 14,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1628,
+      "name": "MARCELO SOARES DE MELO SILVA",
+      "sellerManagerId": 30,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1507,
+      "name": "VIVIANY TURQUE  PACHECO",
+      "sellerManagerId": 11,
+      "teamId": 3
+    },
+    {
+      "sellerId": 815,
+      "name": "JOAO DE ALMEIDA PETRILLO",
+      "sellerManagerId": 27,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1880,
+      "name": "RUDNEY DA SILVA SANTOS",
+      "sellerManagerId": 27,
+      "teamId": 3
+    },
+    {
+      "sellerId": 453,
+      "name": "RODRIGO PERACOLI",
+      "sellerManagerId": 11,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1898,
+      "name": "ALANA CAROLINA DE OLIVEIRA SOUZA",
+      "sellerManagerId": 25,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1828,
+      "name": "VALERIA CAVICHIOLLI",
+      "sellerManagerId": 14,
+      "teamId": 3
+    },
+    {
+      "sellerId": 882,
+      "name": "ISAQUE BATISTA DE NOVAES",
+      "sellerManagerId": 27,
+      "teamId": 3
+    },
+    {
+      "sellerId": 241,
+      "name": "MARCELO ANTUNES",
+      "sellerManagerId": 14,
+      "teamId": 3
+    },
+    {
+      "sellerId": 80,
+      "name": "TATIANA CRISTINA DA SILVA",
+      "sellerManagerId": 3,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1564,
+      "name": "ERICK MACEDO IKENAGA",
+      "sellerManagerId": 27,
+      "teamId": 3
+    },
+    {
+      "sellerId": 418,
+      "name": "HELCIO ANGELO BORGUEZAN",
+      "sellerManagerId": 3,
+      "teamId": 3
+    },
+    {
+      "sellerId": 479,
+      "name": "GIOVANE DAS VIRGENS SANTOS",
+      "sellerManagerId": 27,
+      "teamId": 3
+    },
+    {
+      "sellerId": 629,
+      "name": "ODAIR ENSIDES  - ZONA LESTE 3",
+      "sellerManagerId": 27,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1611,
+      "name": "MAURICIO RODRIGUES BUENO",
+      "sellerManagerId": 14,
+      "teamId": 3
+    },
+    {
+      "sellerId": 265,
+      "name": "STEVE EDERSON MENDES",
+      "sellerManagerId": 14,
+      "teamId": 3
+    },
+    {
+      "sellerId": 773,
+      "name": "ADRIANA DE SOUZA",
+      "sellerManagerId": 25,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1614,
+      "name": "ROBERTO OLIVEIRA DOS SANTOS",
+      "sellerManagerId": 30,
+      "teamId": 3
+    },
+    {
+      "sellerId": 961,
+      "name": "JOSIAS CLEMENTE APARECIDO",
+      "sellerManagerId": 30,
+      "teamId": 3
+    },
+    {
+      "sellerId": 805,
+      "name": "TERESA CRISTINA DE CAMPOS BATISTA",
+      "sellerManagerId": 11,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1612,
+      "name": "JOEL ALMEIDA DE SOUZA",
+      "sellerManagerId": 30,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1724,
+      "name": "KLEBERSON CAMILO DOS SANTOS",
+      "sellerManagerId": 25,
+      "teamId": 3
+    },
+    {
+      "sellerId": 498,
+      "name": "ADRIANO VEZZANI",
+      "sellerManagerId": 14,
+      "teamId": 3
+    },
+    {
+      "sellerId": 56,
+      "name": "MANOEL LOURENCO CARVALHO",
+      "sellerManagerId": 3,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1623,
+      "name": "MAURO DA SILVA",
+      "sellerManagerId": 14,
+      "teamId": 3
+    },
+    {
+      "sellerId": 864,
+      "name": "ALEANDRE VIEIRA DA SILVA",
+      "sellerManagerId": 15,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1779,
+      "name": "ANTONIO CARLOS FERNANDES DE LIMA",
+      "sellerManagerId": 27,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1519,
+      "name": "FABIO FERRARI DE TOLEDO",
+      "sellerManagerId": 15,
+      "teamId": 3
+    },
+    {
+      "sellerId": 728,
+      "name": "SANDRA BORTE",
+      "sellerManagerId": 13,
+      "teamId": 3
+    },
+    {
+      "sellerId": 26,
+      "name": "MANOEL MESSIAS DA SILVA",
+      "sellerManagerId": 3,
+      "teamId": 3
+    },
+    {
+      "sellerId": 779,
+      "name": "MARCOS ROBERTO ROLIM",
+      "sellerManagerId": 30,
+      "teamId": 3
+    },
+    {
+      "sellerId": 304,
+      "name": "DIRCEU SILVESTRE JUNIOR",
+      "sellerManagerId": 11,
+      "teamId": 3
+    },
+    {
+      "sellerId": 398,
+      "name": "SIMAO PEDRO MORAES",
+      "sellerManagerId": 11,
+      "teamId": 3
+    },
+    {
+      "sellerId": 36,
+      "name": "WALDEMAR BARUFI JUNIOR",
+      "sellerManagerId": 3,
+      "teamId": 3
+    },
+    {
+      "sellerId": 480,
+      "name": "ADENILSON FRANCA",
+      "sellerManagerId": 14,
+      "teamId": 3
+    },
+    {
+      "sellerId": 898,
+      "name": "GILMAR VILARIM",
+      "sellerManagerId": 27,
+      "teamId": 3
+    },
+    {
+      "sellerId": 259,
+      "name": "LUIS TENORIO TAVARES",
+      "sellerManagerId": 14,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1527,
+      "name": "LUSIRENE BISPO DOS SANTOS",
+      "sellerManagerId": 34,
+      "teamId": 3
+    },
+    {
+      "sellerId": 584,
+      "name": "PAULO ROBERTO LUCHETTI",
+      "sellerManagerId": 14,
+      "teamId": 3
+    },
+    {
+      "sellerId": 732,
+      "name": "FREDERICO DA SILVA FELIX",
+      "sellerManagerId": 25,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1664,
+      "name": "ELIETE CRISTINA RISSI  CIERI",
+      "sellerManagerId": 14,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1624,
+      "name": "JOSE PAULO LUCAS DA SILVA",
+      "sellerManagerId": 30,
+      "teamId": 3
+    },
+    {
+      "sellerId": 723,
+      "name": "MARCELO DE MATOS NASCIMENTO",
+      "sellerManagerId": 30,
+      "teamId": 3
+    },
+    {
+      "sellerId": 603,
+      "name": "ANTONIO JORGE SOLIANI",
+      "sellerManagerId": 25,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1747,
+      "name": "MONICA SALVADOR CAVALCANTI",
+      "sellerManagerId": 9,
+      "teamId": 3
+    },
+    {
+      "sellerId": 69,
+      "name": "REGINA CELIA FERRAZ DE CAMPOS",
+      "sellerManagerId": 3,
+      "teamId": 3
+    },
+    {
+      "sellerId": 831,
+      "name": "ANTONIO APOLIANO ALVES",
+      "sellerManagerId": 27,
+      "teamId": 3
+    },
+    {
+      "sellerId": 585,
+      "name": "SEBASTIAO LEMES DO CARMO",
+      "sellerManagerId": 15,
+      "teamId": 3
+    },
+    {
+      "sellerId": 333,
+      "name": "ADEMIR BENTO DE GIULI",
+      "sellerManagerId": 13,
+      "teamId": 3
+    },
+    {
+      "sellerId": 609,
+      "name": "IVAN APARECIDO ANDRAUS ( S.J.DOS CAMPOS)",
+      "sellerManagerId": 15,
+      "teamId": 3
+    },
+    {
+      "sellerId": 1541,
+      "name": "ANDERSON ESTEVES MONTEIRO",
+      "sellerManagerId": 27,
+      "teamId": 3
+    },
+    {
+      "sellerId": 7,
+      "name": "APARECIDA DONIZETE BORGONOVI",
+      "sellerManagerId": 3,
+      "teamId": 3
+    },
+    {
+      "sellerId": 290,
+      "name": "SIDNEY LOURENCO SIQUEIRA",
+      "sellerManagerId": 11,
+      "teamId": 3
+    },
+    {
+      "sellerId": 756,
+      "name": "JOAO GONCALVES TENENTE",
+      "sellerManagerId": 14,
+      "teamId": 2
+    },
+    {
+      "sellerId": 724,
+      "name": "EDWALDO DE OLIVEIRA",
+      "sellerManagerId": 15,
+      "teamId": 2
+    },
+    {
+      "sellerId": 1813,
+      "name": "TIAGO LANZOTI DE LIMA",
+      "sellerManagerId": 30,
+      "teamId": 2
+    },
+    {
+      "sellerId": 912,
+      "name": "DIEGO APARECIDO DE MORAES RODRIGUES",
+      "sellerManagerId": 25,
+      "teamId": 2
+    },
+    {
+      "sellerId": 350,
+      "name": "ARI RIBEIRO",
+      "sellerManagerId": 15,
+      "teamId": 2
+    },
+    {
+      "sellerId": 1879,
+      "name": "RENAN LIRIO DE SOUZA",
+      "sellerManagerId": 14,
+      "teamId": 2
+    },
+    {
+      "sellerId": 654,
+      "name": "MAGNA MASSAU DA SILVA",
+      "sellerManagerId": 14,
+      "teamId": 2
+    },
+    {
+      "sellerId": 47,
+      "name": "CLAUDIO DURAN",
+      "sellerManagerId": 12,
+      "teamId": 2
+    },
+    {
+      "sellerId": 992,
+      "name": "BRAULIO SANTANA",
+      "sellerManagerId": 27,
+      "teamId": 2
+    },
+    {
+      "sellerId": 980,
+      "name": "MARCELO FERNANDO CAFOLA",
+      "sellerManagerId": 14,
+      "teamId": 2
+    },
+    {
+      "sellerId": 950,
+      "name": "JOSE ERNESTO BARBOSA",
+      "sellerManagerId": 30,
+      "teamId": 2
+    },
+    {
+      "sellerId": 811,
+      "name": "LEANDRO MOURA DE SANTANA",
+      "sellerManagerId": 34,
+      "teamId": 2
+    },
+    {
+      "sellerId": 634,
+      "name": "CARLOS EDUARDO DA COSTA",
+      "sellerManagerId": 27,
+      "teamId": 2
+    },
+    {
+      "sellerId": 1510,
+      "name": "EDIVALDO JOSE DE ANDRADE",
+      "sellerManagerId": 14,
+      "teamId": 2
+    },
+    {
+      "sellerId": 1630,
+      "name": "ALEXANDRE  AUGUSTO ROQUE ALMEIDA",
+      "sellerManagerId": 30,
+      "teamId": 2
+    },
+    {
+      "sellerId": 945,
+      "name": "AGNALDO DE ANDRADE ALVES",
+      "sellerManagerId": 14,
+      "teamId": 2
+    },
+    {
+      "sellerId": 182,
+      "name": "MANOEL SEVERO DO AMARAL",
+      "sellerManagerId": 14,
+      "teamId": 2
+    },
+    {
+      "sellerId": 170,
+      "name": "EDSON LUIZ DONADON",
+      "sellerManagerId": 14,
+      "teamId": 2
+    },
+    {
+      "sellerId": 920,
+      "name": "ANTONIO MARCOS MONTEIRO DOS SANTOS",
+      "sellerManagerId": 25,
+      "teamId": 2
+    },
+    {
+      "sellerId": 1827,
+      "name": "VALDIR JOSE BASSOLI",
+      "sellerManagerId": 12,
+      "teamId": 2
+    },
+    {
+      "sellerId": 549,
+      "name": "MAURICI DE SOUZA",
+      "sellerManagerId": 11,
+      "teamId": 2
+    },
+    {
+      "sellerId": 1696,
+      "name": "LUIZ CARLOS DOS SANTOS",
+      "sellerManagerId": 14,
+      "teamId": 2
+    },
+    {
+      "sellerId": 110,
+      "name": "EDNIR MACHADO",
+      "sellerManagerId": 12,
+      "teamId": 2
+    },
+    {
+      "sellerId": 34,
+      "name": "LUIZ GUILHERME ALVES",
+      "sellerManagerId": 11,
+      "teamId": 2
+    },
+    {
+      "sellerId": 334,
+      "name": "SUSE REZENDE PEREIRA",
+      "sellerManagerId": 14,
+      "teamId": 2
+    },
+    {
+      "sellerId": 214,
+      "name": "EDGAR LEAL",
+      "sellerManagerId": 12,
+      "teamId": 2
+    },
+    {
+      "sellerId": 935,
+      "name": "ARISIO AGUIAR SILVA JUNIOR",
+      "sellerManagerId": 34,
+      "teamId": 2
+    },
+    {
+      "sellerId": 627,
+      "name": "ANDERSON DIAS LANCIONI- ZONA LESTE 1",
+      "sellerManagerId": 27,
+      "teamId": 2
+    },
+    {
+      "sellerId": 1817,
+      "name": "BRUNO FELIPE SANTIAGO",
+      "sellerManagerId": 14,
+      "teamId": 2
+    },
+    {
+      "sellerId": 1548,
+      "name": "ANDERSON ESTEVES RODRIGUES",
+      "sellerManagerId": 30,
+      "teamId": 2
+    },
+    {
+      "sellerId": 76,
+      "name": "VALDIR EUGENIO DOMINGUES",
+      "sellerManagerId": 12,
+      "teamId": 2
+    },
+    {
+      "sellerId": 1620,
+      "name": "MARCOS PEREIRA SILVA",
+      "sellerManagerId": 25,
+      "teamId": 2
+    },
+    {
+      "sellerId": 211,
+      "name": "MARLON CAFOLA",
+      "sellerManagerId": 14,
+      "teamId": 2
+    },
+    {
+      "sellerId": 1903,
+      "name": "MARCELO HENRIQUE DORTA",
+      "sellerManagerId": 14,
+      "teamId": 2
+    },
+    {
+      "sellerId": 931,
+      "name": "PAULO SERGIO GABRIEL",
+      "sellerManagerId": 3,
+      "teamId": 2
+    },
+    {
+      "sellerId": 812,
+      "name": "LUCIO PAULO MOREIRA MACHADO",
+      "sellerManagerId": 25,
+      "teamId": 2
+    },
+    {
+      "sellerId": 1566,
+      "name": "NILTON GONCALVES",
+      "sellerManagerId": 14,
+      "teamId": 2
+    },
+    {
+      "sellerId": 1500,
+      "name": "JENNIFFER BERNARDO DALTO",
+      "sellerManagerId": 34,
+      "teamId": 2
+    },
+    {
+      "sellerId": 1868,
+      "name": "SARAH DEISE ORTEGA SILVA",
+      "sellerManagerId": 9,
+      "teamId": 2
+    },
+    {
+      "sellerId": 212,
+      "name": "MARCIO CAFOLA",
+      "sellerManagerId": 14,
+      "teamId": 2
+    },
+    {
+      "sellerId": 982,
+      "name": "RICARDO ALFREDO DA SILVA",
+      "sellerManagerId": 30,
+      "teamId": 2
+    },
+    {
+      "sellerId": 113,
+      "name": "NAKISON NAKADA",
+      "sellerManagerId": 3,
+      "teamId": 2
+    },
+    {
+      "sellerId": 1663,
+      "name": "AGUINALDO CESAR FERRO",
+      "sellerManagerId": 3,
+      "teamId": 2
+    },
+    {
+      "sellerId": 813,
+      "name": "JOAO LOPES",
+      "sellerManagerId": 3,
+      "teamId": 2
+    },
+    {
+      "sellerId": 1866,
+      "name": "HELUESIO LEANDRO FABIANI",
+      "sellerManagerId": 12,
+      "teamId": 2
+    },
+    {
+      "sellerId": 317,
+      "name": "ADENILSON VALERIANO DOS SANTOS",
+      "sellerManagerId": 14,
+      "teamId": 2
+    },
+    {
+      "sellerId": 16,
+      "name": "JOSE APARECIDO MENA",
+      "sellerManagerId": 3,
+      "teamId": 2
+    },
+    {
+      "sellerId": 764,
+      "name": "GENESIO DONIZETE MULATI",
+      "sellerManagerId": 13,
+      "teamId": 2
+    },
+    {
+      "sellerId": 903,
+      "name": "MARIA DOLORES MELLONE",
+      "sellerManagerId": 14,
+      "teamId": 2
+    },
+    {
+      "sellerId": 658,
+      "name": "EDUARDO ALBOREDO",
+      "sellerManagerId": 30,
+      "teamId": 2
+    },
+    {
+      "sellerId": 818,
+      "name": "ALEX SANDRO RODRIGUES LOPES",
+      "sellerManagerId": 3,
+      "teamId": 2
+    },
+    {
+      "sellerId": 530,
+      "name": "HENRY DAVID CANDOLO",
+      "sellerManagerId": 3,
+      "teamId": 2
+    },
+    {
+      "sellerId": 229,
+      "name": "SERGIO CAMPOS FRANCISCATO",
+      "sellerManagerId": 14,
+      "teamId": 2
+    },
+    {
+      "sellerId": 500,
+      "name": "HAMILTON TEIXEIRA",
+      "sellerManagerId": 14,
+      "teamId": 2
+    },
+    {
+      "sellerId": 668,
+      "name": "ANTONIO AMILTON RODRIGUES LIMA",
+      "sellerManagerId": 13,
+      "teamId": 2
+    },
+    {
+      "sellerId": 181,
+      "name": "NORTON GILMAR PEREIRA LOPES",
+      "sellerManagerId": 13,
+      "teamId": 2
+    },
+    {
+      "sellerId": 970,
+      "name": "NATHAN MAYCON DA CRUZ",
+      "sellerManagerId": 12,
+      "teamId": 2
+    },
+    {
+      "sellerId": 595,
+      "name": "ANTONIO MARCIO FREITAS FRANCO- SAO PAULO",
+      "sellerManagerId": 25,
+      "teamId": 2
+    },
+    {
+      "sellerId": 27,
+      "name": "OSMAR AYELO",
+      "sellerManagerId": 3,
+      "teamId": 2
+    },
+    {
+      "sellerId": 377,
+      "name": "VALERIO APARECIDO DO AMARAL",
+      "sellerManagerId": 3,
+      "teamId": 2
+    },
+    {
+      "sellerId": 1846,
+      "name": "ANGELO DA COSTA PERASSOLI",
+      "sellerManagerId": 11,
+      "teamId": 2
+    },
+    {
+      "sellerId": 389,
+      "name": "MARCOS DANIEL DE FRIAS",
+      "sellerManagerId": 14,
+      "teamId": 2
+    },
+    {
+      "sellerId": 467,
+      "name": "CARLOS EDUARDO DE JESUS",
+      "sellerManagerId": 15,
+      "teamId": 2
+    },
+    {
+      "sellerId": 146,
+      "name": "APARECIDO DUQUE BORGES",
+      "sellerManagerId": 14,
+      "teamId": 2
+    },
+    {
+      "sellerId": 714,
+      "name": "RODRIGO ALEX RODRIGUES",
+      "sellerManagerId": 11,
+      "teamId": 2
+    },
+    {
+      "sellerId": 1502,
+      "name": "GUILHERME CARVALHO ALVES",
+      "sellerManagerId": 25,
+      "teamId": 2
+    },
+    {
+      "sellerId": 456,
+      "name": "ANDRE LUIZ DE CARVALHO",
+      "sellerManagerId": 15,
+      "teamId": 2
+    },
+    {
+      "sellerId": 620,
+      "name": "JOAQUIM DA SILVA",
+      "sellerManagerId": 12,
+      "teamId": 2
+    },
+    {
+      "sellerId": 1523,
+      "name": "PAULO ROBERTO CORREIA DE SALES",
+      "sellerManagerId": 14,
+      "teamId": 2
+    },
+    {
+      "sellerId": 171,
+      "name": "RINALDO LUCCHETTE",
+      "sellerManagerId": 14,
+      "teamId": 2
+    },
+    {
+      "sellerId": 100,
+      "name": "LUIS CARLOS CAMPOY NAVARRO",
+      "sellerManagerId": 14,
+      "teamId": 2
+    },
+    {
+      "sellerId": 474,
+      "name": "EDEMIR CARLOS GAMBARINI",
+      "sellerManagerId": 13,
+      "teamId": 2
+    },
+    {
+      "sellerId": 209,
+      "name": "MARCOS CESAR CAFOLA",
+      "sellerManagerId": 14,
+      "teamId": 2
+    },
+    {
+      "sellerId": 876,
+      "name": "CLEBER ROBERTO RAMOS",
+      "sellerManagerId": 11,
+      "teamId": 2
+    },
+    {
+      "sellerId": 1591,
+      "name": "RINALDO APARECIDO FORNER",
+      "sellerManagerId": 14,
+      "teamId": 2
+    },
+    {
+      "sellerId": 1693,
+      "name": "MATHEUS SILVA ARAUJO",
+      "sellerManagerId": 30,
+      "teamId": 2
+    },
+    {
+      "sellerId": 1751,
+      "name": "FABIO RODRIGO APARECIDO CAMPOS",
+      "sellerManagerId": 13,
+      "teamId": 2
+    },
+    {
+      "sellerId": 1556,
+      "name": "EDUARDO FELIX DA SILVA",
+      "sellerManagerId": 27,
+      "teamId": 2
+    },
+    {
+      "sellerId": 736,
+      "name": "JOSE WAGNER SOUZA  DE OLIVEIRA",
+      "sellerManagerId": 34,
+      "teamId": 2
+    },
+    {
+      "sellerId": 570,
+      "name": "MARCIO FERREIRA COSTA",
+      "sellerManagerId": 14,
+      "teamId": 2
+    },
+    {
+      "sellerId": 307,
+      "name": "FABIO AUGUSTO TEBET",
+      "sellerManagerId": 14,
+      "teamId": 2
+    },
+    {
+      "sellerId": 15,
+      "name": "VINICIUS MORENO GRIJOTA",
+      "sellerManagerId": 12,
+      "teamId": 2
+    },
+    {
+      "sellerId": 194,
+      "name": "ONECINA CORREA LIMA",
+      "sellerManagerId": 14,
+      "teamId": 2
+    },
+    {
+      "sellerId": 762,
+      "name": "PEDRO LUIZ BRUNHEROTTI",
+      "sellerManagerId": 13,
+      "teamId": 2
+    },
+    {
+      "sellerId": 1836,
+      "name": "HELENTON VINICIUS FREIRE MISTURA",
+      "sellerManagerId": 13,
+      "teamId": 2
+    },
+    {
+      "sellerId": 88,
+      "name": "RONALDO DA CRUZ SALES",
+      "sellerManagerId": 11,
+      "teamId": 2
+    },
+    {
+      "sellerId": 743,
+      "name": "PAULO GARDINO DE OLIVEIRA JUNIOR",
+      "sellerManagerId": 15,
+      "teamId": 2
+    },
+    {
+      "sellerId": 807,
+      "name": "KATIUSCIA LOTTERMANN  - WELLINGTON",
+      "sellerManagerId": 3,
+      "teamId": 2
+    },
+    {
+      "sellerId": 338,
+      "name": "THIAGO DE OLIVEIRA CAIRES",
+      "sellerManagerId": 14,
+      "teamId": 2
+    },
+    {
+      "sellerId": 669,
+      "name": "SAMUEL FERNANDES DA SILVA ( GUARUJA )",
+      "sellerManagerId": 34,
+      "teamId": 2
+    },
+    {
+      "sellerId": 260,
+      "name": "JOSE ADRIANO ANTONIOLI",
+      "sellerManagerId": 11,
+      "teamId": 2
+    },
+    {
+      "sellerId": 592,
+      "name": "MARCIO MURILO GARZELLA (SÃO ROQUE )",
+      "sellerManagerId": 25,
+      "teamId": 2
+    },
+    {
+      "sellerId": 1645,
+      "name": "ULISSES DONIZETI DE ANDRADE",
+      "sellerManagerId": 30,
+      "teamId": 2
+    },
+    {
+      "sellerId": 98,
+      "name": "DEOCLECIANO PEREIRA DOS SANTOS",
+      "sellerManagerId": 11,
+      "teamId": 2
+    },
+    {
+      "sellerId": 579,
+      "name": "ANTONIO FERNANDO ROSA MENDONCA",
+      "sellerManagerId": 15,
+      "teamId": 2
+    },
+    {
+      "sellerId": 842,
+      "name": "EVANILDO LOPES SANTOS",
+      "sellerManagerId": 27,
+      "teamId": 2
+    },
+    {
+      "sellerId": 678,
+      "name": "JOSINALDO DOS SANTOS PEREIRA  MOTA",
+      "sellerManagerId": 27,
+      "teamId": 1
+    },
+    {
+      "sellerId": 828,
+      "name": "GABRIELA MELLO DE OLIVEIRA",
+      "sellerManagerId": 9,
+      "teamId": 1
+    },
+    {
+      "sellerId": 1632,
+      "name": "JOAO MARQUES DE MENDONÇA JUNIOR",
+      "sellerManagerId": 12,
+      "teamId": 1
+    },
+    {
+      "sellerId": 768,
+      "name": "EDMILSON RIBEIRO DA CUNHA",
+      "sellerManagerId": 27,
+      "teamId": 1
+    },
+    {
+      "sellerId": 183,
+      "name": "DIEGO FERNANDO SEVERO AMARAL",
+      "sellerManagerId": 14,
+      "teamId": 1
+    },
+    {
+      "sellerId": 872,
+      "name": "SILVANEI SANTOS MARINHO",
+      "sellerManagerId": 25,
+      "teamId": 1
+    },
+    {
+      "sellerId": 959,
+      "name": "WANDERLEY JUSTINO DA SILVA",
+      "sellerManagerId": 27,
+      "teamId": 1
+    },
+    {
+      "sellerId": 207,
+      "name": "ROSANA CAMARGO LISBOA",
+      "sellerManagerId": 3,
+      "teamId": 1
+    },
+    {
+      "sellerId": 51,
+      "name": "DIOGO ZANETONI LOPES",
+      "sellerManagerId": 3,
+      "teamId": 1
+    },
+    {
+      "sellerId": 1786,
+      "name": "MARCELO FERREIRA CARLOS",
+      "sellerManagerId": 25,
+      "teamId": 1
+    },
+    {
+      "sellerId": 593,
+      "name": "MARCOS ALBOREDO (SÃO PAULO)",
+      "sellerManagerId": 25,
+      "teamId": 1
+    },
+    {
+      "sellerId": 786,
+      "name": "DANIEL RODRIGUES DA COSTA",
+      "sellerManagerId": 13,
+      "teamId": 1
+    },
+    {
+      "sellerId": 675,
+      "name": "FREDERICK EMANUEL DE CARVALHO",
+      "sellerManagerId": 15,
+      "teamId": 1
+    },
+    {
+      "sellerId": 928,
+      "name": "RENATA BEZERRA DA SILVA",
+      "sellerManagerId": 27,
+      "teamId": 1
+    },
+    {
+      "sellerId": 1532,
+      "name": "DANIELLY GONÇALVES MANTOVANI",
+      "sellerManagerId": 25,
+      "teamId": 1
+    },
+    {
+      "sellerId": 1582,
+      "name": "ELIZETE FRANCISCA DE SOUZA",
+      "sellerManagerId": 9,
+      "teamId": 1
+    },
+    {
+      "sellerId": 114,
+      "name": "JOSE DA SILVA VIANA",
+      "sellerManagerId": 12,
+      "teamId": 1
+    },
+    {
+      "sellerId": 1578,
+      "name": "JOAQUIM ROBERTO ANTUNES DA COSTA",
+      "sellerManagerId": 14,
+      "teamId": 1
+    },
+    {
+      "sellerId": 673,
+      "name": "FELIPE CAMARGO VELOSO DE ABREU",
+      "sellerManagerId": 3,
+      "teamId": 1
+    },
+    {
+      "sellerId": 1597,
+      "name": "SERGIO MARCHIOLI DE SOUZA",
+      "sellerManagerId": 11,
+      "teamId": 1
+    },
+    {
+      "sellerId": 1815,
+      "name": "MARCOS CESAR RODRIGUES",
+      "sellerManagerId": 14,
+      "teamId": 1
+    },
+    {
+      "sellerId": 705,
+      "name": "DANIEL SOARES DE JESUS",
+      "sellerManagerId": 27,
+      "teamId": 1
+    },
+    {
+      "sellerId": 236,
+      "name": "EDVALDO ROLDAO",
+      "sellerManagerId": 13,
+      "teamId": 1
+    },
+    {
+      "sellerId": 157,
+      "name": "MARCIO SERGIO FELIX",
+      "sellerManagerId": 11,
+      "teamId": 1
+    },
+    {
+      "sellerId": 909,
+      "name": "LEANDRO CHIQUETO DIAS",
+      "sellerManagerId": 3,
+      "teamId": 1
+    },
+    {
+      "sellerId": 739,
+      "name": "JULIANO DE SOUZA MOLINARI",
+      "sellerManagerId": 14,
+      "teamId": 1
+    },
+    {
+      "sellerId": 450,
+      "name": "IVAN JOSE ANDRIANI",
+      "sellerManagerId": 12,
+      "teamId": 1
+    },
+    {
+      "sellerId": 258,
+      "name": "HERMES ANTONIO MARCHIORI",
+      "sellerManagerId": 13,
+      "teamId": 1
+    },
+    {
+      "sellerId": 203,
+      "name": "JOSE WILSON LOPES MARTINS",
+      "sellerManagerId": 11,
+      "teamId": 1
+    },
+    {
+      "sellerId": 14,
+      "name": "CARLOS HENRIQUE MORINI",
+      "sellerManagerId": 3,
+      "teamId": 1
+    },
+    {
+      "sellerId": 522,
+      "name": "WELLINGTON ALCANTARA NASCIMENTO",
+      "sellerManagerId": 15,
+      "teamId": 1
+    },
+    {
+      "sellerId": 565,
+      "name": "ALESSANDRA AP LOPES NASCIMENTO",
+      "sellerManagerId": 9,
+      "teamId": 1
+    },
+    {
+      "sellerId": 408,
+      "name": "VICENTE SILVA JUNIOR",
+      "sellerManagerId": 14,
+      "teamId": 1
+    },
+    {
+      "sellerId": 1524,
+      "name": "VANESSA DE FREITAS SALES",
+      "sellerManagerId": 9,
+      "teamId": 1
+    },
+    {
+      "sellerId": 1912,
+      "name": "JONATAN CASONI TOLEDO",
+      "sellerManagerId": 15,
+      "teamId": 1
+    },
+    {
+      "sellerId": 1570,
+      "name": "VANDERSON SANTOS  XIMENES",
+      "sellerManagerId": 14,
+      "teamId": 1
+    },
+    {
+      "sellerId": 180,
+      "name": "JULIO DE ALMEIDA JUNIOR",
+      "sellerManagerId": 14,
+      "teamId": 1
+    },
+    {
+      "sellerId": 1572,
+      "name": "ALEXANDRE RODRIGUES",
+      "sellerManagerId": 12,
+      "teamId": 1
+    },
+    {
+      "sellerId": 9,
+      "name": "ELAINE CRISTINA VENTALI",
+      "sellerManagerId": 9,
+      "teamId": 1
+    },
+    {
+      "sellerId": 344,
+      "name": "ANTONIO GOMES CLEMENTE",
+      "sellerManagerId": 12,
+      "teamId": 1
+    },
+    {
+      "sellerId": 792,
+      "name": "CRISTIANO MIGUEL CASTILHO",
+      "sellerManagerId": 14,
+      "teamId": 1
+    },
+    {
+      "sellerId": 277,
+      "name": "LEANDRO FEITEIRA GOMES",
+      "sellerManagerId": 14,
+      "teamId": 1
+    },
+    {
+      "sellerId": 526,
+      "name": "REINALDO CIERI",
+      "sellerManagerId": 14,
+      "teamId": 1
+    },
+    {
+      "sellerId": 761,
+      "name": "FLAVIO RIBEIRO BANHOS",
+      "sellerManagerId": 3,
+      "teamId": 1
+    },
+    {
+      "sellerId": 591,
+      "name": "JOSE MARCOS DOS SANTOS - SÃO PAULO",
+      "sellerManagerId": 14,
+      "teamId": 1
+    },
+    {
+      "sellerId": 510,
+      "name": "EZEQUIEL TANZI DA SILVA",
+      "sellerManagerId": 14,
+      "teamId": 1
+    },
+    {
+      "sellerId": 46,
+      "name": "RONALD CARVALHO",
+      "sellerManagerId": 14,
+      "teamId": 1
+    },
+    {
+      "sellerId": 544,
+      "name": "REINILDO CAETANO DE ALMEIDA",
+      "sellerManagerId": 15,
+      "teamId": 1
+    }
+  ]
+    
+}

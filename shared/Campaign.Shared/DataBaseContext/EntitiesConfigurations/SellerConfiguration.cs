@@ -22,6 +22,9 @@ namespace Campaign.Shared.DataBaseContext.Entities.EntitiesConfigurations
 
             builder.Property(s => s.SellerType)
                    .HasColumnName("TIPOVEND");
+
+            builder.Property(s => s.Document)
+                   .HasColumnName("CPF");
         }
     }
 }
