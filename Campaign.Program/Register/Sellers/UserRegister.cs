@@ -11,7 +11,7 @@ using Campaign.Shared.DataBaseContext.Entities.UnityOfWork;
 
 namespace Campaign.Program.Register.Sellers
 {
-    public class SellerRegister
+    public class UserRegister
     {
         private readonly IUnityOfWork _unityOfWork;
         private readonly CampaingContextDb _context;
@@ -22,7 +22,7 @@ namespace Campaign.Program.Register.Sellers
                                                         .SetBasePath(Directory.GetCurrentDirectory())
                                                         .Build();
 
-        public SellerRegister(IUnityOfWork unityOfWork,
+        public UserRegister(IUnityOfWork unityOfWork,
                               CampaingContextDb context,
                               IRegisterUserHandler registerUserHandler)
         {
@@ -33,7 +33,7 @@ namespace Campaign.Program.Register.Sellers
 
         public async Task Register()
         {
-            var sellersToRegister = _configuration.GetSection("sellers").Get<List<DTOs.Seller>>();
+            var sellersToRegister = _configuration.GetSection("sellers").Get<List<DTOs.UserToRegister>>();
 
             if (sellersToRegister!.Count <= 0)
                 throw new CompaignException(HttpStatusCode.InternalServerError, "Revise os dados do JSON!!!!!!!!!!!!!!!!!!!!!!");
@@ -49,38 +49,38 @@ namespace Campaign.Program.Register.Sellers
                         var cmd = new RegisterUserCommand(Roles.User,
                                                           seller.TeamId,
                                                           seller.Name,
-                                                          seller.SellerId,
+                                                          seller.Id,
                                                           null,
                                                           seller.Document,
-                                                          $"{seller.SellerId}".PadLeft(4, '0'));
+                                                          $"{seller.Id}".PadLeft(4, '0'));
 
                         await _registerUserHandler.Handle(cmd);
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine($"RCA Erro ao cadastrar: {seller.SellerId} - {ex.Message}");
+                        Console.WriteLine($"RCA Erro ao cadastrar: {seller.Id} - {ex.Message}");
                     }
                 }
             });
         }
 
-        private async Task SetDocument(List<DTOs.Seller> sellersToRegister)
+        private async Task SetDocument(List<DTOs.UserToRegister> sellersToRegister)
         {
 
-            var sellersIds = sellersToRegister!.Select(x => x.SellerId).ToArray();
+            var sellersIds = sellersToRegister!.Select(x => x.Id).ToArray();
 
             var sellersDocuments = await _context.Sellers
                                            .Where(x => sellersIds.Contains(x.Id))
-                                           .Select(x => new SellersDocument(x.Id, x.Document))
+                                           .Select(x => new UserDocument(x.Id, x.Document))
                                            .ToListAsync();
 
             sellersToRegister.ForEach(seller =>
             {
-                var sellerDocument = sellersDocuments.SingleOrDefault(x => x.Id == seller.SellerId);
+                var sellerDocument = sellersDocuments.SingleOrDefault(x => x.Id == seller.Id);
 
                 if (string.IsNullOrEmpty(sellerDocument!.Document))
                 {
-                    Console.WriteLine($"RCA Sem documento: {seller.SellerId}");
+                    Console.WriteLine($"RCA Sem documento: {seller.Id}");
                     return;
                 }
 

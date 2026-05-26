@@ -2,14 +2,9 @@
 
 namespace Campaign.Program.Register.DTOs
 {
-    public class SellersToRegister
+    public class UserToRegister
     {
-        public List<Seller> Sellers { get; set; } = default!;
-
-    }
-    public class Seller
-    {
-        public int SellerId { get; set; }
+        public int Id { get; set; }
         public int TeamId { get; set; }
         public int SellerManagerId { get; set; }
         public string Name { get; set; } = default!;

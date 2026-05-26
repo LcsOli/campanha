@@ -33,7 +33,7 @@ async Task SellerRegister()
         var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnityOfWork>();
         var registerUserHandler = scope.ServiceProvider.GetRequiredService<IRegisterUserHandler>();
 
-        var registerSeller = new SellerRegister(unitOfWork, context!, registerUserHandler);
+        var registerSeller = new UserRegister(unitOfWork, context!, registerUserHandler);
         await registerSeller.Register();
     }
 }
