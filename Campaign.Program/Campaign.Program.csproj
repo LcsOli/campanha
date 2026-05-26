@@ -13,4 +13,10 @@
     <ProjectReference Include="..\src\Campaign.Pooling\Campaign.Processor.API.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Include="SellersToRegister.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

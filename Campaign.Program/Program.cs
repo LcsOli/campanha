@@ -1,31 +1,39 @@
-﻿
-
-using Campaign.API.Handlers.User.RegisterUser;
-using Campaign.Program.Register.RCAs;
-using Campaign.Program.SellerScore;
-using Campaign.Shared.DataBaseContext.Entities;
+﻿using Campaign.Shared.UnitOfWorkDI;
+using Campaign.Program.Register.Sellers;
 using Campaign.Shared.DataBaseContextDI;
-using Microsoft.Extensions.Configuration;
+using Campaign.API.Configuration.Container_DI;
+using Campaign.API.Handlers.User.RegisterUser;
 using Microsoft.Extensions.DependencyInjection;
+using Campaign.Shared.DataBaseContext.Entities;
+using Campaign.API.Configuration.ContainerDI.Handlers;
+using Campaign.API.Configuration.ContainerDI.Identity;
+using Campaign.API.Configuration.ContainerDI.Repositories;
+using Campaign.Shared.DataBaseContext.Entities.UnityOfWork;
 
 
 var services = new ServiceCollection();
 services.AddDataBase();
 
+services.AddServices();
+services.AddIdentity();
+services.AddUnityOfWork();
+services.AddRepositories();
+
+services.AddHandler();
+
 var serviceProvider = services.BuildServiceProvider();
-
-var teste = Directory.GetCurrentDirectory();
-
 var context = serviceProvider.GetService<CampaingContextDb>();
 
+await SellerRegister();
 
-//var sellerScoreCreator = new SellerScoreCreator(context);
-//await sellerScoreCreator.Create();
+async Task SellerRegister()
+{
+    using (var scope = serviceProvider.CreateScope())
+    {
+        var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnityOfWork>();
+        var registerUserHandler = scope.ServiceProvider.GetRequiredService<IRegisterUserHandler>();
 
-//var processPointsBySell = new ProcessPointsBySell(context);
-//await processPointsBySell.Process();
-
-
-
-var registerSeller = new SellerRegister(context, serviceProvider.GetService<RegisterUserHandler>());
-await registerSeller.Register();
+        var registerSeller = new SellerRegister(unitOfWork, context!, registerUserHandler);
+        await registerSeller.Register();
+    }
+}
