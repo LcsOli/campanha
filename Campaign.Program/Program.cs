@@ -24,7 +24,6 @@ services.AddHandler();
 var serviceProvider = services.BuildServiceProvider();
 var context = serviceProvider.GetService<CampaingContextDb>();
 
-await UserRegister();
 
 async Task UserRegister()
 {
