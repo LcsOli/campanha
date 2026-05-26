@@ -12,10 +12,6 @@ namespace Campaign.API.Handlers.User.RegisterUser.Validator
                 .IsInEnum()
                 .WithMessage("Role inválida.");
 
-            RuleFor(r => r.TeamId)
-                .NotEmpty()
-                .WithMessage("Equipe deve ser definida.");
-
             RuleFor(r => r.Name)
                 .NotEmpty()
                 .NotNull()

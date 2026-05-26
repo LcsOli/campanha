@@ -24,9 +24,9 @@ services.AddHandler();
 var serviceProvider = services.BuildServiceProvider();
 var context = serviceProvider.GetService<CampaingContextDb>();
 
-await SellerRegister();
+await UserRegister();
 
-async Task SellerRegister()
+async Task UserRegister()
 {
     using (var scope = serviceProvider.CreateScope())
     {

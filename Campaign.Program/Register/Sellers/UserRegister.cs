@@ -11,20 +11,30 @@ using Campaign.Shared.DataBaseContext.Entities.UnityOfWork;
 
 namespace Campaign.Program.Register.Sellers
 {
+    public enum UserType
+    {
+        Seller,
+        SellerManager
+    }
+
     public class UserRegister
     {
         private readonly IUnityOfWork _unityOfWork;
         private readonly CampaingContextDb _context;
         private readonly IRegisterUserHandler _registerUserHandler;
 
+        private readonly static UserType _processType = UserType.SellerManager;
+
+        private readonly static string _jsonFilePath = _processType == UserType.Seller ? "SellersToRegister.json" : "SellersManagersToRegister.json";
+
         private readonly IConfiguration _configuration = new ConfigurationBuilder()
-                                                        .AddJsonFile("SellersToRegister.json")
+                                                        .AddJsonFile(_jsonFilePath)
                                                         .SetBasePath(Directory.GetCurrentDirectory())
                                                         .Build();
 
         public UserRegister(IUnityOfWork unityOfWork,
-                              CampaingContextDb context,
-                              IRegisterUserHandler registerUserHandler)
+                            CampaingContextDb context,
+                            IRegisterUserHandler registerUserHandler)
         {
             _context = context;
             _unityOfWork = unityOfWork;
@@ -33,16 +43,56 @@ namespace Campaign.Program.Register.Sellers
 
         public async Task Register()
         {
-            var sellersToRegister = _configuration.GetSection("sellers").Get<List<DTOs.UserToRegister>>();
+            var userToRegistry = _configuration.GetSection("users").Get<List<DTOs.UserToRegister>>();
 
-            if (sellersToRegister!.Count <= 0)
+            if (userToRegistry!.Count <= 0)
                 throw new CompaignException(HttpStatusCode.InternalServerError, "Revise os dados do JSON!!!!!!!!!!!!!!!!!!!!!!");
 
-            await SetDocument(sellersToRegister);
+            switch (_processType)
+            {
+                case UserType.Seller:
+                    await RegisterSeller(userToRegistry!);
+                    break;
+                case UserType.SellerManager:
+                    await RegisterSellerManager(userToRegistry!);
+                    break;
+            }
+        }
+
+        private async Task RegisterSellerManager(List<DTOs.UserToRegister> userToRegistry)
+        {
+            await _unityOfWork.SecureCommitAsync(async () =>
+            {
+                foreach (var seller in userToRegistry)
+                {
+                    try
+                    {
+                        var cmd = new RegisterUserCommand(Roles.Manager,
+                                                          null,
+                                                          seller.Name,
+                                                          seller.Id,
+                                                          null,
+                                                          seller.Document,
+                                                          $"{seller.Id}".PadLeft(4, '0'));
+
+                        await _registerUserHandler.Handle(cmd);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Erro ao cadastrar: {seller.Id} - {ex.Message}");
+                    }
+                }
+            });
+        }
+
+        private async Task RegisterSeller(List<DTOs.UserToRegister> userToRegistry)
+        {
+
+            await SetDocument(userToRegistry);
 
             await _unityOfWork.SecureCommitAsync(async () =>
             {
-                foreach (var seller in sellersToRegister)
+                foreach (var seller in userToRegistry)
                 {
                     try
                     {
@@ -58,7 +108,7 @@ namespace Campaign.Program.Register.Sellers
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine($"RCA Erro ao cadastrar: {seller.Id} - {ex.Message}");
+                        Console.WriteLine($"Erro ao cadastrar: {seller.Id} - {ex.Message}");
                     }
                 }
             });
@@ -80,7 +130,7 @@ namespace Campaign.Program.Register.Sellers
 
                 if (string.IsNullOrEmpty(sellerDocument!.Document))
                 {
-                    Console.WriteLine($"RCA Sem documento: {seller.Id}");
+                    Console.WriteLine($"Usuário Sem documento: {seller.Id}");
                     return;
                 }
 

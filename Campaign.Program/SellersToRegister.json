@@ -1,6 +1,6 @@
 {
 
-  "sellers": [
+  "users": [
     {
       "id": 1934,
       "name": "LUIS HENRIQUE SORIO",
@@ -2204,5 +2204,5 @@
       "teamId": 1
     }
   ]
-    
+
 }

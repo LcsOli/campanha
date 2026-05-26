@@ -1,0 +1,34 @@
+{
+  "users": [
+    {
+      "id": 2,
+      "name": "JOSE RUBENS GALVES",
+      "document": "889.221.468-34"
+    },
+    {
+      "id": 17,
+      "name": "MARCIA SOUZA",
+      "document": "070.501.908-02"
+    },
+    {
+      "id": 993,
+      "name": "MOYSES JUSTINO DA SILVA NETO ( GERENTE)",
+      "document": "040.377.388-13"
+    },
+    {
+      "id": 1613,
+      "name": "LEANDRO CHAGAS  DE PAULA  (GERENTE)",
+      "document": "166.718.638-81"
+    },
+    {
+      "id": 1776,
+      "name": "RODRIGO LORENÇO DOS SANTOS",
+      "document": "084.073.247-36"
+    },
+    {
+      "id": 1832,
+      "name": "BRUNO APARECIDO DE FREITAS ( GERENTE )",
+      "document": "388.300.018-30"
+    }
+  ]
+}
