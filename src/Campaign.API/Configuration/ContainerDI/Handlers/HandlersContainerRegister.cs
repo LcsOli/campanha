@@ -1,5 +1,6 @@
 ﻿using Campaign.API.Handlers.SellerManager.GetRevenue;
 using Campaign.API.Handlers.SellerScore.GetSellersScores;
+using Campaign.API.Handlers.SellerScore.RegisterSellerScore;
 using Campaign.API.Handlers.Supplier;
 using Campaign.API.Handlers.Team.Get;
 using Campaign.API.Handlers.User.Auth;
@@ -20,6 +21,7 @@ namespace Campaign.API.Configuration.ContainerDI.Handlers
             services.AddScoped<IRegisterUserHandler, RegisterUserHandler>();
             services.AddScoped<IGetSellersScoresHnadler, GetSellersScoresHnadler>();
             services.AddScoped<IInsertScoreByAccessHandler, InsertScoreByAccessHandler>();
+            services.AddScoped<IRegisterSellerScoreHandler, RegisterSellerScoreHandler>();
             services.AddScoped<IGetSupplierProductsSoldHandler, GetSupplierProductsSoldHandler>();
             services.AddScoped<IGetSellerManagerScoreRevenueHandler, GetSellerManagerScoreRevenueHandler>();
             services.AddScoped<ISupplierProductSoldReadOnlyRepository, SupplierProductSoldReadOnlyRepository>();

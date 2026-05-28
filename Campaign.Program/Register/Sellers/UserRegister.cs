@@ -67,7 +67,7 @@ namespace Campaign.Program.Register.Sellers
                 {
                     try
                     {
-                        var cmd = new RegisterUserCommand(Roles.Manager,
+                        var cmd = new InsertUserCommand(Roles.Manager,
                                                           null,
                                                           seller.Name,
                                                           seller.Id,
@@ -96,7 +96,7 @@ namespace Campaign.Program.Register.Sellers
                 {
                     try
                     {
-                        var cmd = new RegisterUserCommand(Roles.User,
+                        var cmd = new InsertUserCommand(Roles.User,
                                                           seller.TeamId,
                                                           seller.Name,
                                                           seller.Id,

@@ -4,7 +4,7 @@ using Campaign.API.Commands.User.Create;
 using Microsoft.AspNetCore.Authorization;
 using Campaign.API.Handlers.User.GetUser;
 using Campaign.API.DTOs.Request.User.Create;
-using Campaign.API.Handlers.User.RegisterUser;
+using Campaign.API.Orchestrators.RegisterUser;
 
 namespace Campaign.API.Controllers.User
 {
@@ -15,10 +15,19 @@ namespace Campaign.API.Controllers.User
         [HttpPost]
         [AllowAnonymous]
         public async Task<IActionResult> Register([FromBody] RegisterUserRequest request,
-                                                  [FromServices] IRegisterUserHandler registerUserHandler)
+                                                  [FromServices] IRegisterUserOrchestrator registerUserHandler)
         {
-            var cmd = new RegisterUserCommand(request.Role, request.TeamId, request.Name, request.SellerId, request.SupplierId, request.Document, request.Password);
-            return Created(string.Empty, await registerUserHandler.Handle(cmd));
+            var cmd = new RegisterUserCommand(request.Role,
+                                              request.TeamId,
+                                              request.Name,
+                                              request.SellerId,
+                                              request.SupplierId,
+                                              request.Document,
+                                              request.Password,
+                                              request.SellerManagerId,
+                                              request.SellerManagerName);
+
+            return Created(string.Empty, await registerUserHandler.Execute(cmd));
         }
 
         [HttpGet("{id}")]

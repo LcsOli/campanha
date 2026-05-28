@@ -15,5 +15,10 @@ namespace Campaign.API.Repositories.ProductPromotion.WriteOnly
         {
             _context.SellerScores.Update(entity);
         }
+
+        public async Task Add(Entity.SellerScore entity)
+        {
+            await _context.SellerScores.AddAsync(entity);
+        }
     }
 }

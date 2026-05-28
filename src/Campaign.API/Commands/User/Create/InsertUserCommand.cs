@@ -1,0 +1,12 @@
+﻿using Campaign.Shared.Enums.Role;
+
+namespace Campaign.API.Commands.User.Create
+{
+    public record InsertUserCommand(Roles Role,
+                                    int? TeamId,
+                                    string Name,
+                                    int? SellerId,
+                                    int? SupplierId,
+                                    string Document,
+                                    string Password);
+}

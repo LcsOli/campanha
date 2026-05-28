@@ -4,6 +4,7 @@ using Campaign.API.Repositories.User.WriteOnly;
 using Campaign.API.Handlers.User.RegisterUser.Mapper;
 using Campaign.API.Handlers.User.RegisterUser.Validator;
 using Campaign.Shared.DataBaseContext.Entities.UnityOfWork;
+using Entity = Campaign.Shared.DataBaseContext.Entities.Users;
 
 namespace Campaign.API.Handlers.User.RegisterUser
 {
@@ -24,7 +25,7 @@ namespace Campaign.API.Handlers.User.RegisterUser
             _userWriteOnlyRepository = userWriteOnlyRepository;
         }
 
-        public async Task<int> Handle(RegisterUserCommand cmd)
+        public async Task<Entity.User> Handle(InsertUserCommand cmd)
         {
             new RegisterUserValidator()
                 .Validate(cmd);
@@ -33,9 +34,8 @@ namespace Campaign.API.Handlers.User.RegisterUser
             user.SetPassword(_passwordService.GeneratePassword(user, cmd.Password));
 
             await _userWriteOnlyRepository.AddAsync(user);
-            await _unityOfWork.SaveAsync();
 
-            return user.Id;
+            return user;
         }
     }
 }

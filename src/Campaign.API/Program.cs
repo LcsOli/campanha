@@ -34,7 +34,8 @@ builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddStackTraceServices();
 
-builder.WebHost.UseUrls("http://0.0.0.0:7025");
+//builder.WebHost.UseUrls("http://0.0.0.0:7025");
+//builder.WebHost.UseUrls("http://localhost:7025");
 
 var app = builder.Build();
 

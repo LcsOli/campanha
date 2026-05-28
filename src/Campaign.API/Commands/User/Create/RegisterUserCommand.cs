@@ -3,10 +3,12 @@
 namespace Campaign.API.Commands.User.Create
 {
     public record RegisterUserCommand(Roles Role,
-                                      int? TeamId,
-                                      string Name,
-                                      int? SellerId,
-                                      int? SupplierId,
-                                      string Document,
-                                      string Password);
+                                     int? TeamId,
+                                     string Name,
+                                     int? SellerId,
+                                     int? SupplierId,
+                                     string Document,
+                                     string Password,
+                                     int? SellerManagerId,
+                                     string? SellerManagerName);
 }

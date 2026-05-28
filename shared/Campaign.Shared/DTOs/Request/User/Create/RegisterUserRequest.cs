@@ -8,5 +8,7 @@ namespace Campaign.API.DTOs.Request.User.Create
                                       int? SellerId,
                                       int? SupplierId,
                                       string Document,
-                                      string Password);
+                                      string Password,
+                                      int SellerManagerId,
+                                      string SellerManagerName);
 }

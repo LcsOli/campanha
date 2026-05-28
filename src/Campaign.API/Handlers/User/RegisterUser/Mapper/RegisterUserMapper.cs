@@ -6,7 +6,7 @@ namespace Campaign.API.Handlers.User.RegisterUser.Mapper
 {
     public static class RegisterUserMapper
     {
-        public static Entities.Users.User ToEntity(RegisterUserCommand cmd)
+        public static Entities.Users.User ToEntity(InsertUserCommand cmd)
         {
             return UserFactory.Create(cmd.Role, cmd.TeamId, cmd.Name, cmd.SellerId, cmd.SupplierId, cmd.Document, cmd.Password);
         }

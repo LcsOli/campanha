@@ -4,7 +4,7 @@ using Campaign.API.Commands.User.Create;
 
 namespace Campaign.API.Handlers.User.RegisterUser.Validator
 {
-    public class RegisterUserValidator : FluentValidator<RegisterUserCommand>
+    public class RegisterUserValidator : FluentValidator<InsertUserCommand>
     {
         public RegisterUserValidator()
         {
