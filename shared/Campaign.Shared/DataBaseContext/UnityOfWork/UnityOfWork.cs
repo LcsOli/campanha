@@ -43,8 +43,8 @@ namespace Campaign.Shared.DataBaseContext.Entities.UnityOfWork
             catch (Exception ex)
             {
                 await _transaction!.RollbackAsync();
-                
-               // _stackTraceService.RegisterTrace(ex);
+
+                //_stackTraceService.RegisterTrace(ex);
 
                 throw new CompaignException(HttpStatusCode.InternalServerError, "Ocorreu um erro ao persistir uma entidade no banco.");
             }

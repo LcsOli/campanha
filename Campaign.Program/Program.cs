@@ -9,6 +9,9 @@ using Campaign.API.Configuration.ContainerDI.Handlers;
 using Campaign.API.Configuration.ContainerDI.Identity;
 using Campaign.API.Configuration.ContainerDI.Repositories;
 using Campaign.Shared.DataBaseContext.Entities.UnityOfWork;
+using Campaign.API.Orchestrators.RegisterUser;
+using DocumentFormat.OpenXml.Office2013.Excel;
+using Campaign.API.Configuration.ContainerDI.Orchestrator;
 
 
 var services = new ServiceCollection();
@@ -18,19 +21,20 @@ services.AddServices();
 services.AddIdentity();
 services.AddUnityOfWork();
 services.AddRepositories();
+services.AddOrchestrator();
 
 services.AddHandler();
 
 var serviceProvider = services.BuildServiceProvider();
 var context = serviceProvider.GetService<CampaingContextDb>();
 
-
+await UserRegister();
 async Task UserRegister()
 {
     using (var scope = serviceProvider.CreateScope())
     {
         var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnityOfWork>();
-        var registerUserHandler = scope.ServiceProvider.GetRequiredService<IRegisterUserHandler>();
+        var registerUserHandler = scope.ServiceProvider.GetRequiredService<IRegisterUserOrchestrator>();
 
         var registerSeller = new UserRegister(unitOfWork, context!, registerUserHandler);
         await registerSeller.Register();

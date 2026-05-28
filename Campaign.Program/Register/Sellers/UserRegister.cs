@@ -1,13 +1,14 @@
-﻿using System.Net;
+﻿using Campaign.API.Commands.User.Create;
+using Campaign.API.Handlers.User.RegisterUser;
+using Campaign.API.Orchestrators.RegisterUser;
+using Campaign.Program.Register.DTOs;
+using Campaign.Shared.DataBaseContext.Entities;
+using Campaign.Shared.DataBaseContext.Entities.UnityOfWork;
 using Campaign.Shared.Enums.Role;
 using Campaign.Shared.Exceptions;
 using Microsoft.EntityFrameworkCore;
-using Campaign.Program.Register.DTOs;
-using Campaign.API.Commands.User.Create;
 using Microsoft.Extensions.Configuration;
-using Campaign.API.Handlers.User.RegisterUser;
-using Campaign.Shared.DataBaseContext.Entities;
-using Campaign.Shared.DataBaseContext.Entities.UnityOfWork;
+using System.Net;
 
 namespace Campaign.Program.Register.Sellers
 {
@@ -21,9 +22,9 @@ namespace Campaign.Program.Register.Sellers
     {
         private readonly IUnityOfWork _unityOfWork;
         private readonly CampaingContextDb _context;
-        private readonly IRegisterUserHandler _registerUserHandler;
+        private readonly IRegisterUserOrchestrator _registerUserOrchestrator;
 
-        private readonly static UserType _processType = UserType.SellerManager;
+        private readonly static UserType _processType = UserType.Seller;
 
         private readonly static string _jsonFilePath = _processType == UserType.Seller ? "SellersToRegister.json" : "SellersManagersToRegister.json";
 
@@ -34,11 +35,11 @@ namespace Campaign.Program.Register.Sellers
 
         public UserRegister(IUnityOfWork unityOfWork,
                             CampaingContextDb context,
-                            IRegisterUserHandler registerUserHandler)
+                            IRegisterUserOrchestrator registerUserOrchestrator)
         {
             _context = context;
             _unityOfWork = unityOfWork;
-            _registerUserHandler = registerUserHandler;
+            _registerUserOrchestrator = registerUserOrchestrator;
         }
 
         public async Task Register()
@@ -61,57 +62,58 @@ namespace Campaign.Program.Register.Sellers
 
         private async Task RegisterSellerManager(List<DTOs.UserToRegister> userToRegistry)
         {
-            await _unityOfWork.SecureCommitAsync(async () =>
             {
                 foreach (var seller in userToRegistry)
                 {
                     try
                     {
-                        var cmd = new InsertUserCommand(Roles.Manager,
+                        var cmd = new RegisterUserCommand(Roles.Manager,
                                                           null,
                                                           seller.Name,
                                                           seller.Id,
                                                           null,
                                                           seller.Document,
-                                                          $"{seller.Id}".PadLeft(4, '0'));
+                                                          $"{seller.Id}".PadLeft(4, '0'),
+                                                          null,
+                                                          null);
 
-                        await _registerUserHandler.Handle(cmd);
+                        await _registerUserOrchestrator.Execute(cmd);
                     }
                     catch (Exception ex)
                     {
                         Console.WriteLine($"Erro ao cadastrar: {seller.Id} - {ex.Message}");
                     }
                 }
-            });
+            }
         }
 
         private async Task RegisterSeller(List<DTOs.UserToRegister> userToRegistry)
         {
 
             await SetDocument(userToRegistry);
+            await SetSellerManager(userToRegistry);
 
-            await _unityOfWork.SecureCommitAsync(async () =>
+            foreach (var seller in userToRegistry)
             {
-                foreach (var seller in userToRegistry)
+                try
                 {
-                    try
-                    {
-                        var cmd = new InsertUserCommand(Roles.User,
-                                                          seller.TeamId,
-                                                          seller.Name,
-                                                          seller.Id,
-                                                          null,
-                                                          seller.Document,
-                                                          $"{seller.Id}".PadLeft(4, '0'));
+                    var cmd = new RegisterUserCommand(Roles.User,
+                                                      seller.TeamId,
+                                                      seller.Name,
+                                                      seller.Id,
+                                                      null,
+                                                      seller.Document,
+                                                      $"{seller.Id}".PadLeft(4, '0'),
+                                                      seller.SellerManagerId,
+                                                      seller.SellerMangerName);
 
-                        await _registerUserHandler.Handle(cmd);
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine($"Erro ao cadastrar: {seller.Id} - {ex.Message}");
-                    }
+                    await _registerUserOrchestrator.Execute(cmd);
                 }
-            });
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Erro ao cadastrar: {seller.Id} - {ex.Message}");
+                }
+            }
         }
 
         private async Task SetDocument(List<DTOs.UserToRegister> sellersToRegister)
@@ -138,6 +140,31 @@ namespace Campaign.Program.Register.Sellers
 
                 seller.SetDocument(documentWithoutFormatter);
             });
+        }
+
+        private async Task SetSellerManager(List<DTOs.UserToRegister> sellersToRegister)
+        {
+            var sellerMangersIds = sellersToRegister!.Select(x => x.SellerManagerId).ToArray();
+
+            var sellersManagersInfos = await _context.SellerManagers
+                                           .Where(x => sellerMangersIds.Contains(x.Code))
+                                           .Select(x => new SellerMangerInfos(x.Code, x.Name))
+                                           .ToListAsync();
+
+
+            sellersToRegister.ForEach(seller =>
+            {
+                var sellerManger = sellersManagersInfos.SingleOrDefault(x => x.Id == seller.SellerManagerId);
+
+                if (string.IsNullOrEmpty(sellerManger!.Name))
+                {
+                    Console.WriteLine($"Gerente do vendedor {seller.Id} não encontrado.");
+                    return;
+                }
+
+                seller.SetSellerManagerName(sellerManger!.Name);
+            });
+
         }
     }
 }

@@ -9,10 +9,16 @@ namespace Campaign.Program.Register.DTOs
         public int SellerManagerId { get; set; }
         public string Name { get; set; } = default!;
         public string Document { get; set; } = default!;
+        public string SellerMangerName { get; set; } = default!;
 
         public void SetDocument(string? document)
         {
             Document = document!;
+        }
+
+        public void SetSellerManagerName(string? sellerManagerName)
+        {
+            SellerMangerName = sellerManagerName!;
         }
     }
 }

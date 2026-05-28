@@ -9,10 +9,10 @@
         public decimal CurrentRevenue { get; private set; }
 
         public SellerManagerScore(int id,
-                             int code, 
-                             string name,
-                             decimal targetRevenue,
-                             decimal currentRevenue)
+                                  int code, 
+                                  string name,
+                                  decimal targetRevenue,
+                                  decimal currentRevenue)
         {
             Id = id;
             Code = code;
