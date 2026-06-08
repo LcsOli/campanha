@@ -52,7 +52,8 @@ namespace Campaign.API.Repositories.ProductPromotion.ReadOnly
                                                                           revenueMonth2: s.RevenueMonth2,
                                                                           revenueMonth3: s.RevenueMonth3,
                                                                           revenueMonth4: s.RevenueMonth4,
-                                                                          revenueMonth5: s.RevenueMonth5));
+                                                                          revenueMonth5: s.RevenueMonth5,
+                                                                          lastScoreByAccess: s.LastScoreByAccess));
 
             if (filter == null && (page != null && size != null))
             {
@@ -103,6 +104,7 @@ namespace Campaign.API.Repositories.ProductPromotion.ReadOnly
                     CurrentRevenue: revenue,
                     RevenueTarget: s.RevenueTarget,
                     SellerManagerName: s.ManagerName,
+                    LastScoreByAccess: s.LastScoreByAccess,
                     RevenueTargetPercentage: revenue > 0 && s.RevenueTarget > 0 ? $"{(revenue * 100) / s.RevenueTarget:F2}%": "0%",
                     Ranking: string.Concat(ranking.FirstOrDefault(r => r.SellerId == s.SellerId)?.Index, '°'));
             })];

@@ -11,6 +11,7 @@ namespace Campaign.API.DTO.SellerScore.Response
                                       decimal RevenueTarget,
                                       decimal CurrentRevenue,
                                       string SellerManagerName,
+                                      DateTime? LastScoreByAccess,
                                       string RevenueTargetPercentage)
     {
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]

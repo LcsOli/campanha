@@ -49,7 +49,8 @@ namespace Campaign.Shared.DataBaseContext.Entities.Seller
                            decimal revenueMonth2,
                            decimal revenueMonth3,
                            decimal revenueMonth4,
-                           decimal revenueMonth5)
+                           decimal revenueMonth5,
+                           DateTime? lastScoreByAccess)
         {
             Name = name;
             Team = team;
@@ -64,6 +65,7 @@ namespace Campaign.Shared.DataBaseContext.Entities.Seller
             RevenueMonth3 = revenueMonth3;
             RevenueMonth4 = revenueMonth4;
             RevenueMonth5 = revenueMonth5;
+            LastScoreByAccess = lastScoreByAccess;
         }
 
         public void UpdateScore(decimal score)
