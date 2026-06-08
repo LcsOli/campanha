@@ -39,7 +39,7 @@ namespace Campaign.API.Handlers.User.InsertScoreByAccess
             var sellerScore = await _sellerScoreReadOnlyRepository.GetBySellerId(user.SellerId!.Value) ??
                 throw new CompaignException(HttpStatusCode.NotFound, "Score não encontrado para este vendedor.");
 
-            var dateToFindProductPromotio = sellerScore.LastScoreByAccess ?? DateTime.Now;
+            var dateToFindProductPromotio = user.LastAccess ?? DateTime.Now;
 
             var productPromotion = await _productPromotionSummaryReadOnlyRepository.GetByPeriod(dateToFindProductPromotio);
 

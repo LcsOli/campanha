@@ -8,7 +8,7 @@ namespace Campaign.Shared.DataBaseContext.EntitiesConfigurations
     {
         public void Configure(EntityTypeBuilder<ProductPromotionSummary> builder)
         {
-            builder.ToTable("PCPROMOC", p=> p.ExcludeFromMigrations());
+            builder.ToTable("PCPROMOC", p => p.ExcludeFromMigrations());
 
             builder.HasKey(p => p.Id);
 
