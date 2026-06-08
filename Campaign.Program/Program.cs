@@ -25,17 +25,17 @@ services.AddOrchestrator();
 
 services.AddHandler();
 
-var serviceProvider = services.BuildServiceProvider();
-var context = serviceProvider.GetService<CampaingContextDb>();
+//var serviceProvider = services.BuildServiceProvider();
+//var context = serviceProvider.GetService<CampaingContextDb>();
 
-async Task UserRegister()
-{
-    using (var scope = serviceProvider.CreateScope())
-    {
-        var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnityOfWork>();
-        var registerUserHandler = scope.ServiceProvider.GetRequiredService<IRegisterUserOrchestrator>();
+//async Task UserRegister()
+//{
+//    using (var scope = serviceProvider.CreateScope())
+//    {
+//        var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnityOfWork>();
+//        var registerUserHandler = scope.ServiceProvider.GetRequiredService<IRegisterUserOrchestrator>();
 
-        var registerSeller = new UserRegister(unitOfWork, context!, registerUserHandler);
-        await registerSeller.Register();
-    }
-}
+//        var registerSeller = new UserRegister(unitOfWork, context!, registerUserHandler);
+//        await registerSeller.Register();
+//    }
+//}

@@ -5,6 +5,9 @@ using Campaign.Shared.cors;
 using Campaign.Shared.DataBaseContextDI;
 using Campaign.Shared.Middlewares;
 using Campaign.Shared.UnitOfWorkDI;
+using StackTraceInternalLibrary.Client;
+using StackTraceInternalLibrary.ContainerDI;
+using StackTraceLib.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,10 +21,10 @@ builder.Services.AddRepositories();
 builder.Services.AddOrchestrators();
 builder.Services.AddCorsConfiguration();
 
-//builder.Services.AddHttpClient<ILogClient, LogClient>();
-//builder.Services.AddHttpContextAccessor();
-//
-//builder.Services.AddStackTraceServices();
+builder.Services.AddHttpClient<ILogClient, LogClient>();
+builder.Services.AddHttpContextAccessor();
+
+builder.Services.AddStackTraceServices();
 
 builder.WebHost.UseUrls("http://0.0.0.0:7168");
 
@@ -40,6 +43,6 @@ app.UseCors("cors");
 app.MapControllers();
 
 app.UseMiddleware<ExceptionMiddleware>();
-//app.UseMiddleware<RequestBodyMiddleware>();
+app.UseMiddleware<RequestBodyMiddleware>();
 
 app.Run();

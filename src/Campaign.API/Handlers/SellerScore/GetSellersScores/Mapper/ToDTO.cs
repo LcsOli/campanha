@@ -25,7 +25,7 @@ namespace Campaign.API.Handlers.SellerScore.GetSellersScores.Mapper
                        TeamName: model.Team!.Name,
                        RevenueTarget: model.RevenueTarget,
                        SellerManagerName: model.ManagerName,
-                       RevenueTargetPercentage: revenue > 0 ? $"{(revenue * 100) / model.RevenueTarget}%" : "0%");
+                       RevenueTargetPercentage: revenue > 0 && model.RevenueTarget > 0 ? $"{(revenue * 100) / model.RevenueTarget}%" : "0%");
         }
     }
 }

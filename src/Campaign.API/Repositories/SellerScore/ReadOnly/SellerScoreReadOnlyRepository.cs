@@ -103,7 +103,7 @@ namespace Campaign.API.Repositories.ProductPromotion.ReadOnly
                     CurrentRevenue: revenue,
                     RevenueTarget: s.RevenueTarget,
                     SellerManagerName: s.ManagerName,
-                    RevenueTargetPercentage: revenue > 0 ? $"{(revenue * 100) / s.RevenueTarget:F2}%": "0%",
+                    RevenueTargetPercentage: revenue > 0 && s.RevenueTarget > 0 ? $"{(revenue * 100) / s.RevenueTarget:F2}%": "0%",
                     Ranking: string.Concat(ranking.FirstOrDefault(r => r.SellerId == s.SellerId)?.Index, '°'));
             })];
         }
