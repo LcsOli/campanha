@@ -10,12 +10,15 @@ namespace Campaign.Pooling.Handlers.CalculateCoupons
             cmd.SellerScore.ForEach(sellerScore =>
             {
                 var coupons = CouponsByScore(sellerScore);
-                
-                coupons += (short)(sellerScore.RevenueMonth1 >= sellerScore!.RevenueTarget ? 1 : 0);
-                coupons += (short)(sellerScore.RevenueMonth2 >= sellerScore!.RevenueTarget ? 1 : 0);
-                coupons += (short)(sellerScore.RevenueMonth3 >= sellerScore!.RevenueTarget ? 1 : 0);
-                coupons += (short)(sellerScore.RevenueMonth4 >= sellerScore!.RevenueTarget ? 1 : 0);
-                coupons += (short)(sellerScore.RevenueMonth5 >= sellerScore!.RevenueTarget ? 1 : 0);
+
+                if (sellerScore!.RevenueTarget > 0)
+                {
+                    coupons += (short)(sellerScore.RevenueMonth1 >= sellerScore!.RevenueTarget ? 1 : 0);
+                    coupons += (short)(sellerScore.RevenueMonth2 >= sellerScore!.RevenueTarget ? 1 : 0);
+                    coupons += (short)(sellerScore.RevenueMonth3 >= sellerScore!.RevenueTarget ? 1 : 0);
+                    coupons += (short)(sellerScore.RevenueMonth4 >= sellerScore!.RevenueTarget ? 1 : 0);
+                    coupons += (short)(sellerScore.RevenueMonth5 >= sellerScore!.RevenueTarget ? 1 : 0);
+                }
 
                 sellerScore.UpdateCoupons(coupons);
             });
@@ -24,7 +27,7 @@ namespace Campaign.Pooling.Handlers.CalculateCoupons
         private static short CouponsByScore(Entity.SellerScore sellerScore)
         {
             const int _scoreToValidate = 500_000;
-            return  (short)(sellerScore.Score / _scoreToValidate);
+            return (short)(sellerScore.Score / _scoreToValidate);
         }
     }
 }
