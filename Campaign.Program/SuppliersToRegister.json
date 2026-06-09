@@ -1,0 +1,504 @@
+{
+  "users": [
+    {
+      "name": "BEBIDAS GRASSI DO BRASIL LTDA (BALY)",
+      "id": 681573
+    },
+    {
+      "name": "JACOBS DOUWE EGBERTS BR COMERCIALIZAÇÃO",
+      "id": 28629
+    },
+    {
+      "name": "NESTLE BRASIL LTDA",
+      "id": 120025
+    },
+    {
+      "name": "PREDILECTA / STELLA DORO",
+      "id": 30806
+    },
+    {
+      "name": "QUIMICA AMPARO LTDA",
+      "id": 26
+    },
+    {
+      "name": "ADRIA ALIMENTOS (M DIAS)",
+      "id": 12
+    },
+    {
+      "name": "ALPARGATAS S.A.",
+      "id": 681368
+    },
+    {
+      "name": "APTI ALIMENTOS LTDA",
+      "id": 33460
+    },
+    {
+      "name": "AVA DISTRIBUIDORA DE PRODUTOS DE LIMPEZA",
+      "id": 675367
+    },
+    {
+      "name": "BR SNACKS DIST",
+      "id": 682183
+    },
+    {
+      "name": "CAMIL ALIMENTOS S/A",
+      "id": 119946
+    },
+    {
+      "name": "CERVEJARIA PETROPOLIS S.A - SJR PRETO",
+      "id": 675255
+    },
+    {
+      "name": "DORI ALIMENTOS S.A",
+      "id": 675394
+    },
+    {
+      "name": "EBBA",
+      "id": 31502
+    },
+    {
+      "name": "FLORA_ASSIM",
+      "id": 120719
+    },
+    {
+      "name": "FUGINI ALIMENTOS LTDA",
+      "id": 28932
+    },
+    {
+      "name": "GALLO BRASIL DISTRIBUICAO E COMERCIO LTD",
+      "id": 675718
+    },
+    {
+      "name": "IPLASA INDUSTRIA E COMERCIO DE PRODUTOS",
+      "id": 114
+    },
+    {
+      "name": "J.MACEDO SA",
+      "id": 28289
+    },
+    {
+      "name": "MONDELEZ BRASIL LTDA",
+      "id": 672475
+    },
+    {
+      "name": "OUROLUX COMERCIAL LTDA",
+      "id": 28165
+    },
+    {
+      "name": "PANDURATA ALIMENTOS",
+      "id": 120331
+    },
+    {
+      "name": "SEPAC SERRADOS E PASTA DE CELULOSE LTDA",
+      "id": 8
+    },
+    {
+      "name": "SOBEL COMESTICOS LTDA",
+      "id": 680584
+    },
+    {
+      "name": "SOFTYS",
+      "id": 28693
+    },
+    {
+      "name": "TRES CORAÇÕES ALIMENTOS S.A",
+      "id": 675720
+    },
+    {
+      "name": "VALE FERTIL IND. ALIMENT. LTDA",
+      "id": 10
+    },
+    {
+      "name": "BASTON INDUSTRIA DE AEROSSOIS LTDA",
+      "id": 679820
+    },
+    {
+      "name": "BIC AMAZONIA S.A.",
+      "id": 120474
+    },
+    {
+      "name": "BOMBRIL S/A",
+      "id": 24772
+    },
+    {
+      "name": "CALLAMARYS IND COMER COSMETICOS",
+      "id": 681456
+    },
+    {
+      "name": "CAMPORUM COM, IMPORT E EXPORT PROD HIG",
+      "id": 682295
+    },
+    {
+      "name": "CARGILL AGRICOLA S.A",
+      "id": 49
+    },
+    {
+      "name": "COPOMAIS INDUSTRIA E COMERCIO DE DESCART",
+      "id": 32748
+    },
+    {
+      "name": "COTY BRASIL COMERCIO LTDA",
+      "id": 675625
+    },
+    {
+      "name": "DOCE MINEIRO LTDA",
+      "id": 27527
+    },
+    {
+      "name": "DUCOCO PRODUTOS ALIMENTICIOS S.A",
+      "id": 678140
+    },
+    {
+      "name": "FOOD BRANDS IND PROD ALIMENTICIOS",
+      "id": 680164
+    },
+    {
+      "name": "FOSFOREIRA BRASILEIRA S/A",
+      "id": 675054
+    },
+    {
+      "name": "INDUSTRIAS ANHEMBI SA",
+      "id": 21
+    },
+    {
+      "name": "LATICINIOS  BELA VISTA LTDA",
+      "id": 672879
+    },
+    {
+      "name": "MARILAN ALIMENTOS S/A",
+      "id": 676155
+    },
+    {
+      "name": "MASTERFOODS BRASIL ALIMENTOS LTDA",
+      "id": 677034
+    },
+    {
+      "name": "MELITTA DO BRASIL IND E COM LTDA",
+      "id": 27734
+    },
+    {
+      "name": "MMC BRASIL INDUSTRIA E COMERCIO LTDA",
+      "id": 680281
+    },
+    {
+      "name": "MOCOCA S/A PROD.ALIM.",
+      "id": 30974
+    },
+    {
+      "name": "MOINHO PAULISTA S/A.",
+      "id": 4
+    },
+    {
+      "name": "NEILAR",
+      "id": 681037
+    },
+    {
+      "name": "NEUGEBAUER",
+      "id": 677564
+    },
+    {
+      "name": "PEPSICO DO BRASIL LTDA",
+      "id": 672794
+    },
+    {
+      "name": "PLATINA COSMETICOS LTDA",
+      "id": 677138
+    },
+    {
+      "name": "SANDELEH ALIMENTOS LTDA",
+      "id": 119828
+    },
+    {
+      "name": "SANTHER FABRICA DE PAPEL STA THEREZINHA",
+      "id": 34
+    },
+    {
+      "name": "SEARA ALIMENTOS LTDA",
+      "id": 120044
+    },
+    {
+      "name": "YOKI",
+      "id": 677080
+    },
+    {
+      "name": "A RELA S/A INDUSTRIA E COMERCIO",
+      "id": 29631
+    },
+    {
+      "name": "ABERDEN (TOSCANO)",
+      "id": 33153
+    },
+    {
+      "name": "AMAVITA DISTRIBUIDORA DE ALIMENTOS LTDA",
+      "id": 675270
+    },
+    {
+      "name": "BIOLIVE IMPORT E EXPORT ALIMENTOS",
+      "id": 681075
+    },
+    {
+      "name": "BUFALO IND. E COM. PROD. QUIMICOS LTDA",
+      "id": 33192
+    },
+    {
+      "name": "CARAMURU ALIMENTOS S/A (SINHA)",
+      "id": 681832
+    },
+    {
+      "name": "CASTELO ALIMENTOS SA",
+      "id": 28517
+    },
+    {
+      "name": "CILASI ALIMENTOS S.A",
+      "id": 673575
+    },
+    {
+      "name": "COOP REG CAFEICULTORES GUAXUPE LTDA COOXUP",
+      "id": 681174
+    },
+    {
+      "name": "COOP. VINICOLA AURORA LTDA.",
+      "id": 33338
+    },
+    {
+      "name": "COPAG DA AMAZONIA S/A",
+      "id": 673853
+    },
+    {
+      "name": "COPRA INDUSTRIA ALIMENTICIA LTDA",
+      "id": 676592
+    },
+    {
+      "name": "CRIA SIM PRODUTOS DE HIGIENE LTDA",
+      "id": 29752
+    },
+    {
+      "name": "CRS  BRANDS INDUSTRIA E COMERCIO LTDA",
+      "id": 20
+    },
+    {
+      "name": "DAMAPEL",
+      "id": 680672
+    },
+    {
+      "name": "EMBAVI EMP. BRASILEIRA AZEITE VINAG.LTDA",
+      "id": 674207
+    },
+    {
+      "name": "FLORA _FRANCIS",
+      "id": 120692
+    },
+    {
+      "name": "GDC ALIMENTOS S/A.",
+      "id": 70
+    },
+    {
+      "name": "GOIASMINAS IND.DE LATICINIOS LTDA",
+      "id": 28982
+    },
+    {
+      "name": "HYDE ALIMENTOS LTDA",
+      "id": 682093
+    },
+    {
+      "name": "HYGIMAX DO BRASIL DIST PRODE HIGIENE PESSO",
+      "id": 682211
+    },
+    {
+      "name": "IMPORTADORA DE FRUTAS LA VIOLETERA LTDA",
+      "id": 32166
+    },
+    {
+      "name": "INDUSTRIA SERTANEJA LTDA",
+      "id": 681927
+    },
+    {
+      "name": "ITAMARATY IND. E COM. S/A",
+      "id": 77
+    },
+    {
+      "name": "ITAMBE",
+      "id": 676677
+    },
+    {
+      "name": "JOHNSON E JOHNSON BRASIL IND COM PROD SA",
+      "id": 673879
+    },
+    {
+      "name": "KIMBERLY CLARK BRASIL IND. COM. PROD HIG",
+      "id": 28917
+    },
+    {
+      "name": "MANTOVANI - INDUSTRIA QUIMICA LTDA EPP",
+      "id": 115
+    },
+    {
+      "name": "MARIZA AGUAS MINERAIS LTDA",
+      "id": 675223
+    },
+    {
+      "name": "MKD DISTRIBUIDORA DE PROD HIGIENE LTDA",
+      "id": 676784
+    },
+    {
+      "name": "NEOMAX - FURIOSO",
+      "id": 680896
+    },
+    {
+      "name": "P&B PERFORMANCE BRASIL COMER E IND LTDA",
+      "id": 682911
+    },
+    {
+      "name": "PERFUMES DANA DO BRASIL LTDA",
+      "id": 674881
+    },
+    {
+      "name": "SOVENA BRASIL SERVIÇOS CONS. COMER. ALIM",
+      "id": 676154
+    },
+    {
+      "name": "TERMOPOT INDUSTRIA LTDA",
+      "id": 681712
+    },
+    {
+      "name": "TOZZI INDUSTRIA COMERCIO ALIMENTOS LTDA",
+      "id": 672835
+    },
+    {
+      "name": "WYDA INDUSTRIA DE EMBALAGENS LTDA",
+      "id": 33756
+    },
+    {
+      "name": "3X PRODUTOS QUIMICOS LT",
+      "id": 33700
+    },
+    {
+      "name": "ALQUIMIA COMERCIO",
+      "id": 682238
+    },
+    {
+      "name": "AMAFIL INDUSTRIA E COMERCIO DE ALIMENTOS LTDA",
+      "id": 86
+    },
+    {
+      "name": "APYCE BRASIL IND E COM DE PROD QUIMICOS",
+      "id": 676502
+    },
+    {
+      "name": "ARCOR DO BRASIL LTDA",
+      "id": 678274
+    },
+    {
+      "name": "BEST WAY DISTRIB DE BENS DE CONSUMO LTDA",
+      "id": 33093
+    },
+    {
+      "name": "BETTANIN INDUSTRIAL S.A",
+      "id": 674936
+    },
+    {
+      "name": "BISPO DIST DE PROD ALIMENTICIOS LTDA",
+      "id": 120245
+    },
+    {
+      "name": "BUNGE",
+      "id": 678605
+    },
+    {
+      "name": "CAFE RANCHEIRO AGRO INDUSTRIAL LTDA",
+      "id": 677012
+    },
+    {
+      "name": "FABRICA DE VELAS SÃO DOMINGOS LTDA",
+      "id": 674888
+    },
+    {
+      "name": "FALCON DISTRIBUICAO",
+      "id": 680972
+    },
+    {
+      "name": "FERRERO DO BRASIL INDUSTRIA DOCEIRA E AL",
+      "id": 675262
+    },
+    {
+      "name": "HERSHEYS DO BRASIL LTDA",
+      "id": 120747
+    },
+    {
+      "name": "IND. DE ALIMENT. MONJOLINHO LTDA",
+      "id": 28
+    },
+    {
+      "name": "IND. POLPAS E CONSERVAS VAL LTDA.",
+      "id": 26057
+    },
+    {
+      "name": "IND.COM.PROD.ALIM CEPERA LTDA",
+      "id": 27178
+    },
+    {
+      "name": "INDUSTRIA ALIMENTICIAS LIANE LT",
+      "id": 109
+    },
+    {
+      "name": "INDUSTRIA DE BEBIDAS PARIS LTDA",
+      "id": 120043
+    },
+    {
+      "name": "INDUSTRIA E COMERCIO DE CAFE UBERABA EIRELI",
+      "id": 679551
+    },
+    {
+      "name": "J B S S.A",
+      "id": 119813
+    },
+    {
+      "name": "MISSIATO IND. E COM. LTDA.",
+      "id": 159
+    },
+    {
+      "name": "MULT BEV DISTRIBUICAO LTDA",
+      "id": 677438
+    },
+    {
+      "name": "MULTBOM",
+      "id": 654
+    },
+    {
+      "name": "NATURAL OLEOS VEGETAIS",
+      "id": 674760
+    },
+    {
+      "name": "PARATUDO INDUSTRIA 'COMERCIO' IMPORTACAO",
+      "id": 674850
+    },
+    {
+      "name": "PASTIFICIO SELMI S.A.",
+      "id": 178
+    },
+    {
+      "name": "RECKITT BENCKISER (BRASIL) COMERCIAL PRO",
+      "id": 676110
+    },
+    {
+      "name": "RICLAN S/A",
+      "id": 672402
+    },
+    {
+      "name": "SANTA HELENA INDUSTRIA DE ALIMENTO S/A",
+      "id": 674893
+    },
+    {
+      "name": "USINA COLOMBO S/A ACUCAR E ALCOOL",
+      "id": 33107
+    },
+    {
+      "name": "VIGOR ALIMENTOS S/A",
+      "id": 674038
+    },
+    {
+      "name": "VINHOS SALTON S/A INDUSTRIA  E COMERCIO.",
+      "id": 143
+    }
+  ]
+}

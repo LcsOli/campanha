@@ -6,7 +6,6 @@ namespace Campaign.Shared.DataBaseContext.Entities.Users
     {
         public static User Generate(Roles roles,
                                     string name,
-                                    int? sellerId,
                                     int? supplierId,
                                     string document,
                                     string password)
@@ -15,7 +14,6 @@ namespace Campaign.Shared.DataBaseContext.Entities.Users
             {
                 Name = name,
                 Roles = roles,
-                SellerId = sellerId,
                 Document = document,
                 SupplierId = supplierId,
                 HashedPassword = password

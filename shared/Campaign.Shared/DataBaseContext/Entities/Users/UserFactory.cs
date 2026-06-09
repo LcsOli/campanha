@@ -16,9 +16,9 @@ namespace Campaign.Shared.DataBaseContext.Entities.Users
             document = formatDocument().Replace(document, "");
 
             if (role == Roles.Supplier)
-                return Supplier.Generate(role, name, sellerId, supplierId, document, password);
+                return Supplier.Generate(role, name, supplierId, document, password);
             else if (role == Roles.Manager)
-                return Manager.Generate(teamId, role, name, sellerId, document, password);
+                return Manager.Generate(role, name, sellerId, document, password);
             else
                 return User.Generate(teamId, role, name, sellerId, document, password);
         }

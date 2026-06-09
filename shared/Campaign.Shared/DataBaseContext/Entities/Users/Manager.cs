@@ -4,8 +4,7 @@ namespace Campaign.Shared.DataBaseContext.Entities.Users
 {
     public class Manager : User
     {
-        public static User Generate(int? teamId,
-                                    Roles roles,
+        public static User Generate(Roles roles,
                                     string name,
                                     int? sellerId,
                                     string document,

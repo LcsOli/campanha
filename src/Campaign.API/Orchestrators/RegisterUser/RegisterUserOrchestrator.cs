@@ -32,12 +32,12 @@ namespace Campaign.API.Orchestrators.RegisterUser
             await _unityOfWork.SecureCommitAsync(async () =>
             {
                 user = await _registerUserHandler.Handle(new InsertUserCommand(cmd.Role,
-                                                                        cmd.TeamId,
-                                                                        cmd.Name,
-                                                                        cmd.SellerId,
-                                                                        cmd.SupplierId,
-                                                                        cmd.Document,
-                                                                        cmd.Password));
+                                                                               cmd.TeamId,
+                                                                               cmd.Name,
+                                                                               cmd.SellerId,
+                                                                               cmd.SupplierId,
+                                                                               cmd.Document,
+                                                                               cmd.Password));
                 await _unityOfWork.SaveAsync();
 
                 if (cmd.Role == Roles.User)
