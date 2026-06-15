@@ -1,0 +1,5053 @@
+{
+  "data_1": [
+    {
+      "sellerScoreid": 1934,
+      "score": 22864,
+      "coupons": 0,
+      "revenue": 22244.3,
+      "lastPointByAccess": "2026-06-09 17:17:27"
+    },
+    {
+      "sellerScoreid": 1825,
+      "score": 12034,
+      "coupons": 0,
+      "revenue": 6025.28,
+      "lastPointByAccess": "2026-06-09 11:28:07"
+    },
+    {
+      "sellerScoreid": 1933,
+      "score": 114,
+      "coupons": 0,
+      "revenue": 1023.6,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 1799,
+      "score": 6765,
+      "coupons": 0,
+      "revenue": 7531.36,
+      "lastPointByAccess": "2026-06-05 17:05:03"
+    },
+    {
+      "sellerScoreid": 1910,
+      "score": 6696,
+      "coupons": 0,
+      "revenue": 13073.59,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 560,
+      "score": 1368,
+      "coupons": 0,
+      "revenue": 17892.32,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 1830,
+      "score": 7408,
+      "coupons": 0,
+      "revenue": 8183.46,
+      "lastPointByAccess": "2026-06-01 14:54:00"
+    },
+    {
+      "sellerScoreid": 227,
+      "score": 15864,
+      "coupons": 0,
+      "revenue": 19742.47,
+      "lastPointByAccess": "2026-06-02 08:51:21"
+    },
+    {
+      "sellerScoreid": 1666,
+      "score": 16454,
+      "coupons": 0,
+      "revenue": 15107.7,
+      "lastPointByAccess": "2026-06-08 17:57:16"
+    },
+    {
+      "sellerScoreid": 1913,
+      "score": 6330,
+      "coupons": 0,
+      "revenue": 13160.96,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 1822,
+      "score": 2160,
+      "coupons": 0,
+      "revenue": 7827.53,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 1838,
+      "score": 10540,
+      "coupons": 0,
+      "revenue": 3049,
+      "lastPointByAccess": "2026-06-09 17:26:44"
+    },
+    {
+      "sellerScoreid": 1717,
+      "score": 13912,
+      "coupons": 0,
+      "revenue": 10056.24,
+      "lastPointByAccess": "2026-06-09 14:13:13"
+    },
+    {
+      "sellerScoreid": 1886,
+      "score": 12860,
+      "coupons": 0,
+      "revenue": 6622.56,
+      "lastPointByAccess": "2026-06-09 08:41:47"
+    },
+    {
+      "sellerScoreid": 1914,
+      "score": 12405,
+      "coupons": 0,
+      "revenue": 18687.1,
+      "lastPointByAccess": "2026-06-08 18:42:43"
+    },
+    {
+      "sellerScoreid": 1642,
+      "score": 13690,
+      "coupons": 0,
+      "revenue": 14882.96,
+      "lastPointByAccess": "2026-06-09 09:30:22"
+    },
+    {
+      "sellerScoreid": 1607,
+      "score": 5362,
+      "coupons": 0,
+      "revenue": 14767.64,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 1801,
+      "score": 16148,
+      "coupons": 0,
+      "revenue": 20143.27,
+      "lastPointByAccess": "2026-06-09 08:43:07"
+    },
+    {
+      "sellerScoreid": 1856,
+      "score": 32643,
+      "coupons": 0,
+      "revenue": 21652.91,
+      "lastPointByAccess": "2026-06-08 18:06:47"
+    },
+    {
+      "sellerScoreid": 921,
+      "score": 6331,
+      "coupons": 0,
+      "revenue": 17757.2,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 1900,
+      "score": 10955,
+      "coupons": 0,
+      "revenue": 34829.96,
+      "lastPointByAccess": "2026-06-09 17:27:18"
+    },
+    {
+      "sellerScoreid": 895,
+      "score": 10040,
+      "coupons": 0,
+      "revenue": 12697.12,
+      "lastPointByAccess": "2026-06-02 08:07:35"
+    },
+    {
+      "sellerScoreid": 777,
+      "score": 8320,
+      "coupons": 0,
+      "revenue": 11448.55,
+      "lastPointByAccess": "2026-06-02 11:17:27"
+    },
+    {
+      "sellerScoreid": 1897,
+      "score": 13690,
+      "coupons": 0,
+      "revenue": 28213.35,
+      "lastPointByAccess": "2026-06-08 18:33:38"
+    },
+    {
+      "sellerScoreid": 1821,
+      "score": 4932,
+      "coupons": 0,
+      "revenue": 25781.69,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 1712,
+      "score": 16604,
+      "coupons": 0,
+      "revenue": 15027.87,
+      "lastPointByAccess": "2026-06-12 08:23:18"
+    },
+    {
+      "sellerScoreid": 1677,
+      "score": 4560,
+      "coupons": 0,
+      "revenue": 6497.26,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 973,
+      "score": 25634,
+      "coupons": 0,
+      "revenue": 23718.96,
+      "lastPointByAccess": "2026-06-09 09:31:21"
+    },
+    {
+      "sellerScoreid": 1725,
+      "score": 642,
+      "coupons": 0,
+      "revenue": 3135.7,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 1908,
+      "score": 14356,
+      "coupons": 0,
+      "revenue": 19539.16,
+      "lastPointByAccess": "2026-06-08 18:36:09"
+    },
+    {
+      "sellerScoreid": 1739,
+      "score": 3888,
+      "coupons": 0,
+      "revenue": 15493.22,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 1819,
+      "score": 17630,
+      "coupons": 0,
+      "revenue": 23270.68,
+      "lastPointByAccess": "2026-06-08 20:07:40"
+    },
+    {
+      "sellerScoreid": 1683,
+      "score": 17210,
+      "coupons": 0,
+      "revenue": 22930.93,
+      "lastPointByAccess": "2026-06-09 09:38:15"
+    },
+    {
+      "sellerScoreid": 1794,
+      "score": 7817,
+      "coupons": 0,
+      "revenue": 8348.62,
+      "lastPointByAccess": "2026-06-10 12:56:58"
+    },
+    {
+      "sellerScoreid": 1643,
+      "score": 17077,
+      "coupons": 0,
+      "revenue": 20633.78,
+      "lastPointByAccess": "2026-06-09 12:12:09"
+    },
+    {
+      "sellerScoreid": 883,
+      "score": 13479,
+      "coupons": 0,
+      "revenue": 29491.2,
+      "lastPointByAccess": "2026-06-09 08:41:14"
+    },
+    {
+      "sellerScoreid": 865,
+      "score": 13198,
+      "coupons": 0,
+      "revenue": 16890.49,
+      "lastPointByAccess": "2026-06-09 09:44:15"
+    },
+    {
+      "sellerScoreid": 1633,
+      "score": 16161,
+      "coupons": 0,
+      "revenue": 11949.66,
+      "lastPointByAccess": "2026-06-09 09:06:07"
+    },
+    {
+      "sellerScoreid": 1861,
+      "score": 5666,
+      "coupons": 0,
+      "revenue": 16030.29,
+      "lastPointByAccess": "2026-06-09 09:07:53"
+    },
+    {
+      "sellerScoreid": 1852,
+      "score": 5928,
+      "coupons": 0,
+      "revenue": 42112.14,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 963,
+      "score": 13572,
+      "coupons": 0,
+      "revenue": 11337.08,
+      "lastPointByAccess": "2026-06-11 23:24:09"
+    },
+    {
+      "sellerScoreid": 1577,
+      "score": 15312,
+      "coupons": 0,
+      "revenue": 20120.05,
+      "lastPointByAccess": "2026-06-09 11:16:31"
+    },
+    {
+      "sellerScoreid": 1701,
+      "score": 9104,
+      "coupons": 0,
+      "revenue": 10675.23,
+      "lastPointByAccess": "2026-06-03 10:31:10"
+    },
+    {
+      "sellerScoreid": 1678,
+      "score": 12035,
+      "coupons": 0,
+      "revenue": 13980.38,
+      "lastPointByAccess": "2026-06-09 10:41:16"
+    },
+    {
+      "sellerScoreid": 1562,
+      "score": 21185,
+      "coupons": 0,
+      "revenue": 21979.33,
+      "lastPointByAccess": "2026-06-09 09:21:42"
+    },
+    {
+      "sellerScoreid": 1738,
+      "score": 15993,
+      "coupons": 0,
+      "revenue": 28899.83,
+      "lastPointByAccess": "2026-06-09 08:52:31"
+    },
+    {
+      "sellerScoreid": 611,
+      "score": 20981,
+      "coupons": 0,
+      "revenue": 19916.53,
+      "lastPointByAccess": "2026-06-08 16:13:03"
+    },
+    {
+      "sellerScoreid": 1743,
+      "score": 15343,
+      "coupons": 0,
+      "revenue": 14137.71,
+      "lastPointByAccess": "2026-06-09 08:43:35"
+    },
+    {
+      "sellerScoreid": 833,
+      "score": 11488,
+      "coupons": 0,
+      "revenue": 11776.53,
+      "lastPointByAccess": "2026-06-09 10:41:11"
+    },
+    {
+      "sellerScoreid": 655,
+      "score": 13760,
+      "coupons": 0,
+      "revenue": 21322.73,
+      "lastPointByAccess": "2026-06-08 17:57:19"
+    },
+    {
+      "sellerScoreid": 1669,
+      "score": 13654,
+      "coupons": 0,
+      "revenue": 15915.7,
+      "lastPointByAccess": "2026-06-09 18:22:51"
+    },
+    {
+      "sellerScoreid": 1563,
+      "score": 4587,
+      "coupons": 0,
+      "revenue": 18352.12,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 1884,
+      "score": 11786,
+      "coupons": 0,
+      "revenue": 14198.83,
+      "lastPointByAccess": "2026-06-01 14:45:07"
+    },
+    {
+      "sellerScoreid": 1698,
+      "score": 13880,
+      "coupons": 0,
+      "revenue": 10928.83,
+      "lastPointByAccess": "2026-06-08 18:29:32"
+    },
+    {
+      "sellerScoreid": 1576,
+      "score": 5200,
+      "coupons": 0,
+      "revenue": 13636.95,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 1839,
+      "score": 22663,
+      "coupons": 0,
+      "revenue": 21406.16,
+      "lastPointByAccess": "2026-06-08 20:40:31"
+    },
+    {
+      "sellerScoreid": 830,
+      "score": 4944,
+      "coupons": 0,
+      "revenue": 14231.22,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 1569,
+      "score": 14970,
+      "coupons": 0,
+      "revenue": 7083.29,
+      "lastPointByAccess": "2026-06-10 08:44:46"
+    },
+    {
+      "sellerScoreid": 1762,
+      "score": 10162,
+      "coupons": 0,
+      "revenue": 1967.87,
+      "lastPointByAccess": "2026-06-09 08:40:59"
+    },
+    {
+      "sellerScoreid": 674,
+      "score": 13750,
+      "coupons": 0,
+      "revenue": 17576.63,
+      "lastPointByAccess": "2026-06-09 08:41:18"
+    },
+    {
+      "sellerScoreid": 1772,
+      "score": 18892,
+      "coupons": 0,
+      "revenue": 15519.72,
+      "lastPointByAccess": "2026-06-09 09:03:57"
+    },
+    {
+      "sellerScoreid": 1697,
+      "score": 28066,
+      "coupons": 0,
+      "revenue": 37998.45,
+      "lastPointByAccess": "2026-06-09 08:40:24"
+    },
+    {
+      "sellerScoreid": 1681,
+      "score": 8312,
+      "coupons": 0,
+      "revenue": 16012.73,
+      "lastPointByAccess": "2026-06-05 08:28:16"
+    },
+    {
+      "sellerScoreid": 1814,
+      "score": 20164,
+      "coupons": 0,
+      "revenue": 14738.47,
+      "lastPointByAccess": "2026-06-09 11:59:03"
+    },
+    {
+      "sellerScoreid": 977,
+      "score": 12900,
+      "coupons": 0,
+      "revenue": 12996.3,
+      "lastPointByAccess": "2026-06-10 20:20:09"
+    },
+    {
+      "sellerScoreid": 1615,
+      "score": 20948,
+      "coupons": 0,
+      "revenue": 19492.84,
+      "lastPointByAccess": "2026-06-08 21:54:17"
+    },
+    {
+      "sellerScoreid": 1763,
+      "score": 10445,
+      "coupons": 0,
+      "revenue": 16490.54,
+      "lastPointByAccess": "2026-06-01 16:04:18"
+    },
+    {
+      "sellerScoreid": 1778,
+      "score": 29078,
+      "coupons": 0,
+      "revenue": 21767.17,
+      "lastPointByAccess": "2026-06-09 09:29:35"
+    },
+    {
+      "sellerScoreid": 1629,
+      "score": 21296,
+      "coupons": 0,
+      "revenue": 27168.42,
+      "lastPointByAccess": "2026-06-09 08:49:01"
+    },
+    {
+      "sellerScoreid": 1837,
+      "score": 3936,
+      "coupons": 0,
+      "revenue": 20000.01,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 925,
+      "score": 8749,
+      "coupons": 0,
+      "revenue": 18136.21,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 1840,
+      "score": 24670,
+      "coupons": 0,
+      "revenue": 25053.05,
+      "lastPointByAccess": "2026-06-09 15:28:56"
+    },
+    {
+      "sellerScoreid": 1602,
+      "score": 16415,
+      "coupons": 0,
+      "revenue": 30623.22,
+      "lastPointByAccess": "2026-06-09 08:44:05"
+    },
+    {
+      "sellerScoreid": 1585,
+      "score": 10000,
+      "coupons": 0,
+      "revenue": 15575.47,
+      "lastPointByAccess": "2026-06-09 08:32:19"
+    },
+    {
+      "sellerScoreid": 216,
+      "score": 3483,
+      "coupons": 0,
+      "revenue": 15100.2,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 231,
+      "score": 20470,
+      "coupons": 0,
+      "revenue": 14837.61,
+      "lastPointByAccess": "2026-06-08 18:01:10"
+    },
+    {
+      "sellerScoreid": 1688,
+      "score": 5180,
+      "coupons": 0,
+      "revenue": 19992.91,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 717,
+      "score": 13114,
+      "coupons": 0,
+      "revenue": 17792.08,
+      "lastPointByAccess": "2026-06-09 08:50:00"
+    },
+    {
+      "sellerScoreid": 1741,
+      "score": 13145,
+      "coupons": 0,
+      "revenue": 8352.43,
+      "lastPointByAccess": "2026-06-09 10:02:42"
+    },
+    {
+      "sellerScoreid": 1702,
+      "score": 22456,
+      "coupons": 0,
+      "revenue": 38011.98,
+      "lastPointByAccess": "2026-06-12 08:29:57"
+    },
+    {
+      "sellerScoreid": 458,
+      "score": 2520,
+      "coupons": 0,
+      "revenue": 17130.73,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 1876,
+      "score": 18322,
+      "coupons": 0,
+      "revenue": 12514.61,
+      "lastPointByAccess": "2026-06-08 18:42:43"
+    },
+    {
+      "sellerScoreid": 1682,
+      "score": 5027,
+      "coupons": 0,
+      "revenue": 685.8,
+      "lastPointByAccess": "2026-06-02 12:53:14"
+    },
+    {
+      "sellerScoreid": 966,
+      "score": 20410,
+      "coupons": 0,
+      "revenue": 20120.49,
+      "lastPointByAccess": "2026-06-01 14:45:15"
+    },
+    {
+      "sellerScoreid": 917,
+      "score": 24624,
+      "coupons": 0,
+      "revenue": 26738.13,
+      "lastPointByAccess": "2026-06-12 08:23:23"
+    },
+    {
+      "sellerScoreid": 1757,
+      "score": 23230,
+      "coupons": 0,
+      "revenue": 29041.54,
+      "lastPointByAccess": "2026-06-08 18:54:17"
+    },
+    {
+      "sellerScoreid": 1867,
+      "score": 81,
+      "coupons": 0,
+      "revenue": 1192.86,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 869,
+      "score": 29416,
+      "coupons": 0,
+      "revenue": 18270.36,
+      "lastPointByAccess": "2026-06-08 22:24:45"
+    },
+    {
+      "sellerScoreid": 656,
+      "score": 17408,
+      "coupons": 0,
+      "revenue": 25651.04,
+      "lastPointByAccess": "2026-06-09 08:41:07"
+    },
+    {
+      "sellerScoreid": 1644,
+      "score": 24141,
+      "coupons": 0,
+      "revenue": 17415.74,
+      "lastPointByAccess": "2026-06-09 08:44:46"
+    },
+    {
+      "sellerScoreid": 586,
+      "score": 17532,
+      "coupons": 0,
+      "revenue": 46839.67,
+      "lastPointByAccess": "2026-06-09 08:43:46"
+    },
+    {
+      "sellerScoreid": 1516,
+      "score": 15990,
+      "coupons": 0,
+      "revenue": 18137.04,
+      "lastPointByAccess": "2026-06-09 18:03:38"
+    },
+    {
+      "sellerScoreid": 657,
+      "score": 13432,
+      "coupons": 0,
+      "revenue": 11102.04,
+      "lastPointByAccess": "2026-06-09 09:06:28"
+    },
+    {
+      "sellerScoreid": 808,
+      "score": 12214,
+      "coupons": 0,
+      "revenue": 12162.76,
+      "lastPointByAccess": "2026-06-08 18:26:46"
+    },
+    {
+      "sellerScoreid": 1885,
+      "score": 18272,
+      "coupons": 0,
+      "revenue": 18481.34,
+      "lastPointByAccess": "2026-06-09 09:28:57"
+    },
+    {
+      "sellerScoreid": 1834,
+      "score": 27490,
+      "coupons": 0,
+      "revenue": 25699.19,
+      "lastPointByAccess": "2026-06-09 09:05:41"
+    },
+    {
+      "sellerScoreid": 1601,
+      "score": 22280,
+      "coupons": 0,
+      "revenue": 18386.17,
+      "lastPointByAccess": "2026-06-09 08:58:08"
+    },
+    {
+      "sellerScoreid": 240,
+      "score": 29580,
+      "coupons": 0,
+      "revenue": 42181.41,
+      "lastPointByAccess": "2026-06-08 18:01:50"
+    },
+    {
+      "sellerScoreid": 1564,
+      "score": 10296,
+      "coupons": 0,
+      "revenue": 20514.78,
+      "lastPointByAccess": "2026-06-01 14:52:11"
+    },
+    {
+      "sellerScoreid": 779,
+      "score": 11325,
+      "coupons": 0,
+      "revenue": 35376.54,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 732,
+      "score": 16360,
+      "coupons": 0,
+      "revenue": 46318.66,
+      "lastPointByAccess": "2026-06-08 21:37:50"
+    },
+    {
+      "sellerScoreid": 1541,
+      "score": 28819,
+      "coupons": 0,
+      "revenue": 68565.87,
+      "lastPointByAccess": "2026-06-09 08:54:25"
+    },
+    {
+      "sellerScoreid": 47,
+      "score": 87072,
+      "coupons": 0,
+      "revenue": 56207.13,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 182,
+      "score": 16105,
+      "coupons": 0,
+      "revenue": 36837.4,
+      "lastPointByAccess": "2026-06-09 20:04:08"
+    },
+    {
+      "sellerScoreid": 627,
+      "score": 30466,
+      "coupons": 0,
+      "revenue": 46239.83,
+      "lastPointByAccess": "2026-06-09 09:11:24"
+    },
+    {
+      "sellerScoreid": 212,
+      "score": 48205,
+      "coupons": 0,
+      "revenue": 64351.93,
+      "lastPointByAccess": "2026-06-09 18:50:02"
+    },
+    {
+      "sellerScoreid": 658,
+      "score": 44138,
+      "coupons": 0,
+      "revenue": 70937.07,
+      "lastPointByAccess": "2026-06-11 05:54:45"
+    },
+    {
+      "sellerScoreid": 1892,
+      "score": 49072,
+      "coupons": 0,
+      "revenue": 35127.38,
+      "lastPointByAccess": "2026-06-08 18:05:26"
+    },
+    {
+      "sellerScoreid": 508,
+      "score": 23258,
+      "coupons": 0,
+      "revenue": 34025.17,
+      "lastPointByAccess": "2026-06-09 09:29:28"
+    },
+    {
+      "sellerScoreid": 934,
+      "score": 22528,
+      "coupons": 0,
+      "revenue": 17704.88,
+      "lastPointByAccess": "2026-06-09 10:42:06"
+    },
+    {
+      "sellerScoreid": 1893,
+      "score": 37195,
+      "coupons": 0,
+      "revenue": 20450.84,
+      "lastPointByAccess": "2026-06-10 09:29:59"
+    },
+    {
+      "sellerScoreid": 1865,
+      "score": 49,
+      "coupons": 0,
+      "revenue": 1666.93,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 803,
+      "score": 5470,
+      "coupons": 0,
+      "revenue": 23202.15,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 210,
+      "score": 18208,
+      "coupons": 0,
+      "revenue": 32708.1,
+      "lastPointByAccess": "2026-06-09 09:43:22"
+    },
+    {
+      "sellerScoreid": 1782,
+      "score": 43875,
+      "coupons": 0,
+      "revenue": 34934.42,
+      "lastPointByAccess": "2026-06-09 12:26:08"
+    },
+    {
+      "sellerScoreid": 1561,
+      "score": 18944,
+      "coupons": 0,
+      "revenue": 18548.27,
+      "lastPointByAccess": "2026-06-09 08:26:46"
+    },
+    {
+      "sellerScoreid": 1735,
+      "score": 24269,
+      "coupons": 0,
+      "revenue": 29121.19,
+      "lastPointByAccess": "2026-06-09 08:45:53"
+    },
+    {
+      "sellerScoreid": 733,
+      "score": 27157,
+      "coupons": 0,
+      "revenue": 29200.35,
+      "lastPointByAccess": "2026-06-09 08:48:50"
+    },
+    {
+      "sellerScoreid": 1730,
+      "score": 13444,
+      "coupons": 0,
+      "revenue": 22171.05,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 540,
+      "score": 13843,
+      "coupons": 0,
+      "revenue": 30438.65,
+      "lastPointByAccess": "2026-06-09 08:54:04"
+    },
+    {
+      "sellerScoreid": 1873,
+      "score": 74790,
+      "coupons": 0,
+      "revenue": 33374.28,
+      "lastPointByAccess": "2026-06-09 08:54:52"
+    },
+    {
+      "sellerScoreid": 518,
+      "score": 34909,
+      "coupons": 0,
+      "revenue": 29071.64,
+      "lastPointByAccess": "2026-06-09 13:49:50"
+    },
+    {
+      "sellerScoreid": 420,
+      "score": 50063,
+      "coupons": 0,
+      "revenue": 218667.22,
+      "lastPointByAccess": "2026-06-11 08:17:17"
+    },
+    {
+      "sellerScoreid": 972,
+      "score": 37144,
+      "coupons": 0,
+      "revenue": 25045.62,
+      "lastPointByAccess": "2026-06-08 18:40:30"
+    },
+    {
+      "sellerScoreid": 426,
+      "score": 8416,
+      "coupons": 0,
+      "revenue": 13278.83,
+      "lastPointByAccess": "2026-06-08 16:10:12"
+    },
+    {
+      "sellerScoreid": 1720,
+      "score": 49500,
+      "coupons": 0,
+      "revenue": 41014.19,
+      "lastPointByAccess": "2026-06-09 10:24:22"
+    },
+    {
+      "sellerScoreid": 1565,
+      "score": 14080,
+      "coupons": 0,
+      "revenue": 13835.74,
+      "lastPointByAccess": "2026-06-09 13:57:40"
+    },
+    {
+      "sellerScoreid": 793,
+      "score": 14500,
+      "coupons": 0,
+      "revenue": 18417.74,
+      "lastPointByAccess": "2026-06-09 13:22:08"
+    },
+    {
+      "sellerScoreid": 797,
+      "score": 9660,
+      "coupons": 0,
+      "revenue": 20378.71,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 359,
+      "score": 12450,
+      "coupons": 0,
+      "revenue": 12704.36,
+      "lastPointByAccess": "2026-06-08 17:59:38"
+    },
+    {
+      "sellerScoreid": 1848,
+      "score": 100933,
+      "coupons": 0,
+      "revenue": 41223.3,
+      "lastPointByAccess": "2026-06-09 11:21:58"
+    },
+    {
+      "sellerScoreid": 1539,
+      "score": 21154,
+      "coupons": 0,
+      "revenue": 28742.12,
+      "lastPointByAccess": "2026-06-09 14:35:31"
+    },
+    {
+      "sellerScoreid": 765,
+      "score": 10000,
+      "coupons": 0,
+      "revenue": 0,
+      "lastPointByAccess": "2026-06-09 08:40:24"
+    },
+    {
+      "sellerScoreid": 610,
+      "score": 25320,
+      "coupons": 0,
+      "revenue": 57266.31,
+      "lastPointByAccess": "2026-06-12 08:23:53"
+    },
+    {
+      "sellerScoreid": 1637,
+      "score": 12580,
+      "coupons": 0,
+      "revenue": 13703.95,
+      "lastPointByAccess": "2026-06-09 11:13:28"
+    },
+    {
+      "sellerScoreid": 276,
+      "score": 50140,
+      "coupons": 0,
+      "revenue": 34807.9,
+      "lastPointByAccess": "2026-06-09 08:40:29"
+    },
+    {
+      "sellerScoreid": 1842,
+      "score": 53239,
+      "coupons": 0,
+      "revenue": 67885.07,
+      "lastPointByAccess": "2026-06-09 10:37:25"
+    },
+    {
+      "sellerScoreid": 890,
+      "score": 27226,
+      "coupons": 0,
+      "revenue": 27255.28,
+      "lastPointByAccess": "2026-06-09 09:27:47"
+    },
+    {
+      "sellerScoreid": 783,
+      "score": 4990,
+      "coupons": 0,
+      "revenue": 56773.9,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 763,
+      "score": 23736,
+      "coupons": 0,
+      "revenue": 21113.63,
+      "lastPointByAccess": "2026-06-11 07:34:31"
+    },
+    {
+      "sellerScoreid": 942,
+      "score": 8316,
+      "coupons": 0,
+      "revenue": 20363.99,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 1780,
+      "score": 7142,
+      "coupons": 0,
+      "revenue": 8736.81,
+      "lastPointByAccess": "2026-06-02 09:57:03"
+    },
+    {
+      "sellerScoreid": 1695,
+      "score": 59648,
+      "coupons": 0,
+      "revenue": 33233.29,
+      "lastPointByAccess": "2026-06-01 15:04:11"
+    },
+    {
+      "sellerScoreid": 638,
+      "score": 39540,
+      "coupons": 0,
+      "revenue": 50371.99,
+      "lastPointByAccess": "2026-06-10 06:40:21"
+    },
+    {
+      "sellerScoreid": 1798,
+      "score": 58285,
+      "coupons": 0,
+      "revenue": 27805.1,
+      "lastPointByAccess": "2026-06-08 18:53:00"
+    },
+    {
+      "sellerScoreid": 1857,
+      "score": 28700,
+      "coupons": 0,
+      "revenue": 26320.75,
+      "lastPointByAccess": "2026-06-09 15:36:05"
+    },
+    {
+      "sellerScoreid": 536,
+      "score": 14950,
+      "coupons": 0,
+      "revenue": 16704.76,
+      "lastPointByAccess": "2026-06-09 21:57:25"
+    },
+    {
+      "sellerScoreid": 1580,
+      "score": 27504,
+      "coupons": 0,
+      "revenue": 41802.88,
+      "lastPointByAccess": "2026-06-09 08:54:34"
+    },
+    {
+      "sellerScoreid": 1625,
+      "score": 10168,
+      "coupons": 0,
+      "revenue": 4265.2,
+      "lastPointByAccess": "2026-06-09 08:43:30"
+    },
+    {
+      "sellerScoreid": 1788,
+      "score": 48591,
+      "coupons": 0,
+      "revenue": 35263.83,
+      "lastPointByAccess": "2026-06-08 20:40:08"
+    },
+    {
+      "sellerScoreid": 543,
+      "score": 14488,
+      "coupons": 0,
+      "revenue": 11091.47,
+      "lastPointByAccess": "2026-06-01 14:59:14"
+    },
+    {
+      "sellerScoreid": 561,
+      "score": 54192,
+      "coupons": 0,
+      "revenue": 37563.94,
+      "lastPointByAccess": "2026-06-09 11:09:30"
+    },
+    {
+      "sellerScoreid": 1525,
+      "score": 30520,
+      "coupons": 0,
+      "revenue": 41880.67,
+      "lastPointByAccess": "2026-06-08 18:40:44"
+    },
+    {
+      "sellerScoreid": 62,
+      "score": 23896,
+      "coupons": 0,
+      "revenue": 21929.76,
+      "lastPointByAccess": "2026-06-09 13:55:12"
+    },
+    {
+      "sellerScoreid": 1598,
+      "score": 19348,
+      "coupons": 0,
+      "revenue": 24016.11,
+      "lastPointByAccess": "2026-06-09 09:06:46"
+    },
+    {
+      "sellerScoreid": 1901,
+      "score": 58492,
+      "coupons": 0,
+      "revenue": 43906.66,
+      "lastPointByAccess": "2026-06-09 08:43:37"
+    },
+    {
+      "sellerScoreid": 915,
+      "score": 2664,
+      "coupons": 0,
+      "revenue": 9979.38,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 1512,
+      "score": 27276,
+      "coupons": 0,
+      "revenue": 24959.5,
+      "lastPointByAccess": "2026-06-09 09:07:18"
+    },
+    {
+      "sellerScoreid": 1660,
+      "score": 32208,
+      "coupons": 0,
+      "revenue": 25284.88,
+      "lastPointByAccess": "2026-06-09 08:45:30"
+    },
+    {
+      "sellerScoreid": 796,
+      "score": 24976,
+      "coupons": 0,
+      "revenue": 45610.88,
+      "lastPointByAccess": "2026-06-08 18:36:54"
+    },
+    {
+      "sellerScoreid": 868,
+      "score": 20425,
+      "coupons": 0,
+      "revenue": 20732.78,
+      "lastPointByAccess": "2026-06-09 09:38:15"
+    },
+    {
+      "sellerScoreid": 1768,
+      "score": 24125,
+      "coupons": 0,
+      "revenue": 24211.81,
+      "lastPointByAccess": "2026-06-10 21:39:03"
+    },
+    {
+      "sellerScoreid": 727,
+      "score": 21475,
+      "coupons": 0,
+      "revenue": 26684.13,
+      "lastPointByAccess": "2026-06-09 08:44:04"
+    },
+    {
+      "sellerScoreid": 981,
+      "score": 33998,
+      "coupons": 0,
+      "revenue": 41034.11,
+      "lastPointByAccess": "2026-06-09 14:29:28"
+    },
+    {
+      "sellerScoreid": 320,
+      "score": 27708,
+      "coupons": 0,
+      "revenue": 39312.39,
+      "lastPointByAccess": "2026-06-09 20:29:41"
+    },
+    {
+      "sellerScoreid": 1534,
+      "score": 46736,
+      "coupons": 0,
+      "revenue": 36187.02,
+      "lastPointByAccess": "2026-06-08 20:56:53"
+    },
+    {
+      "sellerScoreid": 952,
+      "score": 15,
+      "coupons": 0,
+      "revenue": 18366.6,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 1622,
+      "score": 15862,
+      "coupons": 0,
+      "revenue": 18193.17,
+      "lastPointByAccess": "2026-06-09 08:29:38"
+    },
+    {
+      "sellerScoreid": 901,
+      "score": 17587,
+      "coupons": 0,
+      "revenue": 32351.23,
+      "lastPointByAccess": "2026-06-09 08:53:21"
+    },
+    {
+      "sellerScoreid": 1686,
+      "score": 22019,
+      "coupons": 0,
+      "revenue": 21540.39,
+      "lastPointByAccess": "2026-06-09 09:49:13"
+    },
+    {
+      "sellerScoreid": 1503,
+      "score": 35557,
+      "coupons": 0,
+      "revenue": 39244.93,
+      "lastPointByAccess": "2026-06-09 08:49:40"
+    },
+    {
+      "sellerScoreid": 335,
+      "score": 3780,
+      "coupons": 0,
+      "revenue": 40310.41,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 1547,
+      "score": 27006,
+      "coupons": 0,
+      "revenue": 29625.84,
+      "lastPointByAccess": "2026-06-09 10:02:26"
+    },
+    {
+      "sellerScoreid": 1552,
+      "score": 20598,
+      "coupons": 0,
+      "revenue": 27327.17,
+      "lastPointByAccess": "2026-06-09 08:43:03"
+    },
+    {
+      "sellerScoreid": 1628,
+      "score": 23280,
+      "coupons": 0,
+      "revenue": 35331.95,
+      "lastPointByAccess": "2026-06-08 18:54:17"
+    },
+    {
+      "sellerScoreid": 1507,
+      "score": 685,
+      "coupons": 0,
+      "revenue": 5660.52,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 815,
+      "score": 21913,
+      "coupons": 0,
+      "revenue": 39873.97,
+      "lastPointByAccess": "2026-06-08 17:59:42"
+    },
+    {
+      "sellerScoreid": 1880,
+      "score": 42848,
+      "coupons": 0,
+      "revenue": 39906.83,
+      "lastPointByAccess": "2026-06-09 08:42:49"
+    },
+    {
+      "sellerScoreid": 453,
+      "score": 50655,
+      "coupons": 0,
+      "revenue": 33593.65,
+      "lastPointByAccess": "2026-06-08 21:56:05"
+    },
+    {
+      "sellerScoreid": 1898,
+      "score": 9018,
+      "coupons": 0,
+      "revenue": 14717.5,
+      "lastPointByAccess": "2026-06-02 11:49:24"
+    },
+    {
+      "sellerScoreid": 1828,
+      "score": 42056,
+      "coupons": 0,
+      "revenue": 52291.71,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 882,
+      "score": 50122,
+      "coupons": 0,
+      "revenue": 36914.77,
+      "lastPointByAccess": "2026-06-09 09:28:38"
+    },
+    {
+      "sellerScoreid": 241,
+      "score": 37344,
+      "coupons": 0,
+      "revenue": 41588.73,
+      "lastPointByAccess": "2026-06-08 18:02:21"
+    },
+    {
+      "sellerScoreid": 80,
+      "score": 17532,
+      "coupons": 0,
+      "revenue": 21678.43,
+      "lastPointByAccess": "2026-06-10 12:30:15"
+    },
+    {
+      "sellerScoreid": 418,
+      "score": 60140,
+      "coupons": 0,
+      "revenue": 39734,
+      "lastPointByAccess": "2026-06-09 14:49:36"
+    },
+    {
+      "sellerScoreid": 1855,
+      "score": 18502,
+      "coupons": 0,
+      "revenue": 37042.64,
+      "lastPointByAccess": "2026-06-09 08:48:20"
+    },
+    {
+      "sellerScoreid": 479,
+      "score": 19615,
+      "coupons": 0,
+      "revenue": 28203.76,
+      "lastPointByAccess": "2026-06-08 22:57:31"
+    },
+    {
+      "sellerScoreid": 629,
+      "score": 29375,
+      "coupons": 0,
+      "revenue": 28219.17,
+      "lastPointByAccess": "2026-06-09 09:45:55"
+    },
+    {
+      "sellerScoreid": 1611,
+      "score": 45025,
+      "coupons": 0,
+      "revenue": 54618.94,
+      "lastPointByAccess": "2026-06-09 08:40:25"
+    },
+    {
+      "sellerScoreid": 265,
+      "score": 15252,
+      "coupons": 0,
+      "revenue": 24055.63,
+      "lastPointByAccess": "2026-06-09 08:58:37"
+    },
+    {
+      "sellerScoreid": 773,
+      "score": 24670,
+      "coupons": 0,
+      "revenue": 26772.36,
+      "lastPointByAccess": "2026-06-09 18:23:37"
+    },
+    {
+      "sellerScoreid": 1614,
+      "score": 24850,
+      "coupons": 0,
+      "revenue": 28863.09,
+      "lastPointByAccess": "2026-06-09 08:47:29"
+    },
+    {
+      "sellerScoreid": 961,
+      "score": 25314,
+      "coupons": 0,
+      "revenue": 35928.43,
+      "lastPointByAccess": "2026-06-09 08:49:40"
+    },
+    {
+      "sellerScoreid": 805,
+      "score": 49150,
+      "coupons": 0,
+      "revenue": 37688.03,
+      "lastPointByAccess": "2026-06-09 10:12:35"
+    },
+    {
+      "sellerScoreid": 1612,
+      "score": 19450,
+      "coupons": 0,
+      "revenue": 28441.73,
+      "lastPointByAccess": "2026-06-03 09:28:21"
+    },
+    {
+      "sellerScoreid": 1724,
+      "score": 18340,
+      "coupons": 0,
+      "revenue": 29286.43,
+      "lastPointByAccess": "2026-06-05 11:15:05"
+    },
+    {
+      "sellerScoreid": 498,
+      "score": 19348,
+      "coupons": 0,
+      "revenue": 30154.13,
+      "lastPointByAccess": "2026-06-08 19:53:33"
+    },
+    {
+      "sellerScoreid": 56,
+      "score": 49309,
+      "coupons": 0,
+      "revenue": 31739.27,
+      "lastPointByAccess": "2026-06-09 13:44:41"
+    },
+    {
+      "sellerScoreid": 1623,
+      "score": 49202,
+      "coupons": 0,
+      "revenue": 36108.62,
+      "lastPointByAccess": "2026-06-09 08:41:22"
+    },
+    {
+      "sellerScoreid": 864,
+      "score": 30125,
+      "coupons": 0,
+      "revenue": 29366.21,
+      "lastPointByAccess": "2026-06-09 08:43:42"
+    },
+    {
+      "sellerScoreid": 1779,
+      "score": 17400,
+      "coupons": 0,
+      "revenue": 35774.02,
+      "lastPointByAccess": "2026-06-05 16:36:58"
+    },
+    {
+      "sellerScoreid": 1519,
+      "score": 34992,
+      "coupons": 0,
+      "revenue": 32171.04,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 728,
+      "score": 86680,
+      "coupons": 0,
+      "revenue": 57767.83,
+      "lastPointByAccess": "2026-06-09 15:56:44"
+    },
+    {
+      "sellerScoreid": 26,
+      "score": 82964,
+      "coupons": 0,
+      "revenue": 44472.59,
+      "lastPointByAccess": "2026-06-09 10:19:52"
+    },
+    {
+      "sellerScoreid": 304,
+      "score": 39304,
+      "coupons": 0,
+      "revenue": 43247.77,
+      "lastPointByAccess": "2026-06-10 16:04:19"
+    },
+    {
+      "sellerScoreid": 398,
+      "score": 27894,
+      "coupons": 0,
+      "revenue": 41835.09,
+      "lastPointByAccess": "2026-06-09 10:42:49"
+    },
+    {
+      "sellerScoreid": 36,
+      "score": 67352,
+      "coupons": 0,
+      "revenue": 58380.87,
+      "lastPointByAccess": "2026-06-09 10:46:29"
+    },
+    {
+      "sellerScoreid": 480,
+      "score": 40384,
+      "coupons": 0,
+      "revenue": 54919.86,
+      "lastPointByAccess": "2026-06-08 19:00:16"
+    },
+    {
+      "sellerScoreid": 898,
+      "score": 42683,
+      "coupons": 0,
+      "revenue": 49998.22,
+      "lastPointByAccess": "2026-06-09 08:41:42"
+    },
+    {
+      "sellerScoreid": 259,
+      "score": 24535,
+      "coupons": 0,
+      "revenue": 30932.3,
+      "lastPointByAccess": "2026-06-08 19:38:29"
+    },
+    {
+      "sellerScoreid": 1527,
+      "score": 36680,
+      "coupons": 0,
+      "revenue": 62677.53,
+      "lastPointByAccess": "2026-06-08 20:55:32"
+    },
+    {
+      "sellerScoreid": 584,
+      "score": 31565,
+      "coupons": 0,
+      "revenue": 58123.21,
+      "lastPointByAccess": "2026-06-09 08:44:32"
+    },
+    {
+      "sellerScoreid": 1664,
+      "score": 23281,
+      "coupons": 0,
+      "revenue": 21295.58,
+      "lastPointByAccess": "2026-06-09 11:45:38"
+    },
+    {
+      "sellerScoreid": 1624,
+      "score": 31173,
+      "coupons": 0,
+      "revenue": 25788.41,
+      "lastPointByAccess": "2026-06-08 20:13:20"
+    },
+    {
+      "sellerScoreid": 723,
+      "score": 46048,
+      "coupons": 0,
+      "revenue": 55006.3,
+      "lastPointByAccess": "2026-06-09 12:15:00"
+    },
+    {
+      "sellerScoreid": 603,
+      "score": 14350,
+      "coupons": 0,
+      "revenue": 30721.5,
+      "lastPointByAccess": "2026-06-12 07:31:00"
+    },
+    {
+      "sellerScoreid": 1747,
+      "score": 99924,
+      "coupons": 0,
+      "revenue": 37567.68,
+      "lastPointByAccess": "2026-06-09 08:43:03"
+    },
+    {
+      "sellerScoreid": 69,
+      "score": 92836,
+      "coupons": 0,
+      "revenue": 37343.27,
+      "lastPointByAccess": "2026-06-09 08:51:54"
+    },
+    {
+      "sellerScoreid": 831,
+      "score": 12486,
+      "coupons": 0,
+      "revenue": 32572.02,
+      "lastPointByAccess": "2026-06-09 09:04:16"
+    },
+    {
+      "sellerScoreid": 585,
+      "score": 55916,
+      "coupons": 0,
+      "revenue": 41729.98,
+      "lastPointByAccess": "2026-06-09 09:08:46"
+    },
+    {
+      "sellerScoreid": 333,
+      "score": 38344,
+      "coupons": 0,
+      "revenue": 35434.17,
+      "lastPointByAccess": "2026-06-09 08:58:33"
+    },
+    {
+      "sellerScoreid": 609,
+      "score": 46376,
+      "coupons": 0,
+      "revenue": 35918.42,
+      "lastPointByAccess": "2026-06-08 19:06:45"
+    },
+    {
+      "sellerScoreid": 7,
+      "score": 76284,
+      "coupons": 0,
+      "revenue": 40895.23,
+      "lastPointByAccess": "2026-06-08 20:19:47"
+    },
+    {
+      "sellerScoreid": 290,
+      "score": 104048,
+      "coupons": 0,
+      "revenue": 63921.82,
+      "lastPointByAccess": "2026-06-09 21:05:45"
+    },
+    {
+      "sellerScoreid": 756,
+      "score": 83220,
+      "coupons": 0,
+      "revenue": 65650.66,
+      "lastPointByAccess": "2026-06-09 09:38:44"
+    },
+    {
+      "sellerScoreid": 724,
+      "score": 54242,
+      "coupons": 0,
+      "revenue": 66385.77,
+      "lastPointByAccess": "2026-06-12 07:52:01"
+    },
+    {
+      "sellerScoreid": 1813,
+      "score": 28606,
+      "coupons": 0,
+      "revenue": 34532.56,
+      "lastPointByAccess": "2026-06-08 18:46:46"
+    },
+    {
+      "sellerScoreid": 912,
+      "score": 29890,
+      "coupons": 0,
+      "revenue": 38982.95,
+      "lastPointByAccess": "2026-06-09 07:42:50"
+    },
+    {
+      "sellerScoreid": 350,
+      "score": 41198,
+      "coupons": 0,
+      "revenue": 64624.29,
+      "lastPointByAccess": "2026-06-08 20:34:22"
+    },
+    {
+      "sellerScoreid": 1879,
+      "score": 95892,
+      "coupons": 0,
+      "revenue": 68469.6,
+      "lastPointByAccess": "2026-06-09 08:44:13"
+    },
+    {
+      "sellerScoreid": 654,
+      "score": 54772,
+      "coupons": 0,
+      "revenue": 67565.94,
+      "lastPointByAccess": "2026-06-09 08:15:37"
+    },
+    {
+      "sellerScoreid": 992,
+      "score": 18216,
+      "coupons": 0,
+      "revenue": 30364.03,
+      "lastPointByAccess": "2026-06-09 12:55:07"
+    },
+    {
+      "sellerScoreid": 980,
+      "score": 32275,
+      "coupons": 0,
+      "revenue": 39546.02,
+      "lastPointByAccess": "2026-06-09 15:22:07"
+    },
+    {
+      "sellerScoreid": 950,
+      "score": 22033,
+      "coupons": 0,
+      "revenue": 24759.44,
+      "lastPointByAccess": "2026-06-08 18:30:18"
+    },
+    {
+      "sellerScoreid": 811,
+      "score": 49338,
+      "coupons": 0,
+      "revenue": 101311.87,
+      "lastPointByAccess": "2026-06-09 17:55:42"
+    },
+    {
+      "sellerScoreid": 634,
+      "score": 20390,
+      "coupons": 0,
+      "revenue": 37085.11,
+      "lastPointByAccess": "2026-06-01 14:42:08"
+    },
+    {
+      "sellerScoreid": 1510,
+      "score": 24238,
+      "coupons": 0,
+      "revenue": 44618.29,
+      "lastPointByAccess": "2026-06-08 19:23:19"
+    },
+    {
+      "sellerScoreid": 1630,
+      "score": 29920,
+      "coupons": 0,
+      "revenue": 37826.08,
+      "lastPointByAccess": "2026-06-09 08:43:31"
+    },
+    {
+      "sellerScoreid": 945,
+      "score": 29005,
+      "coupons": 0,
+      "revenue": 81207.12,
+      "lastPointByAccess": "2026-06-09 11:59:08"
+    },
+    {
+      "sellerScoreid": 170,
+      "score": 41125,
+      "coupons": 0,
+      "revenue": 48192.45,
+      "lastPointByAccess": "2026-06-09 16:05:31"
+    },
+    {
+      "sellerScoreid": 920,
+      "score": 73144,
+      "coupons": 0,
+      "revenue": 60748.36,
+      "lastPointByAccess": "2026-06-08 18:42:57"
+    },
+    {
+      "sellerScoreid": 1827,
+      "score": 56500,
+      "coupons": 0,
+      "revenue": 48776.95,
+      "lastPointByAccess": "2026-06-09 10:10:32"
+    },
+    {
+      "sellerScoreid": 549,
+      "score": 35986,
+      "coupons": 0,
+      "revenue": 41928.7,
+      "lastPointByAccess": "2026-06-10 08:58:02"
+    },
+    {
+      "sellerScoreid": 1696,
+      "score": 69237,
+      "coupons": 0,
+      "revenue": 49043.22,
+      "lastPointByAccess": "2026-06-09 10:02:00"
+    },
+    {
+      "sellerScoreid": 110,
+      "score": 69211,
+      "coupons": 0,
+      "revenue": 61698.57,
+      "lastPointByAccess": "2026-06-08 19:24:38"
+    },
+    {
+      "sellerScoreid": 34,
+      "score": 28581,
+      "coupons": 0,
+      "revenue": 44887.95,
+      "lastPointByAccess": "2026-06-09 08:50:53"
+    },
+    {
+      "sellerScoreid": 334,
+      "score": 24149,
+      "coupons": 0,
+      "revenue": 65248.04,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 214,
+      "score": 57740,
+      "coupons": 0,
+      "revenue": 43983.01,
+      "lastPointByAccess": "2026-06-09 08:55:32"
+    },
+    {
+      "sellerScoreid": 935,
+      "score": 35660,
+      "coupons": 0,
+      "revenue": 48008.27,
+      "lastPointByAccess": "2026-06-09 09:15:43"
+    },
+    {
+      "sellerScoreid": 1817,
+      "score": 124508,
+      "coupons": 0,
+      "revenue": 52150.45,
+      "lastPointByAccess": "2026-06-09 09:26:29"
+    },
+    {
+      "sellerScoreid": 1548,
+      "score": 65296,
+      "coupons": 0,
+      "revenue": 77899.6,
+      "lastPointByAccess": "2026-06-08 18:13:47"
+    },
+    {
+      "sellerScoreid": 76,
+      "score": 49800,
+      "coupons": 0,
+      "revenue": 61144.63,
+      "lastPointByAccess": "2026-06-09 13:48:44"
+    },
+    {
+      "sellerScoreid": 1620,
+      "score": 83648,
+      "coupons": 0,
+      "revenue": 90896.28,
+      "lastPointByAccess": "2026-06-08 17:53:23"
+    },
+    {
+      "sellerScoreid": 211,
+      "score": 39790,
+      "coupons": 0,
+      "revenue": 39387.02,
+      "lastPointByAccess": "2026-06-09 08:42:00"
+    },
+    {
+      "sellerScoreid": 1903,
+      "score": 29864,
+      "coupons": 0,
+      "revenue": 64132.88,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 931,
+      "score": 101515,
+      "coupons": 0,
+      "revenue": 66382.18,
+      "lastPointByAccess": "2026-06-11 09:31:39"
+    },
+    {
+      "sellerScoreid": 812,
+      "score": 23820,
+      "coupons": 0,
+      "revenue": 34399.84,
+      "lastPointByAccess": "2026-06-09 08:48:36"
+    },
+    {
+      "sellerScoreid": 1566,
+      "score": 83048,
+      "coupons": 0,
+      "revenue": 50437.31,
+      "lastPointByAccess": "2026-06-02 08:14:23"
+    },
+    {
+      "sellerScoreid": 1500,
+      "score": 57009,
+      "coupons": 0,
+      "revenue": 73668.61,
+      "lastPointByAccess": "2026-06-09 09:54:09"
+    },
+    {
+      "sellerScoreid": 1868,
+      "score": 187436,
+      "coupons": 0,
+      "revenue": 58972.18,
+      "lastPointByAccess": "2026-06-09 09:00:05"
+    },
+    {
+      "sellerScoreid": 982,
+      "score": 16200,
+      "coupons": 0,
+      "revenue": 49330.66,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 113,
+      "score": 76785,
+      "coupons": 0,
+      "revenue": 68611.68,
+      "lastPointByAccess": "2026-06-11 09:08:46"
+    },
+    {
+      "sellerScoreid": 1663,
+      "score": 58336,
+      "coupons": 0,
+      "revenue": 37553.83,
+      "lastPointByAccess": "2026-06-09 08:52:57"
+    },
+    {
+      "sellerScoreid": 813,
+      "score": 115408,
+      "coupons": 0,
+      "revenue": 58743.18,
+      "lastPointByAccess": "2026-06-08 18:14:03"
+    },
+    {
+      "sellerScoreid": 1866,
+      "score": 18840,
+      "coupons": 0,
+      "revenue": 56466.59,
+      "lastPointByAccess": "2026-06-08 18:15:35"
+    },
+    {
+      "sellerScoreid": 317,
+      "score": 12400,
+      "coupons": 0,
+      "revenue": 43054.08,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 16,
+      "score": 84880,
+      "coupons": 0,
+      "revenue": 72962.44,
+      "lastPointByAccess": "2026-06-09 16:27:08"
+    },
+    {
+      "sellerScoreid": 764,
+      "score": 99148,
+      "coupons": 0,
+      "revenue": 65514,
+      "lastPointByAccess": "2026-06-09 08:54:13"
+    },
+    {
+      "sellerScoreid": 903,
+      "score": 4770,
+      "coupons": 0,
+      "revenue": 85949.42,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 818,
+      "score": 87252,
+      "coupons": 0,
+      "revenue": 67994.08,
+      "lastPointByAccess": "2026-06-09 13:31:00"
+    },
+    {
+      "sellerScoreid": 530,
+      "score": 69262,
+      "coupons": 0,
+      "revenue": 78237.54,
+      "lastPointByAccess": "2026-06-09 10:10:21"
+    },
+    {
+      "sellerScoreid": 229,
+      "score": 43124,
+      "coupons": 0,
+      "revenue": 45358.05,
+      "lastPointByAccess": "2026-06-09 12:56:01"
+    },
+    {
+      "sellerScoreid": 500,
+      "score": 17696,
+      "coupons": 0,
+      "revenue": 28605.6,
+      "lastPointByAccess": "2026-06-01 14:58:06"
+    },
+    {
+      "sellerScoreid": 668,
+      "score": 33712,
+      "coupons": 0,
+      "revenue": 49305.18,
+      "lastPointByAccess": "2026-06-09 18:31:31"
+    },
+    {
+      "sellerScoreid": 181,
+      "score": 125305,
+      "coupons": 0,
+      "revenue": 68524.53,
+      "lastPointByAccess": "2026-06-09 08:42:17"
+    },
+    {
+      "sellerScoreid": 970,
+      "score": 83917,
+      "coupons": 0,
+      "revenue": 69332.36,
+      "lastPointByAccess": "2026-06-08 18:21:10"
+    },
+    {
+      "sellerScoreid": 595,
+      "score": 33898,
+      "coupons": 0,
+      "revenue": 63810.46,
+      "lastPointByAccess": "2026-06-09 08:51:48"
+    },
+    {
+      "sellerScoreid": 27,
+      "score": 64470,
+      "coupons": 0,
+      "revenue": 63693.32,
+      "lastPointByAccess": "2026-06-09 09:47:55"
+    },
+    {
+      "sellerScoreid": 377,
+      "score": 33328,
+      "coupons": 0,
+      "revenue": 93295.95,
+      "lastPointByAccess": "2026-06-09 09:38:12"
+    },
+    {
+      "sellerScoreid": 1846,
+      "score": 3102,
+      "coupons": 0,
+      "revenue": 14406.32,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 389,
+      "score": 41400,
+      "coupons": 0,
+      "revenue": 84098.31,
+      "lastPointByAccess": "2026-06-08 18:28:30"
+    },
+    {
+      "sellerScoreid": 467,
+      "score": 17154,
+      "coupons": 0,
+      "revenue": 24660.61,
+      "lastPointByAccess": "2026-06-09 08:48:50"
+    },
+    {
+      "sellerScoreid": 146,
+      "score": 43192,
+      "coupons": 0,
+      "revenue": 71195.93,
+      "lastPointByAccess": "2026-06-09 10:09:01"
+    },
+    {
+      "sellerScoreid": 714,
+      "score": 43021,
+      "coupons": 0,
+      "revenue": 51980.93,
+      "lastPointByAccess": "2026-06-09 09:18:45"
+    },
+    {
+      "sellerScoreid": 1502,
+      "score": 5300,
+      "coupons": 0,
+      "revenue": 2597.03,
+      "lastPointByAccess": "2026-06-12 08:29:10"
+    },
+    {
+      "sellerScoreid": 456,
+      "score": 98176,
+      "coupons": 0,
+      "revenue": 75854.53,
+      "lastPointByAccess": "2026-06-09 13:41:04"
+    },
+    {
+      "sellerScoreid": 620,
+      "score": 138307,
+      "coupons": 0,
+      "revenue": 77091.37,
+      "lastPointByAccess": "2026-06-09 08:44:06"
+    },
+    {
+      "sellerScoreid": 1523,
+      "score": 36481,
+      "coupons": 0,
+      "revenue": 49298.46,
+      "lastPointByAccess": "2026-06-11 13:41:16"
+    },
+    {
+      "sellerScoreid": 171,
+      "score": 39368,
+      "coupons": 0,
+      "revenue": 53263.85,
+      "lastPointByAccess": "2026-06-10 09:04:19"
+    },
+    {
+      "sellerScoreid": 100,
+      "score": 23424,
+      "coupons": 0,
+      "revenue": 39344.09,
+      "lastPointByAccess": "2026-06-09 08:52:13"
+    },
+    {
+      "sellerScoreid": 474,
+      "score": 42538,
+      "coupons": 0,
+      "revenue": 45886.62,
+      "lastPointByAccess": "2026-06-10 10:33:34"
+    },
+    {
+      "sellerScoreid": 209,
+      "score": 64936,
+      "coupons": 0,
+      "revenue": 88929.05,
+      "lastPointByAccess": "2026-06-08 21:40:11"
+    },
+    {
+      "sellerScoreid": 876,
+      "score": 26120,
+      "coupons": 0,
+      "revenue": 65206.23,
+      "lastPointByAccess": "2026-06-06 17:07:11"
+    },
+    {
+      "sellerScoreid": 1591,
+      "score": 36001,
+      "coupons": 0,
+      "revenue": 62819.1,
+      "lastPointByAccess": "2026-06-09 08:40:43"
+    },
+    {
+      "sellerScoreid": 1693,
+      "score": 172228,
+      "coupons": 0,
+      "revenue": 100850.03,
+      "lastPointByAccess": "2026-06-08 19:11:53"
+    },
+    {
+      "sellerScoreid": 1751,
+      "score": 62308,
+      "coupons": 0,
+      "revenue": 37295.54,
+      "lastPointByAccess": "2026-06-11 12:56:05"
+    },
+    {
+      "sellerScoreid": 1556,
+      "score": 90941,
+      "coupons": 0,
+      "revenue": 91467.81,
+      "lastPointByAccess": "2026-06-09 09:30:15"
+    },
+    {
+      "sellerScoreid": 736,
+      "score": 46000,
+      "coupons": 0,
+      "revenue": 43309.63,
+      "lastPointByAccess": "2026-06-07 19:08:21"
+    },
+    {
+      "sellerScoreid": 570,
+      "score": 51650,
+      "coupons": 0,
+      "revenue": 74662.02,
+      "lastPointByAccess": "2026-06-08 18:40:12"
+    },
+    {
+      "sellerScoreid": 307,
+      "score": 17544,
+      "coupons": 0,
+      "revenue": 33558.83,
+      "lastPointByAccess": "2026-06-09 20:53:24"
+    },
+    {
+      "sellerScoreid": 15,
+      "score": 64150,
+      "coupons": 0,
+      "revenue": 46580.29,
+      "lastPointByAccess": "2026-06-09 08:42:25"
+    },
+    {
+      "sellerScoreid": 194,
+      "score": 45550,
+      "coupons": 0,
+      "revenue": 59774.48,
+      "lastPointByAccess": "2026-06-10 08:28:19"
+    },
+    {
+      "sellerScoreid": 762,
+      "score": 71920,
+      "coupons": 0,
+      "revenue": 114485.49,
+      "lastPointByAccess": "2026-06-09 08:41:42"
+    },
+    {
+      "sellerScoreid": 1836,
+      "score": 121300,
+      "coupons": 0,
+      "revenue": 61773.41,
+      "lastPointByAccess": "2026-06-09 08:41:29"
+    },
+    {
+      "sellerScoreid": 88,
+      "score": 77120,
+      "coupons": 0,
+      "revenue": 44282.94,
+      "lastPointByAccess": "2026-06-09 08:42:10"
+    },
+    {
+      "sellerScoreid": 743,
+      "score": 67882,
+      "coupons": 0,
+      "revenue": 74227.57,
+      "lastPointByAccess": "2026-06-09 08:42:25"
+    },
+    {
+      "sellerScoreid": 807,
+      "score": 53686,
+      "coupons": 0,
+      "revenue": 71169.36,
+      "lastPointByAccess": "2026-06-09 15:14:36"
+    },
+    {
+      "sellerScoreid": 338,
+      "score": 131127,
+      "coupons": 0,
+      "revenue": 69422.86,
+      "lastPointByAccess": "2026-06-09 08:40:26"
+    },
+    {
+      "sellerScoreid": 669,
+      "score": 39079,
+      "coupons": 0,
+      "revenue": 85834.61,
+      "lastPointByAccess": "2026-06-08 22:38:15"
+    },
+    {
+      "sellerScoreid": 260,
+      "score": 19660,
+      "coupons": 0,
+      "revenue": 27213.39,
+      "lastPointByAccess": "2026-06-08 20:00:25"
+    },
+    {
+      "sellerScoreid": 592,
+      "score": 39426,
+      "coupons": 0,
+      "revenue": 46812.72,
+      "lastPointByAccess": "2026-06-09 08:40:06"
+    },
+    {
+      "sellerScoreid": 1645,
+      "score": 46925,
+      "coupons": 0,
+      "revenue": 66399.93,
+      "lastPointByAccess": "2026-06-08 18:04:32"
+    },
+    {
+      "sellerScoreid": 98,
+      "score": 57584,
+      "coupons": 0,
+      "revenue": 61751.02,
+      "lastPointByAccess": "2026-06-09 08:43:03"
+    },
+    {
+      "sellerScoreid": 579,
+      "score": 156880,
+      "coupons": 0,
+      "revenue": 118901.54,
+      "lastPointByAccess": "2026-06-02 20:42:59"
+    },
+    {
+      "sellerScoreid": 842,
+      "score": 81892,
+      "coupons": 0,
+      "revenue": 100890.03,
+      "lastPointByAccess": "2026-06-09 08:48:47"
+    },
+    {
+      "sellerScoreid": 678,
+      "score": 28722,
+      "coupons": 0,
+      "revenue": 75012.92,
+      "lastPointByAccess": "2026-06-09 13:49:26"
+    },
+    {
+      "sellerScoreid": 828,
+      "score": 314325,
+      "coupons": 0,
+      "revenue": 90069.98,
+      "lastPointByAccess": "2026-06-08 17:47:17"
+    },
+    {
+      "sellerScoreid": 1632,
+      "score": 194650,
+      "coupons": 0,
+      "revenue": 112023.58,
+      "lastPointByAccess": "2026-06-01 18:53:20"
+    },
+    {
+      "sellerScoreid": 768,
+      "score": 157149,
+      "coupons": 0,
+      "revenue": 130306.78,
+      "lastPointByAccess": "2026-06-09 09:31:38"
+    },
+    {
+      "sellerScoreid": 183,
+      "score": 109682,
+      "coupons": 0,
+      "revenue": 147769.26,
+      "lastPointByAccess": "2026-06-09 08:56:56"
+    },
+    {
+      "sellerScoreid": 872,
+      "score": 61463,
+      "coupons": 0,
+      "revenue": 429950.03,
+      "lastPointByAccess": "2026-06-12 08:22:09"
+    },
+    {
+      "sellerScoreid": 959,
+      "score": 12158,
+      "coupons": 0,
+      "revenue": 6409.31,
+      "lastPointByAccess": "2026-06-09 10:54:31"
+    },
+    {
+      "sellerScoreid": 207,
+      "score": 54156,
+      "coupons": 0,
+      "revenue": 149342.38,
+      "lastPointByAccess": "2026-06-09 09:34:12"
+    },
+    {
+      "sellerScoreid": 51,
+      "score": 79160,
+      "coupons": 0,
+      "revenue": 71144.78,
+      "lastPointByAccess": "2026-06-08 18:15:31"
+    },
+    {
+      "sellerScoreid": 1786,
+      "score": 18010,
+      "coupons": 0,
+      "revenue": 43320.17,
+      "lastPointByAccess": "2026-06-09 16:14:17"
+    },
+    {
+      "sellerScoreid": 593,
+      "score": 76100,
+      "coupons": 0,
+      "revenue": 119905.76,
+      "lastPointByAccess": "2026-06-09 08:43:52"
+    },
+    {
+      "sellerScoreid": 786,
+      "score": 204651,
+      "coupons": 0,
+      "revenue": 149688.38,
+      "lastPointByAccess": "2026-06-08 18:12:07"
+    },
+    {
+      "sellerScoreid": 675,
+      "score": 211324,
+      "coupons": 0,
+      "revenue": 149235.4,
+      "lastPointByAccess": "2026-06-08 22:47:41"
+    },
+    {
+      "sellerScoreid": 928,
+      "score": 11254,
+      "coupons": 0,
+      "revenue": 61041.97,
+      "lastPointByAccess": "2026-06-09 09:31:46"
+    },
+    {
+      "sellerScoreid": 1532,
+      "score": 156080,
+      "coupons": 0,
+      "revenue": 186990.76,
+      "lastPointByAccess": "2026-06-09 13:18:57"
+    },
+    {
+      "sellerScoreid": 1582,
+      "score": 290680,
+      "coupons": 0,
+      "revenue": 91140.68,
+      "lastPointByAccess": "2026-06-10 08:40:08"
+    },
+    {
+      "sellerScoreid": 114,
+      "score": 22325,
+      "coupons": 0,
+      "revenue": 35879.79,
+      "lastPointByAccess": "2026-06-09 08:44:15"
+    },
+    {
+      "sellerScoreid": 1578,
+      "score": 43898,
+      "coupons": 0,
+      "revenue": 50140.67,
+      "lastPointByAccess": "2026-06-09 09:56:59"
+    },
+    {
+      "sellerScoreid": 673,
+      "score": 281092,
+      "coupons": 0,
+      "revenue": 95547.8,
+      "lastPointByAccess": "2026-06-09 09:14:20"
+    },
+    {
+      "sellerScoreid": 1597,
+      "score": 69752,
+      "coupons": 0,
+      "revenue": 269968.05,
+      "lastPointByAccess": "2026-06-09 09:00:44"
+    },
+    {
+      "sellerScoreid": 1815,
+      "score": 92054,
+      "coupons": 0,
+      "revenue": 90768.77,
+      "lastPointByAccess": "2026-06-08 22:20:08"
+    },
+    {
+      "sellerScoreid": 705,
+      "score": 58708,
+      "coupons": 0,
+      "revenue": 102495.5,
+      "lastPointByAccess": "2026-06-09 09:45:13"
+    },
+    {
+      "sellerScoreid": 236,
+      "score": 202634,
+      "coupons": 0,
+      "revenue": 132433.41,
+      "lastPointByAccess": "2026-06-08 22:00:07"
+    },
+    {
+      "sellerScoreid": 157,
+      "score": 83972,
+      "coupons": 0,
+      "revenue": 97041.75,
+      "lastPointByAccess": "2026-06-09 08:47:09"
+    },
+    {
+      "sellerScoreid": 909,
+      "score": 616637,
+      "coupons": 0,
+      "revenue": 179990.32,
+      "lastPointByAccess": "2026-06-08 18:37:18"
+    },
+    {
+      "sellerScoreid": 739,
+      "score": 89110,
+      "coupons": 0,
+      "revenue": 183333.06,
+      "lastPointByAccess": "2026-06-08 19:34:28"
+    },
+    {
+      "sellerScoreid": 450,
+      "score": 100720,
+      "coupons": 0,
+      "revenue": 104858.73,
+      "lastPointByAccess": "2026-06-09 08:41:19"
+    },
+    {
+      "sellerScoreid": 258,
+      "score": 202864,
+      "coupons": 0,
+      "revenue": 137977.78,
+      "lastPointByAccess": "2026-06-09 14:51:31"
+    },
+    {
+      "sellerScoreid": 203,
+      "score": 229699,
+      "coupons": 0,
+      "revenue": 87204.34,
+      "lastPointByAccess": "2026-06-08 22:28:57"
+    },
+    {
+      "sellerScoreid": 14,
+      "score": 102400,
+      "coupons": 0,
+      "revenue": 100172.17,
+      "lastPointByAccess": "2026-06-08 17:57:45"
+    },
+    {
+      "sellerScoreid": 522,
+      "score": 263215,
+      "coupons": 0,
+      "revenue": 209130.4,
+      "lastPointByAccess": "2026-06-09 08:50:00"
+    },
+    {
+      "sellerScoreid": 565,
+      "score": 404988,
+      "coupons": 0,
+      "revenue": 115807.91,
+      "lastPointByAccess": "2026-06-09 08:45:19"
+    },
+    {
+      "sellerScoreid": 408,
+      "score": 129900,
+      "coupons": 0,
+      "revenue": 133618.73,
+      "lastPointByAccess": "2026-06-08 17:53:35"
+    },
+    {
+      "sellerScoreid": 1524,
+      "score": 151544,
+      "coupons": 0,
+      "revenue": 146930.97,
+      "lastPointByAccess": "2026-06-09 08:47:49"
+    },
+    {
+      "sellerScoreid": 1912,
+      "score": 12418,
+      "coupons": 0,
+      "revenue": 318917.94,
+      "lastPointByAccess": "2026-06-09 09:33:16"
+    },
+    {
+      "sellerScoreid": 1570,
+      "score": 23,
+      "coupons": 0,
+      "revenue": 26668.8,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 180,
+      "score": 22386,
+      "coupons": 0,
+      "revenue": 31020.87,
+      "lastPointByAccess": "2026-06-08 19:13:12"
+    },
+    {
+      "sellerScoreid": 1572,
+      "score": 215880,
+      "coupons": 0,
+      "revenue": 180749.43,
+      "lastPointByAccess": "2026-06-09 08:55:59"
+    },
+    {
+      "sellerScoreid": 9,
+      "score": 175970,
+      "coupons": 0,
+      "revenue": 121164.58,
+      "lastPointByAccess": "2026-06-09 08:40:36"
+    },
+    {
+      "sellerScoreid": 344,
+      "score": 97840,
+      "coupons": 0,
+      "revenue": 87443.93,
+      "lastPointByAccess": "2026-06-09 08:54:13"
+    },
+    {
+      "sellerScoreid": 792,
+      "score": 278037,
+      "coupons": 0,
+      "revenue": 129917.33,
+      "lastPointByAccess": "2026-06-09 08:41:15"
+    },
+    {
+      "sellerScoreid": 277,
+      "score": 208240,
+      "coupons": 0,
+      "revenue": 118843.74,
+      "lastPointByAccess": "2026-06-09 08:27:09"
+    },
+    {
+      "sellerScoreid": 526,
+      "score": 217483,
+      "coupons": 0,
+      "revenue": 128506.54,
+      "lastPointByAccess": "2026-06-09 11:45:17"
+    },
+    {
+      "sellerScoreid": 761,
+      "score": 357808,
+      "coupons": 0,
+      "revenue": 131274.09,
+      "lastPointByAccess": "2026-06-08 21:29:59"
+    },
+    {
+      "sellerScoreid": 591,
+      "score": 50014,
+      "coupons": 0,
+      "revenue": 119043.53,
+      "lastPointByAccess": "2026-06-09 09:19:11"
+    },
+    {
+      "sellerScoreid": 510,
+      "score": 492080,
+      "coupons": 0,
+      "revenue": 314347.75,
+      "lastPointByAccess": "2026-06-09 09:25:33"
+    },
+    {
+      "sellerScoreid": 46,
+      "score": 185824,
+      "coupons": 0,
+      "revenue": 224605.85,
+      "lastPointByAccess": "2026-06-09 08:42:48"
+    },
+    {
+      "sellerScoreid": 544,
+      "score": 99984,
+      "coupons": 0,
+      "revenue": 292543.58,
+      "lastPointByAccess": "2026-06-09 08:51:56"
+    },
+    {
+      "sellerScoreid": 1765,
+      "score": 6116,
+      "coupons": 0,
+      "revenue": 12509.71,
+      "lastPointByAccess": "2026-06-09 12:46:17"
+    }
+  ],
+  "data_2": [
+    {
+      "sellerScoreid": 1934,
+      "score": 22864,
+      "coupons": 0,
+      "revenue": 22244.3,
+      "lastPointByAccess": "2026-06-09 17:17:00"
+    },
+    {
+      "sellerScoreid": 1825,
+      "score": 12034,
+      "coupons": 0,
+      "revenue": 6025.28,
+      "lastPointByAccess": "2026-06-09 11:28:00"
+    },
+    {
+      "sellerScoreid": 1799,
+      "score": 6765,
+      "coupons": 0,
+      "revenue": 7531.36,
+      "lastPointByAccess": "2026-06-05 17:05:00"
+    },
+    {
+      "sellerScoreid": 1830,
+      "score": 7408,
+      "coupons": 0,
+      "revenue": 8183.46,
+      "lastPointByAccess": "2026-06-01 14:53:59"
+    },
+    {
+      "sellerScoreid": 227,
+      "score": 15864,
+      "coupons": 0,
+      "revenue": 19742.47,
+      "lastPointByAccess": "2026-06-02 08:51:00"
+    },
+    {
+      "sellerScoreid": 1666,
+      "score": 16454,
+      "coupons": 0,
+      "revenue": 15107.7,
+      "lastPointByAccess": "2026-06-08 17:57:00"
+    },
+    {
+      "sellerScoreid": 1838,
+      "score": 10540,
+      "coupons": 0,
+      "revenue": 3049,
+      "lastPointByAccess": "2026-06-09 17:26:00"
+    },
+    {
+      "sellerScoreid": 1717,
+      "score": 13912,
+      "coupons": 0,
+      "revenue": 10056.24,
+      "lastPointByAccess": "2026-06-09 14:12:59"
+    },
+    {
+      "sellerScoreid": 1886,
+      "score": 12860,
+      "coupons": 0,
+      "revenue": 6622.56,
+      "lastPointByAccess": "2026-06-09 08:41:00"
+    },
+    {
+      "sellerScoreid": 1914,
+      "score": 12405,
+      "coupons": 0,
+      "revenue": 18687.1,
+      "lastPointByAccess": "2026-06-08 18:42:00"
+    },
+    {
+      "sellerScoreid": 1642,
+      "score": 13690,
+      "coupons": 0,
+      "revenue": 14882.96,
+      "lastPointByAccess": "2026-06-09 09:29:59"
+    },
+    {
+      "sellerScoreid": 1607,
+      "score": 10362,
+      "coupons": 0,
+      "revenue": 14767.64,
+      "lastPointByAccess": "2026-06-12 15:02:59"
+    },
+    {
+      "sellerScoreid": 1801,
+      "score": 16148,
+      "coupons": 0,
+      "revenue": 20143.27,
+      "lastPointByAccess": "2026-06-09 08:42:59"
+    },
+    {
+      "sellerScoreid": 1856,
+      "score": 32643,
+      "coupons": 0,
+      "revenue": 21652.91,
+      "lastPointByAccess": "2026-06-08 18:06:00"
+    },
+    {
+      "sellerScoreid": 1900,
+      "score": 10955,
+      "coupons": 0,
+      "revenue": 34829.96,
+      "lastPointByAccess": "2026-06-09 17:26:59"
+    },
+    {
+      "sellerScoreid": 895,
+      "score": 10040,
+      "coupons": 0,
+      "revenue": 12697.12,
+      "lastPointByAccess": "2026-06-02 08:06:59"
+    },
+    {
+      "sellerScoreid": 777,
+      "score": 8320,
+      "coupons": 0,
+      "revenue": 11448.55,
+      "lastPointByAccess": "2026-06-02 11:17:00"
+    },
+    {
+      "sellerScoreid": 1897,
+      "score": 13690,
+      "coupons": 0,
+      "revenue": 28213.35,
+      "lastPointByAccess": "2026-06-08 18:33:00"
+    },
+    {
+      "sellerScoreid": 1821,
+      "score": 9932,
+      "coupons": 0,
+      "revenue": 25781.69,
+      "lastPointByAccess": "2026-06-12 13:50:00"
+    },
+    {
+      "sellerScoreid": 1712,
+      "score": 16604,
+      "coupons": 0,
+      "revenue": 15027.87,
+      "lastPointByAccess": "2026-06-12 08:23:00"
+    },
+    {
+      "sellerScoreid": 1677,
+      "score": 9560,
+      "coupons": 0,
+      "revenue": 6497.26,
+      "lastPointByAccess": "2026-06-12 14:24:00"
+    },
+    {
+      "sellerScoreid": 973,
+      "score": 25634,
+      "coupons": 0,
+      "revenue": 23718.96,
+      "lastPointByAccess": "2026-06-09 09:31:00"
+    },
+    {
+      "sellerScoreid": 1725,
+      "score": 5642,
+      "coupons": 0,
+      "revenue": 3135.7,
+      "lastPointByAccess": "2026-06-12 10:54:00"
+    },
+    {
+      "sellerScoreid": 1908,
+      "score": 14356,
+      "coupons": 0,
+      "revenue": 19539.16,
+      "lastPointByAccess": "2026-06-08 18:36:00"
+    },
+    {
+      "sellerScoreid": 1739,
+      "score": 8888,
+      "coupons": 0,
+      "revenue": 15493.22,
+      "lastPointByAccess": "2026-06-12 14:24:59"
+    },
+    {
+      "sellerScoreid": 1819,
+      "score": 17630,
+      "coupons": 0,
+      "revenue": 23270.68,
+      "lastPointByAccess": "2026-06-08 20:06:59"
+    },
+    {
+      "sellerScoreid": 1683,
+      "score": 17210,
+      "coupons": 0,
+      "revenue": 22930.93,
+      "lastPointByAccess": "2026-06-09 09:38:00"
+    },
+    {
+      "sellerScoreid": 1794,
+      "score": 7817,
+      "coupons": 0,
+      "revenue": 8348.62,
+      "lastPointByAccess": "2026-06-10 12:56:00"
+    },
+    {
+      "sellerScoreid": 1643,
+      "score": 17077,
+      "coupons": 0,
+      "revenue": 20633.78,
+      "lastPointByAccess": "2026-06-09 12:11:59"
+    },
+    {
+      "sellerScoreid": 883,
+      "score": 13479,
+      "coupons": 0,
+      "revenue": 29491.2,
+      "lastPointByAccess": "2026-06-09 08:41:00"
+    },
+    {
+      "sellerScoreid": 865,
+      "score": 13198,
+      "coupons": 0,
+      "revenue": 16890.49,
+      "lastPointByAccess": "2026-06-09 09:44:00"
+    },
+    {
+      "sellerScoreid": 1633,
+      "score": 16161,
+      "coupons": 0,
+      "revenue": 11949.66,
+      "lastPointByAccess": "2026-06-09 09:06:00"
+    },
+    {
+      "sellerScoreid": 1861,
+      "score": 5666,
+      "coupons": 0,
+      "revenue": 16030.29,
+      "lastPointByAccess": "2026-06-09 09:06:59"
+    },
+    {
+      "sellerScoreid": 1852,
+      "score": 10928,
+      "coupons": 0,
+      "revenue": 42112.14,
+      "lastPointByAccess": "2026-06-12 14:24:00"
+    },
+    {
+      "sellerScoreid": 963,
+      "score": 13572,
+      "coupons": 0,
+      "revenue": 11337.08,
+      "lastPointByAccess": "2026-06-11 23:24:00"
+    },
+    {
+      "sellerScoreid": 1577,
+      "score": 15312,
+      "coupons": 0,
+      "revenue": 20120.05,
+      "lastPointByAccess": "2026-06-09 11:16:00"
+    },
+    {
+      "sellerScoreid": 1701,
+      "score": 9104,
+      "coupons": 0,
+      "revenue": 10675.23,
+      "lastPointByAccess": "2026-06-03 10:31:00"
+    },
+    {
+      "sellerScoreid": 1678,
+      "score": 12035,
+      "coupons": 0,
+      "revenue": 13980.38,
+      "lastPointByAccess": "2026-06-09 10:41:00"
+    },
+    {
+      "sellerScoreid": 1562,
+      "score": 21185,
+      "coupons": 0,
+      "revenue": 21979.33,
+      "lastPointByAccess": "2026-06-09 09:20:59"
+    },
+    {
+      "sellerScoreid": 1738,
+      "score": 15993,
+      "coupons": 0,
+      "revenue": 28899.83,
+      "lastPointByAccess": "2026-06-09 08:51:59"
+    },
+    {
+      "sellerScoreid": 611,
+      "score": 20981,
+      "coupons": 0,
+      "revenue": 19916.53,
+      "lastPointByAccess": "2026-06-08 16:12:59"
+    },
+    {
+      "sellerScoreid": 1743,
+      "score": 15343,
+      "coupons": 0,
+      "revenue": 14137.71,
+      "lastPointByAccess": "2026-06-09 08:42:59"
+    },
+    {
+      "sellerScoreid": 833,
+      "score": 11488,
+      "coupons": 0,
+      "revenue": 11776.53,
+      "lastPointByAccess": "2026-06-09 10:41:00"
+    },
+    {
+      "sellerScoreid": 655,
+      "score": 13760,
+      "coupons": 0,
+      "revenue": 21322.73,
+      "lastPointByAccess": "2026-06-08 17:57:00"
+    },
+    {
+      "sellerScoreid": 1669,
+      "score": 13654,
+      "coupons": 0,
+      "revenue": 15915.7,
+      "lastPointByAccess": "2026-06-09 18:22:00"
+    },
+    {
+      "sellerScoreid": 1563,
+      "score": 4587,
+      "coupons": 0,
+      "revenue": 18352.12,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 1884,
+      "score": 11786,
+      "coupons": 0,
+      "revenue": 14198.83,
+      "lastPointByAccess": "2026-06-01 14:44:59"
+    },
+    {
+      "sellerScoreid": 1698,
+      "score": 13880,
+      "coupons": 0,
+      "revenue": 10928.83,
+      "lastPointByAccess": "2026-06-08 18:29:00"
+    },
+    {
+      "sellerScoreid": 1576,
+      "score": 10200,
+      "coupons": 0,
+      "revenue": 13636.95,
+      "lastPointByAccess": "2026-06-12 14:21:59"
+    },
+    {
+      "sellerScoreid": 1839,
+      "score": 22663,
+      "coupons": 0,
+      "revenue": 21406.16,
+      "lastPointByAccess": "2026-06-08 20:39:59"
+    },
+    {
+      "sellerScoreid": 830,
+      "score": 9944,
+      "coupons": 0,
+      "revenue": 14231.22,
+      "lastPointByAccess": "2026-06-12 11:03:59"
+    },
+    {
+      "sellerScoreid": 1569,
+      "score": 14970,
+      "coupons": 0,
+      "revenue": 7083.29,
+      "lastPointByAccess": "2026-06-10 08:44:00"
+    },
+    {
+      "sellerScoreid": 1762,
+      "score": 10162,
+      "coupons": 0,
+      "revenue": 1967.87,
+      "lastPointByAccess": "2026-06-09 08:39:59"
+    },
+    {
+      "sellerScoreid": 674,
+      "score": 13750,
+      "coupons": 0,
+      "revenue": 17576.63,
+      "lastPointByAccess": "2026-06-09 08:41:00"
+    },
+    {
+      "sellerScoreid": 1772,
+      "score": 18892,
+      "coupons": 0,
+      "revenue": 15519.72,
+      "lastPointByAccess": "2026-06-09 09:02:59"
+    },
+    {
+      "sellerScoreid": 1697,
+      "score": 28066,
+      "coupons": 0,
+      "revenue": 37998.45,
+      "lastPointByAccess": "2026-06-09 08:39:59"
+    },
+    {
+      "sellerScoreid": 1681,
+      "score": 13312,
+      "coupons": 0,
+      "revenue": 16012.73,
+      "lastPointByAccess": "2026-06-12 14:21:00"
+    },
+    {
+      "sellerScoreid": 1814,
+      "score": 20164,
+      "coupons": 0,
+      "revenue": 14738.47,
+      "lastPointByAccess": "2026-06-09 11:59:00"
+    },
+    {
+      "sellerScoreid": 977,
+      "score": 12900,
+      "coupons": 0,
+      "revenue": 12996.3,
+      "lastPointByAccess": "2026-06-10 20:19:59"
+    },
+    {
+      "sellerScoreid": 1615,
+      "score": 20948,
+      "coupons": 0,
+      "revenue": 19492.84,
+      "lastPointByAccess": "2026-06-08 21:54:00"
+    },
+    {
+      "sellerScoreid": 1763,
+      "score": 10445,
+      "coupons": 0,
+      "revenue": 16490.54,
+      "lastPointByAccess": "2026-06-01 16:03:59"
+    },
+    {
+      "sellerScoreid": 1778,
+      "score": 29078,
+      "coupons": 0,
+      "revenue": 21767.17,
+      "lastPointByAccess": "2026-06-09 09:29:00"
+    },
+    {
+      "sellerScoreid": 1629,
+      "score": 21296,
+      "coupons": 0,
+      "revenue": 27168.42,
+      "lastPointByAccess": "2026-06-09 08:48:59"
+    },
+    {
+      "sellerScoreid": 1837,
+      "score": 3936,
+      "coupons": 0,
+      "revenue": 20000.01,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 925,
+      "score": 13749,
+      "coupons": 0,
+      "revenue": 18136.21,
+      "lastPointByAccess": "2026-06-12 14:23:00"
+    },
+    {
+      "sellerScoreid": 1840,
+      "score": 24670,
+      "coupons": 0,
+      "revenue": 25053.05,
+      "lastPointByAccess": "2026-06-09 15:27:59"
+    },
+    {
+      "sellerScoreid": 1602,
+      "score": 16415,
+      "coupons": 0,
+      "revenue": 30623.22,
+      "lastPointByAccess": "2026-06-09 08:44:00"
+    },
+    {
+      "sellerScoreid": 1585,
+      "score": 10000,
+      "coupons": 0,
+      "revenue": 15575.47,
+      "lastPointByAccess": "2026-06-09 08:32:00"
+    },
+    {
+      "sellerScoreid": 216,
+      "score": 8483,
+      "coupons": 0,
+      "revenue": 15100.2,
+      "lastPointByAccess": "2026-06-12 12:01:00"
+    },
+    {
+      "sellerScoreid": 231,
+      "score": 20470,
+      "coupons": 0,
+      "revenue": 14837.61,
+      "lastPointByAccess": "2026-06-08 18:01:00"
+    },
+    {
+      "sellerScoreid": 1688,
+      "score": 5180,
+      "coupons": 0,
+      "revenue": 19992.91,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 717,
+      "score": 13114,
+      "coupons": 0,
+      "revenue": 17792.08,
+      "lastPointByAccess": "2026-06-09 08:50:00"
+    },
+    {
+      "sellerScoreid": 1741,
+      "score": 13145,
+      "coupons": 0,
+      "revenue": 8352.43,
+      "lastPointByAccess": "2026-06-09 10:02:00"
+    },
+    {
+      "sellerScoreid": 1702,
+      "score": 22456,
+      "coupons": 0,
+      "revenue": 38011.98,
+      "lastPointByAccess": "2026-06-12 08:28:59"
+    },
+    {
+      "sellerScoreid": 458,
+      "score": 2520,
+      "coupons": 0,
+      "revenue": 17130.73,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 1876,
+      "score": 18322,
+      "coupons": 0,
+      "revenue": 12514.61,
+      "lastPointByAccess": "2026-06-08 18:42:00"
+    },
+    {
+      "sellerScoreid": 1682,
+      "score": 5027,
+      "coupons": 0,
+      "revenue": 685.8,
+      "lastPointByAccess": "2026-06-02 12:53:00"
+    },
+    {
+      "sellerScoreid": 966,
+      "score": 20410,
+      "coupons": 0,
+      "revenue": 20120.49,
+      "lastPointByAccess": "2026-06-01 14:44:59"
+    },
+    {
+      "sellerScoreid": 917,
+      "score": 24624,
+      "coupons": 0,
+      "revenue": 26738.13,
+      "lastPointByAccess": "2026-06-12 08:23:00"
+    },
+    {
+      "sellerScoreid": 1757,
+      "score": 23230,
+      "coupons": 0,
+      "revenue": 29041.54,
+      "lastPointByAccess": "2026-06-08 18:54:00"
+    },
+    {
+      "sellerScoreid": 869,
+      "score": 29416,
+      "coupons": 0,
+      "revenue": 18270.36,
+      "lastPointByAccess": "2026-06-08 22:23:59"
+    },
+    {
+      "sellerScoreid": 656,
+      "score": 17408,
+      "coupons": 0,
+      "revenue": 25651.04,
+      "lastPointByAccess": "2026-06-09 08:41:00"
+    },
+    {
+      "sellerScoreid": 1644,
+      "score": 24141,
+      "coupons": 0,
+      "revenue": 17415.74,
+      "lastPointByAccess": "2026-06-09 08:44:00"
+    },
+    {
+      "sellerScoreid": 586,
+      "score": 17532,
+      "coupons": 0,
+      "revenue": 46839.67,
+      "lastPointByAccess": "2026-06-09 08:42:59"
+    },
+    {
+      "sellerScoreid": 1516,
+      "score": 15990,
+      "coupons": 0,
+      "revenue": 18137.04,
+      "lastPointByAccess": "2026-06-09 18:02:59"
+    },
+    {
+      "sellerScoreid": 657,
+      "score": 13432,
+      "coupons": 0,
+      "revenue": 11102.04,
+      "lastPointByAccess": "2026-06-09 09:06:00"
+    },
+    {
+      "sellerScoreid": 808,
+      "score": 12214,
+      "coupons": 0,
+      "revenue": 12162.76,
+      "lastPointByAccess": "2026-06-08 18:26:00"
+    },
+    {
+      "sellerScoreid": 1885,
+      "score": 18272,
+      "coupons": 0,
+      "revenue": 18481.34,
+      "lastPointByAccess": "2026-06-09 09:27:59"
+    },
+    {
+      "sellerScoreid": 1834,
+      "score": 27490,
+      "coupons": 0,
+      "revenue": 25699.19,
+      "lastPointByAccess": "2026-06-09 09:04:59"
+    },
+    {
+      "sellerScoreid": 1601,
+      "score": 22280,
+      "coupons": 0,
+      "revenue": 18386.17,
+      "lastPointByAccess": "2026-06-09 08:57:59"
+    },
+    {
+      "sellerScoreid": 240,
+      "score": 29580,
+      "coupons": 0,
+      "revenue": 42181.41,
+      "lastPointByAccess": "2026-06-08 18:01:00"
+    },
+    {
+      "sellerScoreid": 1564,
+      "score": 10296,
+      "coupons": 0,
+      "revenue": 20514.78,
+      "lastPointByAccess": "2026-06-01 14:51:59"
+    },
+    {
+      "sellerScoreid": 779,
+      "score": 16325,
+      "coupons": 0,
+      "revenue": 35376.54,
+      "lastPointByAccess": "2026-06-12 10:52:00"
+    },
+    {
+      "sellerScoreid": 732,
+      "score": 16360,
+      "coupons": 0,
+      "revenue": 46318.66,
+      "lastPointByAccess": "2026-06-08 21:36:59"
+    },
+    {
+      "sellerScoreid": 1541,
+      "score": 28819,
+      "coupons": 0,
+      "revenue": 68565.87,
+      "lastPointByAccess": "2026-06-09 08:53:59"
+    },
+    {
+      "sellerScoreid": 47,
+      "score": 92072,
+      "coupons": 0,
+      "revenue": 56207.13,
+      "lastPointByAccess": "2026-06-12 10:48:59"
+    },
+    {
+      "sellerScoreid": 182,
+      "score": 16105,
+      "coupons": 0,
+      "revenue": 36837.4,
+      "lastPointByAccess": "2026-06-09 20:03:59"
+    },
+    {
+      "sellerScoreid": 627,
+      "score": 30466,
+      "coupons": 0,
+      "revenue": 46239.83,
+      "lastPointByAccess": "2026-06-09 09:11:00"
+    },
+    {
+      "sellerScoreid": 212,
+      "score": 48205,
+      "coupons": 0,
+      "revenue": 64351.93,
+      "lastPointByAccess": "2026-06-09 18:49:59"
+    },
+    {
+      "sellerScoreid": 658,
+      "score": 44138,
+      "coupons": 0,
+      "revenue": 70937.07,
+      "lastPointByAccess": "2026-06-11 05:53:59"
+    },
+    {
+      "sellerScoreid": 1892,
+      "score": 49072,
+      "coupons": 0,
+      "revenue": 35127.38,
+      "lastPointByAccess": "2026-06-08 18:04:59"
+    },
+    {
+      "sellerScoreid": 508,
+      "score": 23258,
+      "coupons": 0,
+      "revenue": 34025.17,
+      "lastPointByAccess": "2026-06-09 09:29:00"
+    },
+    {
+      "sellerScoreid": 934,
+      "score": 22528,
+      "coupons": 0,
+      "revenue": 17704.88,
+      "lastPointByAccess": "2026-06-09 10:41:59"
+    },
+    {
+      "sellerScoreid": 1893,
+      "score": 37195,
+      "coupons": 0,
+      "revenue": 20450.84,
+      "lastPointByAccess": "2026-06-10 09:29:59"
+    },
+    {
+      "sellerScoreid": 1865,
+      "score": 5049,
+      "coupons": 0,
+      "revenue": 1666.93,
+      "lastPointByAccess": "2026-06-12 15:18:00"
+    },
+    {
+      "sellerScoreid": 803,
+      "score": 5470,
+      "coupons": 0,
+      "revenue": 23202.15,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 210,
+      "score": 18208,
+      "coupons": 0,
+      "revenue": 32708.1,
+      "lastPointByAccess": "2026-06-09 09:42:59"
+    },
+    {
+      "sellerScoreid": 1782,
+      "score": 43875,
+      "coupons": 0,
+      "revenue": 34934.42,
+      "lastPointByAccess": "2026-06-09 12:26:00"
+    },
+    {
+      "sellerScoreid": 1561,
+      "score": 18944,
+      "coupons": 0,
+      "revenue": 18548.27,
+      "lastPointByAccess": "2026-06-09 08:26:00"
+    },
+    {
+      "sellerScoreid": 1735,
+      "score": 24269,
+      "coupons": 0,
+      "revenue": 29121.19,
+      "lastPointByAccess": "2026-06-09 08:44:59"
+    },
+    {
+      "sellerScoreid": 733,
+      "score": 27157,
+      "coupons": 0,
+      "revenue": 29200.35,
+      "lastPointByAccess": "2026-06-09 08:48:00"
+    },
+    {
+      "sellerScoreid": 1730,
+      "score": 18444,
+      "coupons": 0,
+      "revenue": 22171.05,
+      "lastPointByAccess": "2026-06-12 10:43:00"
+    },
+    {
+      "sellerScoreid": 540,
+      "score": 13843,
+      "coupons": 0,
+      "revenue": 30438.65,
+      "lastPointByAccess": "2026-06-09 08:53:59"
+    },
+    {
+      "sellerScoreid": 1873,
+      "score": 74790,
+      "coupons": 0,
+      "revenue": 33374.28,
+      "lastPointByAccess": "2026-06-09 08:53:59"
+    },
+    {
+      "sellerScoreid": 518,
+      "score": 34909,
+      "coupons": 0,
+      "revenue": 29071.64,
+      "lastPointByAccess": "2026-06-09 13:48:59"
+    },
+    {
+      "sellerScoreid": 420,
+      "score": 50063,
+      "coupons": 0,
+      "revenue": 218667.22,
+      "lastPointByAccess": "2026-06-11 08:17:00"
+    },
+    {
+      "sellerScoreid": 972,
+      "score": 37144,
+      "coupons": 0,
+      "revenue": 25045.62,
+      "lastPointByAccess": "2026-06-08 18:40:00"
+    },
+    {
+      "sellerScoreid": 426,
+      "score": 8416,
+      "coupons": 0,
+      "revenue": 13278.83,
+      "lastPointByAccess": "2026-06-08 16:09:59"
+    },
+    {
+      "sellerScoreid": 1720,
+      "score": 49500,
+      "coupons": 0,
+      "revenue": 41014.19,
+      "lastPointByAccess": "2026-06-09 10:23:59"
+    },
+    {
+      "sellerScoreid": 1565,
+      "score": 14080,
+      "coupons": 0,
+      "revenue": 13835.74,
+      "lastPointByAccess": "2026-06-09 13:57:00"
+    },
+    {
+      "sellerScoreid": 793,
+      "score": 14500,
+      "coupons": 0,
+      "revenue": 18417.74,
+      "lastPointByAccess": "2026-06-09 13:21:59"
+    },
+    {
+      "sellerScoreid": 797,
+      "score": 14660,
+      "coupons": 0,
+      "revenue": 20378.71,
+      "lastPointByAccess": "2026-06-12 14:35:00"
+    },
+    {
+      "sellerScoreid": 359,
+      "score": 12450,
+      "coupons": 0,
+      "revenue": 12704.36,
+      "lastPointByAccess": "2026-06-08 17:59:00"
+    },
+    {
+      "sellerScoreid": 1848,
+      "score": 100933,
+      "coupons": 0,
+      "revenue": 41223.3,
+      "lastPointByAccess": "2026-06-09 11:21:00"
+    },
+    {
+      "sellerScoreid": 1539,
+      "score": 21154,
+      "coupons": 0,
+      "revenue": 28742.12,
+      "lastPointByAccess": "2026-06-09 14:35:00"
+    },
+    {
+      "sellerScoreid": 765,
+      "score": 10000,
+      "coupons": 0,
+      "revenue": 0,
+      "lastPointByAccess": "2026-06-09 08:39:59"
+    },
+    {
+      "sellerScoreid": 610,
+      "score": 25320,
+      "coupons": 0,
+      "revenue": 57266.31,
+      "lastPointByAccess": "2026-06-12 08:23:00"
+    },
+    {
+      "sellerScoreid": 1637,
+      "score": 12580,
+      "coupons": 0,
+      "revenue": 13703.95,
+      "lastPointByAccess": "2026-06-09 11:12:59"
+    },
+    {
+      "sellerScoreid": 276,
+      "score": 50140,
+      "coupons": 0,
+      "revenue": 34807.9,
+      "lastPointByAccess": "2026-06-09 08:39:59"
+    },
+    {
+      "sellerScoreid": 1842,
+      "score": 53239,
+      "coupons": 0,
+      "revenue": 67885.07,
+      "lastPointByAccess": "2026-06-09 10:36:59"
+    },
+    {
+      "sellerScoreid": 890,
+      "score": 27226,
+      "coupons": 0,
+      "revenue": 27255.28,
+      "lastPointByAccess": "2026-06-09 09:27:00"
+    },
+    {
+      "sellerScoreid": 783,
+      "score": 9990,
+      "coupons": 0,
+      "revenue": 56773.9,
+      "lastPointByAccess": "2026-06-12 14:21:59"
+    },
+    {
+      "sellerScoreid": 763,
+      "score": 23736,
+      "coupons": 0,
+      "revenue": 21113.63,
+      "lastPointByAccess": "2026-06-11 07:34:00"
+    },
+    {
+      "sellerScoreid": 942,
+      "score": 8316,
+      "coupons": 0,
+      "revenue": 20363.99,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 1780,
+      "score": 7142,
+      "coupons": 0,
+      "revenue": 8736.81,
+      "lastPointByAccess": "2026-06-02 09:56:59"
+    },
+    {
+      "sellerScoreid": 1695,
+      "score": 64648,
+      "coupons": 0,
+      "revenue": 33233.29,
+      "lastPointByAccess": "2026-06-12 08:37:59"
+    },
+    {
+      "sellerScoreid": 638,
+      "score": 39540,
+      "coupons": 0,
+      "revenue": 50371.99,
+      "lastPointByAccess": "2026-06-10 06:40:00"
+    },
+    {
+      "sellerScoreid": 1798,
+      "score": 58285,
+      "coupons": 0,
+      "revenue": 27805.1,
+      "lastPointByAccess": "2026-06-08 18:53:00"
+    },
+    {
+      "sellerScoreid": 1857,
+      "score": 28700,
+      "coupons": 0,
+      "revenue": 26320.75,
+      "lastPointByAccess": "2026-06-09 15:36:00"
+    },
+    {
+      "sellerScoreid": 536,
+      "score": 14950,
+      "coupons": 0,
+      "revenue": 16704.76,
+      "lastPointByAccess": "2026-06-09 21:56:59"
+    },
+    {
+      "sellerScoreid": 1580,
+      "score": 27504,
+      "coupons": 0,
+      "revenue": 41802.88,
+      "lastPointByAccess": "2026-06-09 08:53:59"
+    },
+    {
+      "sellerScoreid": 1625,
+      "score": 10168,
+      "coupons": 0,
+      "revenue": 4265.2,
+      "lastPointByAccess": "2026-06-09 08:42:59"
+    },
+    {
+      "sellerScoreid": 1788,
+      "score": 48591,
+      "coupons": 0,
+      "revenue": 35263.83,
+      "lastPointByAccess": "2026-06-08 20:39:59"
+    },
+    {
+      "sellerScoreid": 543,
+      "score": 19488,
+      "coupons": 0,
+      "revenue": 11091.47,
+      "lastPointByAccess": "2026-06-12 10:16:00"
+    },
+    {
+      "sellerScoreid": 561,
+      "score": 54192,
+      "coupons": 0,
+      "revenue": 37563.94,
+      "lastPointByAccess": "2026-06-09 11:08:59"
+    },
+    {
+      "sellerScoreid": 1525,
+      "score": 30520,
+      "coupons": 0,
+      "revenue": 41880.67,
+      "lastPointByAccess": "2026-06-08 18:40:00"
+    },
+    {
+      "sellerScoreid": 62,
+      "score": 23896,
+      "coupons": 0,
+      "revenue": 21929.76,
+      "lastPointByAccess": "2026-06-09 13:54:59"
+    },
+    {
+      "sellerScoreid": 1598,
+      "score": 19348,
+      "coupons": 0,
+      "revenue": 24016.11,
+      "lastPointByAccess": "2026-06-09 09:06:00"
+    },
+    {
+      "sellerScoreid": 1901,
+      "score": 58492,
+      "coupons": 0,
+      "revenue": 43906.66,
+      "lastPointByAccess": "2026-06-09 08:42:59"
+    },
+    {
+      "sellerScoreid": 915,
+      "score": 2664,
+      "coupons": 0,
+      "revenue": 9979.38,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 1512,
+      "score": 27276,
+      "coupons": 0,
+      "revenue": 24959.5,
+      "lastPointByAccess": "2026-06-09 09:06:59"
+    },
+    {
+      "sellerScoreid": 1660,
+      "score": 32208,
+      "coupons": 0,
+      "revenue": 25284.88,
+      "lastPointByAccess": "2026-06-09 08:44:59"
+    },
+    {
+      "sellerScoreid": 796,
+      "score": 24976,
+      "coupons": 0,
+      "revenue": 45610.88,
+      "lastPointByAccess": "2026-06-08 18:36:00"
+    },
+    {
+      "sellerScoreid": 868,
+      "score": 20425,
+      "coupons": 0,
+      "revenue": 20732.78,
+      "lastPointByAccess": "2026-06-09 09:38:00"
+    },
+    {
+      "sellerScoreid": 1768,
+      "score": 24125,
+      "coupons": 0,
+      "revenue": 24211.81,
+      "lastPointByAccess": "2026-06-10 21:38:59"
+    },
+    {
+      "sellerScoreid": 727,
+      "score": 21475,
+      "coupons": 0,
+      "revenue": 26684.13,
+      "lastPointByAccess": "2026-06-09 08:44:00"
+    },
+    {
+      "sellerScoreid": 981,
+      "score": 33998,
+      "coupons": 0,
+      "revenue": 41034.11,
+      "lastPointByAccess": "2026-06-09 14:28:59"
+    },
+    {
+      "sellerScoreid": 320,
+      "score": 27708,
+      "coupons": 0,
+      "revenue": 39312.39,
+      "lastPointByAccess": "2026-06-09 20:28:59"
+    },
+    {
+      "sellerScoreid": 1534,
+      "score": 46736,
+      "coupons": 0,
+      "revenue": 36187.02,
+      "lastPointByAccess": "2026-06-08 20:55:59"
+    },
+    {
+      "sellerScoreid": 952,
+      "score": 15,
+      "coupons": 0,
+      "revenue": 18366.6,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 1622,
+      "score": 15862,
+      "coupons": 0,
+      "revenue": 18193.17,
+      "lastPointByAccess": "2026-06-09 08:28:59"
+    },
+    {
+      "sellerScoreid": 901,
+      "score": 17587,
+      "coupons": 0,
+      "revenue": 32351.23,
+      "lastPointByAccess": "2026-06-09 08:53:00"
+    },
+    {
+      "sellerScoreid": 1686,
+      "score": 22019,
+      "coupons": 0,
+      "revenue": 21540.39,
+      "lastPointByAccess": "2026-06-09 09:49:00"
+    },
+    {
+      "sellerScoreid": 1503,
+      "score": 35557,
+      "coupons": 0,
+      "revenue": 39244.93,
+      "lastPointByAccess": "2026-06-09 08:48:59"
+    },
+    {
+      "sellerScoreid": 335,
+      "score": 8780,
+      "coupons": 0,
+      "revenue": 40310.41,
+      "lastPointByAccess": "2026-06-12 15:09:00"
+    },
+    {
+      "sellerScoreid": 1547,
+      "score": 27006,
+      "coupons": 0,
+      "revenue": 29625.84,
+      "lastPointByAccess": "2026-06-09 10:02:00"
+    },
+    {
+      "sellerScoreid": 1552,
+      "score": 20598,
+      "coupons": 0,
+      "revenue": 27327.17,
+      "lastPointByAccess": "2026-06-09 08:42:59"
+    },
+    {
+      "sellerScoreid": 1628,
+      "score": 23280,
+      "coupons": 0,
+      "revenue": 35331.95,
+      "lastPointByAccess": "2026-06-08 18:54:00"
+    },
+    {
+      "sellerScoreid": 1507,
+      "score": 685,
+      "coupons": 0,
+      "revenue": 5660.52,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 815,
+      "score": 21913,
+      "coupons": 0,
+      "revenue": 39873.97,
+      "lastPointByAccess": "2026-06-08 17:59:00"
+    },
+    {
+      "sellerScoreid": 1880,
+      "score": 42848,
+      "coupons": 0,
+      "revenue": 39906.83,
+      "lastPointByAccess": "2026-06-09 08:42:00"
+    },
+    {
+      "sellerScoreid": 453,
+      "score": 50655,
+      "coupons": 0,
+      "revenue": 33593.65,
+      "lastPointByAccess": "2026-06-08 21:56:00"
+    },
+    {
+      "sellerScoreid": 1898,
+      "score": 9018,
+      "coupons": 0,
+      "revenue": 14717.5,
+      "lastPointByAccess": "2026-06-02 11:48:59"
+    },
+    {
+      "sellerScoreid": 1828,
+      "score": 42056,
+      "coupons": 0,
+      "revenue": 52291.71,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 882,
+      "score": 50122,
+      "coupons": 0,
+      "revenue": 36914.77,
+      "lastPointByAccess": "2026-06-09 09:27:59"
+    },
+    {
+      "sellerScoreid": 241,
+      "score": 37344,
+      "coupons": 0,
+      "revenue": 41588.73,
+      "lastPointByAccess": "2026-06-08 18:02:00"
+    },
+    {
+      "sellerScoreid": 80,
+      "score": 17532,
+      "coupons": 0,
+      "revenue": 21678.43,
+      "lastPointByAccess": "2026-06-10 12:29:59"
+    },
+    {
+      "sellerScoreid": 418,
+      "score": 60140,
+      "coupons": 0,
+      "revenue": 39734,
+      "lastPointByAccess": "2026-06-09 14:48:59"
+    },
+    {
+      "sellerScoreid": 1855,
+      "score": 18502,
+      "coupons": 0,
+      "revenue": 37042.64,
+      "lastPointByAccess": "2026-06-09 08:48:00"
+    },
+    {
+      "sellerScoreid": 479,
+      "score": 19615,
+      "coupons": 0,
+      "revenue": 28203.76,
+      "lastPointByAccess": "2026-06-08 22:57:00"
+    },
+    {
+      "sellerScoreid": 629,
+      "score": 29375,
+      "coupons": 0,
+      "revenue": 28219.17,
+      "lastPointByAccess": "2026-06-09 09:45:00"
+    },
+    {
+      "sellerScoreid": 1611,
+      "score": 45025,
+      "coupons": 0,
+      "revenue": 54618.94,
+      "lastPointByAccess": "2026-06-09 08:39:59"
+    },
+    {
+      "sellerScoreid": 265,
+      "score": 15252,
+      "coupons": 0,
+      "revenue": 24055.63,
+      "lastPointByAccess": "2026-06-09 08:57:59"
+    },
+    {
+      "sellerScoreid": 773,
+      "score": 24670,
+      "coupons": 0,
+      "revenue": 26772.36,
+      "lastPointByAccess": "2026-06-09 18:22:59"
+    },
+    {
+      "sellerScoreid": 1614,
+      "score": 24850,
+      "coupons": 0,
+      "revenue": 28863.09,
+      "lastPointByAccess": "2026-06-09 08:46:59"
+    },
+    {
+      "sellerScoreid": 961,
+      "score": 25314,
+      "coupons": 0,
+      "revenue": 35928.43,
+      "lastPointByAccess": "2026-06-09 08:48:59"
+    },
+    {
+      "sellerScoreid": 805,
+      "score": 49150,
+      "coupons": 0,
+      "revenue": 37688.03,
+      "lastPointByAccess": "2026-06-09 10:12:00"
+    },
+    {
+      "sellerScoreid": 1612,
+      "score": 24450,
+      "coupons": 0,
+      "revenue": 28441.73,
+      "lastPointByAccess": "2026-06-12 09:02:00"
+    },
+    {
+      "sellerScoreid": 1724,
+      "score": 18340,
+      "coupons": 0,
+      "revenue": 29286.43,
+      "lastPointByAccess": "2026-06-05 11:15:00"
+    },
+    {
+      "sellerScoreid": 498,
+      "score": 19348,
+      "coupons": 0,
+      "revenue": 30154.13,
+      "lastPointByAccess": "2026-06-08 19:52:59"
+    },
+    {
+      "sellerScoreid": 56,
+      "score": 49309,
+      "coupons": 0,
+      "revenue": 31739.27,
+      "lastPointByAccess": "2026-06-09 13:43:59"
+    },
+    {
+      "sellerScoreid": 1623,
+      "score": 49202,
+      "coupons": 0,
+      "revenue": 36108.62,
+      "lastPointByAccess": "2026-06-09 08:41:00"
+    },
+    {
+      "sellerScoreid": 864,
+      "score": 30125,
+      "coupons": 0,
+      "revenue": 29366.21,
+      "lastPointByAccess": "2026-06-09 08:42:59"
+    },
+    {
+      "sellerScoreid": 1779,
+      "score": 17400,
+      "coupons": 0,
+      "revenue": 35774.02,
+      "lastPointByAccess": "2026-06-05 16:36:00"
+    },
+    {
+      "sellerScoreid": 1519,
+      "score": 34992,
+      "coupons": 0,
+      "revenue": 32171.04,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 728,
+      "score": 86680,
+      "coupons": 0,
+      "revenue": 57767.83,
+      "lastPointByAccess": "2026-06-09 15:56:00"
+    },
+    {
+      "sellerScoreid": 26,
+      "score": 82964,
+      "coupons": 0,
+      "revenue": 44472.59,
+      "lastPointByAccess": "2026-06-09 10:18:59"
+    },
+    {
+      "sellerScoreid": 304,
+      "score": 39304,
+      "coupons": 0,
+      "revenue": 43247.77,
+      "lastPointByAccess": "2026-06-10 16:03:59"
+    },
+    {
+      "sellerScoreid": 398,
+      "score": 27894,
+      "coupons": 0,
+      "revenue": 41835.09,
+      "lastPointByAccess": "2026-06-09 10:41:59"
+    },
+    {
+      "sellerScoreid": 36,
+      "score": 67352,
+      "coupons": 0,
+      "revenue": 58380.87,
+      "lastPointByAccess": "2026-06-09 10:45:59"
+    },
+    {
+      "sellerScoreid": 480,
+      "score": 40384,
+      "coupons": 0,
+      "revenue": 54919.86,
+      "lastPointByAccess": "2026-06-08 19:00:00"
+    },
+    {
+      "sellerScoreid": 898,
+      "score": 42683,
+      "coupons": 0,
+      "revenue": 49998.22,
+      "lastPointByAccess": "2026-06-09 08:41:00"
+    },
+    {
+      "sellerScoreid": 259,
+      "score": 24535,
+      "coupons": 0,
+      "revenue": 30932.3,
+      "lastPointByAccess": "2026-06-08 19:38:00"
+    },
+    {
+      "sellerScoreid": 1527,
+      "score": 36680,
+      "coupons": 0,
+      "revenue": 62677.53,
+      "lastPointByAccess": "2026-06-08 20:55:00"
+    },
+    {
+      "sellerScoreid": 584,
+      "score": 31565,
+      "coupons": 0,
+      "revenue": 58123.21,
+      "lastPointByAccess": "2026-06-09 08:44:00"
+    },
+    {
+      "sellerScoreid": 1664,
+      "score": 23281,
+      "coupons": 0,
+      "revenue": 21295.58,
+      "lastPointByAccess": "2026-06-09 11:44:59"
+    },
+    {
+      "sellerScoreid": 1624,
+      "score": 31173,
+      "coupons": 0,
+      "revenue": 25788.41,
+      "lastPointByAccess": "2026-06-08 20:12:59"
+    },
+    {
+      "sellerScoreid": 723,
+      "score": 46048,
+      "coupons": 0,
+      "revenue": 55006.3,
+      "lastPointByAccess": "2026-06-09 12:15:00"
+    },
+    {
+      "sellerScoreid": 603,
+      "score": 14350,
+      "coupons": 0,
+      "revenue": 30721.5,
+      "lastPointByAccess": "2026-06-12 07:31:00"
+    },
+    {
+      "sellerScoreid": 1747,
+      "score": 99924,
+      "coupons": 0,
+      "revenue": 37567.68,
+      "lastPointByAccess": "2026-06-09 08:42:59"
+    },
+    {
+      "sellerScoreid": 69,
+      "score": 92836,
+      "coupons": 0,
+      "revenue": 37343.27,
+      "lastPointByAccess": "2026-06-09 08:51:00"
+    },
+    {
+      "sellerScoreid": 831,
+      "score": 12486,
+      "coupons": 0,
+      "revenue": 32572.02,
+      "lastPointByAccess": "2026-06-09 09:04:00"
+    },
+    {
+      "sellerScoreid": 585,
+      "score": 55916,
+      "coupons": 0,
+      "revenue": 41729.98,
+      "lastPointByAccess": "2026-06-09 09:08:00"
+    },
+    {
+      "sellerScoreid": 333,
+      "score": 38344,
+      "coupons": 0,
+      "revenue": 35434.17,
+      "lastPointByAccess": "2026-06-09 08:57:59"
+    },
+    {
+      "sellerScoreid": 609,
+      "score": 46376,
+      "coupons": 0,
+      "revenue": 35918.42,
+      "lastPointByAccess": "2026-06-08 19:05:59"
+    },
+    {
+      "sellerScoreid": 7,
+      "score": 76284,
+      "coupons": 0,
+      "revenue": 40895.23,
+      "lastPointByAccess": "2026-06-08 20:19:00"
+    },
+    {
+      "sellerScoreid": 290,
+      "score": 104048,
+      "coupons": 0,
+      "revenue": 63921.82,
+      "lastPointByAccess": "2026-06-09 21:04:59"
+    },
+    {
+      "sellerScoreid": 756,
+      "score": 83220,
+      "coupons": 0,
+      "revenue": 65650.66,
+      "lastPointByAccess": "2026-06-09 09:38:00"
+    },
+    {
+      "sellerScoreid": 724,
+      "score": 54242,
+      "coupons": 0,
+      "revenue": 66385.77,
+      "lastPointByAccess": "2026-06-12 07:52:00"
+    },
+    {
+      "sellerScoreid": 1813,
+      "score": 28606,
+      "coupons": 0,
+      "revenue": 34532.56,
+      "lastPointByAccess": "2026-06-08 18:46:00"
+    },
+    {
+      "sellerScoreid": 912,
+      "score": 29890,
+      "coupons": 0,
+      "revenue": 38982.95,
+      "lastPointByAccess": "2026-06-09 07:41:59"
+    },
+    {
+      "sellerScoreid": 350,
+      "score": 41198,
+      "coupons": 0,
+      "revenue": 64624.29,
+      "lastPointByAccess": "2026-06-08 20:33:59"
+    },
+    {
+      "sellerScoreid": 1879,
+      "score": 95892,
+      "coupons": 0,
+      "revenue": 68469.6,
+      "lastPointByAccess": "2026-06-09 08:44:00"
+    },
+    {
+      "sellerScoreid": 654,
+      "score": 54772,
+      "coupons": 0,
+      "revenue": 67565.94,
+      "lastPointByAccess": "2026-06-09 08:15:00"
+    },
+    {
+      "sellerScoreid": 992,
+      "score": 18216,
+      "coupons": 0,
+      "revenue": 30364.03,
+      "lastPointByAccess": "2026-06-09 12:54:59"
+    },
+    {
+      "sellerScoreid": 980,
+      "score": 32275,
+      "coupons": 0,
+      "revenue": 39546.02,
+      "lastPointByAccess": "2026-06-09 15:22:00"
+    },
+    {
+      "sellerScoreid": 950,
+      "score": 22033,
+      "coupons": 0,
+      "revenue": 24759.44,
+      "lastPointByAccess": "2026-06-08 18:29:59"
+    },
+    {
+      "sellerScoreid": 811,
+      "score": 49338,
+      "coupons": 0,
+      "revenue": 101311.87,
+      "lastPointByAccess": "2026-06-09 17:55:00"
+    },
+    {
+      "sellerScoreid": 634,
+      "score": 25390,
+      "coupons": 0,
+      "revenue": 37085.11,
+      "lastPointByAccess": "2026-06-12 09:24:00"
+    },
+    {
+      "sellerScoreid": 1510,
+      "score": 24238,
+      "coupons": 0,
+      "revenue": 44618.29,
+      "lastPointByAccess": "2026-06-08 19:23:00"
+    },
+    {
+      "sellerScoreid": 1630,
+      "score": 29920,
+      "coupons": 0,
+      "revenue": 37826.08,
+      "lastPointByAccess": "2026-06-09 08:42:59"
+    },
+    {
+      "sellerScoreid": 945,
+      "score": 29005,
+      "coupons": 0,
+      "revenue": 81207.12,
+      "lastPointByAccess": "2026-06-09 11:59:00"
+    },
+    {
+      "sellerScoreid": 170,
+      "score": 41125,
+      "coupons": 0,
+      "revenue": 48192.45,
+      "lastPointByAccess": "2026-06-09 16:05:00"
+    },
+    {
+      "sellerScoreid": 920,
+      "score": 73144,
+      "coupons": 0,
+      "revenue": 60748.36,
+      "lastPointByAccess": "2026-06-08 18:42:00"
+    },
+    {
+      "sellerScoreid": 1827,
+      "score": 56500,
+      "coupons": 0,
+      "revenue": 48776.95,
+      "lastPointByAccess": "2026-06-09 10:09:59"
+    },
+    {
+      "sellerScoreid": 549,
+      "score": 35986,
+      "coupons": 0,
+      "revenue": 41928.7,
+      "lastPointByAccess": "2026-06-10 08:57:59"
+    },
+    {
+      "sellerScoreid": 1696,
+      "score": 69237,
+      "coupons": 0,
+      "revenue": 49043.22,
+      "lastPointByAccess": "2026-06-09 10:02:00"
+    },
+    {
+      "sellerScoreid": 110,
+      "score": 69211,
+      "coupons": 0,
+      "revenue": 61698.57,
+      "lastPointByAccess": "2026-06-08 19:23:59"
+    },
+    {
+      "sellerScoreid": 34,
+      "score": 28581,
+      "coupons": 0,
+      "revenue": 44887.95,
+      "lastPointByAccess": "2026-06-09 08:50:00"
+    },
+    {
+      "sellerScoreid": 334,
+      "score": 24149,
+      "coupons": 0,
+      "revenue": 65248.04,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 214,
+      "score": 57740,
+      "coupons": 0,
+      "revenue": 43983.01,
+      "lastPointByAccess": "2026-06-09 08:55:00"
+    },
+    {
+      "sellerScoreid": 935,
+      "score": 35660,
+      "coupons": 0,
+      "revenue": 48008.27,
+      "lastPointByAccess": "2026-06-09 09:15:00"
+    },
+    {
+      "sellerScoreid": 1817,
+      "score": 124508,
+      "coupons": 0,
+      "revenue": 52150.45,
+      "lastPointByAccess": "2026-06-09 09:26:00"
+    },
+    {
+      "sellerScoreid": 1548,
+      "score": 65296,
+      "coupons": 0,
+      "revenue": 77899.6,
+      "lastPointByAccess": "2026-06-08 18:13:00"
+    },
+    {
+      "sellerScoreid": 76,
+      "score": 49800,
+      "coupons": 0,
+      "revenue": 61144.63,
+      "lastPointByAccess": "2026-06-09 13:48:00"
+    },
+    {
+      "sellerScoreid": 1620,
+      "score": 83648,
+      "coupons": 0,
+      "revenue": 90896.28,
+      "lastPointByAccess": "2026-06-08 17:53:00"
+    },
+    {
+      "sellerScoreid": 211,
+      "score": 39790,
+      "coupons": 0,
+      "revenue": 39387.02,
+      "lastPointByAccess": "2026-06-09 08:42:00"
+    },
+    {
+      "sellerScoreid": 1903,
+      "score": 29864,
+      "coupons": 0,
+      "revenue": 64132.88,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 931,
+      "score": 101515,
+      "coupons": 0,
+      "revenue": 66382.18,
+      "lastPointByAccess": "2026-06-11 09:31:00"
+    },
+    {
+      "sellerScoreid": 812,
+      "score": 23820,
+      "coupons": 0,
+      "revenue": 34399.84,
+      "lastPointByAccess": "2026-06-09 08:48:00"
+    },
+    {
+      "sellerScoreid": 1566,
+      "score": 83048,
+      "coupons": 0,
+      "revenue": 50437.31,
+      "lastPointByAccess": "2026-06-02 08:14:00"
+    },
+    {
+      "sellerScoreid": 1500,
+      "score": 57009,
+      "coupons": 0,
+      "revenue": 73668.61,
+      "lastPointByAccess": "2026-06-09 09:54:00"
+    },
+    {
+      "sellerScoreid": 1868,
+      "score": 187436,
+      "coupons": 0,
+      "revenue": 58972.18,
+      "lastPointByAccess": "2026-06-09 09:00:00"
+    },
+    {
+      "sellerScoreid": 982,
+      "score": 16200,
+      "coupons": 0,
+      "revenue": 49330.66,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 113,
+      "score": 76785,
+      "coupons": 0,
+      "revenue": 68611.68,
+      "lastPointByAccess": "2026-06-11 09:08:00"
+    },
+    {
+      "sellerScoreid": 1663,
+      "score": 58336,
+      "coupons": 0,
+      "revenue": 37553.83,
+      "lastPointByAccess": "2026-06-09 08:51:59"
+    },
+    {
+      "sellerScoreid": 813,
+      "score": 115408,
+      "coupons": 0,
+      "revenue": 58743.18,
+      "lastPointByAccess": "2026-06-08 18:13:59"
+    },
+    {
+      "sellerScoreid": 1866,
+      "score": 18840,
+      "coupons": 0,
+      "revenue": 56466.59,
+      "lastPointByAccess": "2026-06-08 18:15:00"
+    },
+    {
+      "sellerScoreid": 317,
+      "score": 17400,
+      "coupons": 0,
+      "revenue": 43054.08,
+      "lastPointByAccess": "2026-06-12 08:39:00"
+    },
+    {
+      "sellerScoreid": 16,
+      "score": 84880,
+      "coupons": 0,
+      "revenue": 72962.44,
+      "lastPointByAccess": "2026-06-09 16:27:00"
+    },
+    {
+      "sellerScoreid": 764,
+      "score": 99148,
+      "coupons": 0,
+      "revenue": 65514,
+      "lastPointByAccess": "2026-06-09 08:53:59"
+    },
+    {
+      "sellerScoreid": 903,
+      "score": 4770,
+      "coupons": 0,
+      "revenue": 85949.42,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 818,
+      "score": 87252,
+      "coupons": 0,
+      "revenue": 67994.08,
+      "lastPointByAccess": "2026-06-09 13:31:00"
+    },
+    {
+      "sellerScoreid": 530,
+      "score": 69262,
+      "coupons": 0,
+      "revenue": 78237.54,
+      "lastPointByAccess": "2026-06-09 10:09:59"
+    },
+    {
+      "sellerScoreid": 229,
+      "score": 43124,
+      "coupons": 0,
+      "revenue": 45358.05,
+      "lastPointByAccess": "2026-06-09 12:56:00"
+    },
+    {
+      "sellerScoreid": 500,
+      "score": 17696,
+      "coupons": 0,
+      "revenue": 28605.6,
+      "lastPointByAccess": "2026-06-01 14:57:59"
+    },
+    {
+      "sellerScoreid": 668,
+      "score": 33712,
+      "coupons": 0,
+      "revenue": 49305.18,
+      "lastPointByAccess": "2026-06-09 18:31:00"
+    },
+    {
+      "sellerScoreid": 181,
+      "score": 125305,
+      "coupons": 0,
+      "revenue": 68524.53,
+      "lastPointByAccess": "2026-06-09 08:42:00"
+    },
+    {
+      "sellerScoreid": 970,
+      "score": 83917,
+      "coupons": 0,
+      "revenue": 69332.36,
+      "lastPointByAccess": "2026-06-08 18:20:59"
+    },
+    {
+      "sellerScoreid": 595,
+      "score": 33898,
+      "coupons": 0,
+      "revenue": 63810.46,
+      "lastPointByAccess": "2026-06-09 08:51:00"
+    },
+    {
+      "sellerScoreid": 27,
+      "score": 64470,
+      "coupons": 0,
+      "revenue": 63693.32,
+      "lastPointByAccess": "2026-06-09 09:47:00"
+    },
+    {
+      "sellerScoreid": 377,
+      "score": 33328,
+      "coupons": 0,
+      "revenue": 93295.95,
+      "lastPointByAccess": "2026-06-09 09:38:00"
+    },
+    {
+      "sellerScoreid": 1846,
+      "score": 3102,
+      "coupons": 0,
+      "revenue": 14406.32,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 389,
+      "score": 41400,
+      "coupons": 0,
+      "revenue": 84098.31,
+      "lastPointByAccess": "2026-06-08 18:27:59"
+    },
+    {
+      "sellerScoreid": 467,
+      "score": 17154,
+      "coupons": 0,
+      "revenue": 24660.61,
+      "lastPointByAccess": "2026-06-09 08:48:00"
+    },
+    {
+      "sellerScoreid": 146,
+      "score": 43192,
+      "coupons": 0,
+      "revenue": 71195.93,
+      "lastPointByAccess": "2026-06-09 10:09:00"
+    },
+    {
+      "sellerScoreid": 714,
+      "score": 43021,
+      "coupons": 0,
+      "revenue": 51980.93,
+      "lastPointByAccess": "2026-06-09 09:18:00"
+    },
+    {
+      "sellerScoreid": 1502,
+      "score": 5300,
+      "coupons": 0,
+      "revenue": 2597.03,
+      "lastPointByAccess": "2026-06-12 08:28:59"
+    },
+    {
+      "sellerScoreid": 456,
+      "score": 98176,
+      "coupons": 0,
+      "revenue": 75854.53,
+      "lastPointByAccess": "2026-06-09 13:41:00"
+    },
+    {
+      "sellerScoreid": 620,
+      "score": 138307,
+      "coupons": 0,
+      "revenue": 77091.37,
+      "lastPointByAccess": "2026-06-09 08:44:00"
+    },
+    {
+      "sellerScoreid": 1523,
+      "score": 36481,
+      "coupons": 0,
+      "revenue": 49298.46,
+      "lastPointByAccess": "2026-06-11 13:41:00"
+    },
+    {
+      "sellerScoreid": 171,
+      "score": 39368,
+      "coupons": 0,
+      "revenue": 53263.85,
+      "lastPointByAccess": "2026-06-10 09:04:00"
+    },
+    {
+      "sellerScoreid": 100,
+      "score": 23424,
+      "coupons": 0,
+      "revenue": 39344.09,
+      "lastPointByAccess": "2026-06-09 08:51:59"
+    },
+    {
+      "sellerScoreid": 474,
+      "score": 42538,
+      "coupons": 0,
+      "revenue": 45886.62,
+      "lastPointByAccess": "2026-06-10 10:32:59"
+    },
+    {
+      "sellerScoreid": 209,
+      "score": 64936,
+      "coupons": 0,
+      "revenue": 88929.05,
+      "lastPointByAccess": "2026-06-08 21:40:00"
+    },
+    {
+      "sellerScoreid": 876,
+      "score": 26120,
+      "coupons": 0,
+      "revenue": 65206.23,
+      "lastPointByAccess": "2026-06-06 17:06:59"
+    },
+    {
+      "sellerScoreid": 1591,
+      "score": 36001,
+      "coupons": 0,
+      "revenue": 62819.1,
+      "lastPointByAccess": "2026-06-09 08:39:59"
+    },
+    {
+      "sellerScoreid": 1693,
+      "score": 172228,
+      "coupons": 0,
+      "revenue": 100850.03,
+      "lastPointByAccess": "2026-06-08 19:11:00"
+    },
+    {
+      "sellerScoreid": 1751,
+      "score": 62308,
+      "coupons": 0,
+      "revenue": 37295.54,
+      "lastPointByAccess": "2026-06-11 12:56:00"
+    },
+    {
+      "sellerScoreid": 1556,
+      "score": 90941,
+      "coupons": 0,
+      "revenue": 91467.81,
+      "lastPointByAccess": "2026-06-09 09:29:59"
+    },
+    {
+      "sellerScoreid": 736,
+      "score": 46000,
+      "coupons": 0,
+      "revenue": 43309.63,
+      "lastPointByAccess": "2026-06-07 19:07:59"
+    },
+    {
+      "sellerScoreid": 570,
+      "score": 51650,
+      "coupons": 0,
+      "revenue": 74662.02,
+      "lastPointByAccess": "2026-06-08 18:40:00"
+    },
+    {
+      "sellerScoreid": 307,
+      "score": 17544,
+      "coupons": 0,
+      "revenue": 33558.83,
+      "lastPointByAccess": "2026-06-09 20:53:00"
+    },
+    {
+      "sellerScoreid": 15,
+      "score": 64150,
+      "coupons": 0,
+      "revenue": 46580.29,
+      "lastPointByAccess": "2026-06-09 08:42:00"
+    },
+    {
+      "sellerScoreid": 194,
+      "score": 45550,
+      "coupons": 0,
+      "revenue": 59774.48,
+      "lastPointByAccess": "2026-06-10 08:28:00"
+    },
+    {
+      "sellerScoreid": 762,
+      "score": 71920,
+      "coupons": 0,
+      "revenue": 114485.49,
+      "lastPointByAccess": "2026-06-09 08:41:00"
+    },
+    {
+      "sellerScoreid": 1836,
+      "score": 121300,
+      "coupons": 0,
+      "revenue": 61773.41,
+      "lastPointByAccess": "2026-06-09 08:41:00"
+    },
+    {
+      "sellerScoreid": 88,
+      "score": 77120,
+      "coupons": 0,
+      "revenue": 44282.94,
+      "lastPointByAccess": "2026-06-09 08:42:00"
+    },
+    {
+      "sellerScoreid": 743,
+      "score": 67882,
+      "coupons": 0,
+      "revenue": 74227.57,
+      "lastPointByAccess": "2026-06-09 08:42:00"
+    },
+    {
+      "sellerScoreid": 807,
+      "score": 53686,
+      "coupons": 0,
+      "revenue": 71169.36,
+      "lastPointByAccess": "2026-06-09 15:13:59"
+    },
+    {
+      "sellerScoreid": 338,
+      "score": 131127,
+      "coupons": 0,
+      "revenue": 69422.86,
+      "lastPointByAccess": "2026-06-09 08:39:59"
+    },
+    {
+      "sellerScoreid": 669,
+      "score": 39079,
+      "coupons": 0,
+      "revenue": 85834.61,
+      "lastPointByAccess": "2026-06-08 22:38:00"
+    },
+    {
+      "sellerScoreid": 260,
+      "score": 19660,
+      "coupons": 0,
+      "revenue": 27213.39,
+      "lastPointByAccess": "2026-06-08 19:59:59"
+    },
+    {
+      "sellerScoreid": 592,
+      "score": 39426,
+      "coupons": 0,
+      "revenue": 46812.72,
+      "lastPointByAccess": "2026-06-09 08:39:59"
+    },
+    {
+      "sellerScoreid": 1645,
+      "score": 46925,
+      "coupons": 0,
+      "revenue": 66399.93,
+      "lastPointByAccess": "2026-06-08 18:04:00"
+    },
+    {
+      "sellerScoreid": 98,
+      "score": 57584,
+      "coupons": 0,
+      "revenue": 61751.02,
+      "lastPointByAccess": "2026-06-09 08:42:59"
+    },
+    {
+      "sellerScoreid": 579,
+      "score": 161880,
+      "coupons": 0,
+      "revenue": 118901.54,
+      "lastPointByAccess": "2026-06-12 15:11:59"
+    },
+    {
+      "sellerScoreid": 842,
+      "score": 81892,
+      "coupons": 0,
+      "revenue": 100890.03,
+      "lastPointByAccess": "2026-06-09 08:48:00"
+    },
+    {
+      "sellerScoreid": 678,
+      "score": 28722,
+      "coupons": 0,
+      "revenue": 75012.92,
+      "lastPointByAccess": "2026-06-09 13:48:59"
+    },
+    {
+      "sellerScoreid": 828,
+      "score": 314325,
+      "coupons": 0,
+      "revenue": 90069.98,
+      "lastPointByAccess": "2026-06-08 17:46:59"
+    },
+    {
+      "sellerScoreid": 1632,
+      "score": 199650,
+      "coupons": 0,
+      "revenue": 112023.58,
+      "lastPointByAccess": "2026-06-12 09:40:00"
+    },
+    {
+      "sellerScoreid": 768,
+      "score": 157149,
+      "coupons": 0,
+      "revenue": 130306.78,
+      "lastPointByAccess": "2026-06-09 09:31:00"
+    },
+    {
+      "sellerScoreid": 183,
+      "score": 109682,
+      "coupons": 0,
+      "revenue": 147769.26,
+      "lastPointByAccess": "2026-06-09 08:55:59"
+    },
+    {
+      "sellerScoreid": 872,
+      "score": 61463,
+      "coupons": 0,
+      "revenue": 429950.03,
+      "lastPointByAccess": "2026-06-12 08:21:59"
+    },
+    {
+      "sellerScoreid": 959,
+      "score": 12158,
+      "coupons": 0,
+      "revenue": 6409.31,
+      "lastPointByAccess": "2026-06-09 10:54:00"
+    },
+    {
+      "sellerScoreid": 207,
+      "score": 54156,
+      "coupons": 0,
+      "revenue": 149342.38,
+      "lastPointByAccess": "2026-06-09 09:33:59"
+    },
+    {
+      "sellerScoreid": 51,
+      "score": 79160,
+      "coupons": 0,
+      "revenue": 71144.78,
+      "lastPointByAccess": "2026-06-08 18:15:00"
+    },
+    {
+      "sellerScoreid": 1786,
+      "score": 18010,
+      "coupons": 0,
+      "revenue": 43320.17,
+      "lastPointByAccess": "2026-06-09 16:14:00"
+    },
+    {
+      "sellerScoreid": 593,
+      "score": 76100,
+      "coupons": 0,
+      "revenue": 119905.76,
+      "lastPointByAccess": "2026-06-09 08:42:59"
+    },
+    {
+      "sellerScoreid": 786,
+      "score": 204651,
+      "coupons": 0,
+      "revenue": 149688.38,
+      "lastPointByAccess": "2026-06-08 18:11:59"
+    },
+    {
+      "sellerScoreid": 675,
+      "score": 211324,
+      "coupons": 0,
+      "revenue": 149235.4,
+      "lastPointByAccess": "2026-06-08 22:47:00"
+    },
+    {
+      "sellerScoreid": 928,
+      "score": 11254,
+      "coupons": 0,
+      "revenue": 61041.97,
+      "lastPointByAccess": "2026-06-09 09:31:00"
+    },
+    {
+      "sellerScoreid": 1532,
+      "score": 156080,
+      "coupons": 0,
+      "revenue": 186990.76,
+      "lastPointByAccess": "2026-06-09 13:18:00"
+    },
+    {
+      "sellerScoreid": 1582,
+      "score": 290680,
+      "coupons": 0,
+      "revenue": 91140.68,
+      "lastPointByAccess": "2026-06-10 08:39:59"
+    },
+    {
+      "sellerScoreid": 114,
+      "score": 22325,
+      "coupons": 0,
+      "revenue": 35879.79,
+      "lastPointByAccess": "2026-06-09 08:44:00"
+    },
+    {
+      "sellerScoreid": 1578,
+      "score": 43898,
+      "coupons": 0,
+      "revenue": 50140.67,
+      "lastPointByAccess": "2026-06-09 09:56:00"
+    },
+    {
+      "sellerScoreid": 673,
+      "score": 281092,
+      "coupons": 0,
+      "revenue": 95547.8,
+      "lastPointByAccess": "2026-06-09 09:13:59"
+    },
+    {
+      "sellerScoreid": 1597,
+      "score": 69752,
+      "coupons": 0,
+      "revenue": 269968.05,
+      "lastPointByAccess": "2026-06-09 09:00:00"
+    },
+    {
+      "sellerScoreid": 1815,
+      "score": 92054,
+      "coupons": 0,
+      "revenue": 90768.77,
+      "lastPointByAccess": "2026-06-08 22:20:00"
+    },
+    {
+      "sellerScoreid": 705,
+      "score": 58708,
+      "coupons": 0,
+      "revenue": 102495.5,
+      "lastPointByAccess": "2026-06-09 09:45:00"
+    },
+    {
+      "sellerScoreid": 236,
+      "score": 202634,
+      "coupons": 0,
+      "revenue": 132433.41,
+      "lastPointByAccess": "2026-06-08 22:00:00"
+    },
+    {
+      "sellerScoreid": 157,
+      "score": 83972,
+      "coupons": 0,
+      "revenue": 97041.75,
+      "lastPointByAccess": "2026-06-09 08:46:59"
+    },
+    {
+      "sellerScoreid": 909,
+      "score": 616637,
+      "coupons": 0,
+      "revenue": 179990.32,
+      "lastPointByAccess": "2026-06-08 18:36:59"
+    },
+    {
+      "sellerScoreid": 739,
+      "score": 89110,
+      "coupons": 0,
+      "revenue": 183333.06,
+      "lastPointByAccess": "2026-06-08 19:34:00"
+    },
+    {
+      "sellerScoreid": 450,
+      "score": 100720,
+      "coupons": 0,
+      "revenue": 104858.73,
+      "lastPointByAccess": "2026-06-09 08:41:00"
+    },
+    {
+      "sellerScoreid": 258,
+      "score": 202864,
+      "coupons": 0,
+      "revenue": 137977.78,
+      "lastPointByAccess": "2026-06-09 14:51:00"
+    },
+    {
+      "sellerScoreid": 203,
+      "score": 229699,
+      "coupons": 0,
+      "revenue": 87204.34,
+      "lastPointByAccess": "2026-06-08 22:27:59"
+    },
+    {
+      "sellerScoreid": 14,
+      "score": 102400,
+      "coupons": 0,
+      "revenue": 100172.17,
+      "lastPointByAccess": "2026-06-08 17:57:00"
+    },
+    {
+      "sellerScoreid": 522,
+      "score": 263215,
+      "coupons": 0,
+      "revenue": 209130.4,
+      "lastPointByAccess": "2026-06-09 08:50:00"
+    },
+    {
+      "sellerScoreid": 565,
+      "score": 404988,
+      "coupons": 0,
+      "revenue": 115807.91,
+      "lastPointByAccess": "2026-06-09 08:44:59"
+    },
+    {
+      "sellerScoreid": 408,
+      "score": 129900,
+      "coupons": 0,
+      "revenue": 133618.73,
+      "lastPointByAccess": "2026-06-08 17:53:00"
+    },
+    {
+      "sellerScoreid": 1524,
+      "score": 151544,
+      "coupons": 0,
+      "revenue": 146930.97,
+      "lastPointByAccess": "2026-06-09 08:46:59"
+    },
+    {
+      "sellerScoreid": 1912,
+      "score": 12418,
+      "coupons": 0,
+      "revenue": 318917.94,
+      "lastPointByAccess": "2026-06-09 09:33:00"
+    },
+    {
+      "sellerScoreid": 1570,
+      "score": 23,
+      "coupons": 0,
+      "revenue": 26668.8,
+      "lastPointByAccess": null
+    },
+    {
+      "sellerScoreid": 180,
+      "score": 22386,
+      "coupons": 0,
+      "revenue": 31020.87,
+      "lastPointByAccess": "2026-06-08 19:12:59"
+    },
+    {
+      "sellerScoreid": 1572,
+      "score": 215880,
+      "coupons": 0,
+      "revenue": 180749.43,
+      "lastPointByAccess": "2026-06-09 08:55:59"
+    },
+    {
+      "sellerScoreid": 9,
+      "score": 175970,
+      "coupons": 0,
+      "revenue": 121164.58,
+      "lastPointByAccess": "2026-06-09 08:39:59"
+    },
+    {
+      "sellerScoreid": 344,
+      "score": 97840,
+      "coupons": 0,
+      "revenue": 87443.93,
+      "lastPointByAccess": "2026-06-09 08:53:59"
+    },
+    {
+      "sellerScoreid": 792,
+      "score": 278037,
+      "coupons": 0,
+      "revenue": 129917.33,
+      "lastPointByAccess": "2026-06-09 08:41:00"
+    },
+    {
+      "sellerScoreid": 277,
+      "score": 208240,
+      "coupons": 0,
+      "revenue": 118843.74,
+      "lastPointByAccess": "2026-06-09 08:26:59"
+    },
+    {
+      "sellerScoreid": 526,
+      "score": 217483,
+      "coupons": 0,
+      "revenue": 128506.54,
+      "lastPointByAccess": "2026-06-09 11:44:59"
+    },
+    {
+      "sellerScoreid": 761,
+      "score": 357808,
+      "coupons": 0,
+      "revenue": 131274.09,
+      "lastPointByAccess": "2026-06-08 21:29:59"
+    },
+    {
+      "sellerScoreid": 591,
+      "score": 50014,
+      "coupons": 0,
+      "revenue": 119043.53,
+      "lastPointByAccess": "2026-06-09 09:18:59"
+    },
+    {
+      "sellerScoreid": 510,
+      "score": 492080,
+      "coupons": 0,
+      "revenue": 314347.75,
+      "lastPointByAccess": "2026-06-09 09:24:59"
+    },
+    {
+      "sellerScoreid": 46,
+      "score": 185824,
+      "coupons": 0,
+      "revenue": 224605.85,
+      "lastPointByAccess": "2026-06-09 08:42:00"
+    },
+    {
+      "sellerScoreid": 544,
+      "score": 99984,
+      "coupons": 0,
+      "revenue": 292543.58,
+      "lastPointByAccess": "2026-06-09 08:51:00"
+    },
+    {
+      "sellerScoreid": 1765,
+      "score": 6116,
+      "coupons": 0,
+      "revenue": 12509.71,
+      "lastPointByAccess": "2026-06-09 12:46:00"
+    }
+  ]
+}
