@@ -32,7 +32,6 @@ namespace Campaign.Program.Register.User
             _ => throw new NotImplementedException()
         };
 
-
         private readonly IConfiguration _configuration = new ConfigurationBuilder()
                                                         .AddJsonFile(_jsonFilePath)
                                                         .SetBasePath(Directory.GetCurrentDirectory())

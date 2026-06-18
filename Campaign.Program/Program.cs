@@ -1,15 +1,16 @@
-﻿using Campaign.Shared.UnitOfWorkDI;
-using Campaign.Shared.DataBaseContextDI;
-using Campaign.API.Configuration.Container_DI;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Campaign.API.Configuration.Container_DI;
 using Campaign.API.Configuration.ContainerDI.Handlers;
 using Campaign.API.Configuration.ContainerDI.Identity;
-using Campaign.API.Configuration.ContainerDI.Repositories;
 using Campaign.API.Configuration.ContainerDI.Orchestrator;
+using Campaign.API.Configuration.ContainerDI.Repositories;
+using Campaign.API.Orchestrators.RegisterUser;
+using Campaign.Program.DataAnalysis;
+using Campaign.Program.Register.User;
 using Campaign.Shared.DataBaseContext.Entities;
 using Campaign.Shared.DataBaseContext.Entities.UnityOfWork;
-using Campaign.API.Orchestrators.RegisterUser;
-using Campaign.Program.Register.User;
+using Campaign.Shared.DataBaseContextDI;
+using Campaign.Shared.UnitOfWorkDI;
+using Microsoft.Extensions.DependencyInjection;
 
 var services = new ServiceCollection();
 services.AddDataBase();
@@ -39,16 +40,18 @@ var context = serviceProvider.GetService<CampaingContextDb>();
             #Seller
             #SellerManager
             #Supplier
- */
+*/
+
+var a = new DataAnalysis(context);
+await a.Init();
+
 
 async Task UserRegister()
 {
-    using (var scope = serviceProvider.CreateScope())
-    {
-        var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnityOfWork>();
-        var registerUserHandler = scope.ServiceProvider.GetRequiredService<IRegisterUserOrchestrator>();
+    using var scope = serviceProvider.CreateScope();
+    var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnityOfWork>();
+    var registerUserHandler = scope.ServiceProvider.GetRequiredService<IRegisterUserOrchestrator>();
 
-        var registerSeller = new UserRegister(context!, registerUserHandler);
-        await registerSeller.Register();
-    }
+    var registerSeller = new UserRegister(context!, registerUserHandler);
+    await registerSeller.Register();
 }
