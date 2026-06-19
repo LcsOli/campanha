@@ -42,8 +42,8 @@ var context = serviceProvider.GetService<CampaingContextDb>();
             #Supplier
 */
 
-var a = new DataAnalysis(context);
-await a.Init();
+//var a = new DataAnalysis(context);
+//await a.Init();
 
 
 async Task UserRegister()

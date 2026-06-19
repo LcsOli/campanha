@@ -12,7 +12,9 @@ namespace Campaign.API.DTO.SellerScore.Response
                                       decimal CurrentRevenue,
                                       string SellerManagerName,
                                       DateTime? LastScoreByAccess,
-                                      string RevenueTargetPercentage)
+                                      string RevenueTargetPercentage,
+                                      short QtyConsumersRegistereds,
+                                      short QtyConsumersReactivateds)
     {
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string Ranking { get; } = Ranking;
