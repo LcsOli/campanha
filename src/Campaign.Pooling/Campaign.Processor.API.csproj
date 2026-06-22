@@ -42,4 +42,8 @@
     <ProjectReference Include="..\..\shared\Campaign.Shared\Campaign.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Repositories\SellerScoreProductsSummary\ReadOnly\" />
+  </ItemGroup>
+
 </Project>

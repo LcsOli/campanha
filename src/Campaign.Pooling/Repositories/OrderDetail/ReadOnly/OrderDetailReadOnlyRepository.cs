@@ -38,25 +38,29 @@ namespace Campaign.Pooling.Repositories.OrderDetail.ReadOnly
         {
             var query = _context.Database.SqlQuery<OrderDetailResponse>($"""
                             SELECT
-                                pc.codusur as SellerId,
-                                pi.codprod as ProductId,
-                                pi.codcli as ConsumerId,
-                                pi.qt as Quantity,
-                                pi.data as DateOfSale,
-                                pm.qtpontoscliente as ProductPromotionPoints,
-                                pc.numped as OrderId
+                                pi.qt AS Quantity,
+                                pc.numped AS OrderId,
+                                pi.data AS DateOfSale,
+                                pc.codusur AS SellerId,
+                                pi.codprod AS ProductId,
+                                c.cliente AS ClientName,
+                                pi.codcli AS ConsumerId,
+                                p.descricao AS ProductDescription,
+                                pm.qtpontoscliente AS ProductPromotionPoints
                             FROM
                                 cf_campanha_rca_score s
                                 JOIN pcpedc pc ON pc.codusur = s.rca_id
                                 JOIN pcpedi pi ON pi.numped = pc.numped
                                 JOIN pcpromoi pm ON pm.codprod = pi.codprod
                                 JOIN pcpromoc pmc ON pmc.codpromocao = pm.codpromocao
+                                JOIN pcclient c ON c.codcli = pc.codcli
+                                JOIN pcprodut p ON p.codprod = pi.codprod
                             WHERE
                                 pc.dtcancel IS NULL AND
                                 pm.codpromocao = {promotionCode} AND
                                 (
-                                    TO_CHAR(pc.data, 'yyyy-MM-DD') >= TO_CHAR(pmc.dtinicio, 'yyyy-MM-DD') AND
-                                    TO_CHAR(pc.data, 'yyyy-MM-DD') <= TO_CHAR(pmc.dtfim, 'yyyy-MM-DD')
+                                    TRUNC(pc.data) >= TRUNC(pmc.dtinicio) AND
+                                    TRUNC(pc.data) <= TRUNC(pmc.dtfim)
                                 )
                     """);
             return await query.ToListAsync();
@@ -78,8 +82,8 @@ namespace Campaign.Pooling.Repositories.OrderDetail.ReadOnly
                                     p.codpromocao = {promotionCode} AND
                                     c.dtcancel IS NULL AND
                                     (
-                                        TO_CHAR(c.data, 'yyyy-MM-DD') >= TO_CHAR(pc.dtinicio, 'yyyy-MM-DD') AND
-                                        TO_CHAR(c.data, 'yyyy-MM-DD') <= TO_CHAR(pc.dtfim, 'yyyy-MM-DD')
+                                        TRUNC(c.data) >= TRUNC(pc.dtinicio) AND
+                                        TRUNC(c.data) <= TRUNC(pc.dtfim)
                                     )
                                 GROUP BY 
                                     c.codusur
@@ -103,8 +107,8 @@ namespace Campaign.Pooling.Repositories.OrderDetail.ReadOnly
                                     p.codpromocao = {init.Year * 100} AND
                                     c.dtcancel IS NULL AND
                                     (
-                                        TO_CHAR(c.data, 'yyyy-MM-DD') >= {init.ToString("yyyy-MM-dd")} AND
-                                        TO_CHAR(c.data, 'yyyy-MM-DD') <= {end.ToString("yyyy-MM-dd")}
+                                        TRUNC(c.data) >= DATE {init.ToString("yyyy-MM-dd")} AND
+                                        TRUNC(c.data) <= DATE {end.ToString("yyyy-MM-dd")}
                                     )
                                 GROUP BY 
                                     c.codusur

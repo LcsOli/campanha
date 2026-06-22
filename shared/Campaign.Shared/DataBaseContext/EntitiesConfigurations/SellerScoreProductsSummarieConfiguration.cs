@@ -4,9 +4,9 @@ using Campaign.Shared.DataBaseContext.Entities.Summaries;
 
 namespace Campaign.Shared.DataBaseContext.EntitiesConfigurations
 {
-    public class SellerScoreProductsSummarieConfiguration : IEntityTypeConfiguration<SellerScoreProductsSummarie>
+    public class SellerScoreProductsSummarieConfiguration : IEntityTypeConfiguration<SellerScoreProductsSummary>
     {
-        public void Configure(EntityTypeBuilder<SellerScoreProductsSummarie> builder)
+        public void Configure(EntityTypeBuilder<SellerScoreProductsSummary> builder)
         {
             builder.ToTable("CF_CAMPANHA_RESUMO_RCA_SCORE_PRODUTO");
 

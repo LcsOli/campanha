@@ -1,8 +1,7 @@
-﻿namespace Campaign.Shared.DataBaseContext.Entities.Summaries
+﻿namespace Campaign.Shared.DataBaseContext.Entities.SellerScoreSummaries
 {
-    public class SellerScoreClientsSummaries : SellerScoreSummaries
+    public class SellerScoreClientsSummaries : SellerScoreSummary
     {
-        public string ClientName { get; private set; } = default!;
         public DateTime RegisteredIn { get; private set; }
         public DateTime ReactivatedIn { get; private set; }
 

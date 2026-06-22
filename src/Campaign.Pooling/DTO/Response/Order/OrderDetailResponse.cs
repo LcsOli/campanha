@@ -7,6 +7,8 @@
                                       int ProductId,
                                       int ConsumerId,
                                       decimal Quantity,
+                                      string ClientName,
                                       DateTime DateOfSale,
+                                      string ProductDescription,
                                       decimal? ProductPromotionPoints);
 }
