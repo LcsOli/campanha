@@ -16,7 +16,7 @@ namespace Campaign.Program.SellerScore
 {
     public class ProcessPointsBySell
     {
-        private readonly int _year = 2025;
+        private readonly int _year = 2026;
 
         private readonly CampaingContextDb _context;
         public ProcessPointsBySell(CampaingContextDb context)
@@ -32,7 +32,7 @@ namespace Campaign.Program.SellerScore
             var promotionsCodes = await ProductsPromotions();
             var sellersScore = await getSellerScoreHandler.Handle();
 
-            var sellersToFind = new int[] { 1660, 1663 };
+            var sellersToFind = new int[] { 1901 };
 
             sellersScore = sellersScore.Where(s => sellersToFind.Contains(s.SellerId)).ToList();
 

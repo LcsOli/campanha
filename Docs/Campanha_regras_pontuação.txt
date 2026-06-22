@@ -1,0 +1,74 @@
+REGRAS PARA PONTUAÇÃO:
+
+-PONTOS POR VENDA:
+		-REGRAS:
+			-Cada produto vendido e que participe da promoção, possui uma certa quantidade de pontos. 
+			-Para cada produto vendido, multiplica-se a quantidade de pontos que este produto vale;
+				-EX:
+					-Chocolate -> 5 pontos;
+					-Caso haja 10 vendas do mesmo produto para o mesmo cliente, considera-se apenas os pontos de um produto: ponto_produto * 1 => (5 * 1 = 5);
+					-Caso o vendedor venda o mesmo produto para mais de um cliente, multiplica-se: (quantidade_clientes * ponto_produto;
+		-RESTRIÇÕES:
+			-Caso o mesmo cliente compre o mesmo produto mais de uma vez na semana, apenas a primeira venda deve ser computada.
+			
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+			
+-PONTOS POR ACESSO
+		-REGRAS:
+			-A cada acesso, o vendedor ganhará 5.000 pontos.
+		-RESTRIÇÕES:
+			-Válido apenas para um acesso por semana.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		
+-PONTOS POR REATIVAÇÃO
+		-REGRAS:
+			-Clientes que não tiveram vendas desde 2025;
+				-Verificar se não houve vendas de 01/01/2026 até a data de processamento das pontuações;
+					-Exemplo: Se o processamento estiver sendo feito na primeira semana da campanha, verificar se o cliente não teve outras compras além da que estará sendo
+					processada, iniciando a verificação do dia 01/01/2026 até a data da compra que está sendo processada;
+					
+				-Verificar se o cliente já estava cadastrado antes do dia 01/01/2026;
+				
+				-Verificar se o cliente já teve compras antes da data 01/01/2026;
+				
+			-Para cada reativação adicionar 1.000 pontos;
+		-RESTRIÇÕES:
+			-Apenas uma reativação durante a campanha.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------		
+
+-PONTOS POR POSITIVADOS
+		-REGRAS:
+			-Novos clientes, não existiam no cadastro;
+				-Considerar cadastros que que tenham sido feitos no início da campanha (01-06-2026);
+				-Considerar apenas um produto, ou seja, o cliente deve ter sido cadastrado e ter apenas um produto dentro do período da campanha.
+				
+			-Para cada positivação, 1.000 pontos.
+		-RESTRIÇÕES:
+			-Clientes novos que foram cadastrados, mas deve ter alguma venda com algum item da campanha.
+
+	
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-CUPONS
+	-REGRAS:
+		-A cada 500.000 pontos o RCA ganhará 1 cupom;
+		-Será calculado a cada processamento.
+	-EXEMPLO:
+		-Ao processar os pontos de uma determinada semana, verificar ao final se houve 500.000 em pontos. A cada 500.000 pontos, adicionaremos 1 cupom.
+		
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-METAS
+	-REGRAS:
+		-A cada mês, calcularemos o faturamento do RCA, caso o faturamento total seja igual ou superior ao valor da meta, adicionaremos 1 cupom.
+	-EXEMPLO:
+		-Um RCA tinha R$1.000 de meta em produtos da promoção. Ele vendeu R$1.000 em produtos, adicionaremos 1 cupom.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-PONTUAÇÃO POR VENDAS GERAL
+	-Considera apenas todas as vendas dentro do período da campanha;
+	-Considera apenas produtos da campanha;
+	-Considera todos os RCAs que participarão da campanha.

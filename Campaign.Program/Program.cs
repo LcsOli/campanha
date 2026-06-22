@@ -6,6 +6,7 @@ using Campaign.API.Configuration.ContainerDI.Repositories;
 using Campaign.API.Orchestrators.RegisterUser;
 using Campaign.Program.DataAnalysis;
 using Campaign.Program.Register.User;
+using Campaign.Program.SellerScore;
 using Campaign.Shared.DataBaseContext.Entities;
 using Campaign.Shared.DataBaseContext.Entities.UnityOfWork;
 using Campaign.Shared.DataBaseContextDI;
@@ -45,6 +46,8 @@ var context = serviceProvider.GetService<CampaingContextDb>();
 //var a = new DataAnalysis(context);
 //await a.Init();
 
+var processPointsBySell = new ProcessPointsBySell(context);
+await processPointsBySell.Process();
 
 async Task UserRegister()
 {
