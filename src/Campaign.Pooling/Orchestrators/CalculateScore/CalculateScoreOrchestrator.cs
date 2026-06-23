@@ -3,8 +3,6 @@ using Campaign.Pooling.Commands.Consumers.Get;
 using Campaign.Pooling.Handlers.CalculateCoupons;
 using Campaign.Pooling.Commands.SellerManager.Update;
 using Campaign.Pooling.Handlers.CalculateRevenueTarget;
-using Campaign.Pooling.Commands.CalculateScoreByProduct;
-using Campaign.Pooling.Handlers.CalculateScoreByProduct;
 using Campaign.Pooling.Handlers.SellerScore.GetSellersScore;
 using Campaign.Pooling.Handlers.CalculateRegisteredsConsummers;
 using Campaign.Pooling.Handlers.CalculateReactivatedsConsummers;
@@ -22,7 +20,6 @@ namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
         private readonly IGetSellerScoreHandler _getSellerScoreHandler;
         private readonly ICalculateRevenueHandler _calculateRevenueHandler;
         private readonly ICalculateCouponsHandler _calculateCouponsHandler;
-        private readonly ICalculateScoreByProductHandler _calculateScorePointsByProductHandler;
         private readonly ICalculateRegisteredsConsumersHandler _calculateRegisteredsConsumersHandler;
         private readonly ICalculateReactivatedsConsumersHandler _calculateReactivatedsConsumersHandler;
         private readonly IUpdateCurrentRevenueSellerManagerScoreHandler _updateCurrentRevenueSellerManagerHandler;
@@ -32,7 +29,6 @@ namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
                                           IGetSellerScoreHandler getSellerScoreHandler,
                                           ICalculateRevenueHandler calculateRevenueHandler,
                                           ICalculateCouponsHandler calculateCouponsHandler,
-                                          ICalculateScoreByProductHandler calculateScorePointsByProductHandler,
                                           ICalculateScoreByProductOrchestrator calculateScoreByProductOrchestrator,
                                           ICalculateRegisteredsConsumersHandler calculateRegisteredsConsumersHandler,
                                           ICalculateReactivatedsConsumersHandler calculateReactivatedsConsumersHandler,
@@ -44,7 +40,6 @@ namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
             _calculateRevenueHandler = calculateRevenueHandler;
             _calculateScoreByProductOrchestrator = calculateScoreByProductOrchestrator;
             _calculateRegisteredsConsumersHandler = calculateRegisteredsConsumersHandler;
-            _calculateScorePointsByProductHandler = calculateScorePointsByProductHandler;
             _calculateReactivatedsConsumersHandler = calculateReactivatedsConsumersHandler;
             _updateCurrentRevenueSellerManagerHandler = updateCurrentRevenueSellerManagerHandler;
 

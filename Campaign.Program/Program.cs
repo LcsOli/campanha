@@ -1,12 +1,15 @@
-﻿using Campaign.API.Configuration.Container_DI;
-using Campaign.API.Configuration.ContainerDI.Handlers;
-using Campaign.API.Configuration.ContainerDI.Identity;
-using Campaign.API.Configuration.ContainerDI.Orchestrator;
-using Campaign.API.Configuration.ContainerDI.Repositories;
+﻿
 using Campaign.API.Orchestrators.RegisterUser;
-using Campaign.Program.DataAnalysis;
+using Campaign.Pooling.Commands.CalculateScoreByProduct;
+using Campaign.Pooling.Configurations.ContainerDI.Handlers;
+using Campaign.Pooling.Configurations.ContainerDI.Orchestrators;
+using Campaign.Pooling.Configurations.ContainerDI.Repositories;
+using Campaign.Pooling.Handlers.CalculateScoreByProduct;
+using Campaign.Pooling.Handlers.SellerScore.GetSellersScore;
+using Campaign.Pooling.Repositories.OrderDetail.ReadOnly;
+using Campaign.Processor.API.Commands.Summaries.Create;
+using Campaign.Processor.API.Handlers.RegisterSellerScoreProductResume;
 using Campaign.Program.Register.User;
-using Campaign.Program.SellerScore;
 using Campaign.Shared.DataBaseContext.Entities;
 using Campaign.Shared.DataBaseContext.Entities.UnityOfWork;
 using Campaign.Shared.DataBaseContextDI;
@@ -16,13 +19,11 @@ using Microsoft.Extensions.DependencyInjection;
 var services = new ServiceCollection();
 services.AddDataBase();
 
-services.AddServices();
-services.AddIdentity();
+services.AddHandlers();
 services.AddUnityOfWork();
 services.AddRepositories();
-services.AddOrchestrator();
+services.AddOrchestrators();
 
-services.AddHandler();
 
 var serviceProvider = services.BuildServiceProvider();
 var context = serviceProvider.GetService<CampaingContextDb>();
@@ -43,11 +44,34 @@ var context = serviceProvider.GetService<CampaingContextDb>();
             #Supplier
 */
 
-//var a = new DataAnalysis(context);
-//await a.Init();
+//using var scope = serviceProvider.CreateScope();
 
-var processPointsBySell = new ProcessPointsBySell(context);
-await processPointsBySell.Process();
+//var orderDetailRepository = scope.ServiceProvider.GetRequiredService<IOrderDetailReadOnlyRepository>();
+//var calcProductHandler = scope.ServiceProvider.GetRequiredService<ICalculateScoreByProductHandler>();
+//var getSellerScoreHandler = scope.ServiceProvider.GetRequiredService<IGetSellerScoreHandler>();
+
+//var sellersScore = await getSellerScoreHandler.Handle();
+//var ordersDetails = await orderDetailRepository.GetByPromotionCode(202601);
+
+//calcProductHandler.Handle(new CalculateScoreByProductCommand(202601, ordersDetails, sellersScore));
+
+//await RegisterSummaries(202603);
+
+async Task RegisterSummaries(int promotionCode)
+{
+    using var scope = serviceProvider.CreateScope();
+
+    var orderDetailRepository = scope.ServiceProvider.GetRequiredService<IOrderDetailReadOnlyRepository>();
+
+    var getSellerScoreHandler = scope.ServiceProvider.GetRequiredService<IGetSellerScoreHandler>();
+    var registerSummariesHandler = scope.ServiceProvider.GetRequiredService<IRegisterSellerScoreProductSummariesHandler>();
+
+    var sellersScore = await getSellerScoreHandler.Handle();
+    var ordersDetails = await orderDetailRepository.GetByPromotionCode(promotionCode);
+
+    await registerSummariesHandler.Handle(new RegisterSellerScoreProductSummariesCommand(promotionCode, ordersDetails, sellersScore));
+}
+
 
 async Task UserRegister()
 {

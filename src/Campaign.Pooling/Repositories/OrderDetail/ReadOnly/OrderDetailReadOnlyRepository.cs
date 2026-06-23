@@ -43,8 +43,8 @@ namespace Campaign.Pooling.Repositories.OrderDetail.ReadOnly
                                 pi.data AS DateOfSale,
                                 pc.codusur AS SellerId,
                                 pi.codprod AS ProductId,
-                                c.cliente AS ClientName,
                                 pi.codcli AS ConsumerId,
+                                c.cliente AS ConsumerName,
                                 p.descricao AS ProductDescription,
                                 pm.qtpontoscliente AS ProductPromotionPoints
                             FROM

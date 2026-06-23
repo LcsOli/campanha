@@ -6,15 +6,15 @@
         public DateTime ReactivatedIn { get; private set; }
 
         public SellerScoreClientsSummaries(int sellerId,
+                                           int clientId,
                                            decimal points,
                                            int promotionCode,
-                                           string clientName,
                                            DateTime registeredIn,
                                            DateTime reactivatedIn)
         {
             Points = points;
             SellerId = sellerId;
-            ClientName = clientName;
+            ClientId = clientId;
             RegisteredIn = registeredIn;
             ReactivatedIn = reactivatedIn;
             PromotionCode = promotionCode;

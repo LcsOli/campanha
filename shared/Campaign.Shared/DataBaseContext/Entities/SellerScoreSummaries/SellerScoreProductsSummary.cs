@@ -2,18 +2,18 @@
 {
     public class SellerScoreProductsSummary : SellerScoreSummary
     {
-        public string ProductName { get; private set; } = default!;
+        public int ProductId { get; private set; } = default!;
 
         public SellerScoreProductsSummary(int sellerId,
+                                          int clientId,
+                                          int productId,
                                           decimal points,
-                                          int promotionCode,
-                                          string clientName,
-                                          string productName)
+                                          int promotionCode)
         {
             Points = points;
             SellerId = sellerId;
-            ClientName = clientName;
-            ProductName = productName;
+            ClientId = clientId;
+            ProductId = productId;
             PromotionCode = promotionCode;
         }
     }

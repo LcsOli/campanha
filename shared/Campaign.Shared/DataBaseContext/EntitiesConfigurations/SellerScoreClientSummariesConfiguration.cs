@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Campaign.Shared.DataBaseContext.Entities.Summaries;
+using Campaign.Shared.DataBaseContext.Entities.SellerScoreSummaries;
 
 namespace Campaign.Shared.DataBaseContext.EntitiesConfigurations
 {
@@ -24,8 +24,8 @@ namespace Campaign.Shared.DataBaseContext.EntitiesConfigurations
             builder.Property(x => x.Points)
                    .HasColumnName("PONTOS");
 
-            builder.Property(x => x.ClientName)
-                   .HasColumnName("PONTOS");
+            builder.Property(x => x.ClientId)
+                   .HasColumnName("COD_CLIENTE");
 
             builder.Property(x => x.RegisteredIn)
                    .HasColumnName("DATA_POSITIVACAO");

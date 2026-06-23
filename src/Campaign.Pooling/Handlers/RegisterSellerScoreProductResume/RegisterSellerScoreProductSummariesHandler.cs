@@ -1,4 +1,5 @@
 ﻿using Campaign.Processor.API.Commands.Summaries.Create;
+using Campaign.Shared.DataBaseContext.Entities.UnityOfWork;
 using Campaign.Shared.DataBaseContext.Entities.SellerScoreSummaries;
 using Campaign.Processor.API.Repositories.SellerScoreProductsSummary.WriteOnly;
 
@@ -6,10 +7,13 @@ namespace Campaign.Processor.API.Handlers.RegisterSellerScoreProductResume
 {
     public class RegisterSellerScoreProductSummariesHandler : IRegisterSellerScoreProductSummariesHandler
     {
+        private readonly IUnityOfWork _unityOfWork;
         private readonly ISellerScoreProductSummaryRepository _sellerScoreProductSummaryRepository;
 
-        public RegisterSellerScoreProductSummariesHandler(ISellerScoreProductSummaryRepository sellerScoreProductSummaryRepository)
+        public RegisterSellerScoreProductSummariesHandler(IUnityOfWork unityOfWork,
+            ISellerScoreProductSummaryRepository sellerScoreProductSummaryRepository)
         {
+            _unityOfWork = unityOfWork;
             _sellerScoreProductSummaryRepository = sellerScoreProductSummaryRepository;
         }
 
@@ -24,7 +28,7 @@ namespace Campaign.Processor.API.Handlers.RegisterSellerScoreProductResume
                                                       .Select(o => new
                                                       {
                                                           CustomerId = o.Key,
-                                                          Name = o.First().ClientName,
+                                                          Name = o.First().ConsumerName,
                                                           Orders = o.DistinctBy(p => p.ProductId).ToList()
                                                       }).ToList();
 
@@ -33,10 +37,10 @@ namespace Campaign.Processor.API.Handlers.RegisterSellerScoreProductResume
 
                 clients.ForEach(client =>
                 {
-                    var sellerersScoresProductsSummaries = client.Orders.Select(o => new SellerScoreProductsSummary(clientName: client.Name,
+                    var sellerersScoresProductsSummaries = client.Orders.Select(o => new SellerScoreProductsSummary(productId: o.ProductId,
+                                                                                                                    clientId: client.CustomerId,
                                                                                                                     sellerId: sellerScore.SellerId,
                                                                                                                     promotionCode: cmd.PromotionCode,
-                                                                                                                    productName: o.ProductDescription,
                                                                                                                     points: o.ProductPromotionPoints!.Value));
 
                     summaries.AddRange(sellerersScoresProductsSummaries);
@@ -45,6 +49,8 @@ namespace Campaign.Processor.API.Handlers.RegisterSellerScoreProductResume
             });
 
             await _sellerScoreProductSummaryRepository.AddRange(summaries);
+
+            await _unityOfWork.SaveAsync();
         }
     }
 }

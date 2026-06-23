@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Campaign.Shared.DataBaseContext.Entities.Summaries;
+using Campaign.Shared.DataBaseContext.Entities.SellerScoreSummaries;
 
 namespace Campaign.Shared.DataBaseContext.EntitiesConfigurations
 {
@@ -24,8 +24,11 @@ namespace Campaign.Shared.DataBaseContext.EntitiesConfigurations
             builder.Property(x => x.Points)
                    .HasColumnName("PONTOS");
 
-            builder.Property(x => x.ProductName)
-                   .HasColumnName("PRODUTO_DESCRICAO");
+            builder.Property(x => x.ProductId)
+                   .HasColumnName("COD_PRODUTO");
+
+            builder.Property(x => x.ClientId)
+                   .HasColumnName("COD_CLIENTE");
         }
     }
 }

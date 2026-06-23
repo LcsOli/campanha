@@ -52,7 +52,7 @@ namespace Campaign.Program.SellerScore
             var orderDetailReadOnlyRepository = new OrderDetailReadOnlyRepository(_context);
             var orderSummaryReadOnlyRepository = new OrderSummaryReadOnlyRepository(_context);
 
-            var calculateScoreByProductHandler = new CalculateScoreByProductHandler(orderDetailReadOnlyRepository);
+            //var calculateScoreByProductHandler = new CalculateScoreByProductHandler(orderDetailReadOnlyRepository);
             var calculateRegisteredsConsumersHandler = new CalculateRegisteredsConsumersHandler(orderSummaryReadOnlyRepository);
             var calculateReactivatedsConsumersHandler = new CalculateReactivatedsConsumersHandler(orderSummaryReadOnlyRepository);
 
@@ -60,7 +60,7 @@ namespace Campaign.Program.SellerScore
             {
 
                 Console.WriteLine("Step.1");
-                await calculateScoreByProductHandler.Handle(new CalculateScoreByProductCommand(promotionCode, sellersScore));
+                //await calculateScoreByProductHandler.Handle(new CalculateScoreByProductCommand(promotionCode, sellersScore));
 
                 //Console.WriteLine("Step.2");
                 //await calculateRegisteredsConsumersHandler.Handle(new CalculateRegisteredsConsumersCommand(promotionCode, sellersScore));
