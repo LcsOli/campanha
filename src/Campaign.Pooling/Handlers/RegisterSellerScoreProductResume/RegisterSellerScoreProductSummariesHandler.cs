@@ -33,7 +33,6 @@ namespace Campaign.Processor.API.Handlers.RegisterSellerScoreProductResume
 
                 clients.ForEach(client =>
                 {
-
                     var sellerersScoresProductsSummaries = client.Orders.Select(o => new SellerScoreProductsSummary(clientName: client.Name,
                                                                                                                     sellerId: sellerScore.SellerId,
                                                                                                                     promotionCode: cmd.PromotionCode,
