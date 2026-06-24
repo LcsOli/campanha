@@ -13,7 +13,7 @@ namespace Campaign.Processor.API.Handlers.RegisterSellerScoreClientSummary
             _sellerScoreClientSummaryRepository = sellerScoreClientSummaryRepository;
         }
 
-        public async Task Handle(ReactivatedsCommand cmd)
+        public async Task Handle(RegisterReactivatedsCommand cmd)
         {
             var summaries = new List<SellerScoreClientsSummary>();
 

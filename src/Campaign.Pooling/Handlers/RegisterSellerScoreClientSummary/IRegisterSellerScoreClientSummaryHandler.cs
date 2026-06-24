@@ -4,6 +4,6 @@ namespace Campaign.Processor.API.Handlers.RegisterSellerScoreClientSummary
 {
     public interface IRegisterSellerScoreClientSummaryHandler
     {
-        Task Handle(ReactivatedsCommand cmd);
+        Task Handle(RegisterReactivatedsCommand cmd);
     }
 }
