@@ -43,6 +43,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Repositories\SellerScoreClientSummary\ReadOnly\" />
     <Folder Include="Repositories\SellerScoreProductsSummary\ReadOnly\" />
   </ItemGroup>
 

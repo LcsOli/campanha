@@ -1,10 +1,11 @@
 ﻿using Campaign.Pooling.DTO.Response.Seller;
+using Campaign.Processor.API.DTO.Response.Seller;
 
 namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
 {
     public interface IOrderSummaryReadOnlyRepository
     {
-        Task<List<SellersQuantityConsumersResponse>> GetSellersIdsThatReactivatedConsumers(int promotionCode);
-        Task<List<SellersQuantityConsumersResponse>> GetSellersIdsThatRegisteredsConsumers(int promotionCode);
+        Task<List<ReactivatedsConsumerResponse>> GetCustomersReactivatedsBySelller(int promotionCode);
+        Task<List<SellersConsumersResponse>> GetCustomersRegisteredsBySelller(int promotionCode);
     }
 }

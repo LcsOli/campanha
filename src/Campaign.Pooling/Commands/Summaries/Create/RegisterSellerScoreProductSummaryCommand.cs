@@ -3,7 +3,7 @@ using EntitySellerScore = Campaign.Shared.DataBaseContext.Entities.Seller;
 
 namespace Campaign.Processor.API.Commands.Summaries.Create
 {
-    public record RegisterSellerScoreProductSummariesCommand(int PromotionCode,
+    public record RegisterSellerScoreProductSummaryCommand(int PromotionCode,
                                                              List<OrderDetailResponse> OrdersDetails,
                                                              List<EntitySellerScore.SellerScore> SellersScores);
 }

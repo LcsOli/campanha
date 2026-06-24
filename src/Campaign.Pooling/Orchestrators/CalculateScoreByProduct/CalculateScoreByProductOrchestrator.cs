@@ -2,7 +2,7 @@
 using Campaign.Pooling.Commands.CalculateScoreByProduct;
 using Campaign.Pooling.Handlers.CalculateScoreByProduct;
 using Campaign.Pooling.Repositories.OrderDetail.ReadOnly;
-using Campaign.Processor.API.Handlers.RegisterSellerScoreProductResume;
+using Campaign.Processor.API.Handlers.RegisterSellerScoreProductSummary;
 using EntitySellerScore = Campaign.Shared.DataBaseContext.Entities.Seller;
 
 namespace Campaign.Processor.API.Orchestrators.CalculateScoreByProduct
@@ -11,10 +11,10 @@ namespace Campaign.Processor.API.Orchestrators.CalculateScoreByProduct
     {
         private readonly IOrderDetailReadOnlyRepository _orderDetailReadOnlyRepository;
         private readonly ICalculateScoreByProductHandler _calculateScoreByProductHandler;
-        private readonly IRegisterSellerScoreProductSummariesHandler _registerSellerScoreProductSummariesHandler;
+        private readonly IRegisterSellerScoreProductSummaryHandler _registerSellerScoreProductSummariesHandler;
         public CalculateScoreByProductOrchestrator(IOrderDetailReadOnlyRepository orderDetailReadOnlyRepository,
                                                    ICalculateScoreByProductHandler calculateScoreByProductHandler,
-                                                   IRegisterSellerScoreProductSummariesHandler registerSellerScoreProductSummariesHandler)
+                                                   IRegisterSellerScoreProductSummaryHandler registerSellerScoreProductSummariesHandler)
         {
             _orderDetailReadOnlyRepository = orderDetailReadOnlyRepository;
             _calculateScoreByProductHandler = calculateScoreByProductHandler;
@@ -29,7 +29,7 @@ namespace Campaign.Processor.API.Orchestrators.CalculateScoreByProduct
                                                                                       SellersScores: SellersScores,
                                                                                       OrdersDetails: ordersDetails));
 
-            await _registerSellerScoreProductSummariesHandler.Handle(new RegisterSellerScoreProductSummariesCommand(PromotionCode: promotionCode,
+            await _registerSellerScoreProductSummariesHandler.Handle(new RegisterSellerScoreProductSummaryCommand(PromotionCode: promotionCode,
                                                                                                                     SellersScores: SellersScores,
                                                                                                                     OrdersDetails: ordersDetails));
         }

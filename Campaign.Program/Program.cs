@@ -8,7 +8,7 @@ using Campaign.Pooling.Handlers.CalculateScoreByProduct;
 using Campaign.Pooling.Handlers.SellerScore.GetSellersScore;
 using Campaign.Pooling.Repositories.OrderDetail.ReadOnly;
 using Campaign.Processor.API.Commands.Summaries.Create;
-using Campaign.Processor.API.Handlers.RegisterSellerScoreProductResume;
+using Campaign.Processor.API.Handlers.RegisterSellerScoreProductSummary;
 using Campaign.Program.Register.User;
 using Campaign.Shared.DataBaseContext.Entities;
 using Campaign.Shared.DataBaseContext.Entities.UnityOfWork;
@@ -64,12 +64,12 @@ async Task RegisterSummaries(int promotionCode)
     var orderDetailRepository = scope.ServiceProvider.GetRequiredService<IOrderDetailReadOnlyRepository>();
 
     var getSellerScoreHandler = scope.ServiceProvider.GetRequiredService<IGetSellerScoreHandler>();
-    var registerSummariesHandler = scope.ServiceProvider.GetRequiredService<IRegisterSellerScoreProductSummariesHandler>();
+    var registerSummariesHandler = scope.ServiceProvider.GetRequiredService<IRegisterSellerScoreProductSummaryHandler>();
 
     var sellersScore = await getSellerScoreHandler.Handle();
     var ordersDetails = await orderDetailRepository.GetByPromotionCode(promotionCode);
 
-    await registerSummariesHandler.Handle(new RegisterSellerScoreProductSummariesCommand(promotionCode, ordersDetails, sellersScore));
+    await registerSummariesHandler.Handle(new RegisterSellerScoreProductSummaryCommand(promotionCode, ordersDetails, sellersScore));
 }
 
 

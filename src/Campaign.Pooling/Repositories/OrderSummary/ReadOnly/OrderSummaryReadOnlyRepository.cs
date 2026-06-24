@@ -1,6 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Campaign.Pooling.DTO.Response.Seller;
+﻿using Campaign.Pooling.DTO.Response.Seller;
+using Campaign.Processor.API.DTO.Response.Seller;
 using Campaign.Shared.DataBaseContext.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
 {
@@ -11,84 +12,88 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
         {
             _context = context;
         }
-
-        public async Task<List<SellersQuantityConsumersResponse>> GetSellersIdsThatReactivatedConsumers(int promotionCode)
+        
+        public async Task<List<ReactivatedsConsumerResponse>> GetCustomersReactivatedsBySelller(int promotionCode)
         {
             var headerPromotionCode = promotionCode.ToString()[..4].PadRight(6, '0');
 
-            var query = _context.Database.SqlQuery<SellersQuantityConsumersResponse>($@"
+            var query = _context.Database.SqlQuery<ReactivatedsConsumerResponse>($@"
                         SELECT
-                            x.SellerId,
-                            COUNT(x.codcli) AS QtyConsumers
-                        FROM
-                        (
-                            SELECT
-                                c.codusur AS SellerId,
-                                c.codcli
-                            FROM 
-                                cf_campanha_rca_score crs
-                                JOIN pcpedc c ON c.codusur = crs.rca_id
-                                JOIN pcusuari u ON c.codusur = u.codusur
-                                JOIN pcpedi i ON i.numped = c.numped
-                                JOIN pcpromoi p ON p.codprod = i.codprod
-                                JOIN pcpromoc pc ON pc.codpromocao = p.codpromocao
-                                JOIN pcclient client ON c.codcli = client.codcli
-                                JOIN pcpromoc pcgeral ON pcgeral.codpromocao = EXTRACT(YEAR FROM pc.dtinicio) * 100
-                                JOIN
-                                (
-                                    SELECT
-                                        cc.codcli,
-                                        MIN(CASE
-                                                WHEN cc.data < TRUNC(pcg.dtinicio, 'YEAR')
-                                                THEN cc.data
-                                            END
-                                            ) AS dt_antes_ano,
-                                        MIN(CASE
-                                                WHEN 
-                                                    cc.data >= TRUNC(pcg.dtinicio, 'YEAR') AND cc.data < pcg.dtinicio
-                                                THEN cc.data
-                                            END
-                                            ) AS dt_entre_ano_e_promocao,
-                                        MIN(CASE
-                                                WHEN 
-                                                    cc.data >= pcg.dtinicio AND cc.data <= pcg.dtfim
-                                                THEN cc.data
-                                            END
-                                            ) AS dt_primeira_compra_periodo
-                                    FROM 
-                                        pcpedc cc
-                                        CROSS JOIN (
-                                            SELECT
-                                                dtinicio,
-                                                dtfim
-                                            FROM pcpromoc
-                                            WHERE codpromocao = {headerPromotionCode}
-                                        ) pcg
-                                        GROUP BY
-                                            cc.codcli
-                                ) hist ON hist.codcli = c.codcli
-                            WHERE
-                                u.tipovend = 'R'
-                                AND p.codpromocao = {promotionCode}
-                                AND client.dtcadastro < TRUNC(pcgeral.dtinicio, 'YEAR')
-                                AND c.data BETWEEN pcgeral.dtinicio AND pcgeral.dtfim
-                                AND hist.dt_antes_ano IS NOT NULL
-                                AND hist.dt_entre_ano_e_promocao IS NULL
-                                AND hist.dt_primeira_compra_periodo BETWEEN pc.dtinicio AND pc.dtfim
-                            GROUP BY
-                                c.codusur,
-                                c.codcli
-                        ) x
+                            c.codusur AS SellerId,
+                            c.codcli AS ClientId,
+                            hist.dt_positivacao AS RegisteredIn,
+                            hist.dt_reativacao_periodo_campanha AS ReactivatedIn
+                        FROM 
+                            cf_campanha_rca_score crs
+                            JOIN pcpedc c ON c.codusur = crs.rca_id
+                            JOIN pcusuari u ON c.codusur = u.codusur
+                            JOIN pcpedi i ON i.numped = c.numped
+                            JOIN pcpromoi p ON p.codprod = i.codprod
+                            JOIN pcpromoc pc ON pc.codpromocao = p.codpromocao
+                            JOIN pcclient client ON c.codcli = client.codcli
+                            JOIN pcpromoc pcgeral ON pcgeral.codpromocao = EXTRACT(YEAR FROM pc.dtinicio) * 100
+                            JOIN
+                            (
+                                SELECT
+                                    cc.codcli,
+                                    MIN(CASE
+                                            WHEN cc.data < TRUNC(pcg.dtinicio, 'YEAR')
+                                            THEN cc.data
+                                        END
+                                        ) AS dt_positivacao,
+                                    MIN(CASE
+                                            WHEN 
+                                                cc.data >= TRUNC(pcg.dtinicio, 'YEAR') AND cc.data < pcg.dtinicio
+                                            THEN cc.data
+                                        END
+                                        ) AS dt_reativacao_antes_campanha,
+                                    MIN(CASE
+                                            WHEN 
+                                                cc.data >= pcg.dtinicio AND cc.data <= pcg.dtfim
+                                            THEN cc.data
+                                        END
+                                        ) AS dt_reativacao_periodo_campanha
+                                FROM 
+                                    pcpedc cc
+                                    CROSS JOIN (
+                                        SELECT
+                                            dtinicio,
+                                            dtfim
+                                        FROM pcpromoc
+                                        WHERE codpromocao = {headerPromotionCode}
+                                    ) pcg
+                                    GROUP BY
+                                        cc.codcli
+                            ) hist ON hist.codcli = c.codcli
+                        WHERE
+
+                            
+                            crs.rca_id = 146 -- TODO - REMOVER ESTA LINHA AO FINALIZAR TESTES
+
+
+
+
+                            AND u.tipovend = 'R'
+                            AND c.dtcancel IS NULL
+                            AND p.codpromocao = {promotionCode}
+                            AND client.dtcadastro < TRUNC(pcgeral.dtinicio, 'YEAR')
+                            AND c.data BETWEEN pcgeral.dtinicio AND pcgeral.dtfim
+                            AND hist.dt_positivacao IS NOT NULL
+                            AND hist.dt_reativacao_antes_campanha IS NULL
+                            AND hist.dt_reativacao_periodo_campanha BETWEEN pc.dtinicio AND pc.dtfim
                         GROUP BY
-                            x.SellerId
+                            c.codusur,
+                            c.codcli,
+                            hist.dt_positivacao,
+                            hist.dt_reativacao_periodo_campanha
             ");
 
             return await query.ToListAsync();
         }
 
-        public async Task<List<SellersQuantityConsumersResponse>> GetSellersIdsThatRegisteredsConsumers(int promotionCode)
+        public async Task<List<SellersConsumersResponse>> GetCustomersRegisteredsBySelller(int promotionCode)
         {
-            var query = _context.Database.SqlQuery<SellersQuantityConsumersResponse>($"""
+            var query = _context.Database.SqlQuery<SellersConsumersResponse>($"""
                 SELECT
                     x.SellerId,
                     COUNT(x.codcli) AS QtyConsumers

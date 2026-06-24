@@ -15,14 +15,14 @@ namespace Campaign.Pooling.Handlers.CalculateReactivatedsConsummers
 
         public async Task Handle(CalculateReactivatedsConsumersCommand cmd)
         {
-            var clientsReactivatedsBySellers = await _orderSummaryReadOnlyRepository.GetSellersIdsThatReactivatedConsumers(cmd.PromotionCode);
+            var clientsReactivateds = await _orderSummaryReadOnlyRepository.GetCustomersReactivatedsBySelller(cmd.PromotionCode);
 
-            clientsReactivatedsBySellers.ForEach(clientsReactivatedsBySeller =>
+            cmd.SellersScores.ForEach(sellerScore =>
             {
-                var sellerScore = cmd.SellersScores.FirstOrDefault(seller => seller.SellerId == clientsReactivatedsBySeller.SellerId);
+                var reactivateds = clientsReactivateds.Where(x => x.SellerId == sellerScore.SellerId);
 
-                sellerScore?.UpdateScore(clientsReactivatedsBySeller.QtyConsumers * _pointsToAdd);
-                sellerScore?.UpdateQtyReactivateds((short)clientsReactivatedsBySeller.QtyConsumers);
+                sellerScore?.UpdateScore(reactivateds.Count() * _pointsToAdd);
+                sellerScore?.UpdateQtyReactivateds((short)reactivateds.Count());
             });
         }
     }

@@ -3,21 +3,21 @@ using Campaign.Shared.DataBaseContext.Entities.UnityOfWork;
 using Campaign.Shared.DataBaseContext.Entities.SellerScoreSummaries;
 using Campaign.Processor.API.Repositories.SellerScoreProductsSummary.WriteOnly;
 
-namespace Campaign.Processor.API.Handlers.RegisterSellerScoreProductResume
+namespace Campaign.Processor.API.Handlers.RegisterSellerScoreProductSummary
 {
-    public class RegisterSellerScoreProductSummariesHandler : IRegisterSellerScoreProductSummariesHandler
+    public class RegisterSellerScoreProductSummaryHandler : IRegisterSellerScoreProductSummaryHandler
     {
         private readonly IUnityOfWork _unityOfWork;
         private readonly ISellerScoreProductSummaryRepository _sellerScoreProductSummaryRepository;
 
-        public RegisterSellerScoreProductSummariesHandler(IUnityOfWork unityOfWork,
+        public RegisterSellerScoreProductSummaryHandler(IUnityOfWork unityOfWork,
             ISellerScoreProductSummaryRepository sellerScoreProductSummaryRepository)
         {
             _unityOfWork = unityOfWork;
             _sellerScoreProductSummaryRepository = sellerScoreProductSummaryRepository;
         }
 
-        public async Task Handle(RegisterSellerScoreProductSummariesCommand cmd)
+        public async Task Handle(RegisterSellerScoreProductSummaryCommand cmd)
         {
             var summaries = new List<SellerScoreProductsSummary>();
 
@@ -28,7 +28,6 @@ namespace Campaign.Processor.API.Handlers.RegisterSellerScoreProductResume
                                                       .Select(o => new
                                                       {
                                                           CustomerId = o.Key,
-                                                          Name = o.First().ConsumerName,
                                                           Orders = o.DistinctBy(p => p.ProductId).ToList()
                                                       }).ToList();
 
