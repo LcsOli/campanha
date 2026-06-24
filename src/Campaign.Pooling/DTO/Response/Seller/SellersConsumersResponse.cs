@@ -1,7 +1,7 @@
 ﻿namespace Campaign.Pooling.DTO.Response.Seller
 {
     public record SellersConsumersResponse(int SellerId, 
-                                           int ClientId, 
+                                           int CustomerId, 
                                            DateTime RegisteredIn, 
                                            DateTime ReactivatedIn);
 }

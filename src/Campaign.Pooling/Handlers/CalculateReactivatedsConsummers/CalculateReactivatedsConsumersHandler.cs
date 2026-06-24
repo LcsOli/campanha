@@ -5,7 +5,6 @@ namespace Campaign.Pooling.Handlers.CalculateReactivatedsConsummers
 {
     public class CalculateReactivatedsConsumersHandler : ICalculateReactivatedsConsumersHandler
     {
-        private readonly int _pointsToAdd = 1_000;
 
         private readonly IOrderSummaryReadOnlyRepository _orderSummaryReadOnlyRepository;
         public CalculateReactivatedsConsumersHandler(IOrderSummaryReadOnlyRepository orderSummaryReadOnlyRepository)
@@ -21,8 +20,12 @@ namespace Campaign.Pooling.Handlers.CalculateReactivatedsConsummers
             {
                 var reactivateds = clientsReactivateds.Where(x => x.SellerId == sellerScore.SellerId);
 
-                sellerScore?.UpdateScore(reactivateds.Count() * _pointsToAdd);
-                sellerScore?.UpdateQtyReactivateds((short)reactivateds.Count());
+                var qty = reactivateds.Count();
+
+                if (qty <= 0) return;
+
+                sellerScore.UpdateScore(qty * cmd.Points);
+                sellerScore.UpdateQtyReactivateds((short)qty);
             });
         }
     }

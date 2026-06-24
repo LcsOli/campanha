@@ -27,7 +27,7 @@ namespace Campaign.Shared.DataBaseContext.EntitiesConfigurations
             builder.Property(x => x.ProductId)
                    .HasColumnName("COD_PRODUTO");
 
-            builder.Property(x => x.ClientId)
+            builder.Property(x => x.CustomerId)
                    .HasColumnName("COD_CLIENTE");
         }
     }

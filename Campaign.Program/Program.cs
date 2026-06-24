@@ -1,10 +1,25 @@
-﻿
+﻿/*
+ ATENÇÃO!!!
+    - Só rode a aplicação antes de configurar a classe.
+    - Os dados serão inseridos diretamente no banco em produção
+    - Conferir os arquivos:
+        #SellersToRegister.json
+        #SellersManagersToRegister.json
+        #SuppliersToRegister.json
+
+    - Definir o tipo de usuário que será inserido na propriedade _processType
+        - Tipos:
+            #Seller
+            #SellerManager
+            #Supplier
+*/
+
 using Campaign.API.Orchestrators.RegisterUser;
-using Campaign.Pooling.Commands.CalculateScoreByProduct;
+using Campaign.Pooling.Commands.Consumers.Get;
 using Campaign.Pooling.Configurations.ContainerDI.Handlers;
 using Campaign.Pooling.Configurations.ContainerDI.Orchestrators;
 using Campaign.Pooling.Configurations.ContainerDI.Repositories;
-using Campaign.Pooling.Handlers.CalculateScoreByProduct;
+using Campaign.Pooling.Handlers.CalculateReactivatedsConsummers;
 using Campaign.Pooling.Handlers.SellerScore.GetSellersScore;
 using Campaign.Pooling.Repositories.OrderDetail.ReadOnly;
 using Campaign.Processor.API.Commands.Summaries.Create;
@@ -24,43 +39,74 @@ services.AddUnityOfWork();
 services.AddRepositories();
 services.AddOrchestrators();
 
-
 var serviceProvider = services.BuildServiceProvider();
 var context = serviceProvider.GetService<CampaingContextDb>();
 
-/*
- ATENÇÃO!!!
-    - Só rode a aplicação antes de configurar a classe.
-    - Os dados serão inseridos diretamente no banco em produção
-    - Conferir os arquivos:
-        #SellersToRegister.json
-        #SellersManagersToRegister.json
-        #SuppliersToRegister.json
+using var scope = serviceProvider.CreateScope();
 
-    - Definir o tipo de usuário que será inserido na propriedade _processType
-        - Tipos:
-            #Seller
-            #SellerManager
-            #Supplier
-*/
+var getSellerScoreHandler = scope.ServiceProvider.GetRequiredService<IGetSellerScoreHandler>();
+var calculateReactivatedsConsumersHandler = scope.ServiceProvider.GetRequiredService<ICalculateReactivatedsConsumersHandler>();
 
-//using var scope = serviceProvider.CreateScope();
+var sellerScore = await getSellerScoreHandler.Handle();
 
-//var orderDetailRepository = scope.ServiceProvider.GetRequiredService<IOrderDetailReadOnlyRepository>();
-//var calcProductHandler = scope.ServiceProvider.GetRequiredService<ICalculateScoreByProductHandler>();
-//var getSellerScoreHandler = scope.ServiceProvider.GetRequiredService<IGetSellerScoreHandler>();
+await calculateReactivatedsConsumersHandler.Handle(new CalculateReactivatedsConsumersCommand(202603, sellerScore));
 
-//var sellersScore = await getSellerScoreHandler.Handle();
-//var ordersDetails = await orderDetailRepository.GetByPromotionCode(202601);
 
-//calcProductHandler.Handle(new CalculateScoreByProductCommand(202601, ordersDetails, sellersScore));
 
-//await RegisterSummaries(202603);
 
-async Task RegisterSummaries(int promotionCode)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+async Task RegisterSummaryByConsumersReactivateds(int promotionCode)
 {
-    using var scope = serviceProvider.CreateScope();
+    var orderDetailRepository = scope.ServiceProvider.GetRequiredService<IOrderDetailReadOnlyRepository>();
 
+    var getSellerScoreHandler = scope.ServiceProvider.GetRequiredService<IGetSellerScoreHandler>();
+    var registerSummariesHandler = scope.ServiceProvider.GetRequiredService<IRegisterSellerScoreProductSummaryHandler>();
+
+    var sellersScore = await getSellerScoreHandler.Handle();
+    var ordersDetails = await orderDetailRepository.GetByPromotionCode(promotionCode);
+
+    await registerSummariesHandler.Handle(new RegisterSellerScoreProductSummaryCommand(promotionCode, ordersDetails, sellersScore));
+}
+
+
+async Task RegisterSummaryBySeles(int promotionCode)
+{
     var orderDetailRepository = scope.ServiceProvider.GetRequiredService<IOrderDetailReadOnlyRepository>();
 
     var getSellerScoreHandler = scope.ServiceProvider.GetRequiredService<IGetSellerScoreHandler>();
@@ -75,7 +121,6 @@ async Task RegisterSummaries(int promotionCode)
 
 async Task UserRegister()
 {
-    using var scope = serviceProvider.CreateScope();
     var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnityOfWork>();
     var registerUserHandler = scope.ServiceProvider.GetRequiredService<IRegisterUserOrchestrator>();
 

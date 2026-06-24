@@ -19,7 +19,7 @@ namespace Campaign.Shared.DataBaseContext.Entities
         public DbSet<Product.ProductPromotionSummary> ProductPromotionSummaries { get; private set; }
         public DbSet<Product.ProductPromotionReadDataHistory> ProductPromotionReadDataHistories { get; private set; }
         public DbSet<SellerScoreSummaries.SellerScoreProductsSummary> SellerScoreProductsSummaries { get; private set; }
-        public DbSet<SellerScoreSummaries.SellerScoreClientsSummaries> SellerScoreClientsSummaries { get; private set; }
+        public DbSet<SellerScoreSummaries.SellerScoreClientsSummary> SellerScoreClientsSummaries { get; private set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasDefaultSchema("COMPREFACIL");

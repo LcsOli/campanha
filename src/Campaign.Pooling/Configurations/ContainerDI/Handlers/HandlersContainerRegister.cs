@@ -14,6 +14,7 @@ using Campaign.Pooling.Handlers.Seller.InsertSeller;
 using Campaign.Pooling.Handlers.SellerManager.GetSellers;
 using Campaign.Pooling.Handlers.SellerScore.GetSellersScore;
 using Campaign.Pooling.Handlers.UpdateCurrentRevenueSellerManager;
+using Campaign.Processor.API.Handlers.RegisterSellerScoreClientSummary;
 using Campaign.Processor.API.Handlers.RegisterSellerScoreProductSummary;
 using Campaign.Processor.API.Orchestrators.CalculateScoreByProduct;
 
@@ -37,6 +38,7 @@ namespace Campaign.Pooling.Configurations.ContainerDI.Handlers
             services.AddScoped<ICalculateScoreByProductOrchestrator, CalculateScoreByProductOrchestrator>();
             services.AddScoped<ICalculateRegisteredsConsumersHandler, CalculateRegisteredsConsumersHandler>();
             services.AddScoped<ICalculateReactivatedsConsumersHandler, CalculateReactivatedsConsumersHandler>();
+            services.AddScoped<IRegisterSellerScoreClientSummaryHandler, RegisterSellerScoreClientSummaryHandler>();
             services.AddScoped<IGetProductPromotionReadDataHistoryHandler, GetProductPromotionReadDataHistoryHandler>();
             services.AddScoped<IRegisterSellerScoreProductSummaryHandler, RegisterSellerScoreProductSummaryHandler>();
             services.AddScoped<IUpdateCurrentRevenueSellerManagerScoreHandler, UpdateCurrentRevenueSellerManagerScoreHandler>();

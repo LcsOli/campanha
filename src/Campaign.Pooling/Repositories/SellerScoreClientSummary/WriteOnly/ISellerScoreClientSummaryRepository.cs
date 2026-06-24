@@ -4,7 +4,7 @@ namespace Campaign.Processor.API.Repositories.SellerScoreClientSummary.WriteOnly
 {
     public interface ISellerScoreClientSummaryRepository
     {
-        Task AddRange(List<Entity.SellerScoreClientsSummaries> entities);
-        Task Add(Entity.SellerScoreClientsSummaries entity);
+        Task AddRange(List<Entity.SellerScoreClientsSummary> entities);
+        Task Add(Entity.SellerScoreClientsSummary entity);
     }
 }

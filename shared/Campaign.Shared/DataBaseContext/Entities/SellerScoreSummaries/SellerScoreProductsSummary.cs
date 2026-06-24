@@ -12,7 +12,7 @@
         {
             Points = points;
             SellerId = sellerId;
-            ClientId = clientId;
+            CustomerId = clientId;
             ProductId = productId;
             PromotionCode = promotionCode;
         }
