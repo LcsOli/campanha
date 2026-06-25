@@ -8,14 +8,10 @@ namespace Campaign.Processor.API.Handlers.RegisterSellerScoreClientSummary
 {
     public class RegisterSellerScoreClientSummaryHandler : IRegisterSellerScoreClientSummaryHandler
     {
-        private readonly IUnityOfWork _unityOfWork;
 
         private readonly ISellerScoreClientSummaryRepository _sellerScoreClientSummaryRepository;
-        public RegisterSellerScoreClientSummaryHandler(IUnityOfWork unityOfWork,
-                                                       ISellerScoreClientSummaryRepository sellerScoreClientSummaryRepository)
+        public RegisterSellerScoreClientSummaryHandler(ISellerScoreClientSummaryRepository sellerScoreClientSummaryRepository)
         {
-            _unityOfWork = unityOfWork;
-
             _sellerScoreClientSummaryRepository = sellerScoreClientSummaryRepository;
         }
 
@@ -42,8 +38,6 @@ namespace Campaign.Processor.API.Handlers.RegisterSellerScoreClientSummary
             });
 
             await _sellerScoreClientSummaryRepository.AddRange(summaries);
-
-            await _unityOfWork.SaveAsync();
         }
     }
 }

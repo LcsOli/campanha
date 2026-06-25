@@ -15,11 +15,11 @@
 */
 
 using Campaign.API.Orchestrators.RegisterUser;
-using Campaign.Pooling.Commands.Consumers.Get;
+using Campaign.Pooling.Commands.CalculateScoreByProduct;
 using Campaign.Pooling.Configurations.ContainerDI.Handlers;
 using Campaign.Pooling.Configurations.ContainerDI.Orchestrators;
 using Campaign.Pooling.Configurations.ContainerDI.Repositories;
-using Campaign.Pooling.Handlers.CalculateReactivatedsConsummers;
+using Campaign.Pooling.Handlers.CalculateScoreByProduct;
 using Campaign.Pooling.Handlers.SellerScore.GetSellersScore;
 using Campaign.Pooling.Repositories.OrderDetail.ReadOnly;
 using Campaign.Pooling.Repositories.OrderSummary.ReadOnly;
@@ -34,7 +34,6 @@ using Campaign.Shared.UnitOfWorkDI;
 using Microsoft.Extensions.DependencyInjection;
 using StackTraceInternalLibrary.Client;
 using StackTraceInternalLibrary.ContainerDI;
-using StackTraceInternalLibrary.Service;
 
 var services = new ServiceCollection();
 services.AddDataBase();
@@ -53,20 +52,7 @@ var context = serviceProvider.GetService<CampaingContextDb>();
 
 using var scope = serviceProvider.CreateScope();
 
-scope.ServiceProvider.GetRequiredService<IRegisterTraceService>();
-
-
-var getSellerScoreHandler = scope.ServiceProvider.GetRequiredService<IGetSellerScoreHandler>();
-var orderSummaryReadOnlyRepository = scope.ServiceProvider.GetRequiredService<IOrderSummaryReadOnlyRepository>();
-var registerSellerScoreClientSummaryHandler = scope.ServiceProvider.GetRequiredService<IRegisterSellerScoreClientSummaryHandler>();
-
-
-var promotionCode = 202601;
-
-var sellerScore = await getSellerScoreHandler.Handle();
-var reactivateds = await orderSummaryReadOnlyRepository.GetCustomersReactivatedsBySelller(promotionCode);
-
-await registerSellerScoreClientSummaryHandler.Handle(new RegisterReactivatedsCommand(promotionCode, sellerScore, reactivateds));
+await RegisterReactivatedsSummary(202603);
 
 
 
@@ -97,18 +83,33 @@ await registerSellerScoreClientSummaryHandler.Handle(new RegisterReactivatedsCom
 
 
 
+async Task CalculateScoreByProduct()
+{
+    var getSellerScoreHandler = scope.ServiceProvider.GetRequiredService<IGetSellerScoreHandler>();
+    var orderDetailReadOnlyRepository = scope.ServiceProvider.GetRequiredService<IOrderDetailReadOnlyRepository>();
+    var calculateScoreByProductHandler = scope.ServiceProvider.GetRequiredService<ICalculateScoreByProductHandler>();
 
+    var promotionCode = 202603;
 
+    var sellersScore = await getSellerScoreHandler.Handle();
+    var ordersDetails = await orderDetailReadOnlyRepository.GetByPromotionCode(promotionCode);
 
+    calculateScoreByProductHandler.Handle(new CalculateScoreByProductCommand(promotionCode, ordersDetails, sellersScore));
+}
 
+async Task RegisterReactivatedsSummary(int promotionCode)
+{
+    var getSellerScoreHandler = scope.ServiceProvider.GetRequiredService<IGetSellerScoreHandler>();
+    var orderSummaryReadOnlyRepository = scope.ServiceProvider.GetRequiredService<IOrderSummaryReadOnlyRepository>();
+    var registerSellerScoreClientSummaryHandler = scope.ServiceProvider.GetRequiredService<IRegisterSellerScoreClientSummaryHandler>();
 
+    var sellerScore = await getSellerScoreHandler.Handle();
+    var reactivateds = await orderSummaryReadOnlyRepository.GetCustomersReactivatedsBySelller(promotionCode);
 
+    await registerSellerScoreClientSummaryHandler.Handle(new RegisterReactivatedsCommand(promotionCode, sellerScore, reactivateds));
+}
 
-
-
-
-
-async Task RegisterSummaryByConsumersReactivateds(int promotionCode)
+async Task RegisterProductSummary(int promotionCode)
 {
     var orderDetailRepository = scope.ServiceProvider.GetRequiredService<IOrderDetailReadOnlyRepository>();
 
@@ -134,7 +135,6 @@ async Task RegisterSummaryBySeles(int promotionCode)
 
     await registerSummariesHandler.Handle(new RegisterSellerScoreProductSummaryCommand(promotionCode, ordersDetails, sellersScore));
 }
-
 
 async Task UserRegister()
 {

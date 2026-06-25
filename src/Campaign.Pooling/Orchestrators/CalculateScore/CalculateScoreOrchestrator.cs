@@ -1,14 +1,14 @@
 ﻿using Campaign.Pooling.Commands.Calculate;
 using Campaign.Pooling.Commands.Consumers.Get;
-using Campaign.Pooling.Commands.SellerManager.Update;
 using Campaign.Pooling.Handlers.CalculateCoupons;
-using Campaign.Pooling.Handlers.CalculateReactivatedsConsummers;
-using Campaign.Pooling.Handlers.CalculateRegisteredsConsummers;
+using Campaign.Pooling.Commands.SellerManager.Update;
 using Campaign.Pooling.Handlers.CalculateRevenueTarget;
 using Campaign.Pooling.Handlers.SellerScore.GetSellersScore;
+using Campaign.Pooling.Handlers.CalculateRegisteredsConsummers;
+using Campaign.Pooling.Handlers.CalculateReactivatedsConsummers;
 using Campaign.Pooling.Handlers.UpdateCurrentRevenueSellerManager;
-using Campaign.Processor.API.Orchestrators.CalculateScoreByCustomerSalesEvent;
 using Campaign.Processor.API.Orchestrators.CalculateScoreByProduct;
+using Campaign.Processor.API.Orchestrators.CalculateScoreByCustomerSalesEvent;
 
 namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
 {
@@ -48,7 +48,6 @@ namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
             _calculateRegisteredsConsumersHandler = calculateRegisteredsConsumersHandler;
             _calculateReactivatedsConsumersHandler = calculateReactivatedsConsumersHandler;
             _updateCurrentRevenueSellerManagerHandler = updateCurrentRevenueSellerManagerHandler;
-
         }
 
         public async Task Execute(int promotionCode)
