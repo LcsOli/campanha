@@ -1,5 +1,6 @@
 ﻿using Campaign.Shared.Enums.SellerScoreConsumerType;
 using Campaign.Processor.API.Commands.Summaries.Create;
+using Campaign.Shared.DataBaseContext.Entities.UnityOfWork;
 using Campaign.Shared.DataBaseContext.Entities.SellerScoreSummaries;
 using Campaign.Processor.API.Repositories.SellerScoreClientSummary.WriteOnly;
 
@@ -7,9 +8,14 @@ namespace Campaign.Processor.API.Handlers.RegisterSellerScoreClientSummary
 {
     public class RegisterSellerScoreClientSummaryHandler : IRegisterSellerScoreClientSummaryHandler
     {
+        private readonly IUnityOfWork _unityOfWork;
+
         private readonly ISellerScoreClientSummaryRepository _sellerScoreClientSummaryRepository;
-        public RegisterSellerScoreClientSummaryHandler(ISellerScoreClientSummaryRepository sellerScoreClientSummaryRepository)
+        public RegisterSellerScoreClientSummaryHandler(IUnityOfWork unityOfWork,
+                                                       ISellerScoreClientSummaryRepository sellerScoreClientSummaryRepository)
         {
+            _unityOfWork = unityOfWork;
+
             _sellerScoreClientSummaryRepository = sellerScoreClientSummaryRepository;
         }
 
@@ -36,6 +42,8 @@ namespace Campaign.Processor.API.Handlers.RegisterSellerScoreClientSummary
             });
 
             await _sellerScoreClientSummaryRepository.AddRange(summaries);
+
+            await _unityOfWork.SaveAsync();
         }
     }
 }

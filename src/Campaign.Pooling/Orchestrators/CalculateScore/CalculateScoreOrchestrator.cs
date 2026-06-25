@@ -1,12 +1,13 @@
 ﻿using Campaign.Pooling.Commands.Calculate;
 using Campaign.Pooling.Commands.Consumers.Get;
-using Campaign.Pooling.Handlers.CalculateCoupons;
 using Campaign.Pooling.Commands.SellerManager.Update;
+using Campaign.Pooling.Handlers.CalculateCoupons;
+using Campaign.Pooling.Handlers.CalculateReactivatedsConsummers;
+using Campaign.Pooling.Handlers.CalculateRegisteredsConsummers;
 using Campaign.Pooling.Handlers.CalculateRevenueTarget;
 using Campaign.Pooling.Handlers.SellerScore.GetSellersScore;
-using Campaign.Pooling.Handlers.CalculateRegisteredsConsummers;
-using Campaign.Pooling.Handlers.CalculateReactivatedsConsummers;
 using Campaign.Pooling.Handlers.UpdateCurrentRevenueSellerManager;
+using Campaign.Processor.API.Orchestrators.CalculateScoreByCustomerSalesEvent;
 using Campaign.Processor.API.Orchestrators.CalculateScoreByProduct;
 
 namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
@@ -16,6 +17,7 @@ namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
         private readonly ILogger<CalculateScoreOrchestrator> _logger;
 
         private readonly ICalculateScoreByProductOrchestrator _calculateScoreByProductOrchestrator;
+        private readonly ICalculateScoreByCustomerSalesEventOrchestrator _calculateScoreByCustomerSalesEventOrchestrator;
 
         private readonly IGetSellerScoreHandler _getSellerScoreHandler;
         private readonly ICalculateRevenueHandler _calculateRevenueHandler;
@@ -32,13 +34,17 @@ namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
                                           ICalculateScoreByProductOrchestrator calculateScoreByProductOrchestrator,
                                           ICalculateRegisteredsConsumersHandler calculateRegisteredsConsumersHandler,
                                           ICalculateReactivatedsConsumersHandler calculateReactivatedsConsumersHandler,
-                                          IUpdateCurrentRevenueSellerManagerScoreHandler updateCurrentRevenueSellerManagerHandler)
+                                          IUpdateCurrentRevenueSellerManagerScoreHandler updateCurrentRevenueSellerManagerHandler,
+                                          ICalculateScoreByCustomerSalesEventOrchestrator calculateScoreByCustomerSalesEventOrchestrator)
         {
             _logger = logger;
+
+            _calculateScoreByProductOrchestrator = calculateScoreByProductOrchestrator;
+            _calculateScoreByCustomerSalesEventOrchestrator = calculateScoreByCustomerSalesEventOrchestrator;
+
             _getSellerScoreHandler = getSellerScoreHandler;
             _calculateCouponsHandler = calculateCouponsHandler;
             _calculateRevenueHandler = calculateRevenueHandler;
-            _calculateScoreByProductOrchestrator = calculateScoreByProductOrchestrator;
             _calculateRegisteredsConsumersHandler = calculateRegisteredsConsumersHandler;
             _calculateReactivatedsConsumersHandler = calculateReactivatedsConsumersHandler;
             _updateCurrentRevenueSellerManagerHandler = updateCurrentRevenueSellerManagerHandler;
@@ -54,7 +60,7 @@ namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
             await _calculateScoreByProductOrchestrator.Execute(promotionCode, sellersScore);
 
             _logger.LogCritical("Calculating reactivateds cosumers.");
-            await _calculateReactivatedsConsumersHandler.Handle(new CalculateReactivatedsConsumersCommand(promotionCode, sellersScore));
+            await _calculateScoreByCustomerSalesEventOrchestrator.Execute(promotionCode, sellersScore);
 
             _logger.LogWarning("Calculating registereds cosumers.");
             await _calculateRegisteredsConsumersHandler.Handle(new CalculateRegisteredsConsumersCommand(promotionCode, sellersScore));
@@ -64,7 +70,7 @@ namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
 
             _logger.LogWarning("Calculating revenue of month.");
             await _calculateRevenueHandler.Handle(new CalculateRevenueMonthCommand(promotionCode, sellersScore));
-            
+
             _logger.LogWarning("Calculating seller manager revenue.");
             await _updateCurrentRevenueSellerManagerHandler.Handle(new UpdateCurrentRevenueSellerManagerCommand(sellersScore));
 

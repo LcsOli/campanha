@@ -30,8 +30,8 @@ namespace Campaign.Processor.API.Orchestrators.CalculateScoreByProduct
                                                                                       OrdersDetails: ordersDetails));
 
             await _registerSellerScoreProductSummariesHandler.Handle(new RegisterSellerScoreProductSummaryCommand(PromotionCode: promotionCode,
-                                                                                                                    SellersScores: SellersScores,
-                                                                                                                    OrdersDetails: ordersDetails));
+                                                                                                                  SellersScores: SellersScores,
+                                                                                                                  OrdersDetails: ordersDetails));
         }
     }
 }

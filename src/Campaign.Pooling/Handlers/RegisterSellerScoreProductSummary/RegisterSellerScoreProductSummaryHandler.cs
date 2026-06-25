@@ -37,7 +37,7 @@ namespace Campaign.Processor.API.Handlers.RegisterSellerScoreProductSummary
                 clients.ForEach(client =>
                 {
                     var sellerersScoresProductsSummaries = client.Orders.Select(o => new SellerScoreProductsSummary(productId: o.ProductId,
-                                                                                                                    clientId: client.CustomerId,
+                                                                                                                    customerId: client.CustomerId,
                                                                                                                     sellerId: sellerScore.SellerId,
                                                                                                                     promotionCode: cmd.PromotionCode,
                                                                                                                     points: o.ProductPromotionPoints!.Value));

@@ -5,15 +5,15 @@
         public int ProductId { get; private set; } = default!;
 
         public SellerScoreProductsSummary(int sellerId,
-                                          int clientId,
                                           int productId,
+                                          int customerId,
                                           decimal points,
                                           int promotionCode)
         {
             Points = points;
             SellerId = sellerId;
-            CustomerId = clientId;
             ProductId = productId;
+            CustomerId = customerId;
             PromotionCode = promotionCode;
         }
     }

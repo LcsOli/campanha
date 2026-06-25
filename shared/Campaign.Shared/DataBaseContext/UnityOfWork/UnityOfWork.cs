@@ -1,5 +1,6 @@
 ﻿using Campaign.Shared.Exceptions;
 using Microsoft.EntityFrameworkCore.Storage;
+using StackTraceInternalLibrary.Service;
 using System.Net;
 
 namespace Campaign.Shared.DataBaseContext.Entities.UnityOfWork
@@ -9,12 +10,12 @@ namespace Campaign.Shared.DataBaseContext.Entities.UnityOfWork
         private IDbContextTransaction? _transaction;
         private readonly CampaingContextDb _context;
         
-      //  private readonly IRegisterTraceService _stackTraceService;
+        private readonly IRegisterTraceService _stackTraceService;
 
-        public UnityOfWork(CampaingContextDb context/*, IRegisterTraceService stackTraceService*/)
+        public UnityOfWork(CampaingContextDb context, IRegisterTraceService stackTraceService)
         {
             _context = context;
-            //_stackTraceService = stackTraceService;
+            _stackTraceService = stackTraceService;
         }
 
         public async Task SaveAsync()
@@ -44,7 +45,7 @@ namespace Campaign.Shared.DataBaseContext.Entities.UnityOfWork
             {
                 await _transaction!.RollbackAsync();
 
-                //_stackTraceService.RegisterTrace(ex);
+                _stackTraceService.RegisterTrace(ex);
 
                 throw new CompaignException(HttpStatusCode.InternalServerError, "Ocorreu um erro ao persistir uma entidade no banco.");
             }

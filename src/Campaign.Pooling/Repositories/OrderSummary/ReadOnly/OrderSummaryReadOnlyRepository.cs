@@ -1,7 +1,7 @@
-﻿using Campaign.Pooling.DTO.Response.Seller;
-using Campaign.Processor.API.DTO.Response.Seller;
+﻿using Microsoft.EntityFrameworkCore;
+using Campaign.Pooling.DTO.Response.Seller;
 using Campaign.Shared.DataBaseContext.Entities;
-using Microsoft.EntityFrameworkCore;
+using Campaign.Processor.API.DTO.Response.Seller;
 
 namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
 {
@@ -20,7 +20,7 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
             var query = _context.Database.SqlQuery<ReactivatedsConsumerResponse>($@"
                         SELECT
                             c.codusur AS SellerId,
-                            c.codcli AS ClientId,
+                            c.codcli AS CustomerId,
                             hist.dt_positivacao AS RegisteredIn,
                             hist.dt_reativacao_periodo_campanha AS ReactivatedIn
                         FROM 
@@ -66,14 +66,7 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
                                         cc.codcli
                             ) hist ON hist.codcli = c.codcli
                         WHERE
-
-                            
-                            crs.rca_id = 146 -- TODO - REMOVER ESTA LINHA AO FINALIZAR TESTES
-
-
-
-
-                            AND u.tipovend = 'R'
+                            u.tipovend = 'R'
                             AND c.dtcancel IS NULL
                             AND p.codpromocao = {promotionCode}
                             AND client.dtcadastro < TRUNC(pcgeral.dtinicio, 'YEAR')

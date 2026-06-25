@@ -22,7 +22,9 @@ using Campaign.Pooling.Configurations.ContainerDI.Repositories;
 using Campaign.Pooling.Handlers.CalculateReactivatedsConsummers;
 using Campaign.Pooling.Handlers.SellerScore.GetSellersScore;
 using Campaign.Pooling.Repositories.OrderDetail.ReadOnly;
+using Campaign.Pooling.Repositories.OrderSummary.ReadOnly;
 using Campaign.Processor.API.Commands.Summaries.Create;
+using Campaign.Processor.API.Handlers.RegisterSellerScoreClientSummary;
 using Campaign.Processor.API.Handlers.RegisterSellerScoreProductSummary;
 using Campaign.Program.Register.User;
 using Campaign.Shared.DataBaseContext.Entities;
@@ -30,6 +32,9 @@ using Campaign.Shared.DataBaseContext.Entities.UnityOfWork;
 using Campaign.Shared.DataBaseContextDI;
 using Campaign.Shared.UnitOfWorkDI;
 using Microsoft.Extensions.DependencyInjection;
+using StackTraceInternalLibrary.Client;
+using StackTraceInternalLibrary.ContainerDI;
+using StackTraceInternalLibrary.Service;
 
 var services = new ServiceCollection();
 services.AddDataBase();
@@ -39,17 +44,29 @@ services.AddUnityOfWork();
 services.AddRepositories();
 services.AddOrchestrators();
 
+services.AddHttpClient<ILogClient, LogClient>();
+services.AddHttpContextAccessor();
+services.AddStackTraceServices();
+
 var serviceProvider = services.BuildServiceProvider();
 var context = serviceProvider.GetService<CampaingContextDb>();
 
 using var scope = serviceProvider.CreateScope();
 
+scope.ServiceProvider.GetRequiredService<IRegisterTraceService>();
+
+
 var getSellerScoreHandler = scope.ServiceProvider.GetRequiredService<IGetSellerScoreHandler>();
-var calculateReactivatedsConsumersHandler = scope.ServiceProvider.GetRequiredService<ICalculateReactivatedsConsumersHandler>();
+var orderSummaryReadOnlyRepository = scope.ServiceProvider.GetRequiredService<IOrderSummaryReadOnlyRepository>();
+var registerSellerScoreClientSummaryHandler = scope.ServiceProvider.GetRequiredService<IRegisterSellerScoreClientSummaryHandler>();
+
+
+var promotionCode = 202601;
 
 var sellerScore = await getSellerScoreHandler.Handle();
+var reactivateds = await orderSummaryReadOnlyRepository.GetCustomersReactivatedsBySelller(promotionCode);
 
-await calculateReactivatedsConsumersHandler.Handle(new CalculateReactivatedsConsumersCommand(202603, sellerScore));
+await registerSellerScoreClientSummaryHandler.Handle(new RegisterReactivatedsCommand(promotionCode, sellerScore, reactivateds));
 
 
 
