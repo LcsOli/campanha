@@ -6,6 +6,6 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
     public interface IOrderSummaryReadOnlyRepository
     {
         Task<List<ReactivatedsConsumerResponse>> GetCustomersReactivatedsBySelller(int promotionCode);
-        Task<List<SellersConsumersResponse>> GetCustomersRegisteredsBySelller(int promotionCode);
+        Task<List<RegisteredsConsumerResponse>> GetCustomersRegisteredsBySelller(int promotionCode);
     }
 }

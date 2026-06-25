@@ -5,6 +5,6 @@ using Entity = Campaign.Shared.DataBaseContext.Entities.Seller;
 namespace Campaign.Pooling.Commands.Consumers.Get
 {
     public record CalculateReactivatedsConsumersCommand(int PromotionCode,
-                                                        List<ReactivatedsConsumerResponse> ReactivatedsConsumers,
-                                                        List<Entity.SellerScore> SellersScores): CustomerSalesEventPointsCommand;
+                                                        List<Entity.SellerScore> SellersScores,
+                                                        List<ReactivatedsConsumerResponse> ReactivatedsConsumers) : CustomerSalesEventPointsCommand;
 }

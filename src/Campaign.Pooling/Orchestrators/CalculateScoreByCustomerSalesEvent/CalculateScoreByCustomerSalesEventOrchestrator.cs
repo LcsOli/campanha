@@ -1,7 +1,8 @@
 ﻿using Campaign.Pooling.Commands.Consumers.Get;
+using Campaign.Processor.API.Commands.Consumers.Get;
 using Campaign.Processor.API.Commands.Summaries.Create;
 using Campaign.Pooling.Repositories.OrderSummary.ReadOnly;
-using Entity = Campaign.Shared.DataBaseContext.Entities.Seller;
+using Campaign.Pooling.Handlers.CalculateRegisteredsConsummers;
 using Campaign.Pooling.Handlers.CalculateReactivatedsConsummers;
 using Campaign.Processor.API.Handlers.RegisterSellerScoreClientSummary;
 
@@ -16,22 +17,35 @@ namespace Campaign.Processor.API.Orchestrators.CalculateScoreByCustomerSalesEven
         private readonly ICalculateReactivatedsConsumersHandler _calculateReactivatedsConsumersHandler;
         private readonly IRegisterSellerScoreClientSummaryHandler _registerSellerScoreClientSummaryHandler;
 
+        private readonly ICalculateRegisteredsConsumersHandler _calculateRegisteredsConsumersHandler;
+
         public CalculateScoreByCustomerSalesEventOrchestrator(IOrderSummaryReadOnlyRepository orderSummaryReadOnlyRepository,
+                                                              ICalculateRegisteredsConsumersHandler calculateRegisteredsConsumersHandler,
                                                               ICalculateReactivatedsConsumersHandler calculateReactivatedsConsumersHandler,
                                                               IRegisterSellerScoreClientSummaryHandler registerSellerScoreClientSummaryHandler)
         {
             _orderSummaryReadOnlyRepository = orderSummaryReadOnlyRepository;
+
+            _calculateRegisteredsConsumersHandler = calculateRegisteredsConsumersHandler;
             _calculateReactivatedsConsumersHandler = calculateReactivatedsConsumersHandler;
             _registerSellerScoreClientSummaryHandler = registerSellerScoreClientSummaryHandler;
         }
 
-        public async Task Execute(int promotionCode, List<Entity.SellerScore> SellersScores)
+        public async Task Execute(CalculateScoreCustomerReactivatedsSalesEventCommand cmd)
         {
-            var reactivateds = await _orderSummaryReadOnlyRepository.GetCustomersReactivatedsBySelller(promotionCode);
+            var reactivateds = await _orderSummaryReadOnlyRepository.GetCustomersReactivatedsBySelller(cmd.PromotionCode);
 
-            await _calculateReactivatedsConsumersHandler.Handle(new CalculateReactivatedsConsumersCommand(promotionCode, reactivateds, SellersScores));
+            await _calculateReactivatedsConsumersHandler.Handle(new CalculateReactivatedsConsumersCommand(cmd.PromotionCode, cmd.SellersScores, reactivateds));
 
-            await _registerSellerScoreClientSummaryHandler.Handle(new RegisterReactivatedsCommand(promotionCode, SellersScores, reactivateds));
+            await _registerSellerScoreClientSummaryHandler.Handle(new RegisterReactivatedsCommand(cmd.PromotionCode, cmd.SellersScores, reactivateds));
+        }
+        public async Task Execute(CalculateScoreCustomerRegisteredsSalesEventCommand cmd)
+        {
+            var registereds = await _orderSummaryReadOnlyRepository.GetCustomersRegisteredsBySelller(cmd.PromotionCode);
+
+            await _calculateRegisteredsConsumersHandler.Handle(new CalculateRegisteredsConsumersCommand(cmd.PromotionCode, cmd.SellersScores));
+
+            await _registerSellerScoreClientSummaryHandler.Handle(new RegisterRegisteredsCommand(cmd.PromotionCode, cmd.SellersScores, registereds));
         }
     }
 }

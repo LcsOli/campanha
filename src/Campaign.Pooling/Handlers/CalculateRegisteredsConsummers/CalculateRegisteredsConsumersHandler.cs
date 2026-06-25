@@ -21,8 +21,8 @@ namespace Campaign.Pooling.Handlers.CalculateRegisteredsConsummers
             {
                 var sellerScoreToUpdate = cmd.SellersScores.FirstOrDefault(sellerScore => sellerScore.SellerId == sellerQuantityRegistereds.SellerId);
 
-                //sellerScoreToUpdate?.UpdateScore(sellerQuantityRegistereds.QtyConsumers * _pointsToAdd);
-                //sellerScoreToUpdate?.UpdateQtyRegistereds((short)sellerQuantityRegistereds.QtyConsumers);
+                sellerScoreToUpdate?.UpdateScore(sellerQuantityRegistereds.QtyConsumers * _pointsToAdd);
+                sellerScoreToUpdate?.UpdateQtyRegistereds((short)sellerQuantityRegistereds.QtyConsumers);
             });
         }
     }

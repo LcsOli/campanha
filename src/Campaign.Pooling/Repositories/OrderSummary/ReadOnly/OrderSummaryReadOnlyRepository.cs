@@ -84,17 +84,13 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
             return await query.ToListAsync();
         }
 
-        public async Task<List<SellersConsumersResponse>> GetCustomersRegisteredsBySelller(int promotionCode)
+        public async Task<List<RegisteredsConsumerResponse>> GetCustomersRegisteredsBySelller(int promotionCode)
         {
-            var query = _context.Database.SqlQuery<SellersConsumersResponse>($"""
-                SELECT
-                    x.SellerId,
-                    COUNT(x.codcli) AS QtyConsumers
-                FROM
-                (
+            var query = _context.Database.SqlQuery<RegisteredsConsumerResponse>($"""
                     SELECT
-                        c.codusur AS SellerId,
-                        c.codcli
+                        c.codcli,
+                        c.codusur AS SellerId
+                        hist.primeira_compra AS RegisteredIn,
                     FROM 
                 		cf_campanha_rca_score crs
                 		JOIN pcpedc c ON c.codusur = crs.rca_id
@@ -122,9 +118,6 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
                     GROUP BY
                         c.codusur,
                         c.codcli
-                ) x
-                GROUP BY
-                    x.SellerId
                 """);
 
             return await query.ToListAsync();

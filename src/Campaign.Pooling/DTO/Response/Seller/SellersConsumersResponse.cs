@@ -3,5 +3,5 @@
     public record SellersConsumersResponse(int SellerId, 
                                            int CustomerId, 
                                            DateTime RegisteredIn, 
-                                           DateTime ReactivatedIn);
+                                           DateTime? ReactivatedIn);
 }

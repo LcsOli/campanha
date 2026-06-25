@@ -5,7 +5,7 @@ namespace Campaign.Shared.DataBaseContext.Entities.SellerScoreSummaries
     public class SellerScoreClientsSummary : SellerScoreSummary
     {
         public DateTime RegisteredIn { get; private set; }
-        public DateTime ReactivatedIn { get; private set; }
+        public DateTime? ReactivatedIn { get; private set; }
         public CustomerSalesEventType CustomerSalesEventType { get; private set; }
 
         public SellerScoreClientsSummary(int sellerId,
@@ -13,7 +13,7 @@ namespace Campaign.Shared.DataBaseContext.Entities.SellerScoreSummaries
                                            decimal points,
                                            int promotionCode,
                                            DateTime registeredIn,
-                                           DateTime reactivatedIn,
+                                           DateTime? reactivatedIn,
                                            CustomerSalesEventType customerSalesEventType)
         {
             Points = points;

@@ -9,6 +9,7 @@ using Campaign.Pooling.Handlers.CalculateReactivatedsConsummers;
 using Campaign.Pooling.Handlers.UpdateCurrentRevenueSellerManager;
 using Campaign.Processor.API.Orchestrators.CalculateScoreByProduct;
 using Campaign.Processor.API.Orchestrators.CalculateScoreByCustomerSalesEvent;
+using Campaign.Processor.API.Commands.Consumers.Get;
 
 namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
 {
@@ -59,10 +60,10 @@ namespace Campaign.Pooling.Orchestrators.UpdateSellerScore
             await _calculateScoreByProductOrchestrator.Execute(promotionCode, sellersScore);
 
             _logger.LogCritical("Calculating reactivateds cosumers.");
-            await _calculateScoreByCustomerSalesEventOrchestrator.Execute(promotionCode, sellersScore);
+            await _calculateScoreByCustomerSalesEventOrchestrator.Execute(new CalculateScoreCustomerReactivatedsSalesEventCommand(promotionCode, sellersScore));
 
             _logger.LogWarning("Calculating registereds cosumers.");
-            await _calculateRegisteredsConsumersHandler.Handle(new CalculateRegisteredsConsumersCommand(promotionCode, sellersScore));
+            await _calculateScoreByCustomerSalesEventOrchestrator.Execute(new CalculateScoreCustomerRegisteredsSalesEventCommand(promotionCode, sellersScore));
 
             _logger.LogWarning("Calculating revenue.");
             await _calculateRevenueHandler.Handle(new CalculateRevenueCommand(promotionCode, sellersScore));
