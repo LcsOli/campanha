@@ -53,7 +53,7 @@ namespace Campaign.Program.SellerScore
             var orderSummaryReadOnlyRepository = new OrderSummaryReadOnlyRepository(_context);
 
             //var calculateScoreByProductHandler = new CalculateScoreByProductHandler(orderDetailReadOnlyRepository);
-            var calculateRegisteredsConsumersHandler = new CalculateRegisteredsConsumersHandler(orderSummaryReadOnlyRepository);
+            //var calculateRegisteredsConsumersHandler = new CalculateRegisteredsConsumersHandler(orderSummaryReadOnlyRepository);
             //var calculateReactivatedsConsumersHandler = new CalculateReactivatedsConsumersHandler(orderSummaryReadOnlyRepository);
 
             foreach (var promotionCode in promotionsCodes)

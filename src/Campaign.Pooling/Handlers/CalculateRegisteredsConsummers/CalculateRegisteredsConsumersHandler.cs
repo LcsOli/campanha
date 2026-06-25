@@ -1,28 +1,21 @@
 ﻿using Campaign.Pooling.Commands.Consumers.Get;
-using Campaign.Pooling.Repositories.OrderSummary.ReadOnly;
 
 namespace Campaign.Pooling.Handlers.CalculateRegisteredsConsummers
 {
     public class CalculateRegisteredsConsumersHandler : ICalculateRegisteredsConsumersHandler
     {
-        private readonly int _pointsToAdd = 1_000;
-
-        private readonly IOrderSummaryReadOnlyRepository _orderSummaryReadOnlyRepository;
-        public CalculateRegisteredsConsumersHandler(IOrderSummaryReadOnlyRepository orderSummaryReadOnlyRepository)
+        public void Handle(CalculateRegisteredsConsumersCommand cmd)
         {
-            _orderSummaryReadOnlyRepository = orderSummaryReadOnlyRepository;
-        }
-
-        public async Task Handle(CalculateRegisteredsConsumersCommand cmd)
-        {
-            var sellersQuantityReactivateds = await _orderSummaryReadOnlyRepository.GetCustomersRegisteredsBySelller(cmd.PromotionCode);
-
-            sellersQuantityReactivateds.ForEach(sellerQuantityRegistereds =>
+            cmd.SellersScores.ForEach(sellerScore =>
             {
-                var sellerScoreToUpdate = cmd.SellersScores.FirstOrDefault(sellerScore => sellerScore.SellerId == sellerQuantityRegistereds.SellerId);
+                var registereds = cmd.RegisteredsConsumers.Where(x => x.SellerId == sellerScore.SellerId);
 
-                sellerScoreToUpdate?.UpdateScore(sellerQuantityRegistereds.QtyConsumers * _pointsToAdd);
-                sellerScoreToUpdate?.UpdateQtyRegistereds((short)sellerQuantityRegistereds.QtyConsumers);
+                var qty = registereds.Count();
+
+                if (qty <= 0) return;
+
+                sellerScore.UpdateScore(qty * cmd.Points);
+                sellerScore.UpdateQtyRegistereds((short)qty);
             });
         }
     }

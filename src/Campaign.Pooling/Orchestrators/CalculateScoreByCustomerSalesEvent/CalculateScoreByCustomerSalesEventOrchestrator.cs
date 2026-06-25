@@ -35,15 +35,16 @@ namespace Campaign.Processor.API.Orchestrators.CalculateScoreByCustomerSalesEven
         {
             var reactivateds = await _orderSummaryReadOnlyRepository.GetCustomersReactivatedsBySelller(cmd.PromotionCode);
 
-            await _calculateReactivatedsConsumersHandler.Handle(new CalculateReactivatedsConsumersCommand(cmd.PromotionCode, cmd.SellersScores, reactivateds));
+            _calculateReactivatedsConsumersHandler.Handle(new CalculateReactivatedsConsumersCommand(cmd.PromotionCode, cmd.SellersScores, reactivateds));
 
             await _registerSellerScoreClientSummaryHandler.Handle(new RegisterReactivatedsCommand(cmd.PromotionCode, cmd.SellersScores, reactivateds));
         }
+
         public async Task Execute(CalculateScoreCustomerRegisteredsSalesEventCommand cmd)
         {
             var registereds = await _orderSummaryReadOnlyRepository.GetCustomersRegisteredsBySelller(cmd.PromotionCode);
 
-            await _calculateRegisteredsConsumersHandler.Handle(new CalculateRegisteredsConsumersCommand(cmd.PromotionCode, cmd.SellersScores));
+            _calculateRegisteredsConsumersHandler.Handle(new CalculateRegisteredsConsumersCommand(cmd.PromotionCode, cmd.SellersScores, registereds));
 
             await _registerSellerScoreClientSummaryHandler.Handle(new RegisterRegisteredsCommand(cmd.PromotionCode, cmd.SellersScores, registereds));
         }

@@ -9,18 +9,33 @@ namespace Campaign.Shared.DataBaseContext.Entities.SellerScoreSummaries
         public CustomerSalesEventType CustomerSalesEventType { get; private set; }
 
         public SellerScoreClientsSummary(int sellerId,
-                                           int customerId,
-                                           decimal points,
-                                           int promotionCode,
-                                           DateTime registeredIn,
-                                           DateTime? reactivatedIn,
-                                           CustomerSalesEventType customerSalesEventType)
+                                         int customerId,
+                                         decimal points,
+                                         int promotionCode,
+                                         DateTime registeredIn,
+                                         DateTime? reactivatedIn,
+                                         CustomerSalesEventType customerSalesEventType)
         {
             Points = points;
             SellerId = sellerId;
             CustomerId = customerId;
             RegisteredIn = registeredIn;
             ReactivatedIn = reactivatedIn;
+            PromotionCode = promotionCode;
+            CustomerSalesEventType = customerSalesEventType;
+        }
+
+        public SellerScoreClientsSummary(int sellerId,
+                                         int customerId,
+                                         decimal points,
+                                         int promotionCode,
+                                         DateTime registeredIn,
+                                         CustomerSalesEventType customerSalesEventType)
+        {
+            Points = points;
+            SellerId = sellerId;
+            CustomerId = customerId;
+            RegisteredIn = registeredIn;
             PromotionCode = promotionCode;
             CustomerSalesEventType = customerSalesEventType;
         }

@@ -50,12 +50,11 @@ namespace Campaign.Processor.API.Handlers.RegisterSellerScoreClientSummary
                 if (qty <= 0) return;
 
                 summaries.AddRange(registereds.Select(x => new SellerScoreClientsSummary(points: cmd.Points,
-                                                                                          sellerId: x.SellerId,
-                                                                                          customerId: x.CustomerId,
-                                                                                          registeredIn: x.RegisteredIn,
-                                                                                          reactivatedIn: x.ReactivatedIn,
-                                                                                          promotionCode: cmd.PromotionCode,
-                                                                                          customerSalesEventType: CustomerSalesEventType.Registered)));
+                                                                                         sellerId: x.SellerId,
+                                                                                         customerId: x.CustomerId,
+                                                                                         registeredIn: x.RegisteredIn,
+                                                                                         promotionCode: cmd.PromotionCode,
+                                                                                         customerSalesEventType: CustomerSalesEventType.Registered)));
             });
 
             await _sellerScoreClientSummaryRepository.AddRange(summaries);

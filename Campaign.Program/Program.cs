@@ -31,6 +31,7 @@ using Campaign.Shared.DataBaseContext.Entities;
 using Campaign.Shared.DataBaseContext.Entities.UnityOfWork;
 using Campaign.Shared.DataBaseContextDI;
 using Campaign.Shared.UnitOfWorkDI;
+using DocumentFormat.OpenXml.Office.Word;
 using Microsoft.Extensions.DependencyInjection;
 using StackTraceInternalLibrary.Client;
 using StackTraceInternalLibrary.ContainerDI;
@@ -52,48 +53,16 @@ var context = serviceProvider.GetService<CampaingContextDb>();
 
 using var scope = serviceProvider.CreateScope();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-async Task CalculateScoreByProduct()
+async Task RegisterRegisteredsSummary(int promotionCode)
 {
     var getSellerScoreHandler = scope.ServiceProvider.GetRequiredService<IGetSellerScoreHandler>();
-    var orderDetailReadOnlyRepository = scope.ServiceProvider.GetRequiredService<IOrderDetailReadOnlyRepository>();
-    var calculateScoreByProductHandler = scope.ServiceProvider.GetRequiredService<ICalculateScoreByProductHandler>();
+    var orderSummaryReadOnlyRepository = scope.ServiceProvider.GetRequiredService<IOrderSummaryReadOnlyRepository>();
+    var registerSellerScoreClientSummaryHandler = scope.ServiceProvider.GetRequiredService<IRegisterSellerScoreClientSummaryHandler>();
 
-    var promotionCode = 202603;
+    var sellerScore = await getSellerScoreHandler.Handle();
+    var registereds = await orderSummaryReadOnlyRepository.GetCustomersRegisteredsBySelller(promotionCode);
 
-    var sellersScore = await getSellerScoreHandler.Handle();
-    var ordersDetails = await orderDetailReadOnlyRepository.GetByPromotionCode(promotionCode);
-
-    calculateScoreByProductHandler.Handle(new CalculateScoreByProductCommand(promotionCode, ordersDetails, sellersScore));
+    await registerSellerScoreClientSummaryHandler.Handle(new RegisterRegisteredsCommand(promotionCode, sellerScore, registereds));
 }
 
 async Task RegisterReactivatedsSummary(int promotionCode)
@@ -142,4 +111,18 @@ async Task UserRegister()
 
     var registerSeller = new UserRegister(context!, registerUserHandler);
     await registerSeller.Register();
+}
+
+async Task CalculateScoreByProduct()
+{
+    var getSellerScoreHandler = scope.ServiceProvider.GetRequiredService<IGetSellerScoreHandler>();
+    var orderDetailReadOnlyRepository = scope.ServiceProvider.GetRequiredService<IOrderDetailReadOnlyRepository>();
+    var calculateScoreByProductHandler = scope.ServiceProvider.GetRequiredService<ICalculateScoreByProductHandler>();
+
+    var promotionCode = 202603;
+
+    var sellersScore = await getSellerScoreHandler.Handle();
+    var ordersDetails = await orderDetailReadOnlyRepository.GetByPromotionCode(promotionCode);
+
+    calculateScoreByProductHandler.Handle(new CalculateScoreByProductCommand(promotionCode, ordersDetails, sellersScore));
 }

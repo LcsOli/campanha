@@ -88,9 +88,9 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
         {
             var query = _context.Database.SqlQuery<RegisteredsConsumerResponse>($"""
                     SELECT
-                        c.codcli,
-                        c.codusur AS SellerId
-                        hist.primeira_compra AS RegisteredIn,
+                        c.codusur AS SellerId,
+                        c.codcli AS CustomerId,
+                        hist.primeira_compra AS RegisteredIn
                     FROM 
                 		cf_campanha_rca_score crs
                 		JOIN pcpedc c ON c.codusur = crs.rca_id
@@ -117,7 +117,8 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
                         AND hist.primeira_compra <= pc.dtfim
                     GROUP BY
                         c.codusur,
-                        c.codcli
+                        c.codcli,
+                        hist.primeira_compra
                 """);
 
             return await query.ToListAsync();

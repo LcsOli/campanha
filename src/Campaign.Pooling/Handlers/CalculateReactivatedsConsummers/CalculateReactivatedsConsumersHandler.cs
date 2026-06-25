@@ -4,7 +4,7 @@ namespace Campaign.Pooling.Handlers.CalculateReactivatedsConsummers
 {
     public class CalculateReactivatedsConsumersHandler : ICalculateReactivatedsConsumersHandler
     {
-        public async Task Handle(CalculateReactivatedsConsumersCommand cmd)
+        public void Handle(CalculateReactivatedsConsumersCommand cmd)
         {
             cmd.SellersScores.ForEach(sellerScore =>
             {

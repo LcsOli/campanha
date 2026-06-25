@@ -6,7 +6,7 @@ namespace Campaign.Processor.API.DTO.Response.Seller
     {
         public RegisteredsConsumerResponse(int SellerId,
                                            int CustomerId,
-                                           DateTime RegisteredIn) : base(SellerId, CustomerId, RegisteredIn, null)
+                                           DateTime RegisteredIn) : base(SellerId, CustomerId, RegisteredIn)
         { }
     }
 }
