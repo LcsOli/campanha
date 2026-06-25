@@ -52,7 +52,6 @@ var context = serviceProvider.GetService<CampaingContextDb>();
 
 using var scope = serviceProvider.CreateScope();
 
-await RegisterReactivatedsSummary(202603);
 
 
 
