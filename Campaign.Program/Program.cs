@@ -31,7 +31,6 @@ using Campaign.Shared.DataBaseContext.Entities;
 using Campaign.Shared.DataBaseContext.Entities.UnityOfWork;
 using Campaign.Shared.DataBaseContextDI;
 using Campaign.Shared.UnitOfWorkDI;
-using DocumentFormat.OpenXml.Office.Word;
 using Microsoft.Extensions.DependencyInjection;
 using StackTraceInternalLibrary.Client;
 using StackTraceInternalLibrary.ContainerDI;
@@ -78,20 +77,6 @@ async Task RegisterReactivatedsSummary(int promotionCode)
 }
 
 async Task RegisterProductSummary(int promotionCode)
-{
-    var orderDetailRepository = scope.ServiceProvider.GetRequiredService<IOrderDetailReadOnlyRepository>();
-
-    var getSellerScoreHandler = scope.ServiceProvider.GetRequiredService<IGetSellerScoreHandler>();
-    var registerSummariesHandler = scope.ServiceProvider.GetRequiredService<IRegisterSellerScoreProductSummaryHandler>();
-
-    var sellersScore = await getSellerScoreHandler.Handle();
-    var ordersDetails = await orderDetailRepository.GetByPromotionCode(promotionCode);
-
-    await registerSummariesHandler.Handle(new RegisterSellerScoreProductSummaryCommand(promotionCode, ordersDetails, sellersScore));
-}
-
-
-async Task RegisterSummaryBySeles(int promotionCode)
 {
     var orderDetailRepository = scope.ServiceProvider.GetRequiredService<IOrderDetailReadOnlyRepository>();
 

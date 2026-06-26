@@ -2,7 +2,7 @@
 
 namespace Campaign.Processor.API.Repositories.SellerScoreProductsSummary.WriteOnly
 {
-    public interface ISellerScoreProductSummaryRepository
+    public interface ISellerScoreProductSummaryWriteOnlyRepository
     {
         Task AddRange(List<Entity.SellerScoreProductsSummary> entities);
         Task Add(Entity.SellerScoreProductsSummary entity);

@@ -6,9 +6,9 @@ namespace Campaign.Processor.API.Handlers.RegisterSellerScoreProductSummary
 {
     public class RegisterSellerScoreProductSummaryHandler : IRegisterSellerScoreProductSummaryHandler
     {
-        private readonly ISellerScoreProductSummaryRepository _sellerScoreProductSummaryRepository;
+        private readonly ISellerScoreProductSummaryWriteOnlyRepository _sellerScoreProductSummaryRepository;
 
-        public RegisterSellerScoreProductSummaryHandler(ISellerScoreProductSummaryRepository sellerScoreProductSummaryRepository)
+        public RegisterSellerScoreProductSummaryHandler(ISellerScoreProductSummaryWriteOnlyRepository sellerScoreProductSummaryRepository)
         {
             _sellerScoreProductSummaryRepository = sellerScoreProductSummaryRepository;
         }

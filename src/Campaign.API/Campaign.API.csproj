@@ -23,6 +23,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Repositories\Customer\WriteOnly\" />
+    <Folder Include="Repositories\Product\WriteOnly\" />
+    <Folder Include="Repositories\SellerScoreProductsSummary\WriteOnly\" />
     <Folder Include="Repositories\Supplier\SupplierProductSold\WriteOnly\" />
   </ItemGroup>
 

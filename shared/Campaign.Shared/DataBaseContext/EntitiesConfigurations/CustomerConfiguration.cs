@@ -16,6 +16,9 @@ namespace Campaign.Shared.DataBaseContext.Entities.EntitiesConfigurations
 
             builder.Property(c => c.RegisteredAt)
                    .HasColumnName("DTCADASTRO");
+
+            builder.Property(c => c.Name)
+                   .HasColumnName("CLIENTE");
         }
     }
 }
