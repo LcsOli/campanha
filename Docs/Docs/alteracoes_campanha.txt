@@ -1,0 +1,76 @@
+ALTERAÇÕES CAMPANHA
+
+- Data: 29/06/2026
+
+PROBLEMA A SER RESOLVIDO
+	
+PEDIDOS CANCELADOS APÓS CÁLCULO DE PONTOS
+
+	- Atualmente o sistema não garante que vendas canceladas não adicionem pontos para os RCAs no seguinte cenário:
+		- Semana 1:
+			- RCA faz diversas vendas
+		- Semana 2:
+			- Pontuações são calculadas, desconsiderando pedidos cancelados durante o período de início e fim da semana;
+			- Após a pontuação ser calculada, novos pedidos são cancelados;
+			- Os pontos não são ajustados abatendo os pontos de pedidos cancelados.
+	
+
+SOLUÇÃO
+
+- Vamos criar uma coluna a mais na tabela CF_CAMPANHA_RCA_SCORE chamada PONTOS_CANCELADOS
+	- Ao fim do período completo (início e fim do mês) vamos verificar os produtos que foram cancelados.
+	- Levantar todos os pontos que cada produto cancelado vale e adicionar nesta coluna PONTOS_CANCELADOS para que possam ser abatidos da pontuação total da campanha.
+
+PROPOSTA PARA FUTURAS IMPLEMENTAÇÕES
+
+- Gerar resumo de pedios cancelados para que os RCAs possam fazer a conferência.
+
+ATUALIZAÇÃO 
+
+- Data: 30/06/2026
+
+- Dúvidas:
+		- Quando esta coluna será preenchida?
+			R: No final da campanha.
+		- O resumo continuará exibindo os produtos que foram cancelados?
+			R: Sim.
+		- Vamos abater estes pontos de produtos cancelados no final da campanha?
+			R: Sim, vamos abater no final da campanha. Durante a campanha, vamos inserir em uma tabela os produtos cancelados por período a cada final de mês.
+				EX: semana 1: 
+					- Totais pontos RCA 1 : 1000
+					- Totais pontos cancelados: 500
+					
+					semana 2:
+					- Totais pontos RCA 1 : 2000
+					- Totais pontos cancelados: 1000
+					
+				Quando a campanha acabar, vamos somar todos os pontos cancelados e abater da pontuação total.
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+PROBLEMA A SER RESOLVIDO
+
+PONTUSÇÕES POR PARTICIPAÇÃO DE TREINAMENTOS 
+
+	- Para incentivar a participação dos RCAs em treinamentos internos, o marketing irá distribuir 500.000 pontos para RCAs participantes dos encontros.
+	
+SOLUÇÃO
+
+	- Vamos criar uma nova coluna chamada PARTICIPOU_TREINAMENTO
+	- Os pontos deverão ser inseridos apenas uma vez por participação e o campo PARTICIPOU_TREINAMENTO deve receber o valor S.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+PONTOS POR ACESSO DURANTE PROCESSAMENTO DE PONTOS
+
+- Durante o processamento dos dados, caso o RCA acesse o sistema e adicione 5.000 pontos por acesso, o processador de pontos não consegue atualizar o registro do RCA.
+	- Exemplo:
+		- Processador de pontos é iniciado;
+		- Durante o processo, o RCA acessa o sistema e ganha 5.000 pontos.
+		- Quando o processador de pontos finaliza, ele não consegue alterar o registro do RCA pois os dados que ele tinha estão desatualizados, e ele não altera o registro do RCA.
+		
+SOLUÇÃO
+
+- Enquanto o processador de pontos estiver rodando, vamos remover os campos de login do site, impedindo que o usuário acesse.
+	- Vamos exibir uma mensagem para mostrar para o usuário o porque de o acesso estar indisponível.

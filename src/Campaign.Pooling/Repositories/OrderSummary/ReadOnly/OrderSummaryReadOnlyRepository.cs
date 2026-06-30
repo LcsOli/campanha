@@ -109,6 +109,7 @@ namespace Campaign.Pooling.Repositories.OrderSummary.ReadOnly
                     ) hist ON hist.codcli = c.codcli
                     WHERE
                         u.tipovend = 'R'
+                        AND c.dtcancel IS NULL
                         AND p.codpromocao = {promotionCode}
                         AND client.dtcadastro >= pcgeral.dtinicio
                         AND c.data >= pcgeral.dtinicio

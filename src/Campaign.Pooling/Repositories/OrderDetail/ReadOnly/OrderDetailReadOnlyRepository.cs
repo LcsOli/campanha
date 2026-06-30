@@ -59,8 +59,8 @@ namespace Campaign.Pooling.Repositories.OrderDetail.ReadOnly
                                 pc.dtcancel IS NULL AND
                                 pm.codpromocao = {promotionCode} AND
                                 (
-                                    TRUNC(pc.data) >= TRUNC(pmc.dtinicio) AND
-                                    TRUNC(pc.data) <= TRUNC(pmc.dtfim)
+                                    pc.data >= pmc.dtinicio AND
+                                    pc.data < pmc.dtfim + 1
                                 )
                     """);
             return await query.ToListAsync();
@@ -82,8 +82,8 @@ namespace Campaign.Pooling.Repositories.OrderDetail.ReadOnly
                                     p.codpromocao = {promotionCode} AND
                                     c.dtcancel IS NULL AND
                                     (
-                                        TRUNC(c.data) >= TRUNC(pc.dtinicio) AND
-                                        TRUNC(c.data) <= TRUNC(pc.dtfim)
+                                        c.data >= pc.dtinicio AND
+                                        c.data < pc.dtfim + 1
                                     )
                                 GROUP BY 
                                     c.codusur
@@ -94,7 +94,7 @@ namespace Campaign.Pooling.Repositories.OrderDetail.ReadOnly
 
         public async Task<List<TotalRevenueResponse>> CalculateRevenueByMonth(DateTime init, DateTime end)
         {
-            var query = _context.Database.SqlQuery<TotalRevenueResponse>($"""
+            var query = _context.Database.SqlQueryRaw<TotalRevenueResponse>($"""
                                 SELECT
                                      c.codusur AS SellerId,
                                      SUM(i.qt * i.pvenda) AS Revenue
@@ -107,13 +107,13 @@ namespace Campaign.Pooling.Repositories.OrderDetail.ReadOnly
                                     p.codpromocao = {init.Year * 100} AND
                                     c.dtcancel IS NULL AND
                                     (
-                                        TRUNC(c.data) >= DATE {init.ToString("yyyy-MM-dd")} AND
-                                        TRUNC(c.data) <= DATE {end.ToString("yyyy-MM-dd")}
+                                        c.data >= DATE '{init:yyyy-MM-dd}' AND
+                                        c.data < DATE '{end.AddDays(1):yyyy-MM-dd}'
                                     )
                                 GROUP BY 
                                     c.codusur
                 """);
-            
+
             return await query.ToListAsync();
         }
     }

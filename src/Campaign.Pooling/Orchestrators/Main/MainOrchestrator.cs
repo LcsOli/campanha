@@ -27,7 +27,7 @@ namespace Campaign.Pooling.Orchestrators.MainOrchestrator
                 await _updateProductPromotionReadHistoryOrchestrator.Execute(promotionCode);
                 await _calculateScoreOrchestrator.Execute(promotionCode);
 
-                //await _unityOfWork.SaveAsync();
+                await _unityOfWork.SaveAsync();
             });
         }
     }

@@ -15,10 +15,12 @@
 */
 
 using Campaign.API.Orchestrators.RegisterUser;
+using Campaign.Pooling.Commands.Calculate;
 using Campaign.Pooling.Commands.CalculateScoreByProduct;
 using Campaign.Pooling.Configurations.ContainerDI.Handlers;
 using Campaign.Pooling.Configurations.ContainerDI.Orchestrators;
 using Campaign.Pooling.Configurations.ContainerDI.Repositories;
+using Campaign.Pooling.Handlers.CalculateRevenueTarget;
 using Campaign.Pooling.Handlers.CalculateScoreByProduct;
 using Campaign.Pooling.Handlers.SellerScore.GetSellersScore;
 using Campaign.Pooling.Repositories.OrderDetail.ReadOnly;
@@ -51,6 +53,17 @@ var serviceProvider = services.BuildServiceProvider();
 var context = serviceProvider.GetService<CampaingContextDb>();
 
 using var scope = serviceProvider.CreateScope();
+
+var calculateRevenueHandler = serviceProvider.GetRequiredService<ICalculateRevenueHandler>();
+var getSellerScoreHandler = scope.ServiceProvider.GetRequiredService<IGetSellerScoreHandler>();
+
+var sellerScore = await getSellerScoreHandler.Handle();
+
+var sellerScoreFiltered = sellerScore.Where(x => x.SellerId == 544);
+
+await calculateRevenueHandler.Handle(new CalculateRevenueCommand(202604, [.. sellerScoreFiltered]));
+await calculateRevenueHandler.Handle(new CalculateRevenueMonthCommand(202604, [.. sellerScoreFiltered]));
+
 
 async Task RegisterRegisteredsSummary(int promotionCode)
 {

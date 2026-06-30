@@ -1,0 +1,42 @@
+
+CONVERSA COM RAFA
+
+- Data: 30/06/2026
+
+PONTOS POR ACESSO DURANTE PROCESSAMENTO DE PONTOS
+
+- Durante o processamento dos dados, caso o RCA acesse o sistema e adicione 5.000 pontos por acesso, o processador de pontos não consegue atualizar o registro do RCA.
+	- Exemplo:
+		- Processador de pontos é iniciado;
+		- Durante o processo, o RCA acessa o sistema e ganha 5.000 pontos.
+		- Quando o processador de pontos finaliza, ele não consegue alterar o registro do RCA pois os dados que ele tinha estão desatualizados, e ele não altera o registro do RCA.
+		
+SOLUÇÃO
+
+- Enquanto o processador de pontos estiver rodando, vamos remover os campos de login do site, impedindo que o usuário acesse.
+	- Vamos exibir uma mensagem para mostrar para o usuário o porque de o acesso estar indisponível.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+PONTOS POR PEDIDOS CANCELADOS
+
+- Ao fazer uma venda em um determinado período (semana) o pedido tem a data de cancelamento nula. Isso significa que ao processar os pontos, este pedido será considerado e os itens gerarão pontos para o RCA.
+- Ao finalizar o processamento da semana, caso o pedido seja cancelado, os pontos ainda serão considerados, e o resumo (que está sendo construído) exibirá o os produtos que foram cancelados.
+	
+- A solução para este problema foi criarmos uma coluna que exibirá os pontos que serão desconsiderados.
+	- Dúvida:
+		- Quando esta coluna será preenchida?
+			R: No final da campanha.
+		- O resumo continuará exibindo os produtos que foram cancelados?
+			R: Sim.
+		- Vamos abater estes pontos de produtos cancelados no final da campanha?
+			R: Sim, vamos abater no final da campanha. Durante a campanha, vamos inserir em uma tabela os produtos cancelados por período a cada final de mês.
+				EX: semana 1: 
+					- Totais pontos RCA 1 : 1000
+					- Totais pontos cancelados: 500
+					
+					semana 2:
+					- Totais pontos RCA 1 : 2000
+					- Totais pontos cancelados: 1000
+					
+				Quando a campanha acabar, vamos somar todos os pontos cancelados e abater da pontuação total.
