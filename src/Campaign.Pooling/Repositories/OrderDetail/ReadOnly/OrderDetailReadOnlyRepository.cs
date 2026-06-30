@@ -59,8 +59,8 @@ namespace Campaign.Pooling.Repositories.OrderDetail.ReadOnly
                                 pc.dtcancel IS NULL AND
                                 pm.codpromocao = {promotionCode} AND
                                 (
-                                    pc.data >= pmc.dtinicio AND
-                                    pc.data < pmc.dtfim + 1
+                                    TRUNC(pc.data) >= TRUNC(pmc.dtinicio) AND
+                                    TRUNC(pc.data) <= TRUNC(pmc.dtfim)
                                 )
                     """);
             return await query.ToListAsync();

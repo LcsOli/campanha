@@ -137,5 +137,20 @@ namespace Campaign.Shared.DataBaseContext.Entities.Seller
         {
             LastScoreByAccess = DateTime.Now;
         }
+
+        public void ClearPoints()
+        {
+            Score = 0;
+            Coupons = 0;
+            RevenueTarget = 0;
+            CurrentRevenue = 0;
+            RevenueMonth1 = 0;
+            RevenueMonth2 = 0;
+            RevenueMonth3 = 0;
+            RevenueMonth4 = 0;
+            RevenueMonth5 = 0;
+            QtyConsumersRegistereds = 0;
+            QtyConsumersReactivateds = 0;
+        }
     }
 }
