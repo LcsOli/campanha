@@ -32,7 +32,7 @@ namespace Campaign.API.Repositories.SellerScoreProductsSummary.ReadOnly
             return await query.ToListAsync();
         }
 
-        public async Task<SellerScoreProductSummaryResumeResponse> GetResumeByFilters(int sellerId,
+        public async Task<SellerScoreProductSummaryResponse.Resume> GetResumeByFilters(int sellerId,
                                                                                       int? productId,
                                                                                       int? customerId,
                                                                                       int promotionCode)

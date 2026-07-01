@@ -9,21 +9,22 @@ namespace Campaign.API.Controllers.SellerScore
     public class SellerScoreSummaryController : ControllerBase
     {
         [HttpGet("by-product")]
-        public async Task<IActionResult> Products([FromQuery] int Page,
+        public async Task<IActionResult> Products(
+                                                  [FromQuery] int Page,
+                                                  [FromQuery] int? Size,
                                                   [FromRoute] int SellerId,
                                                   [FromQuery] int? ProductId,
                                                   [FromQuery] int? CustomerId,
                                                   [FromQuery] int PromotionCode,
-                                                  [FromServices] ISellerScoreProductSummaryHandler sellerScoreProductSummaryHandler,
-                                                  [FromQuery] int? Size = 10
+                                                  [FromServices] ISellerScoreProductSummaryHandler sellerScoreProductSummaryHandler
             )
         {
             var command = new GetSellerScoreProductSummaryCommand(Page: Page,
-                                                                  Size: Size!.Value, 
                                                                   SellerId: SellerId,
                                                                   ProductId: ProductId,
                                                                   CustomerId: CustomerId,
-                                                                  PromotionCode: PromotionCode);
+                                                                  PromotionCode: PromotionCode,
+                                                                  Size: Size!.HasValue ? Size.Value : 10);
 
             return Ok(await sellerScoreProductSummaryHandler.Handle(command));
         }

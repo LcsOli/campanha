@@ -6,6 +6,6 @@ namespace Campaign.API.Handlers.SellerScore.GetSellerScoreProductSummary
 {
     public interface ISellerScoreProductSummaryHandler
     {
-        Task<PageResponse<SellerScoreProductSummaryResponse.Product, SellerScoreProductSummaryResumeResponse>> Handle(GetSellerScoreProductSummaryCommand cmd);
+        Task<PageResponse<SellerScoreProductSummaryResponse.Product, SellerScoreProductSummaryResponse.Resume>> Handle(GetSellerScoreProductSummaryCommand cmd);
     }
 }

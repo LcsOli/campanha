@@ -28,7 +28,7 @@ namespace Campaign.API.Handlers.SellerScore.GetSellerScoreProductSummary
             _sellerScoreProductSummaryReadOnlyRepository = sellerScoreProductSummaryReadOnlyRepository;
         }
 
-        public async Task<PageResponse<SellerScoreProductSummaryResponse.Product, SellerScoreProductSummaryResumeResponse>> Handle(GetSellerScoreProductSummaryCommand cmd)
+        public async Task<PageResponse<SellerScoreProductSummaryResponse.Product, SellerScoreProductSummaryResponse.Resume>> Handle(GetSellerScoreProductSummaryCommand cmd)
         {
             new SellerScoreProductSummaryDataValidator()
                 .Validate(cmd);

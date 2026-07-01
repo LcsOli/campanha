@@ -13,10 +13,10 @@ namespace Campaign.API.Repositories.SellerScoreProductsSummary.ReadOnly
                                                                    int promotionCode);
 
 
-        Task<SellerScoreProductSummaryResumeResponse> GetResumeByFilters(int sellerId,
-                                                                         int? productId,
-                                                                         int? customerId,
-                                                                         int promotionCode);
+        Task<SellerScoreProductSummaryResponse.Resume> GetResumeByFilters(int sellerId,
+                                                                          int? productId,
+                                                                          int? customerId,
+                                                                          int promotionCode);
 
         Task<decimal> GetByFiltersCount(int sellerId,
                                         int? productId,
