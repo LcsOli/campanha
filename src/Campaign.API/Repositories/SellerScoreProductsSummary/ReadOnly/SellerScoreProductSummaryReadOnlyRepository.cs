@@ -1,6 +1,6 @@
-﻿using Campaign.API.DTO.SellerScoreProductSummary.Response;
+﻿using Microsoft.EntityFrameworkCore;
 using Campaign.Shared.DataBaseContext.Entities;
-using Microsoft.EntityFrameworkCore;
+using Campaign.API.DTO.SellerScoreProductSummary.Response;
 using Entity = Campaign.Shared.DataBaseContext.Entities.SellerScoreSummaries;
 
 namespace Campaign.API.Repositories.SellerScoreProductsSummary.ReadOnly

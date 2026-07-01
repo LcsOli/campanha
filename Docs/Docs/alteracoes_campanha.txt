@@ -149,6 +149,8 @@ META DE GERENTES
 ORDEM DE DESENVOLVIMENTO
 
 - Resumos
+	-> Resumo de vendas por produtos.(OK)
+	-> Resumo de reativação e positivação. (NOK)
 - Metas de gerentes
 - Bloqueio da tela de login
 - Resumo de cancelados e cortados
