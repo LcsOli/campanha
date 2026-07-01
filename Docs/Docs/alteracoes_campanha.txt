@@ -74,3 +74,76 @@ SOLUÇÃO
 
 - Enquanto o processador de pontos estiver rodando, vamos remover os campos de login do site, impedindo que o usuário acesse.
 	- Vamos exibir uma mensagem para mostrar para o usuário o porque de o acesso estar indisponível.
+	
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+CRIAÇÃO DE RESUMO DE PONTUAÇÕES
+
+PROBLEMA A SER RESOLVIDO
+
+- Os RCAs questionam as pontuações constantemente. Eles querem saber como a pontuação chegou àquele valor.
+
+SOLUÇÃO
+
+- Vamos criar um demonstrativo resumido para que os RCAs possam visualizar:
+	- Produtos vendidos
+	- Pontos de cada produtos
+	- Pontos por reativação e positivação, data de cadastro e de ultima compra do cliente.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+REQUISITOS
+
+TABELAS
+- cf_campanha_resumo_rca_score_produto
+	- Campos: 
+		ID number not null
+		RCA_ID number not null
+		COD_PROMOCAO number not null 
+		PONTOS number(10,2) not null
+		PRODUTO_DESCRICAO varchar(30) not null
+	
+- cf_campanha_resumo_rca_score_clientes
+	- Campos: 
+		ID number not null
+		RCA_ID number not null
+		COD_PROMOCAO number not null
+		PONTOS number(10,2) not null
+		NOME_CLIENTE varchar(100) not null
+		DATA_POSITIVACAO date not null
+		DATA_REATIVACAO date not null
+		
+		
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------		
+		
+PROBLEMAS
+
+- Pontuações por acesso
+	- Conseguimos calcular o total de pontos por acesso
+		# Calculo: (Pontos por vendas + pontos por reativação + pontos por positivação) - pontuação total = pontos por acesso
+		
+	- Porém, não conseguimos descobrir quando os pontos foram inseridos de forma retroativa.
+		- Exemplo: 
+			- Terceira semana da campanha
+			- RCA Acessou duas semanas e ganhou 5 mil pontos por acesso, totalizando 10 mil pontos
+			- Quais foram as semanas que os pontos foram inseridos? 
+				- Não conseguimos responder esta pergunta, sabemos que de três semanas, 2 foram acessadas e os pontos foram contabilizados, mas não temos o rastreamento dos dias.
+				
+	- Possíveis soluções
+		- Exibir apenas o total de pontos sem demonstrar os dias em que os pontos foram computados
+		- Criar tabelas para registrar os dias em que os pontos por acesso foram computados, mas os pontos antigos não terão registros de data.
+		
+SOLUÇÃO
+- Foi decidido exibirmos os pontos totais por acesso sem exibir detalhes de cada um, pois não teríamos como descobrir quando os pontos anteriores
+  foram marcados.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ORDEM DE DESENVOLVIMENTO
+
+- Resumos
+- Bloqueio da tela de login
+- Resumo de cancelados e cortados
+- Pontuação por participação de treinamento
+	

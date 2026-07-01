@@ -14,30 +14,28 @@
             #Supplier
 */
 
-using Campaign.API.Orchestrators.RegisterUser;
+using Campaign.Shared.UnitOfWorkDI;
+using Campaign.Program.Register.User;
+using StackTraceInternalLibrary.Client;
+using Campaign.Shared.DataBaseContextDI;
 using Campaign.Pooling.Commands.Calculate;
-using Campaign.Pooling.Commands.CalculateScoreByProduct;
-using Campaign.Pooling.Configurations.ContainerDI.Handlers;
-using Campaign.Pooling.Configurations.ContainerDI.Orchestrators;
-using Campaign.Pooling.Configurations.ContainerDI.Repositories;
+using StackTraceInternalLibrary.ContainerDI;
+using Campaign.API.Orchestrators.RegisterUser;
+using Campaign.Shared.DataBaseContext.Entities;
+using Microsoft.Extensions.DependencyInjection;
 using Campaign.Pooling.Handlers.CalculateRevenueTarget;
+using Campaign.Processor.API.Commands.Summaries.Create;
+using Campaign.Pooling.Commands.CalculateScoreByProduct;
 using Campaign.Pooling.Handlers.CalculateScoreByProduct;
-using Campaign.Pooling.Handlers.SellerScore.GetSellersScore;
-using Campaign.Pooling.Orchestrators.UpdateSellerScore;
 using Campaign.Pooling.Repositories.OrderDetail.ReadOnly;
 using Campaign.Pooling.Repositories.OrderSummary.ReadOnly;
-using Campaign.Processor.API.Commands.Summaries.Create;
+using Campaign.Pooling.Configurations.ContainerDI.Handlers;
+using Campaign.Shared.DataBaseContext.Entities.UnityOfWork;
+using Campaign.Pooling.Handlers.SellerScore.GetSellersScore;
+using Campaign.Pooling.Configurations.ContainerDI.Repositories;
+using Campaign.Pooling.Configurations.ContainerDI.Orchestrators;
 using Campaign.Processor.API.Handlers.RegisterSellerScoreClientSummary;
 using Campaign.Processor.API.Handlers.RegisterSellerScoreProductSummary;
-using Campaign.Program.Register.User;
-using Campaign.Shared.DataBaseContext.Entities;
-using Campaign.Shared.DataBaseContext.Entities.UnityOfWork;
-using Campaign.Shared.DataBaseContextDI;
-using Campaign.Shared.UnitOfWorkDI;
-using Microsoft.Extensions.DependencyInjection;
-using StackTraceInternalLibrary.Client;
-using StackTraceInternalLibrary.ContainerDI;
-using System.Runtime.InteropServices;
 
 var services = new ServiceCollection();
 services.AddDataBase();
