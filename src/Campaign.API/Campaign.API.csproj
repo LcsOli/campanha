@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="DTO\SellerScoreProductSummary\Request\" />
     <Folder Include="Repositories\Customer\WriteOnly\" />
     <Folder Include="Repositories\Product\WriteOnly\" />
     <Folder Include="Repositories\SellerScoreProductsSummary\WriteOnly\" />

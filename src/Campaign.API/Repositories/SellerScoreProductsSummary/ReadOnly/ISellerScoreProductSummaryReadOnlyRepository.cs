@@ -1,4 +1,5 @@
-﻿using Entity = Campaign.Shared.DataBaseContext.Entities.SellerScoreSummaries;
+﻿using Campaign.API.DTO.SellerScoreProductSummary.Response;
+using Entity = Campaign.Shared.DataBaseContext.Entities.SellerScoreSummaries;
 
 namespace Campaign.API.Repositories.SellerScoreProductsSummary.ReadOnly
 {
@@ -7,8 +8,19 @@ namespace Campaign.API.Repositories.SellerScoreProductsSummary.ReadOnly
         Task<List<Entity.SellerScoreProductsSummary>> GetByFilters(int size,
                                                                    int page,
                                                                    int sellerId,
-                                                                   int? customer,
                                                                    int? productId,
+                                                                   int? customerId,
                                                                    int promotionCode);
+
+
+        Task<SellerScoreProductSummaryResumeResponse> GetResumeByFilters(int sellerId,
+                                                                         int? productId,
+                                                                         int? customerId,
+                                                                         int promotionCode);
+
+        Task<decimal> GetByFiltersCount(int sellerId,
+                                        int? productId,
+                                        int? customerId,
+                                        int promotionCode);
     }
 }

@@ -140,9 +140,16 @@ SOLUÇÃO
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+META DE GERENTES
+
+- Criar serviço que some todas as metas dos RCAs separados por gerente, e retornar para a tela.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 ORDEM DE DESENVOLVIMENTO
 
 - Resumos
+- Metas de gerentes
 - Bloqueio da tela de login
 - Resumo de cancelados e cortados
 - Pontuação por participação de treinamento

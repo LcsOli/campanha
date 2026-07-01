@@ -54,6 +54,8 @@ var context = serviceProvider.GetService<CampaingContextDb>();
 
 using var scope = serviceProvider.CreateScope();
 
+await CalculateScoreByProduct();
+
 async Task CalculateRevenueOfMonth()
 {
     var getSellerScoreHandler = scope.ServiceProvider.GetRequiredService<IGetSellerScoreHandler>();
@@ -127,10 +129,10 @@ async Task CalculateScoreByProduct()
     var orderDetailReadOnlyRepository = scope.ServiceProvider.GetRequiredService<IOrderDetailReadOnlyRepository>();
     var calculateScoreByProductHandler = scope.ServiceProvider.GetRequiredService<ICalculateScoreByProductHandler>();
 
-    var promotionCodes = new int[] { 202604 };
+    var promotionCodes = new int[] { 202601 };
     var sellersScore = await getSellerScoreHandler.Handle();
 
-    var sellersScores = sellersScore.Where(x => x.SellerId == 544)
+    var sellersScores = sellersScore.Where(x => x.SellerId == 522)
                                     .Select(x =>
                                     {
                                         x.ClearPoints();

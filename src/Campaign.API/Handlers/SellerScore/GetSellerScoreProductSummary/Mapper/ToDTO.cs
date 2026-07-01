@@ -18,7 +18,6 @@ namespace Campaign.API.Handlers.SellerScore.GetSellerScoreProductSummary.Mapper
             var customers = param2.Model;
             var summaries = param3.Model;
 
-
             var productsToResponse = param3.Model.GroupBy(x => new { x.ProductId, x.Points })
                 .Select(x =>
                 {
@@ -36,13 +35,10 @@ namespace Campaign.API.Handlers.SellerScore.GetSellerScoreProductSummary.Mapper
                                                                          customers);
                 });
 
-
             var qtyCustomes = customers.Count;
             var totalPoints = summaries.Sum(x => x.Points) * qtyCustomes;
 
-            var total = new SellerScoreProductSummaryResponse.Resume(totalPoints, qtyCustomes);
-
-            return new([.. productsToResponse], total);
+            return new([.. productsToResponse]);
         }
     }
 }
