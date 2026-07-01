@@ -25,7 +25,6 @@ namespace Campaign.API.Repositories.SellerScoreProductsSummary.ReadOnly
             var productsIds = await GetOnlyProductsIdsByFilters(size, page, sellerId, productId, customerId, promotionCode);
 
             var query = _context.SellerScoreProductsSummaries.Where(x => x.SellerId == sellerId &&
-                                                                         (productId == null || x.ProductId == productId) &&
                                                                          (customerId == null || x.CustomerId == customerId) &&
                                                                          productsIds.Contains(x.ProductId));
 
