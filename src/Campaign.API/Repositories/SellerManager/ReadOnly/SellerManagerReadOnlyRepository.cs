@@ -12,9 +12,27 @@ namespace Campaign.API.Repositories.SellerManager.ReadOnly
             _context = context;
         }
 
+        public async Task<bool> Exists(int id)
+        {
+            return await _context.SellerManagers
+                                 .Select(x => x.SellerId)
+                                 .CountAsync(sellerId => sellerId == id) > 0;
+        }
+
         public async Task<List<Entity.SellerManagerScore>> GetAll()
         {
             return await _context.SellerManagers.ToListAsync();
+        }
+
+        public async Task<decimal> GetRevenueTarget(int id)
+        {
+            var sellersManagersIds = await _context.SellerManagers.Where(x => x.SellerId == id)
+                                                                  .Select(x => x.Code)
+                                                                  .ToArrayAsync();
+
+            return await _context.SellerScores.Select(x => new { x.SellerManagerId, x.RevenueTarget })
+                                              .Where(x => sellersManagersIds.Contains(x.SellerManagerId))
+                                              .SumAsync(x => x.RevenueTarget);
         }
     }
 }

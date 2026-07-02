@@ -7,6 +7,7 @@
         public string Name { get; private set; } = default!;
         public decimal TargetRevenue { get; private set; }
         public decimal CurrentRevenue { get; private set; }
+        public int SellerId { get; private set; }
 
         public SellerManagerScore(int id,
                                   int code, 

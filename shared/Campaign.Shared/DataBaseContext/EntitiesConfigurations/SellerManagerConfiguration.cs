@@ -33,6 +33,9 @@ namespace Campaign.Shared.DataBaseContext.EntitiesConfigurations
                    .HasDefaultValue(0)
                    .IsRequired();
 
+            builder.Property(x => x.SellerId)
+                   .HasColumnName("RCA_ID");
+
             builder.HasData(new SellerManagerScore(1, 25, "Neto", 0, 0),
                             new SellerManagerScore(2, 3, "Bruno", 0, 0),
                             new SellerManagerScore(3, 11, "Bruno", 0, 0),

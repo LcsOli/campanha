@@ -1,5 +1,5 @@
-﻿using Campaign.Shared.Mappers;
-using Campaign.API.DTO.SellerManagerScore.Response;
+﻿using Campaign.API.DTO.SellerManager.Response;
+using Campaign.Shared.Mappers;
 using Entity = Campaign.Shared.DataBaseContext.Entities.Seller;
 
 namespace Campaign.API.Handlers.SellerManagerScore.GetRevenue.Mapper

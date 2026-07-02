@@ -1,6 +1,5 @@
 ﻿using FluentValidation;
 using Campaign.Shared.FluentValidator;
-using Campaign.API.DTO.SellerManagerScore.Response;
 using Campaign.API.DTO.SellerScore.Response;
 
 namespace Campaign.API.Handlers.SellerScore.GetSellersScores.Validator
