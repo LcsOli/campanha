@@ -1,0 +1,24 @@
+﻿using FluentValidation;
+using Campaign.Shared.FluentValidator;
+using Campaign.API.Commands.SellerScore.Get;
+
+namespace Campaign.API.Handlers.SellerScore.GetSellerScoreClientSummary.Validator
+{
+    public class GetSellerScoreClientSummaryDataValidator : FluentValidator<GetSellerScoreClientSummaryCommand>
+    {
+        public GetSellerScoreClientSummaryDataValidator()
+        {
+            RuleFor(x => x.SellerId)
+               .GreaterThan(0)
+               .WithMessage("Identificador do RCA é obrigatório.");
+
+            RuleFor(x => x.PromotionCode)
+               .GreaterThan(0)
+               .WithMessage("Código da promoção é obrigatório.");
+
+            RuleFor(x => x.Page)
+               .GreaterThan(0)
+               .WithMessage("ClientId is required.");
+        }
+    }
+}

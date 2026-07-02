@@ -36,7 +36,7 @@ namespace Campaign.Processor.API.Handlers.RegisterSellerScoreProductSummary
                                                                                                                     customerId: client.CustomerId,
                                                                                                                     sellerId: sellerScore.SellerId,
                                                                                                                     promotionCode: cmd.PromotionCode,
-                                                                                                                    points: o.ProductPromotionPoints!.Value));
+                                                                                                                    score: o.ProductPromotionPoints!.Value));
 
                     summaries.AddRange(sellerersScoresProductsSummaries);
                 });

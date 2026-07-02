@@ -25,7 +25,7 @@ namespace Campaign.Pooling.Configurations.ContainerDI.Repositories
             services.AddScoped<IOrderDetailReadOnlyRepository, OrderDetailReadOnlyRepository>();
             services.AddScoped<IOrderSummaryReadOnlyRepository, OrderSummaryReadOnlyRepository>();
             services.AddScoped<ISellerScoreWriteOnlyRepository, SellerScoreWriteOnlyRepository>();
-            services.AddScoped<ISellerScoreClientSummaryRepository, SellerScoreClientSummaryRepository>();
+            services.AddScoped<ISellerScoreClientSummaryWriteOnlyRepository, SellerScoreClientSummaryWriteOnlyRepository>();
             services.AddScoped<IProductPromotionReadOnlyRepository, ProductPromotionReadOnlyRepository>();
             services.AddScoped<ISellerScoreProductSummaryWriteOnlyRepository, SellerScoreProductSummaryWriteOnlyRepository>();
             services.AddScoped<ISellerManagerScoreReadOnlyRepository, SellerManagerScoreReadOnlyRepository>();

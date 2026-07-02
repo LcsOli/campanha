@@ -15,7 +15,6 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.5" />
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.4" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,6 +25,7 @@
     <Folder Include="DTO\SellerScoreProductSummary\Request\" />
     <Folder Include="Repositories\Customer\WriteOnly\" />
     <Folder Include="Repositories\Product\WriteOnly\" />
+    <Folder Include="Repositories\SellerScoreClientSummary\WriteOnly\" />
     <Folder Include="Repositories\SellerScoreProductsSummary\WriteOnly\" />
     <Folder Include="Repositories\Supplier\SupplierProductSold\WriteOnly\" />
   </ItemGroup>

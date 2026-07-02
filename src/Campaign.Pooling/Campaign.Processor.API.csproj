@@ -35,10 +35,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.5" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\shared\Campaign.Shared\Campaign.Shared.csproj" />
   </ItemGroup>
 

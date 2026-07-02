@@ -15,6 +15,10 @@ namespace Campaign.API.Handlers.SellerScore.GetSellerScoreProductSummary.Validat
             RuleFor(x => x.PromotionCode)
                 .GreaterThan(0)
                 .WithMessage("Código da promoção é obrigatório.");
+
+            RuleFor(x => x.Page)
+                .GreaterThan(0)
+                .WithMessage("Número da página é obrigatório.");
         }
     }
 }

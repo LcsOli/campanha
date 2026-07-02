@@ -18,7 +18,7 @@ namespace Campaign.API.Handlers.SellerScore.GetSellerScoreProductSummary.Mapper
             var customers = param2.Model;
             var summaries = param3.Model;
 
-            var productsToResponse = param3.Model.GroupBy(x => new { x.ProductId, x.Points })
+            var productsToResponse = param3.Model.GroupBy(x => new { x.ProductId, x.Score })
                 .Select(x =>
                 {
                     var productDescription = param1.Model.SingleOrDefault(p => p.Id == x.Key.ProductId);
@@ -29,14 +29,14 @@ namespace Campaign.API.Handlers.SellerScore.GetSellerScoreProductSummary.Mapper
                                                 .Select(c => new SellerScoreProductSummaryResponse.Customer(c.Id, c.Name))
                                                 .ToList();
 
-                    return new SellerScoreProductSummaryResponse.Product(x.Key.ProductId,
-                                                                         productDescription!.Description,
-                                                                         x.Key.Points,
-                                                                         customers);
+                    return new SellerScoreProductSummaryResponse.Product(Score: x.Key.Score,
+                                                                         Id: x.Key.ProductId,
+                                                                         Customers: customers,
+                                                                         Description: productDescription!.Description);
                 });
 
             var qtyCustomes = customers.Count;
-            var totalPoints = summaries.Sum(x => x.Points) * qtyCustomes;
+            var totalPoints = summaries.Sum(x => x.Score) * qtyCustomes;
 
             return new([.. productsToResponse]);
         }

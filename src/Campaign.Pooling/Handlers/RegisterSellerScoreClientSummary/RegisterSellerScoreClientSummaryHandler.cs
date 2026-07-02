@@ -7,8 +7,8 @@ namespace Campaign.Processor.API.Handlers.RegisterSellerScoreClientSummary
 {
     public class RegisterSellerScoreClientSummaryHandler : IRegisterSellerScoreClientSummaryHandler
     {
-        private readonly ISellerScoreClientSummaryRepository _sellerScoreClientSummaryRepository;
-        public RegisterSellerScoreClientSummaryHandler(ISellerScoreClientSummaryRepository sellerScoreClientSummaryRepository)
+        private readonly ISellerScoreClientSummaryWriteOnlyRepository _sellerScoreClientSummaryRepository;
+        public RegisterSellerScoreClientSummaryHandler(ISellerScoreClientSummaryWriteOnlyRepository sellerScoreClientSummaryRepository)
         {
             _sellerScoreClientSummaryRepository = sellerScoreClientSummaryRepository;
         }
@@ -25,7 +25,7 @@ namespace Campaign.Processor.API.Handlers.RegisterSellerScoreClientSummary
 
                 if (qty <= 0) return;
 
-                summaries.AddRange(Reactivateds.Select(x => new SellerScoreClientsSummary(points: cmd.Points,
+                summaries.AddRange(Reactivateds.Select(x => new SellerScoreClientsSummary(score: cmd.Points,
                                                                                           sellerId: x.SellerId,
                                                                                           customerId: x.CustomerId,
                                                                                           registeredIn: x.RegisteredIn,
@@ -49,7 +49,7 @@ namespace Campaign.Processor.API.Handlers.RegisterSellerScoreClientSummary
 
                 if (qty <= 0) return;
 
-                summaries.AddRange(registereds.Select(x => new SellerScoreClientsSummary(points: cmd.Points,
+                summaries.AddRange(registereds.Select(x => new SellerScoreClientsSummary(score: cmd.Points,
                                                                                          sellerId: x.SellerId,
                                                                                          customerId: x.CustomerId,
                                                                                          registeredIn: x.RegisteredIn,

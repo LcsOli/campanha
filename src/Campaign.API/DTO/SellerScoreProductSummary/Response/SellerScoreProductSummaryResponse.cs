@@ -7,8 +7,8 @@ namespace Campaign.API.DTO.SellerScoreProductSummary.Response
     {
         public record Product([property: JsonPropertyName("productId")]
                                int Id,
+                               decimal Score,
                                string Description,
-                               decimal Points,
                                List<Customer> Customers);
         public record Customer(int CustomerId, string CustomerName);
         public record Resume(decimal Scores, int QtyCustomers)

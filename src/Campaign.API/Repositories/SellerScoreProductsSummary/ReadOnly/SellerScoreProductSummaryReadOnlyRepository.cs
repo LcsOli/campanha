@@ -38,7 +38,7 @@ namespace Campaign.API.Repositories.SellerScoreProductsSummary.ReadOnly
         {
             var query = _context.SellerScoreProductsSummaries.Select(x => new
             {
-                x.Points,
+                x.Score,
                 x.SellerId,
                 x.ProductId,
                 x.CustomerId,
@@ -52,7 +52,7 @@ namespace Campaign.API.Repositories.SellerScoreProductsSummary.ReadOnly
 
             var result = await query.ToListAsync();
 
-            var totalScore = result.Sum(x => x.Points);
+            var totalScore = result.Sum(x => x.Score);
             var qtyCustomers = result.DistinctBy(x => x.CustomerId).Count();
 
             return new(totalScore, qtyCustomers);

@@ -5,6 +5,7 @@ using Campaign.API.Repositories.Product.ReadOnly;
 using Campaign.API.Repositories.ProductPromotion.ReadOnly;
 using Campaign.API.Repositories.ProductPromotion.WriteOnly;
 using Campaign.API.Repositories.SellerManager.ReadOnly;
+using Campaign.API.Repositories.SellerScoreClientSummary.ReadOnly;
 using Campaign.API.Repositories.SellerScoreProductsSummary.ReadOnly;
 using Campaign.API.Repositories.Team.ReadOnly;
 using Campaign.API.Repositories.User.ReadOnly;
@@ -28,6 +29,7 @@ namespace Campaign.API.Configuration.ContainerDI.Repositories
             services.AddScoped<ISellerScoreWriteOnlyRepository, SellerScoreWriteOnlyRepository>();
             services.AddScoped<ISellerManagerReadOnlyRepository, SellerManagerReadOnlyRepository>();
             services.AddScoped<IProductPromotionSummaryReadOnlyRepository, ProductPromotionSummaryReadOnlyRepository>();
+            services.AddScoped<ISellerScoreClientSummaryReadOnlyRepository, SellerScoreClientSummaryReadOnlyRepository>();
             services.AddScoped<ISellerScoreProductSummaryReadOnlyRepository, SellerScoreProductSummaryReadOnlyRepository>();
         }
     }

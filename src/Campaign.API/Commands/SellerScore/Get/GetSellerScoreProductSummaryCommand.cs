@@ -3,7 +3,7 @@
     public record GetSellerScoreProductSummaryCommand(int Size,
                                                       int Page,
                                                       int SellerId,
-                                                      int? CustomerId,
                                                       int? ProductId,
+                                                      int? CustomerId,
                                                       int PromotionCode);
 }

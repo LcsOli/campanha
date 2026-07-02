@@ -23,7 +23,7 @@ namespace Campaign.Shared.DataBaseContext.EntitiesConfigurations
             builder.Property(x => x.PromotionCode)
                    .HasColumnName("COD_PROMOCAO");
 
-            builder.Property(x => x.Points)
+            builder.Property(x => x.Score)
                    .HasColumnName("PONTOS");
 
             builder.Property(x => x.CustomerId)

@@ -3,10 +3,10 @@ using Entity = Campaign.Shared.DataBaseContext.Entities.SellerScoreSummaries;
 
 namespace Campaign.Processor.API.Repositories.SellerScoreClientSummary.WriteOnly
 {
-    public class SellerScoreClientSummaryRepository : ISellerScoreClientSummaryRepository
+    public class SellerScoreClientSummaryWriteOnlyRepository : ISellerScoreClientSummaryWriteOnlyRepository
     {
         private readonly CampaingContextDb _context;
-        public SellerScoreClientSummaryRepository(CampaingContextDb context)
+        public SellerScoreClientSummaryWriteOnlyRepository(CampaingContextDb context)
         {
             _context = context;
         }

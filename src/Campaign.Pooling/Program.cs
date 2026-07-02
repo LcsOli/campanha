@@ -12,7 +12,6 @@ using StackTraceLib.Middleware;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
-builder.Services.AddOpenApi();
 
 builder.Services.AddDataBase();
 builder.Services.AddHandlers();
@@ -29,11 +28,6 @@ builder.Services.AddStackTraceServices();
 builder.WebHost.UseUrls("http://0.0.0.0:7168");
 
 var app = builder.Build();
-
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-}
 
 app.UseHttpsRedirection();
 app.UseAuthorization();

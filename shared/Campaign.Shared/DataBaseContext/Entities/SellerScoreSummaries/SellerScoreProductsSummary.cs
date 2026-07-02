@@ -7,10 +7,10 @@
         public SellerScoreProductsSummary(int sellerId,
                                           int productId,
                                           int customerId,
-                                          decimal points,
+                                          decimal score,
                                           int promotionCode)
         {
-            Points = points;
+            Score = score;
             SellerId = sellerId;
             ProductId = productId;
             CustomerId = customerId;
