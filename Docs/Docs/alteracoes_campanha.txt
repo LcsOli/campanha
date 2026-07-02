@@ -152,8 +152,7 @@ ORDEM DE DESENVOLVIMENTO
 	-> Resumo de vendas por produtos.(OK)
 	-> Resumo de reativação e positivação. (OK)
 - Bloqueio da tela de login (OK)
-- Metas de gerentes
-
+- Metas de gerentes (OK)
 - Resumo de cancelados e cortados
 - Pontuação por participação de treinamento
 	
