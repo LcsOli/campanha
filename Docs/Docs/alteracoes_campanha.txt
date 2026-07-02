@@ -153,6 +153,7 @@ ORDEM DE DESENVOLVIMENTO
 	-> Resumo de reativação e positivação. (OK)
 - Bloqueio da tela de login (OK)
 - Metas de gerentes (OK)
+
 - Resumo de cancelados e cortados
 - Pontuação por participação de treinamento
 	
