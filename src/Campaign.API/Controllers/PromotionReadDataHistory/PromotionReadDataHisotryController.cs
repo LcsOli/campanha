@@ -1,7 +1,7 @@
-﻿using Campaign.API.Commands.PromotionReadDataHistory.Get;
-using Campaign.API.Handlers.PromotionReadDataHistory;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+using Campaign.API.Handlers.PromotionReadDataHistory;
+using Campaign.API.Commands.PromotionReadDataHistory.Get;
 
 namespace Campaign.API.Controllers.PromotionReadDataHistory
 {
