@@ -1,8 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Campaign.Shared.DataBaseContext.Entities;
+using Campaign.API.Repositories.SellerManager.ReadOnly;
 using Entity = Campaign.Shared.DataBaseContext.Entities.Seller;
 
-namespace Campaign.API.Repositories.SellerManager.ReadOnly
+namespace Campaign.API.Repositories.PromotionReadDataHistory.ReadOnly
 {
     public class SellerManagerReadOnlyRepository : ISellerManagerReadOnlyRepository
     {

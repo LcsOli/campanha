@@ -1,4 +1,5 @@
-﻿using Campaign.API.Handlers.SellerManager.GetRevenue;
+﻿using Campaign.API.Handlers.PromotionReadDataHistory;
+using Campaign.API.Handlers.SellerManager.GetRevenue;
 using Campaign.API.Handlers.SellerManagerScore.TargetManager;
 using Campaign.API.Handlers.SellerScore.GetSellerScoreClientSummary;
 using Campaign.API.Handlers.SellerScore.GetSellerScoreProductSummary;
@@ -26,10 +27,11 @@ namespace Campaign.API.Configuration.ContainerDI.Handlers
             services.AddScoped<IInsertScoreByAccessHandler, InsertScoreByAccessHandler>();
             services.AddScoped<IRegisterSellerScoreHandler, RegisterSellerScoreHandler>();
             services.AddScoped<IGetSupplierProductsSoldHandler, GetSupplierProductsSoldHandler>();
+            services.AddScoped<IPromotionReadDataHistoryHandler, PromotionReadDataHistoryHandler>();
             services.AddScoped<ISellerScoreClientSummaryHandler, SellerScoreClientSummaryHandler>();
+            services.AddScoped<ISellerManagerScoreRevenueHandler, SellerManagerScoreRevenueHandler>();
             services.AddScoped<ISellerScoreProductSummaryHandler, SellerScoreProductSummaryHandler>();
             services.AddScoped<ISellerManagerRevenueTargetHandler, SellerManagerRevenueTargetHandler>();
-            services.AddScoped<ISellerManagerScoreRevenueHandler, SellerManagerScoreRevenueHandler>();
             services.AddScoped<ISupplierProductSoldReadOnlyRepository, SupplierProductSoldReadOnlyRepository>();
         }
     }
