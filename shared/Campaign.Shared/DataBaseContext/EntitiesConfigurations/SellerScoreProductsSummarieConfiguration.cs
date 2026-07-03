@@ -29,6 +29,10 @@ namespace Campaign.Shared.DataBaseContext.EntitiesConfigurations
 
             builder.Property(x => x.CustomerId)
                    .HasColumnName("COD_CLIENTE");
+
+            builder.Property(x => x.IsCanceled)
+                   .HasColumnName("PEDIDO_CANCELADO")
+                   .HasConversion(x => x ? "S" : "N", x => x == "S");
         }
     }
 }

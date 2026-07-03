@@ -36,11 +36,14 @@ namespace Campaign.Processor.API.Handlers.RegisterSellerScoreProductSummary
                                                                                                                     customerId: client.CustomerId,
                                                                                                                     sellerId: sellerScore.SellerId,
                                                                                                                     promotionCode: cmd.PromotionCode,
+                                                                                                                    isCanceled: o.CanceledIn.HasValue,
                                                                                                                     score: o.ProductPromotionPoints!.Value));
 
                     summaries.AddRange(sellerersScoresProductsSummaries);
-                });
 
+                    var canceleds = client.Orders.Where(x => x.CanceledIn.HasValue);
+                    sellerScore.SetScoreProductsCanceledsOrders((decimal)canceleds.Sum(x=> x.ProductPromotionPoints)! * clients.Count);
+                });
             });
 
             await _sellerScoreProductSummaryRepository.AddRange(summaries);

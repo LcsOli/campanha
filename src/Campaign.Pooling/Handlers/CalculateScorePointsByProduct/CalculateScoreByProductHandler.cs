@@ -12,19 +12,20 @@ namespace Campaign.Pooling.Handlers.CalculateScoreByProduct
 
             cmd.SellersScores.ForEach(sellerScore =>
             {
-                var clients = cmd.OrdersDetails.Where(o => o.SellerId == sellerScore.SellerId)
-                                                      .GroupBy(o => o.ConsumerId)
-                                                      .Select(o => new
+                var clients = cmd.OrdersDetails.Where(x => x.SellerId == sellerScore.SellerId && 
+                                                           x.CanceledIn == null)
+                                                      .GroupBy(x => x.ConsumerId)
+                                                      .Select(x => new
                                                       {
-                                                          CustomerId = o.Key,
-                                                          Orders = o.DistinctBy(p => p.ProductId).ToList()
+                                                          CustomerId = x.Key,
+                                                          Orders = x.DistinctBy(p => p.ProductId).ToList()
                                                       }).ToList();
 
                 if (clients.Count <= 0)
                     return;
 
-                var points = clients.SelectMany(o => o.Orders)
-                                    .Sum(o => o.ProductPromotionPoints);
+                var points = clients.SelectMany(x => x.Orders)
+                                    .Sum(x => x.ProductPromotionPoints);
 
                 var pointsByClients = points * clients.Count;
 

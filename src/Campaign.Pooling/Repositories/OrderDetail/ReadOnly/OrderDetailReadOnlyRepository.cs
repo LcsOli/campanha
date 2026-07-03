@@ -44,6 +44,7 @@ namespace Campaign.Pooling.Repositories.OrderDetail.ReadOnly
                                 pc.codusur AS SellerId,
                                 pi.codprod AS ProductId,
                                 pi.codcli AS ConsumerId,
+                                pc.dtcancel AS CanceledIn,
                                 c.cliente AS ConsumerName,
                                 p.descricao AS ProductDescription,
                                 pm.qtpontoscliente AS ProductPromotionPoints

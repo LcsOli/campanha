@@ -23,6 +23,8 @@ namespace Campaign.Shared.DataBaseContext.Entities.Seller
         public short QtyConsumersRegistereds { get; private set; }
         public DateTime? LastScoreByAccess { get; private set; }
         public int SellerManagerId { get; private set; }
+        public decimal ScoreProductsCanceledsOrders { get; private set; }
+        public decimal ScoreProductRemovedFromOrders { get; private set; }
 
         public SellerScore(int teamId,
                            string name,
@@ -151,6 +153,16 @@ namespace Campaign.Shared.DataBaseContext.Entities.Seller
             RevenueMonth5 = 0;
             QtyConsumersRegistereds = 0;
             QtyConsumersReactivateds = 0;
+        }
+
+        public void SetScoreProductsCanceledsOrders(decimal score)
+        {
+            ScoreProductsCanceledsOrders += score;
+        }
+
+        public void SetScoreProductRemovedFromOrders(decimal score)
+        {
+            ScoreProductRemovedFromOrders += score;
         }
     }
 }

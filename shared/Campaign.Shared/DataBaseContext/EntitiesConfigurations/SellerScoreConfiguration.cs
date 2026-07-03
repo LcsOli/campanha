@@ -81,6 +81,13 @@ namespace Campaign.Shared.DataBaseContext.EntitiesConfigurations
 
             builder.Property(s => s.SellerManagerId)
                    .HasColumnName("COD_SUPERVISOR");
+
+
+            builder.Property(x => x.ScoreProductsCanceledsOrders)
+                   .HasColumnName("PONTOS_PRODUTOS_CANCELADOS");
+
+            builder.Property(x => x.ScoreProductRemovedFromOrders)
+                   .HasColumnName("PONTOS_PRODUTOS_CORTADOS");
         }
     }
 }

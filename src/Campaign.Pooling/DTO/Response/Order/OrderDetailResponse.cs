@@ -9,6 +9,7 @@
                                       decimal Quantity,
                                       DateTime DateOfSale,
                                       string ConsumerName,
+                                      DateTime? CanceledIn,
                                       string ProductDescription,
                                       decimal? ProductPromotionPoints);
 }
