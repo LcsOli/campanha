@@ -5,6 +5,6 @@ namespace Campaign.API.Handlers.SellerManagerScore.TargetManager
 {
     public interface ISellerManagerRevenueTargetHandler
     {
-        Task<SellerManagerTargetRevenueResponse> Handle(GetTargetRevenueCommand cmd);
+        Task<SellerManagerRevenueInfosResponse> Handle(GetTargetRevenueCommand cmd);
     }
 }

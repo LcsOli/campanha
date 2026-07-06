@@ -14,17 +14,12 @@ namespace Campaign.API.Handlers.SellerManagerScore.TargetManager
             _sellerManagerReadOnlyRepository = sellerManagerReadOnlyRepository;
         }
 
-        public async Task<SellerManagerTargetRevenueResponse> Handle(GetTargetRevenueCommand cmd)
+        public async Task<SellerManagerRevenueInfosResponse> Handle(GetTargetRevenueCommand cmd)
         {
-            if (cmd.SellerManagerId <= 0)
-                throw new CompaignException(HttpStatusCode.BadRequest, "Identificador do gerente é obrigatório.");
+            if (cmd.SellerId.HasValue && !await _sellerManagerReadOnlyRepository.Exists(cmd.SellerId.Value))
+                throw new CompaignException(HttpStatusCode.BadRequest, "Gerente não encontrado.");
 
-            if(!await _sellerManagerReadOnlyRepository.Exists(cmd.SellerManagerId))
-                throw new CompaignException(HttpStatusCode.BadRequest, "Gerente não encontado.");
-
-            var revenueTarget = await _sellerManagerReadOnlyRepository.GetRevenueTarget(cmd.SellerManagerId);
-
-            return new SellerManagerTargetRevenueResponse(revenueTarget);
+            return await _sellerManagerReadOnlyRepository.GetRevenueTarget(cmd.SellerId);
         }
     }
 }

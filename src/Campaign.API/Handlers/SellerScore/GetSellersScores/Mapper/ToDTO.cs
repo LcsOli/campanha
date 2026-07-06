@@ -28,8 +28,7 @@ namespace Campaign.API.Handlers.SellerScore.GetSellersScores.Mapper
                        LastScoreByAccess: model.LastScoreByAccess,
                        QtyConsumersRegistereds: model.QtyConsumersRegistereds,
                        QtyConsumersReactivateds: model.QtyConsumersReactivateds,
-                       RevenueTargetPercentage: revenue > 0 && model.RevenueTarget > 0 ? $"{(revenue * 100) / model.RevenueTarget}%" : "0%"
-                       );
+                       RevenueTargetPercentage: revenue > 0 && model.RevenueTarget > 0 ? $"{(revenue * 100) / model.RevenueTarget}%" : "0%");
         }
     }
 }

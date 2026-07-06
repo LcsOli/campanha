@@ -4,7 +4,7 @@ using Campaign.API.DTO.SellerScore.Response;
 
 namespace Campaign.API.Handlers.SellerScore.GetSellersScores
 {
-    public interface IGetSellersScoresHnadler
+    public interface IGetSellersScoresHandler
     {
         Task<PageResponse<SellerScoreResponse>> Handle(GetSellersScoresByFiltersCommand cmd);
         Task<SellerScoreResponse> Handle(GetSellerScoreByIdCommand cmd);

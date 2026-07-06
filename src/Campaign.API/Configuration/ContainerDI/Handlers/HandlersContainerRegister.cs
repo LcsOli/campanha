@@ -23,7 +23,7 @@ namespace Campaign.API.Configuration.ContainerDI.Handlers
             services.AddScoped<IGetTeamHandle, GetTeamHandle>();
             services.AddScoped<IGetUserHandler, GetUserHandler>();
             services.AddScoped<IRegisterUserHandler, RegisterUserHandler>();
-            services.AddScoped<IGetSellersScoresHnadler, GetSellersScoresHnadler>();
+            services.AddScoped<IGetSellersScoresHandler, GetSellersScoresHandler>();
             services.AddScoped<IInsertScoreByAccessHandler, InsertScoreByAccessHandler>();
             services.AddScoped<IRegisterSellerScoreHandler, RegisterSellerScoreHandler>();
             services.AddScoped<IGetSupplierProductsSoldHandler, GetSupplierProductsSoldHandler>();

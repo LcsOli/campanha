@@ -17,11 +17,11 @@ namespace Campaign.API.Controllers.SellerManager
             return Ok(await sellerManagerScoreRevenueHandler.Handle());
         }
 
-        [HttpGet("seller/{sellerScoreId}/target-revenue")]
-        public async Task<IActionResult> TargetRevenue([FromRoute] int sellerScoreId,
+        [HttpGet("target-revenue")]
+        public async Task<IActionResult> TargetRevenue([FromQuery] int? sellerId,
                                                        [FromServices] ISellerManagerRevenueTargetHandler sellerManagerRevenueTargetHandler)
         {
-            var command = new GetTargetRevenueCommand(sellerScoreId);
+            var command = new GetTargetRevenueCommand(sellerId);
             return Ok(await sellerManagerRevenueTargetHandler.Handle(command));
         }
     }

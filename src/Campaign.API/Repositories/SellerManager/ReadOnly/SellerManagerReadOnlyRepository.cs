@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Campaign.API.DTO.SellerManager.Response;
 using Campaign.Shared.DataBaseContext.Entities;
 using Campaign.API.Repositories.SellerManager.ReadOnly;
 using Entity = Campaign.Shared.DataBaseContext.Entities.Seller;
@@ -25,15 +26,22 @@ namespace Campaign.API.Repositories.PromotionReadDataHistory.ReadOnly
             return await _context.SellerManagers.ToListAsync();
         }
 
-        public async Task<decimal> GetRevenueTarget(int id)
+        public async Task<SellerManagerRevenueInfosResponse> GetRevenueTarget(int? id)
         {
-            var sellersManagersIds = await _context.SellerManagers.Where(x => x.SellerId == id)
+            var sellersManagersIds = await _context.SellerManagers.Where(x => id == null || x.SellerId == id)
                                                                   .Select(x => x.Code)
                                                                   .ToArrayAsync();
 
-            return await _context.SellerScores.Select(x => new { x.SellerManagerId, x.RevenueTarget })
-                                              .Where(x => sellersManagersIds.Contains(x.SellerManagerId))
-                                              .SumAsync(x => x.RevenueTarget);
+            var revenueBySellerManager = from sm in _context.SellerManagers.Where(x => id == null || x.SellerId == id)
+                                         join sc in _context.SellerScores on sm.Code equals sc.SellerManagerId
+                                         group sc by new { sm.SellerId, sm.Name } into g
+                                         select new SellerManagerRevenueInfosResponse.RevenueInfo(SellerName: g.Key.Name,
+                                                                                                  SellerId: g.Key.SellerId,
+                                                                                                  RevenueTarget: g.Sum(x => x.RevenueTarget),
+                                                                                                  CurrentRevenue: g.Sum(x => x.CurrentRevenue));
+            var result = await revenueBySellerManager.ToListAsync();
+
+            return new SellerManagerRevenueInfosResponse(result);
         }
     }
 }

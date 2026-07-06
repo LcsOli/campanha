@@ -11,10 +11,10 @@ using Campaign.API.Handlers.SellerScore.GetSellersScores.Validator;
 
 namespace Campaign.API.Handlers.SellerScore.GetSellersScores
 {
-    public class GetSellersScoresHnadler : IGetSellersScoresHnadler
+    public class GetSellersScoresHandler : IGetSellersScoresHandler
     {
         private readonly ISellerScoreReadOnlyRepository _sellerScoreReadOnlyRepository;
-        public GetSellersScoresHnadler(ISellerScoreReadOnlyRepository sellerScoreReadOnlyRepository)
+        public GetSellersScoresHandler(ISellerScoreReadOnlyRepository sellerScoreReadOnlyRepository)
         {
             _sellerScoreReadOnlyRepository = sellerScoreReadOnlyRepository;
         }

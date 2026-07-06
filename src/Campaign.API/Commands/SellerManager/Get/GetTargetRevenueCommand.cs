@@ -1,4 +1,4 @@
 ﻿namespace Campaign.API.Commands.SellerManager.Get
 {
-    public record GetTargetRevenueCommand(int SellerManagerId);
+    public record GetTargetRevenueCommand(int? SellerId);
 }
