@@ -56,11 +56,6 @@ namespace Campaign.Pooling.Repositories.OrderDetail.ReadOnly
                                 JOIN pcclient c ON c.codcli = pc.codcli
                                 JOIN pcprodut p ON p.codprod = pi.codprod
                             WHERE
-
-                                s.rca_id = 522 AND
-
-
-
                                 pc.dtcancel IS NULL AND
                                 pm.codpromocao = {promotionCode} AND
                                 (

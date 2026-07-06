@@ -2,7 +2,8 @@ ALTERAÇÕES CAMPANHA
 
 - Data: 29/06/2026
 
-PROBLEMA A SER RESOLVIDO
+PROBLEMAS A SEREM RESOLVIDOS
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	
 PEDIDOS CANCELADOS APÓS CÁLCULO DE PONTOS
 
@@ -13,7 +14,6 @@ PEDIDOS CANCELADOS APÓS CÁLCULO DE PONTOS
 			- Pontuações são calculadas, desconsiderando pedidos cancelados durante o período de início e fim da semana;
 			- Após a pontuação ser calculada, novos pedidos são cancelados;
 			- Os pontos não são ajustados abatendo os pontos de pedidos cancelados.
-	
 
 SOLUÇÃO
 
@@ -49,9 +49,7 @@ ATUALIZAÇÃO
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-PROBLEMA A SER RESOLVIDO
-
-PONTUSÇÕES POR PARTICIPAÇÃO DE TREINAMENTOS 
+PONTUAÇÕES POR PARTICIPAÇÃO DE TREINAMENTOS 
 
 	- Para incentivar a participação dos RCAs em treinamentos internos, o marketing irá distribuir 500.000 pontos para RCAs participantes dos encontros.
 	
@@ -62,7 +60,7 @@ SOLUÇÃO
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-PONTOS POR ACESSO DURANTE PROCESSAMENTO DE PONTOS
+IMPEDIMENTO DE ACESSO DO SITE AO CALCULAR PONTOAÇÕES
 
 - Durante o processamento dos dados, caso o RCA acesse o sistema e adicione 5.000 pontos por acesso, o processador de pontos não consegue atualizar o registro do RCA.
 	- Exemplo:
@@ -77,7 +75,6 @@ SOLUÇÃO
 	
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
 CRIAÇÃO DE RESUMO DE PONTUAÇÕES
 
 PROBLEMA A SER RESOLVIDO
@@ -90,8 +87,6 @@ SOLUÇÃO
 	- Produtos vendidos
 	- Pontos de cada produtos
 	- Pontos por reativação e positivação, data de cadastro e de ultima compra do cliente.
-
------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 REQUISITOS
 
@@ -113,9 +108,6 @@ TABELAS
 		NOME_CLIENTE varchar(100) not null
 		DATA_POSITIVACAO date not null
 		DATA_REATIVACAO date not null
-		
-		
------------------------------------------------------------------------------------------------------------------------------------------------------------------		
 		
 PROBLEMAS
 
@@ -150,9 +142,10 @@ ORDEM DE DESENVOLVIMENTO
 
 - Resumos
 	-> Resumo de vendas por produtos.(OK)
-	-> Resumo de reativação e positivação. (NOK)
-- Metas de gerentes
-- Bloqueio da tela de login
+	-> Resumo de reativação e positivação. (OK)
+- Bloqueio da tela de login (OK)
+- Metas de gerentes (OK)
+
 - Resumo de cancelados e cortados
 - Pontuação por participação de treinamento
 	
