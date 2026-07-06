@@ -53,6 +53,7 @@ namespace Campaign.API.Repositories.ProductPromotion.ReadOnly
                                                                           revenueMonth3: s.RevenueMonth3,
                                                                           revenueMonth4: s.RevenueMonth4,
                                                                           revenueMonth5: s.RevenueMonth5,
+                                                                          getPointsByTraining: s.GetPointsByTraining,
                                                                           lastScoreByAccess: s.LastScoreByAccess,
                                                                           qtyConsumersRegistereds: s.QtyConsumersRegistereds,
                                                                           qtyConsumersReactivateds: s.QtyConsumersReactivateds));
@@ -107,6 +108,7 @@ namespace Campaign.API.Repositories.ProductPromotion.ReadOnly
                     RevenueTarget: s.RevenueTarget,
                     SellerManagerName: s.ManagerName,
                     LastScoreByAccess: s.LastScoreByAccess,
+                    getPointsByTraining: s.GetPointsByTraining,
                     QtyConsumersRegistereds: s.QtyConsumersRegistereds,
                     QtyConsumersReactivateds: s.QtyConsumersReactivateds,
                     Ranking: string.Concat(ranking.FirstOrDefault(r => r.SellerId == s.SellerId)?.Index, '°'),

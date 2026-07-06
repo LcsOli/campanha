@@ -81,6 +81,10 @@ namespace Campaign.Shared.DataBaseContext.EntitiesConfigurations
 
             builder.Property(s => s.SellerManagerId)
                    .HasColumnName("COD_SUPERVISOR");
+
+            builder.Property(s => s.GetPointsByTraining)
+                   .HasColumnName("RECEBEU_PONTOS_TREINAMENTO")
+                   .HasConversion(x => x ? "S" : "N", x => x == "S");
         }
     }
 }

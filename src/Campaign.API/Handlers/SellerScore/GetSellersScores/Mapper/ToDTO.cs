@@ -26,6 +26,7 @@ namespace Campaign.API.Handlers.SellerScore.GetSellersScores.Mapper
                        RevenueTarget: model.RevenueTarget,
                        SellerManagerName: model.ManagerName,
                        LastScoreByAccess: model.LastScoreByAccess,
+                       getPointsByTraining: model.GetPointsByTraining,
                        QtyConsumersRegistereds: model.QtyConsumersRegistereds,
                        QtyConsumersReactivateds: model.QtyConsumersReactivateds,
                        RevenueTargetPercentage: revenue > 0 && model.RevenueTarget > 0 ? $"{(revenue * 100) / model.RevenueTarget}%" : "0%"

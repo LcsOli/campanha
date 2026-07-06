@@ -11,12 +11,14 @@ namespace Campaign.API.DTO.SellerScore.Response
                                       decimal RevenueTarget,
                                       decimal CurrentRevenue,
                                       string SellerManagerName,
+                                      bool getPointsByTraining,
                                       DateTime? LastScoreByAccess,
-                                      string RevenueTargetPercentage,
                                       short QtyConsumersRegistereds,
+                                      string RevenueTargetPercentage,
                                       short QtyConsumersReactivateds)
     {
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string Ranking { get; } = Ranking;
+        public char GetPointsByTrainingDesc => getPointsByTraining ? 'S' : 'N';
     }
 }

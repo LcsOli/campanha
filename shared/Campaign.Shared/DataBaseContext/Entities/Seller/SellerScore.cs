@@ -23,6 +23,7 @@ namespace Campaign.Shared.DataBaseContext.Entities.Seller
         public short QtyConsumersRegistereds { get; private set; }
         public DateTime? LastScoreByAccess { get; private set; }
         public int SellerManagerId { get; private set; }
+        public bool GetPointsByTraining { get; private set; }
 
         public SellerScore(int teamId,
                            string name,
@@ -50,6 +51,7 @@ namespace Campaign.Shared.DataBaseContext.Entities.Seller
                            decimal revenueMonth3,
                            decimal revenueMonth4,
                            decimal revenueMonth5,
+                           bool getPointsByTraining,
                            DateTime? lastScoreByAccess,
                            short qtyConsumersRegistereds,
                            short qtyConsumersReactivateds)
@@ -68,6 +70,7 @@ namespace Campaign.Shared.DataBaseContext.Entities.Seller
             RevenueMonth4 = revenueMonth4;
             RevenueMonth5 = revenueMonth5;
             LastScoreByAccess = lastScoreByAccess;
+            GetPointsByTraining = getPointsByTraining;
             QtyConsumersRegistereds = qtyConsumersRegistereds;
             QtyConsumersReactivateds = qtyConsumersReactivateds;
         }
