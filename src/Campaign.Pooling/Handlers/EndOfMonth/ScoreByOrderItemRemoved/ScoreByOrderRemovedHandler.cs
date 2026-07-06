@@ -1,15 +1,15 @@
 ﻿using Campaign.Processor.API.Commands.ScoreRemoved.Create;
 using Campaign.Pooling.Repositories.ProductPromotion.ReadOnly;
-using Campaign.Processor.API.Handlers.ScoreCanceled.Validator;
 using Campaign.Pooling.Repositories.OrderProductRemoved.ReadOnly;
+using Campaign.Processor.API.Handlers.EndOfMonth.ScoreByOrderItemRemoved.Validator;
 
-\namespace Campaign.Processor.API.Handlers.ScoreRemoved
+namespace Campaign.Processor.API.Handlers.EndOfMonth.ScoreByOrderItemRemoved
 {
-    public class ScoreRemovedHandler : IScoreRemovedHandler
+    public class ScoreByOrderRemovedHandler : IScoreByOrderRemovedHandler
     {
         private readonly IProductPromotionReadOnlyRepository _productPromotionReadOnlyRepository;
         private readonly IOrderProductRemovedReadOnlyRepository _orderProductRemovedReadOnlyRepository;
-        public ScoreRemovedHandler(IProductPromotionReadOnlyRepository productPromotionReadOnlyRepository,
+        public ScoreByOrderRemovedHandler(IProductPromotionReadOnlyRepository productPromotionReadOnlyRepository,
                                    IOrderProductRemovedReadOnlyRepository orderProductRemovedReadOnlyRepository)
         {
             _productPromotionReadOnlyRepository = productPromotionReadOnlyRepository;
@@ -32,14 +32,14 @@ using Campaign.Pooling.Repositories.OrderProductRemoved.ReadOnly;
 
             var ordersIds = cmd.OrdersDetails.Select(x => x.OrderId).Distinct();
 
-            var productsRemoveds = await _orderProductRemovedReadOnlyRepository.GetByOrdersIds(cmd.promotionCode, [.. ordersIds]);
+            var productsRemoveds = await _orderProductRemovedReadOnlyRepository.GetByOrdersIds(cmd.PromotionCode, [.. ordersIds]);
 
             if (productsRemoveds.Count <= 0)
                 return;
 
             var productsIds = productsRemoveds.Select(x => x.ProductId).Distinct();
 
-            var productsPromotion = await _productPromotionReadOnlyRepository.GetByProductsIdsAndPromotionCode(cmd.promotionCode, [.. productsIds]);
+            var productsPromotion = await _productPromotionReadOnlyRepository.GetByProductsIdsAndPromotionCode(cmd.PromotionCode, [.. productsIds]);
 
             /*
              

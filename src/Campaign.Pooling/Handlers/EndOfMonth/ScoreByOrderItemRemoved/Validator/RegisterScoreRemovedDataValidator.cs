@@ -2,7 +2,7 @@
 using Campaign.Shared.FluentValidator;
 using Campaign.Processor.API.Commands.ScoreRemoved.Create;
 
-namespace Campaign.Processor.API.Handlers.ScoreCanceled.Validator
+namespace Campaign.Processor.API.Handlers.EndOfMonth.ScoreByOrderItemRemoved.Validator
 {
     public class RegisterScoreRemovedDataValidator : FluentValidator<RegisterScoreRemovedCommand>
     {
