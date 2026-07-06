@@ -1,4 +1,5 @@
 ﻿using Campaign.Pooling.Repositories.OrderDetail.ReadOnly;
+using Campaign.Pooling.Repositories.OrderProductRemoved.ReadOnly;
 using Campaign.Pooling.Repositories.OrderSummary.ReadOnly;
 using Campaign.Pooling.Repositories.Period.ReadOnly;
 using Campaign.Pooling.Repositories.ProductPromotion.ReadOnly;
@@ -25,13 +26,14 @@ namespace Campaign.Pooling.Configurations.ContainerDI.Repositories
             services.AddScoped<IOrderDetailReadOnlyRepository, OrderDetailReadOnlyRepository>();
             services.AddScoped<IOrderSummaryReadOnlyRepository, OrderSummaryReadOnlyRepository>();
             services.AddScoped<ISellerScoreWriteOnlyRepository, SellerScoreWriteOnlyRepository>();
-            services.AddScoped<ISellerScoreClientSummaryWriteOnlyRepository, SellerScoreClientSummaryWriteOnlyRepository>();
             services.AddScoped<IProductPromotionReadOnlyRepository, ProductPromotionReadOnlyRepository>();
-            services.AddScoped<ISellerScoreProductSummaryWriteOnlyRepository, SellerScoreProductSummaryWriteOnlyRepository>();
             services.AddScoped<ISellerManagerScoreReadOnlyRepository, SellerManagerScoreReadOnlyRepository>();
+            services.AddScoped<IOrderProductRemovedReadOnlyRepository, OrderProductRemovedReadOnlyRepository>();
             services.AddScoped<ISellerManagerScoreWriteOnlyRepository, SellerManagerScoreWriteOnlyRepository>();
             services.AddScoped<IProductPromotionSummaryReadOnlyRepository, ProductPromotionSummaryReadOnlyRepository>();
             services.AddScoped<IProductPromotionReadDataHistoryRepositorie, ProductPromotionReadDataHistoryRepositorie>();
+            services.AddScoped<ISellerScoreClientSummaryWriteOnlyRepository, SellerScoreClientSummaryWriteOnlyRepository>();
+            services.AddScoped<ISellerScoreProductSummaryWriteOnlyRepository, SellerScoreProductSummaryWriteOnlyRepository>();
             services.AddScoped<IProductPromotionReadDataHistoryWriteOnlyRepository, ProductPromotionReadDataHistoryWriteOnlyRepository>();
         }
     }

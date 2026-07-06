@@ -31,6 +31,7 @@ namespace Campaign.API.Configuration.ContainerDI.Repositories
             services.AddScoped<ISellerScoreWriteOnlyRepository, SellerScoreWriteOnlyRepository>();
             services.AddScoped<ISellerManagerReadOnlyRepository, SellerManagerReadOnlyRepository>();
             services.AddScoped<IPromotionReadDataHistoryRepositorie, PromotionReadDataHistoryRepositorie>();
+            
             services.AddScoped<IProductPromotionSummaryReadOnlyRepository, ProductPromotionSummaryReadOnlyRepository>();
             services.AddScoped<ISellerScoreClientSummaryReadOnlyRepository, SellerScoreClientSummaryReadOnlyRepository>();
             services.AddScoped<ISellerScoreProductSummaryReadOnlyRepository, SellerScoreProductSummaryReadOnlyRepository>();

@@ -19,7 +19,7 @@ namespace Campaign.Pooling.Repositories.ProductPromotion.ReadOnly
             return await _context.ProductPromotions.Where(p => p.PromotionCode == promotionCode).ToListAsync();
         }
 
-        public async Task<List<ProductPromotionResponse>> GetByProductsIdsAndPromotionCode(int[] productsIds, int promotionCode)
+        public async Task<List<ProductPromotionResponse>> GetByProductsIdsAndPromotionCode(int promotionCode, int[] productsIds)
         {
             var productsPromotionSummary = await _context.ProductPromotions
                                                          .Select(p => new
