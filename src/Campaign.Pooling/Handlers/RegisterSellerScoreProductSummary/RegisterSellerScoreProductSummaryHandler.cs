@@ -13,6 +13,12 @@ namespace Campaign.Processor.API.Handlers.RegisterSellerScoreProductSummary
             _sellerScoreProductSummaryRepository = sellerScoreProductSummaryRepository;
         }
 
+        /*
+         TODO 
+            - Rodar apenas quando for final de mês.
+            - Buscar todos os pedidos do mês.
+         */
+
         public async Task Handle(RegisterSellerScoreProductSummaryCommand cmd)
         {
             var summaries = new List<SellerScoreProductsSummary>();
@@ -32,15 +38,19 @@ namespace Campaign.Processor.API.Handlers.RegisterSellerScoreProductSummary
 
                 clients.ForEach(client =>
                 {
-                    var sellerersScoresProductsSummaries = client.Orders.Select(o => new SellerScoreProductsSummary(productId: o.ProductId,
+                    var sellerersScoresProductsSummaries = client.Orders.Select(o => new SellerScoreProductsSummary(isRemoved: false,
+                                                                                                                    productId: o.ProductId,
                                                                                                                     customerId: client.CustomerId,
                                                                                                                     sellerId: sellerScore.SellerId,
                                                                                                                     promotionCode: cmd.PromotionCode,
+                                                                                                                    isCanceled: o.CanceledIn.HasValue,
                                                                                                                     score: o.ProductPromotionPoints!.Value));
 
                     summaries.AddRange(sellerersScoresProductsSummaries);
-                });
 
+                    var canceleds = client.Orders.Where(x => x.CanceledIn.HasValue);
+                    sellerScore.SetScoreProductsCanceledsOrders((decimal)canceleds.Sum(x=> x.ProductPromotionPoints)! * clients.Count);
+                });
             });
 
             await _sellerScoreProductSummaryRepository.AddRange(summaries);

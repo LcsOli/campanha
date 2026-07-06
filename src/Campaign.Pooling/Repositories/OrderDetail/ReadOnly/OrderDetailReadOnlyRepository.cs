@@ -44,6 +44,7 @@ namespace Campaign.Pooling.Repositories.OrderDetail.ReadOnly
                                 pc.codusur AS SellerId,
                                 pi.codprod AS ProductId,
                                 pi.codcli AS ConsumerId,
+                                pc.dtcancel AS CanceledIn,
                                 c.cliente AS ConsumerName,
                                 p.descricao AS ProductDescription,
                                 pm.qtpontoscliente AS ProductPromotionPoints
@@ -113,6 +114,36 @@ namespace Campaign.Pooling.Repositories.OrderDetail.ReadOnly
                                 GROUP BY 
                                     c.codusur
                 """);
+
+            return await query.ToListAsync();
+        }
+
+        public async Task<List<OrderDetailResponse>> GetCanceledsByMonth(DateTime initIn, DateTime endIn)
+        {
+            var query = _context.Database.SqlQuery<OrderDetailResponse>($"""
+                            SELECT
+                                 pi.qt AS Quantity,
+                                 pc.numped AS OrderId,
+                                 pi.data AS DateOfSale,
+                                 pc.codusur AS SellerId,
+                                 pi.codprod AS ProductId,
+                                 pi.codcli AS ConsumerId,
+                                 pc.dtcancel AS CanceledIn,
+                                 c.cliente AS ConsumerName,
+                                 p.descricao AS ProductDescription,
+                                 pm.qtpontoscliente AS ProductPromotionPoints
+                            FROM
+                                 cf_campanha_rca_score s
+                                 JOIN pcpedc pc ON pc.codusur = s.rca_id
+                                 JOIN pcpedi pi ON pi.numped = pc.numped
+                                 JOIN pcpromoi pm ON pm.codprod = pi.codprod
+                                 JOIN pcclient c ON c.codcli = pc.codcli
+                                 JOIN pcprodut p ON p.codprod = pi.codprod
+                            WHERE
+                                 pc.dtcancel IS NOT NULL AND
+                                 pc.data >= DATE {initIn:yyyy-MM-dd} AND
+                                 pc.data < DATE {endIn.AddDays(1):yyyy-MM-dd}
+                    """);
 
             return await query.ToListAsync();
         }

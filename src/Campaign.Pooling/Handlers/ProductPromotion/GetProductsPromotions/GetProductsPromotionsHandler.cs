@@ -17,7 +17,7 @@ namespace Campaign.Pooling.Handlers.ProductPromotion.GetProductsPromotions
         {
             new CommandValidator().Validate(cmd);
 
-            var productPromotions = await _productPromotionReadOnlyRepository.GetByProductsIdsAndPromotionCode(cmd.ProdutcsIds, cmd.PromotionCode);
+            var productPromotions = await _productPromotionReadOnlyRepository.GetByProductsIdsAndPromotionCode(cmd.PromotionCode, cmd.ProdutcsIds);
 
             new FindedProductsPromotionsValidator()
                 .Validate(productPromotions);

@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
-using Microsoft.IdentityModel.Tokens;
 using Campaign.API.Services.SecretKey;
+using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 
 namespace Campaign.API.Services.Token
@@ -36,7 +36,7 @@ namespace Campaign.API.Services.Token
             });
         }
 
-        public string Generate(string userId, string name, string role)
+        public string Generate(string userId, string name, int sellerId, string role)
         {
             return Token(new SecurityTokenDescriptor
             {
@@ -44,6 +44,7 @@ namespace Campaign.API.Services.Token
 
                   new Claim("id", userId),
                   new Claim("name", name),
+                  new Claim("sellerId", sellerId.ToString()),
                   new Claim(ClaimTypes.Role, role.ToString().ToLower()),
                ])
             });

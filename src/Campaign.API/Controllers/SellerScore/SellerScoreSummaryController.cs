@@ -40,8 +40,7 @@ namespace Campaign.API.Controllers.SellerScore
                                                    [FromQuery] int? CustomerId,
                                                    [FromQuery] string? EventType,
                                                    [FromQuery] int PromotionCode,
-                                                   [FromServices] ISellerScoreClientSummaryHandler sellerScoreClientSummaryHandler
-            )
+                                                   [FromServices] ISellerScoreClientSummaryHandler sellerScoreClientSummaryHandler)
         {
 
             CustomerSalesEventType? eventType = !string.IsNullOrEmpty(EventType) ? 

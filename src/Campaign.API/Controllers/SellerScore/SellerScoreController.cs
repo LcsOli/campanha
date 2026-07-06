@@ -15,7 +15,7 @@ namespace Campaign.API.Controllers.SellerScore
                                                           [FromQuery] string? filter,
                                                           [FromQuery] short? page,
                                                           [FromQuery] short? size,
-                                                          IGetSellersScoresHnadler getSellersScoresHnadler)
+                                                          IGetSellersScoresHandler getSellersScoresHnadler)
         {
             var command = new GetSellersScoresByFiltersCommand(teamId, filter!, page, size);
             return Ok(await getSellersScoresHnadler.Handle(command));
@@ -23,7 +23,7 @@ namespace Campaign.API.Controllers.SellerScore
 
         [HttpGet("{id}")]
         [Authorize(Roles = "manager, user")]
-        public async Task<IActionResult> Get(int id ,IGetSellersScoresHnadler getSellersScoresHnadler)
+        public async Task<IActionResult> Get(int id ,IGetSellersScoresHandler getSellersScoresHnadler)
         {
             var command = new GetSellerScoreByIdCommand(id);
             return Ok(await getSellersScoresHnadler.Handle(command));
