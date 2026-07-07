@@ -38,12 +38,10 @@ namespace Campaign.Processor.API.Handlers.RegisterSellerScoreProductSummary
 
                 clients.ForEach(client =>
                 {
-                    var sellerersScoresProductsSummaries = client.Orders.Select(o => new SellerScoreProductsSummary(isRemoved: false,
-                                                                                                                    productId: o.ProductId,
+                    var sellerersScoresProductsSummaries = client.Orders.Select(o => new SellerScoreProductsSummary(productId: o.ProductId,
                                                                                                                     customerId: client.CustomerId,
                                                                                                                     sellerId: sellerScore.SellerId,
                                                                                                                     promotionCode: cmd.PromotionCode,
-                                                                                                                    isCanceled: o.CanceledIn.HasValue,
                                                                                                                     score: o.ProductPromotionPoints!.Value));
 
                     summaries.AddRange(sellerersScoresProductsSummaries);

@@ -144,7 +144,6 @@ namespace Campaign.Pooling.Repositories.Order.ReadOnly
                                JOIN pcclient c ON c.codcli = pc.codcli
                                JOIN pcprodut p ON p.codprod = pi.codprod
                             WHERE
-                               s.rca_id = 1778 AND
                                pm.codpromocao = {promotionCode} AND
                                (
                                    TRUNC(pc.data) >= TRUNC(pmc.dtinicio) AND
