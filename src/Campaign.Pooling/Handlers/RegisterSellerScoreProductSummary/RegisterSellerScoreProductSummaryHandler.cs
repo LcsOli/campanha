@@ -13,12 +13,6 @@ namespace Campaign.Processor.API.Handlers.RegisterSellerScoreProductSummary
             _sellerScoreProductSummaryRepository = sellerScoreProductSummaryRepository;
         }
 
-        /*
-         TODO 
-            - Rodar apenas quando for final de mês.
-            - Buscar todos os pedidos do mês.
-         */
-
         public async Task Handle(RegisterSellerScoreProductSummaryCommand cmd)
         {
             var summaries = new List<SellerScoreProductsSummary>();

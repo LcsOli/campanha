@@ -15,7 +15,7 @@ namespace Campaign.Pooling.Handlers.Seller.GetSellersToCreate
         public async Task<List<int>> Handle(GetSellerstoCreateCommand cmd)
         {
             new CommandValidator().Validate(cmd);
-            var sellersIds =  await _sellerScoreReadOnlyRepository.GetSellersInserteds(cmd.SellersIds);
+            var sellersIds =  await _sellerScoreReadOnlyRepository.GetRegisteredsById(cmd.SellersIds);
 
             return [.. cmd.SellersIds.Except(sellersIds)];
         }
