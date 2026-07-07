@@ -1,0 +1,35 @@
+﻿using Campaign.Pooling.DTO.Response.Order;
+
+namespace Campaign.Processor.API.DTO.Response.Order
+{
+    public record OrderDetailPromotionResponse : OrderDetailResponse
+    {
+        public DateTime PromotionEndIn { get; init; }
+        public DateTime PromotionInitIn { get; init; }
+        public OrderDetailPromotionResponse(int OrderId,
+                                            int SellerId,
+                                            int ProductId,
+                                            int ConsumerId,
+                                            decimal Quantity,
+                                            DateTime DateOfSale,
+                                            string ConsumerName,
+                                            DateTime? CanceledIn,
+                                            DateTime PromotionEndIn,
+                                            DateTime PromotionInitIn,
+                                            string ProductDescription,
+                                            decimal? ProductPromotionPoints) : base(OrderId,
+                                                                                    SellerId,
+                                                                                    ProductId,
+                                                                                    ConsumerId,
+                                                                                    Quantity,
+                                                                                    DateOfSale,
+                                                                                    ConsumerName,
+                                                                                    CanceledIn,
+                                                                                    ProductDescription,
+                                                                                    ProductPromotionPoints)
+        {
+            this.PromotionEndIn = PromotionEndIn;
+            this.PromotionInitIn = PromotionInitIn;
+        }
+    }
+}

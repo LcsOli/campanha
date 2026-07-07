@@ -14,28 +14,30 @@
             #Supplier
 */
 
-using Campaign.Shared.UnitOfWorkDI;
-using Campaign.Program.Register.User;
-using StackTraceInternalLibrary.Client;
-using Campaign.Shared.DataBaseContextDI;
-using Campaign.Pooling.Commands.Calculate;
-using StackTraceInternalLibrary.ContainerDI;
 using Campaign.API.Orchestrators.RegisterUser;
-using Campaign.Shared.DataBaseContext.Entities;
-using Microsoft.Extensions.DependencyInjection;
-using Campaign.Pooling.Handlers.CalculateRevenueTarget;
-using Campaign.Processor.API.Commands.Summaries.Create;
+using Campaign.Pooling.Commands.Calculate;
 using Campaign.Pooling.Commands.CalculateScoreByProduct;
-using Campaign.Pooling.Handlers.CalculateScoreByProduct;
-using Campaign.Pooling.Repositories.OrderDetail.ReadOnly;
-using Campaign.Pooling.Repositories.OrderSummary.ReadOnly;
 using Campaign.Pooling.Configurations.ContainerDI.Handlers;
-using Campaign.Shared.DataBaseContext.Entities.UnityOfWork;
-using Campaign.Pooling.Handlers.SellerScore.GetSellersScore;
-using Campaign.Pooling.Configurations.ContainerDI.Repositories;
 using Campaign.Pooling.Configurations.ContainerDI.Orchestrators;
+using Campaign.Pooling.Configurations.ContainerDI.Repositories;
+using Campaign.Pooling.Handlers.CalculateRevenueTarget;
+using Campaign.Pooling.Handlers.CalculateScoreByProduct;
+using Campaign.Pooling.Handlers.SellerScore.GetSellersScore;
+using Campaign.Pooling.Repositories.Order.ReadOnly;
+using Campaign.Pooling.Repositories.OrderSummary.ReadOnly;
+using Campaign.Processor.API.Commands.EndOfMonth.ScoreByOrderCanceled.Create;
+using Campaign.Processor.API.Commands.Summaries.Create;
+using Campaign.Processor.API.Handlers.EndOfMonth.ScoreByOrderCanceled;
 using Campaign.Processor.API.Handlers.RegisterSellerScoreClientSummary;
 using Campaign.Processor.API.Handlers.RegisterSellerScoreProductSummary;
+using Campaign.Program.Register.User;
+using Campaign.Shared.DataBaseContext.Entities;
+using Campaign.Shared.DataBaseContext.Entities.UnityOfWork;
+using Campaign.Shared.DataBaseContextDI;
+using Campaign.Shared.UnitOfWorkDI;
+using Microsoft.Extensions.DependencyInjection;
+using StackTraceInternalLibrary.Client;
+using StackTraceInternalLibrary.ContainerDI;
 
 var services = new ServiceCollection();
 services.AddDataBase();
@@ -54,7 +56,34 @@ var context = serviceProvider.GetService<CampaingContextDb>();
 
 using var scope = serviceProvider.CreateScope();
 
-await CalculateScoreByProduct();
+
+await CalculateCanceleds(202601);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 async Task CalculateRevenueOfMonth()
 {
@@ -147,4 +176,10 @@ async Task CalculateScoreByProduct()
 
         score = sellersScores.First().Score;
     }
+}
+
+async Task CalculateCanceleds(int promotionCode)
+{
+    var scoreByOrderCanceledHandler = scope.ServiceProvider.GetRequiredService<IScoreByOrderCanceledHandler>();
+    await scoreByOrderCanceledHandler.Handle(new CalculateCommand(promotionCode));
 }

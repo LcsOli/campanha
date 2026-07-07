@@ -1,7 +1,7 @@
-﻿using Campaign.Processor.API.Commands.Summaries.Create;
+﻿using Campaign.Pooling.Repositories.Order.ReadOnly;
+using Campaign.Processor.API.Commands.Summaries.Create;
 using Campaign.Pooling.Commands.CalculateScoreByProduct;
 using Campaign.Pooling.Handlers.CalculateScoreByProduct;
-using Campaign.Pooling.Repositories.OrderDetail.ReadOnly;
 using Campaign.Processor.API.Handlers.RegisterSellerScoreProductSummary;
 using EntitySellerScore = Campaign.Shared.DataBaseContext.Entities.Seller;
 

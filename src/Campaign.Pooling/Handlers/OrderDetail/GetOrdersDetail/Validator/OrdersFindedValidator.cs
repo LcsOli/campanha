@@ -2,7 +2,7 @@
 using Campaign.Shared.FluentValidator;
 using Campaign.Pooling.DTO.Response.Order;
 
-namespace Campaign.Pooling.Handlers.OrderDetail.GetOrdersDetail.Validator
+namespace Campaign.Pooling.Handlers.Order.GetOrdersDetail.Validator
 {
     public class OrdersFindedValidator : FluentValidator<List<OrderDetailResponse>>
     {

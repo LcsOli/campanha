@@ -1,10 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Campaign.Pooling.DTO.Response.Order;
+﻿using Campaign.Pooling.DTO.Response.Order;
 using Campaign.Pooling.DTO.Response.Revenue;
+using Campaign.Processor.API.DTO.Response.Order;
 using Campaign.Shared.DataBaseContext.Entities;
+using Microsoft.EntityFrameworkCore;
 using Entity = Campaign.Shared.DataBaseContext.Entities.Order;
 
-namespace Campaign.Pooling.Repositories.OrderDetail.ReadOnly
+namespace Campaign.Pooling.Repositories.Order.ReadOnly
 {
     public class OrderDetailReadOnlyRepository : IOrderDetailReadOnlyRepository
     {
@@ -118,31 +119,37 @@ namespace Campaign.Pooling.Repositories.OrderDetail.ReadOnly
             return await query.ToListAsync();
         }
 
-        public async Task<List<OrderDetailResponse>> GetCanceledsByMonth(DateTime initIn, DateTime endIn)
+        public async Task<List<OrderDetailPromotionResponse>> GetAllByPromotionCode(int promotionCode)
         {
-            var query = _context.Database.SqlQuery<OrderDetailResponse>($"""
+            var query = _context.Database.SqlQuery<OrderDetailPromotionResponse>($"""
                             SELECT
-                                 pi.qt AS Quantity,
-                                 pc.numped AS OrderId,
-                                 pi.data AS DateOfSale,
-                                 pc.codusur AS SellerId,
-                                 pi.codprod AS ProductId,
-                                 pi.codcli AS ConsumerId,
-                                 pc.dtcancel AS CanceledIn,
-                                 c.cliente AS ConsumerName,
-                                 p.descricao AS ProductDescription,
-                                 pm.qtpontoscliente AS ProductPromotionPoints
+                               pi.qt AS Quantity,
+                               pc.numped AS OrderId,
+                               pi.data AS DateOfSale,
+                               pc.codusur AS SellerId,
+                               pi.codprod AS ProductId,
+                               pi.codcli AS ConsumerId,
+                               pc.dtcancel AS CanceledIn,
+                               c.cliente AS ConsumerName,
+                               pmc.dtfim AS PromotionEndIn,
+                               pmc.dtinicio AS PromotionInitIn,
+                               p.descricao AS ProductDescription,
+                               pm.qtpontoscliente AS ProductPromotionPoints
                             FROM
-                                 cf_campanha_rca_score s
-                                 JOIN pcpedc pc ON pc.codusur = s.rca_id
-                                 JOIN pcpedi pi ON pi.numped = pc.numped
-                                 JOIN pcpromoi pm ON pm.codprod = pi.codprod
-                                 JOIN pcclient c ON c.codcli = pc.codcli
-                                 JOIN pcprodut p ON p.codprod = pi.codprod
+                               cf_campanha_rca_score s
+                               JOIN pcpedc pc ON pc.codusur = s.rca_id
+                               JOIN pcpedi pi ON pi.numped = pc.numped
+                               JOIN pcpromoi pm ON pm.codprod = pi.codprod
+                               JOIN pcpromoc pmc ON pmc.codpromocao = pm.codpromocao
+                               JOIN pcclient c ON c.codcli = pc.codcli
+                               JOIN pcprodut p ON p.codprod = pi.codprod
                             WHERE
-                                 pc.dtcancel IS NOT NULL AND
-                                 pc.data >= DATE {initIn:yyyy-MM-dd} AND
-                                 pc.data < DATE {endIn.AddDays(1):yyyy-MM-dd}
+                               s.rca_id = 1778 AND
+                               pm.codpromocao = {promotionCode} AND
+                               (
+                                   TRUNC(pc.data) >= TRUNC(pmc.dtinicio) AND
+                                   TRUNC(pc.data) <= TRUNC(pmc.dtfim)
+                               )
                     """);
 
             return await query.ToListAsync();

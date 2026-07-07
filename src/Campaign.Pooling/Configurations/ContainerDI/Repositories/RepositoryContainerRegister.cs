@@ -1,4 +1,4 @@
-﻿using Campaign.Pooling.Repositories.OrderDetail.ReadOnly;
+﻿using Campaign.Pooling.Repositories.Order.ReadOnly;
 using Campaign.Pooling.Repositories.OrderProductRemoved.ReadOnly;
 using Campaign.Pooling.Repositories.OrderSummary.ReadOnly;
 using Campaign.Pooling.Repositories.Period.ReadOnly;

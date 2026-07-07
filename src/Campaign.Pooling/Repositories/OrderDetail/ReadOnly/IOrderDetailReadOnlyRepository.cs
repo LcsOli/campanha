@@ -1,8 +1,9 @@
 ﻿using Campaign.Pooling.DTO.Response.Order;
 using Campaign.Pooling.DTO.Response.Revenue;
+using Campaign.Processor.API.DTO.Response.Order;
 using Entity = Campaign.Shared.DataBaseContext.Entities.Order;
 
-namespace Campaign.Pooling.Repositories.OrderDetail.ReadOnly
+namespace Campaign.Pooling.Repositories.Order.ReadOnly
 {
     public interface IOrderDetailReadOnlyRepository
     {
@@ -10,6 +11,6 @@ namespace Campaign.Pooling.Repositories.OrderDetail.ReadOnly
         Task<List<OrderDetailResponse>> GetByPromotionCode(int promotionCode);
         Task<List<TotalRevenueResponse>> CalculateCurrentRevenue(int promotionCode);
         Task<List<TotalRevenueResponse>> CalculateRevenueByMonth(DateTime init, DateTime end);
-        Task<List<OrderDetailResponse>> GetCanceledsByMonth(DateTime initIn, DateTime endIn);
+        Task<List<OrderDetailPromotionResponse>> GetAllByPromotionCode(int promotionCode);
     }
 }

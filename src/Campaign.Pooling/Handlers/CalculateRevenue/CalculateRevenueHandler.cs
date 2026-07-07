@@ -1,7 +1,7 @@
 ﻿using Campaign.Pooling.Services;
 using Campaign.Pooling.Commands.Calculate;
 using Campaign.Pooling.Repositories.Period.ReadOnly;
-using Campaign.Pooling.Repositories.OrderDetail.ReadOnly;
+using Campaign.Pooling.Repositories.Order.ReadOnly;
 using Campaign.Pooling.Repositories.ProductPromotionSummary.ReadOnly;
 
 namespace Campaign.Pooling.Handlers.CalculateRevenueTarget

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Campaign.Shared.DataBaseContext.Entities;
 using Campaign.Pooling.Commands.CalculateScoreByProduct;
 using Campaign.Pooling.Handlers.CalculateScoreByProduct;
-using Campaign.Pooling.Repositories.OrderDetail.ReadOnly;
+using Campaign.Pooling.Repositories.Order.ReadOnly;
 using Campaign.Pooling.Repositories.SellerScore.ReadOnly;
 using Campaign.Pooling.Repositories.OrderSummary.ReadOnly;
 using Campaign.Pooling.Handlers.SellerScore.GetSellersScore;
