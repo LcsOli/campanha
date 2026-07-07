@@ -56,6 +56,44 @@ var context = serviceProvider.GetService<CampaingContextDb>();
 
 using var scope = serviceProvider.CreateScope();
 
+
+await CalculateScoreByProductCanceleds(202601);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+async Task CalculateScoreByProductCanceleds(int promotionCode)
+{
+    var scoreByOrderCanceledHandler = scope.ServiceProvider.GetRequiredService<IScoreByOrderCanceledHandler>();
+    var orderDetailReadOnlyRepository = scope.ServiceProvider.GetRequiredService<IOrderDetailReadOnlyRepository>();
+    
+    var orders = await orderDetailReadOnlyRepository.GetAllByPromotionCode(promotionCode);
+
+    await scoreByOrderCanceledHandler.Handle(new CalculateCommand(promotionCode, orders));
+}
 async Task CalculateRevenueOfMonth()
 {
     var getSellerScoreHandler = scope.ServiceProvider.GetRequiredService<IGetSellerScoreHandler>();
@@ -147,10 +185,4 @@ async Task CalculateScoreByProduct()
 
         score = sellersScores.First().Score;
     }
-}
-
-async Task CalculateCanceleds(int promotionCode)
-{
-    var scoreByOrderCanceledHandler = scope.ServiceProvider.GetRequiredService<IScoreByOrderCanceledHandler>();
-    await scoreByOrderCanceledHandler.Handle(new CalculateCommand(promotionCode));
 }

@@ -13,12 +13,12 @@ namespace Campaign.Pooling.Repositories.SellerScore.WriteOnly
 
         public async Task AddAsync(List<Entity.SellerScore> entities)
         {
-            await _context.AddRangeAsync(entities);
+            await _context.SellerScores.AddRangeAsync(entities);
         }
 
         public void Update(List<Entity.SellerScore> entities)
         {
-            _context.UpdateRange(entities);
+            _context.SellerScores.UpdateRange(entities);
         }
     }
 }

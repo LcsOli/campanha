@@ -34,6 +34,7 @@ namespace Campaign.Pooling.Configurations.ContainerDI.Handlers
             services.AddScoped<IGetSellersManagersHandler, GetSellersManagersHandler>();
             services.AddScoped<IGetSellersToCreateHandler, GetSellerstoCreateHandler>();
             services.AddScoped<IScoreByOrderCanceledHandler, ScoreByOrderCanceledHandler>();
+            services.AddScoped<IScoreByOrderCanceledHandler, ScoreByOrderCanceledHandler>();
             services.AddScoped<IGetProductsPromotionsHandler, GetProductsPromotionsHandler>();
             services.AddScoped<IProductPromotionExistsHandler, ProductPromotionExistsHandler>();
             services.AddScoped<ICalculateScoreByProductHandler, CalculateScoreByProductHandler>();

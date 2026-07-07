@@ -1,5 +1,4 @@
 ﻿using Campaign.Pooling.Commands.Calculate;
-using Campaign.Pooling.Commands.Consumers.Get;
 using Campaign.Pooling.Handlers.CalculateCoupons;
 using Campaign.Processor.API.Commands.Consumers.Get;
 using Campaign.Pooling.Commands.SellerManager.Update;
