@@ -57,7 +57,7 @@ var context = serviceProvider.GetService<CampaingContextDb>();
 using var scope = serviceProvider.CreateScope();
 
 
-await CalculateScoreByProductCanceleds(202602);
+await CalculateScoreByProductCanceleds(202605);
 
 
 

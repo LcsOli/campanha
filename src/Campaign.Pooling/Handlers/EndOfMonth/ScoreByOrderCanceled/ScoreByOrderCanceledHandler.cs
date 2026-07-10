@@ -74,8 +74,6 @@ namespace Campaign.Processor.API.Handlers.EndOfMonth.ScoreByOrderCanceled
                 var score = scoreCanceleds.Single(y => y.SellerId == x.SellerId).ScoreCanceleds;
                 x.SetScoreProductsCanceledsOrders(score!.Value);
             });
-
-            await _unityOfWork.SaveAsync();
         }
     }
 }
