@@ -1,9 +1,9 @@
-﻿using Entity = Campaign.Shared.DataBaseContext.Entities.OrderProductRemoved;
+﻿using Campaign.Processor.API.DTO.Response.OrderProductRemoved.Items.Get;
 
 namespace Campaign.Pooling.Repositories.OrderProductRemoved.ReadOnly
 {
     public interface IOrderProductRemovedReadOnlyRepository
     {
-        Task<List<Entity.OrderProductRemoved>> GetByOrdersIds(int promotionCode, int[] ordersIds);
+        Task<List<OrderProductItemsRemoved>> GetByOrdersIds(int promotionCode, int[] ordersIds);
     }
 }

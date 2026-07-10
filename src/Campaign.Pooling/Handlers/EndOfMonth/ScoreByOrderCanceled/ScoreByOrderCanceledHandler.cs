@@ -1,23 +1,14 @@
 ﻿using Campaign.Pooling.Repositories.SellerScore.ReadOnly;
-using Campaign.Pooling.Repositories.SellerScore.WriteOnly;
 using Campaign.Processor.API.Commands.EndOfMonth.ScoreByOrderCanceled.Create;
-using Campaign.Shared.DataBaseContext.Entities.UnityOfWork;
 
 namespace Campaign.Processor.API.Handlers.EndOfMonth.ScoreByOrderCanceled
 {
     public class ScoreByOrderCanceledHandler : IScoreByOrderCanceledHandler
     {
-        private readonly IUnityOfWork _unityOfWork;
-
         private readonly ISellerScoreReadOnlyRepository _sellerScoreReadOnlyRepository;
-        private readonly ISellerScoreWriteOnlyRepository _sellerScoreWriteOnlyRepository;
-        public ScoreByOrderCanceledHandler(IUnityOfWork unityOfWork,
-                                           ISellerScoreReadOnlyRepository sellerScoreReadOnlyRepository,
-                                           ISellerScoreWriteOnlyRepository sellerScoreWriteOnlyRepository)
+        public ScoreByOrderCanceledHandler(ISellerScoreReadOnlyRepository sellerScoreReadOnlyRepository)
         {
-            _unityOfWork = unityOfWork;
             _sellerScoreReadOnlyRepository = sellerScoreReadOnlyRepository;
-            _sellerScoreWriteOnlyRepository = sellerScoreWriteOnlyRepository;
         }
 
         public async Task Handle(CalculateCommand cmd)
@@ -66,6 +57,9 @@ namespace Campaign.Processor.API.Handlers.EndOfMonth.ScoreByOrderCanceled
             }).ToList();
 
             var sellersIds = scoreCanceleds.Select(x => x.SellerId);
+
+            if (!sellersIds.Any())
+                return;
 
             var sellersScores = await _sellerScoreReadOnlyRepository.GetByIds([.. sellersIds]);
 

@@ -1,52 +1,64 @@
-﻿using Campaign.Processor.API.Commands.ScoreRemoved.Create;
-using Campaign.Pooling.Repositories.ProductPromotion.ReadOnly;
+﻿using Campaign.Pooling.Repositories.SellerScore.ReadOnly;
 using Campaign.Pooling.Repositories.OrderProductRemoved.ReadOnly;
+using Campaign.Processor.API.Commands.EndOfMonth.ScoreByOrderRemoved.Create;
 using Campaign.Processor.API.Handlers.EndOfMonth.ScoreByOrderItemRemoved.Validator;
 
 namespace Campaign.Processor.API.Handlers.EndOfMonth.ScoreByOrderItemRemoved
 {
     public class ScoreByOrderRemovedHandler : IScoreByOrderRemovedHandler
     {
-        private readonly IProductPromotionReadOnlyRepository _productPromotionReadOnlyRepository;
+        private readonly ISellerScoreReadOnlyRepository _sellerScoreReadOnlyRepository;
         private readonly IOrderProductRemovedReadOnlyRepository _orderProductRemovedReadOnlyRepository;
-        public ScoreByOrderRemovedHandler(IProductPromotionReadOnlyRepository productPromotionReadOnlyRepository,
-                                   IOrderProductRemovedReadOnlyRepository orderProductRemovedReadOnlyRepository)
+
+        public ScoreByOrderRemovedHandler(ISellerScoreReadOnlyRepository sellerScoreReadOnlyRepository,
+                                          IOrderProductRemovedReadOnlyRepository orderProductRemovedReadOnlyRepository)
         {
-            _productPromotionReadOnlyRepository = productPromotionReadOnlyRepository;
+            _sellerScoreReadOnlyRepository = sellerScoreReadOnlyRepository;
             _orderProductRemovedReadOnlyRepository = orderProductRemovedReadOnlyRepository;
         }
 
-        /*
-            Motivo da criação do handler
-
-                - Alguns pedidos podem ter produtos removidos. 
-                    - Preciso pegar os produtos removidos por pedido;
-                    - Preciso saber qual foi o RCA que fez este pedido;
-                    - Preciso calcular a quantidade de pontos que o RCA perdeu por conta do produto removido;
-         */
-
-        public async Task Handle(RegisterScoreRemovedCommand cmd)
+        public async Task Handle(CalculateCommand cmd)
         {
             new RegisterScoreRemovedDataValidator()
                 .Validate(cmd);
 
-            var ordersIds = cmd.OrdersDetails.Select(x => x.OrderId).Distinct();
+            var ordersValids = cmd.Orders.GroupBy(x => new { x.SellerId, x.ConsumerId, x.OrderId, x.ProductId })
+                                         .Select(x => new
+                                         {
+                                             x.Key.OrderId,
+                                             x.Key.SellerId,
+                                             x.Key.ConsumerId
+                                         });
+
+            var ordersIds = ordersValids.Select(x => x.OrderId).Distinct();
 
             var productsRemoveds = await _orderProductRemovedReadOnlyRepository.GetByOrdersIds(cmd.PromotionCode, [.. ordersIds]);
 
-            if (productsRemoveds.Count <= 0)
+            if (productsRemoveds.Count == 0)
                 return;
 
-            var productsIds = productsRemoveds.Select(x => x.ProductId).Distinct();
+            var scoreToRemoveBySeller = productsRemoveds.GroupBy(x => x.SellerId)
+                                                        .Select(x => new
+                                                        {
+                                                            SellerId = x.Key,
+                                                            Score = x.Sum(y => y.ProductPromotionPoints)
+                                                        });
 
-            var productsPromotion = await _productPromotionReadOnlyRepository.GetByProductsIdsAndPromotionCode(cmd.PromotionCode, [.. productsIds]);
+            var sellersIds = scoreToRemoveBySeller.Select(x => x.SellerId);
 
-            /*
-             
-                 Problema: Para cada produto removido do, preciso buscar o RCA 
+            var sellers = await _sellerScoreReadOnlyRepository.GetByIds([.. sellersIds]);
 
-             */
+            sellers.ForEach(x =>
+            {
+                var qtyConsumers = ordersValids.Where(y => y.SellerId == x.SellerId)
+                                               .Select(y => y.ConsumerId)
+                                               .Distinct()
+                                               .Count();
 
+                var score = scoreToRemoveBySeller.Single(y => y.SellerId == x.SellerId).Score!.Value * qtyConsumers;
+
+                x.SetScoreProductRemovedFromOrders(score);
+            });
         }
     }
 }

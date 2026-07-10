@@ -13,7 +13,8 @@
             #SellerManager
             #Supplier
 */
-
+using ScoreRemovedCommand = Campaign.Processor.API.Commands.EndOfMonth.ScoreByOrderRemoved.Create;
+using ScoreCanceledCommand = Campaign.Processor.API.Commands.EndOfMonth.ScoreByOrderCanceled.Create;
 using Campaign.API.Orchestrators.RegisterUser;
 using Campaign.Pooling.Commands.Calculate;
 using Campaign.Pooling.Commands.CalculateScoreByProduct;
@@ -25,9 +26,9 @@ using Campaign.Pooling.Handlers.CalculateScoreByProduct;
 using Campaign.Pooling.Handlers.SellerScore.GetSellersScore;
 using Campaign.Pooling.Repositories.Order.ReadOnly;
 using Campaign.Pooling.Repositories.OrderSummary.ReadOnly;
-using Campaign.Processor.API.Commands.EndOfMonth.ScoreByOrderCanceled.Create;
 using Campaign.Processor.API.Commands.Summaries.Create;
 using Campaign.Processor.API.Handlers.EndOfMonth.ScoreByOrderCanceled;
+using Campaign.Processor.API.Handlers.EndOfMonth.ScoreByOrderItemRemoved;
 using Campaign.Processor.API.Handlers.RegisterSellerScoreClientSummary;
 using Campaign.Processor.API.Handlers.RegisterSellerScoreProductSummary;
 using Campaign.Program.Register.User;
@@ -57,42 +58,26 @@ var context = serviceProvider.GetService<CampaingContextDb>();
 using var scope = serviceProvider.CreateScope();
 
 
-await CalculateScoreByProductCanceleds(202605);
+await CalculateScoreByProductRemoveds(202604);
 
 
+async Task CalculateScoreByProductRemoveds(int promotionCode)
+{
+    var scoreByOrderRemovedHandler = scope.ServiceProvider.GetRequiredService<IScoreByOrderRemovedHandler>();
+    var orderDetailReadOnlyRepository = scope.ServiceProvider.GetRequiredService<IOrderDetailReadOnlyRepository>();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    var orders = await orderDetailReadOnlyRepository.GetAllByPromotionCode(promotionCode);
+    await scoreByOrderRemovedHandler.Handle(new ScoreRemovedCommand.CalculateCommand(promotionCode, orders));
+}
 
 async Task CalculateScoreByProductCanceleds(int promotionCode)
 {
     var scoreByOrderCanceledHandler = scope.ServiceProvider.GetRequiredService<IScoreByOrderCanceledHandler>();
     var orderDetailReadOnlyRepository = scope.ServiceProvider.GetRequiredService<IOrderDetailReadOnlyRepository>();
-    
+
     var orders = await orderDetailReadOnlyRepository.GetAllByPromotionCode(promotionCode);
 
-    await scoreByOrderCanceledHandler.Handle(new CalculateCommand(promotionCode, orders));
+    await scoreByOrderCanceledHandler.Handle(new ScoreCanceledCommand.CalculateCommand(orders));
 }
 async Task CalculateRevenueOfMonth()
 {

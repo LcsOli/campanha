@@ -38,6 +38,12 @@ namespace Campaign.Shared.DataBaseContext.EntitiesConfigurations
 
             builder.Property(x => x.SellerId)
                    .HasColumnName("CODUSUR");
+
+            builder.Property(x => x.ReplicationIn)
+                   .HasColumnName("REP_DATA");
+
+            builder.Property(x => x.ConsumerId)
+                   .HasColumnName("CODCLI");
         }
     }
 }

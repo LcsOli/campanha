@@ -15,6 +15,7 @@ using Campaign.Pooling.Handlers.SellerManager.GetSellers;
 using Campaign.Pooling.Handlers.SellerScore.GetSellersScore;
 using Campaign.Pooling.Handlers.UpdateCurrentRevenueSellerManager;
 using Campaign.Processor.API.Handlers.EndOfMonth.ScoreByOrderCanceled;
+using Campaign.Processor.API.Handlers.EndOfMonth.ScoreByOrderItemRemoved;
 using Campaign.Processor.API.Handlers.RegisterSellerScoreClientSummary;
 using Campaign.Processor.API.Handlers.RegisterSellerScoreProductSummary;
 using Campaign.Processor.API.Orchestrators.CalculateScoreByProduct;
@@ -33,6 +34,7 @@ namespace Campaign.Pooling.Configurations.ContainerDI.Handlers
             services.AddScoped<IInsertSellerScoreHandler, InsertSellerScoreHandler>();
             services.AddScoped<IGetSellersManagersHandler, GetSellersManagersHandler>();
             services.AddScoped<IGetSellersToCreateHandler, GetSellerstoCreateHandler>();
+            services.AddScoped<IScoreByOrderRemovedHandler, ScoreByOrderRemovedHandler>();
             services.AddScoped<IScoreByOrderCanceledHandler, ScoreByOrderCanceledHandler>();
             services.AddScoped<IScoreByOrderCanceledHandler, ScoreByOrderCanceledHandler>();
             services.AddScoped<IGetProductsPromotionsHandler, GetProductsPromotionsHandler>();

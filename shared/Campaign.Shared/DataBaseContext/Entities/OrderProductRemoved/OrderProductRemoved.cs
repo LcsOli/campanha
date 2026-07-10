@@ -5,10 +5,12 @@
         public int OrderId { get; private set; }
         public int SellerId { get; private set; }
         public int ProductId { get; private set; }
+        public int ConsumerId { get; private set; }
         public int ShipmentNumber { get; private set; }
         public int SequenceNumber { get; private set; }
         public int QtyProductHeld { get; private set; }
         public int QtyProductRemoved { get; private set; }
+        public DateTime ReplicationIn { get; private set; }
         public bool AllRemoved => QtyProductHeld <= 0 && QtyProductRemoved > 0;
     }
 }
