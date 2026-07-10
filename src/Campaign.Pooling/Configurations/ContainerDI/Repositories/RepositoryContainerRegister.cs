@@ -12,6 +12,7 @@ using Campaign.Pooling.Repositories.Sellers.Seller.ReadOnly;
 using Campaign.Pooling.Repositories.SellerScore.ReadOnly;
 using Campaign.Pooling.Repositories.SellerScore.WriteOnly;
 using Campaign.Processor.API.Repositories.SellerScoreClientSummary.WriteOnly;
+using Campaign.Processor.API.Repositories.SellerScoreProductsSummary.ReadOnly;
 using Campaign.Processor.API.Repositories.SellerScoreProductsSummary.WriteOnly;
 
 namespace Campaign.Pooling.Configurations.ContainerDI.Repositories
@@ -32,6 +33,7 @@ namespace Campaign.Pooling.Configurations.ContainerDI.Repositories
             services.AddScoped<ISellerManagerScoreWriteOnlyRepository, SellerManagerScoreWriteOnlyRepository>();
             services.AddScoped<IProductPromotionSummaryReadOnlyRepository, ProductPromotionSummaryReadOnlyRepository>();
             services.AddScoped<IProductPromotionReadDataHistoryRepositorie, ProductPromotionReadDataHistoryRepositorie>();
+            services.AddScoped<ISellerScoreProductSummaryReadOnlyRepository, SellerScoreProductSummaryReadOnlyRepository>();
             services.AddScoped<ISellerScoreClientSummaryWriteOnlyRepository, SellerScoreClientSummaryWriteOnlyRepository>();
             services.AddScoped<ISellerScoreProductSummaryWriteOnlyRepository, SellerScoreProductSummaryWriteOnlyRepository>();
             services.AddScoped<IProductPromotionReadDataHistoryWriteOnlyRepository, ProductPromotionReadDataHistoryWriteOnlyRepository>();

@@ -57,17 +57,18 @@ var context = serviceProvider.GetService<CampaingContextDb>();
 
 using var scope = serviceProvider.CreateScope();
 
+await CalculateScoreByProductRemoveds(202601, 202602, 202603, 202604);
 
-await CalculateScoreByProductRemoveds(202604);
-
-
-async Task CalculateScoreByProductRemoveds(int promotionCode)
+async Task CalculateScoreByProductRemoveds(params int[] promotionCodes)
 {
     var scoreByOrderRemovedHandler = scope.ServiceProvider.GetRequiredService<IScoreByOrderRemovedHandler>();
     var orderDetailReadOnlyRepository = scope.ServiceProvider.GetRequiredService<IOrderDetailReadOnlyRepository>();
 
-    var orders = await orderDetailReadOnlyRepository.GetAllByPromotionCode(promotionCode);
-    await scoreByOrderRemovedHandler.Handle(new ScoreRemovedCommand.CalculateCommand(promotionCode, orders));
+    foreach (var promotionCode in promotionCodes)
+    {
+        var orders = await orderDetailReadOnlyRepository.GetAllByPromotionCode(promotionCode);
+        await scoreByOrderRemovedHandler.Handle(new ScoreRemovedCommand.CalculateCommand(promotionCode, orders));
+    }
 }
 
 async Task CalculateScoreByProductCanceleds(int promotionCode)

@@ -18,5 +18,14 @@
             CustomerId = customerId;
             PromotionCode = promotionCode;
         }
+
+        public void SetRemoved()
+        {
+            IsRemoved = true;
+        }
+        public void SetCanceled()
+        {
+            IsCanceled = true;
+        }
     }
 }

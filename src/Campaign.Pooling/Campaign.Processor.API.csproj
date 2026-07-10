@@ -41,7 +41,6 @@
   <ItemGroup>
     <Folder Include="Repositories\OrderProductRemoved\WriteOnly\" />
     <Folder Include="Repositories\SellerScoreClientSummary\ReadOnly\" />
-    <Folder Include="Repositories\SellerScoreProductsSummary\ReadOnly\" />
   </ItemGroup>
 
 </Project>
