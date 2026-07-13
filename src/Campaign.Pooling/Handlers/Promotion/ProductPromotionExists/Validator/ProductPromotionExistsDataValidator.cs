@@ -2,11 +2,11 @@
 using Campaign.Shared.FluentValidator;
 using Campaign.Pooling.Commands.ProductPromotions.Get;
 
-namespace Campaign.Pooling.Handlers.ProductPromotion.ProductPromotionExists.Validator
+namespace Campaign.Pooling.Handlers.Promotion.ProductPromotionExists.Validator
 {
-    public class CommandValidator : FluentValidator<ProductPromotionExistsCommand>
+    public class ProductPromotionExistsDataValidator : FluentValidator<ProductPromotionExistsCommand>
     {
-        public CommandValidator()
+        public ProductPromotionExistsDataValidator()
         {
             RuleFor(p => p.PromotionCode)
                 .GreaterThan(0)

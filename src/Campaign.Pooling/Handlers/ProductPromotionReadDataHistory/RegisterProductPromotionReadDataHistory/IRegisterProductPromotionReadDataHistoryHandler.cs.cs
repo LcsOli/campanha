@@ -1,6 +1,6 @@
 ﻿using Campaign.Pooling.Commands.ProductPromotionReadHistory.Create;
 
-namespace Campaign.Pooling.Handlers.ProductPromotionReadDataHistory.RegisterNewHistory
+namespace Campaign.Pooling.Handlers.PromotionReadDataHistory.RegisterNewHistory
 {
     public interface IRegisterProductPromotionReadDataHistoryHandler
     {

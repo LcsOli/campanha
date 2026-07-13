@@ -1,10 +1,10 @@
 ﻿using Campaign.Shared.Mappers;
 using Campaign.Pooling.Commands.ProductPromotionReadHistory.Create;
 using Campaign.Pooling.Repositories.ProductPromotionReadDataHistory.WriteOnly;
-using Campaign.Pooling.Handlers.ProductPromotionReadDataHistory.RegisterNewHistory.Mapper;
-using Campaign.Pooling.Handlers.ProductPromotionReadDataHistory.RegisterNewHistory.Validator;
+using Campaign.Pooling.Handlers.PromotionReadDataHistory.RegisterNewHistory.Mapper;
+using Campaign.Pooling.Handlers.PromotionReadDataHistory.RegisterNewHistory.Validator;
 
-namespace Campaign.Pooling.Handlers.ProductPromotionReadDataHistory.RegisterNewHistory
+namespace Campaign.Pooling.Handlers.PromotionReadDataHistory.RegisterNewHistory
 {
     public class RegisterProductPromotionReadDataHistoryHandler : IRegisterProductPromotionReadDataHistoryHandler
     {

@@ -84,7 +84,7 @@ async Task CalculateScoreByProductCanceleds(int promotionCode)
 
     var orders = await orderDetailReadOnlyRepository.GetAllByPromotionCode(promotionCode);
 
-    await scoreByOrderCanceledHandler.Handle(new ScoreCanceledCommand.CalculateCommand(orders));
+    await scoreByOrderCanceledHandler.Handle(new ScoreCanceledCommand.CalculateCommand(promotionCode, orders));
 }
 async Task CalculateRevenueOfMonth()
 {

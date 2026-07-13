@@ -2,7 +2,7 @@
 using Entity = Campaign.Shared.DataBaseContext.Entities.Product;
 using Campaign.Pooling.Commands.ProductPromotionReadHistory.Create;
 
-namespace Campaign.Pooling.Handlers.ProductPromotionReadDataHistory.RegisterNewHistory.Mapper
+namespace Campaign.Pooling.Handlers.PromotionReadDataHistory.RegisterNewHistory.Mapper
 {
     public class ToEntity : Mapper<Entity.ProductPromotionReadDataHistory, RegisterProductPromotionReadDataHistoryCommand>
     {

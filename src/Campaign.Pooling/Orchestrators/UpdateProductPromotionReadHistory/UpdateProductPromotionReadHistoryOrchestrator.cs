@@ -1,9 +1,9 @@
 ﻿using Campaign.Pooling.Commands.ProductPromotions.Get;
 using Campaign.Pooling.Commands.ProductPromotionReadHistory.Get;
 using Campaign.Pooling.Commands.ProductPromotionReadHistory.Create;
-using Campaign.Pooling.Handlers.ProductPromotion.ProductPromotionExists;
-using Campaign.Pooling.Handlers.ProductPromotionReadDataHistory.RegisterNewHistory;
-using Campaign.Pooling.Handlers.ProductPromotionHistory.GetLastProductPromotionsHistory;
+using Campaign.Pooling.Handlers.Promotion.ProductPromotionExists;
+using Campaign.Pooling.Handlers.PromotionReadDataHistory.RegisterNewHistory;
+using Campaign.Pooling.Handlers.PromotionHistory.GetLastProductPromotionsHistory;
 
 namespace Campaign.Pooling.Orchestrators.UpdateProductPromotionReadHistory
 {

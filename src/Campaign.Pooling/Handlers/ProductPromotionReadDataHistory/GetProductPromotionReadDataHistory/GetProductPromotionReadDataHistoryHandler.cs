@@ -4,7 +4,7 @@ using Entity = Campaign.Shared.DataBaseContext.Entities.Product;
 using Campaign.Pooling.Commands.ProductPromotionReadHistory.Get;
 using Campaign.Pooling.Repositories.ProductPromotionReadDataHistory.ReadOnly;
 
-namespace Campaign.Pooling.Handlers.ProductPromotionHistory.GetLastProductPromotionsHistory
+namespace Campaign.Pooling.Handlers.PromotionHistory.GetLastProductPromotionsHistory
 {
     public class GetProductPromotionReadDataHistoryHandler : IGetProductPromotionReadDataHistoryHandler
     {

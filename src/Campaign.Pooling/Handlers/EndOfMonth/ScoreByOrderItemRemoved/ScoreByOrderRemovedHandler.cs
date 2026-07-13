@@ -1,5 +1,4 @@
 ﻿using Campaign.Pooling.Repositories.SellerScore.ReadOnly;
-using Campaign.Shared.DataBaseContext.Entities.UnityOfWork;
 using Campaign.Pooling.Repositories.OrderProductRemoved.ReadOnly;
 using Campaign.Processor.API.Commands.EndOfMonth.ScoreByOrderRemoved.Create;
 using Campaign.Processor.API.Repositories.SellerScoreProductsSummary.ReadOnly;
@@ -9,18 +8,14 @@ namespace Campaign.Processor.API.Handlers.EndOfMonth.ScoreByOrderItemRemoved
 {
     public class ScoreByOrderRemovedHandler : IScoreByOrderRemovedHandler
     {
-        private readonly IUnityOfWork _unitOfWork;
-
         private readonly ISellerScoreReadOnlyRepository _sellerScoreReadOnlyRepository;
         private readonly IOrderProductRemovedReadOnlyRepository _orderProductRemovedReadOnlyRepository;
         private readonly ISellerScoreProductSummaryReadOnlyRepository _sellerScoreProductSummaryReadOnlyRepository;
 
-        public ScoreByOrderRemovedHandler(IUnityOfWork unitOfWork,
-                                          ISellerScoreReadOnlyRepository sellerScoreReadOnlyRepository,
+        public ScoreByOrderRemovedHandler(ISellerScoreReadOnlyRepository sellerScoreReadOnlyRepository,
                                           IOrderProductRemovedReadOnlyRepository orderProductRemovedReadOnlyRepository,
                                           ISellerScoreProductSummaryReadOnlyRepository sellerScoreProductSummaryReadOnlyRepository)
         {
-            _unitOfWork = unitOfWork;
             _sellerScoreReadOnlyRepository = sellerScoreReadOnlyRepository;
             _orderProductRemovedReadOnlyRepository = orderProductRemovedReadOnlyRepository;
             _sellerScoreProductSummaryReadOnlyRepository = sellerScoreProductSummaryReadOnlyRepository;
@@ -70,16 +65,10 @@ namespace Campaign.Processor.API.Handlers.EndOfMonth.ScoreByOrderItemRemoved
                 x.SetScoreProductRemovedFromOrders(score);
             });
 
-            var consumersIds = productsRemoveds.Where(y => sellersIds.Contains(y.SellerId))
-                                               .Select(y => y.ConsumerId)
-                                               .Distinct();
-
             var productsRemovedsIds = productsRemoveds.Select(x => x.ProductId).Distinct();
 
             var productsResume = await _sellerScoreProductSummaryReadOnlyRepository.GetByIds(cmd.PromotionCode, [.. ordersIds], [.. productsRemovedsIds]);
             productsResume.ForEach(x => x.SetRemoved());
-
-            await _unitOfWork.SaveAsync();
         }
     }
 }

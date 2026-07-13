@@ -2,7 +2,7 @@
 using Campaign.Shared.FluentValidator;
 using Campaign.Pooling.Commands.ProductPromotionReadHistory.Create;
 
-namespace Campaign.Pooling.Handlers.ProductPromotionReadDataHistory.RegisterNewHistory.Validator
+namespace Campaign.Pooling.Handlers.PromotionReadDataHistory.RegisterNewHistory.Validator
 {
     public class CommandValidator : FluentValidator<RegisterProductPromotionReadDataHistoryCommand>
     {

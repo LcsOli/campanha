@@ -1,9 +1,9 @@
 ﻿using Campaign.Shared.DTOs.Response.Product;
 using Campaign.Pooling.Commands.ProductPromotions.Get;
 using Campaign.Pooling.Repositories.ProductPromotion.ReadOnly;
-using Campaign.Pooling.Handlers.ProductPromotion.GetProductsPromotions.Validator;
+using Campaign.Pooling.Handlers.Promotion.GetProductsPromotions.Validator;
 
-namespace Campaign.Pooling.Handlers.ProductPromotion.GetProductsPromotions
+namespace Campaign.Pooling.Handlers.Promotion.GetProductsPromotions
 {
     public class GetProductsPromotionsHandler : IGetProductsPromotionsHandler
     {

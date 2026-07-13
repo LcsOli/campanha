@@ -1,21 +1,26 @@
 ﻿using Campaign.Pooling.Repositories.SellerScore.ReadOnly;
 using Campaign.Processor.API.Commands.EndOfMonth.ScoreByOrderCanceled.Create;
+using Campaign.Processor.API.Repositories.SellerScoreProductsSummary.ReadOnly;
 
 namespace Campaign.Processor.API.Handlers.EndOfMonth.ScoreByOrderCanceled
 {
     public class ScoreByOrderCanceledHandler : IScoreByOrderCanceledHandler
     {
         private readonly ISellerScoreReadOnlyRepository _sellerScoreReadOnlyRepository;
-        public ScoreByOrderCanceledHandler(ISellerScoreReadOnlyRepository sellerScoreReadOnlyRepository)
+        private readonly ISellerScoreProductSummaryReadOnlyRepository _sellerScoreProductSummaryReadOnlyRepository;
+        public ScoreByOrderCanceledHandler(ISellerScoreReadOnlyRepository sellerScoreReadOnlyRepository,
+                                           ISellerScoreProductSummaryReadOnlyRepository sellerScoreProductSummaryReadOnlyRepository)
         {
             _sellerScoreReadOnlyRepository = sellerScoreReadOnlyRepository;
+            _sellerScoreProductSummaryReadOnlyRepository = sellerScoreProductSummaryReadOnlyRepository;
         }
 
         public async Task Handle(CalculateCommand cmd)
         {
-            var ordersValids = cmd.Orders.GroupBy(x => new { x.SellerId, x.ConsumerId })
+            var ordersValids = cmd.Orders.GroupBy(x => new { x.SellerId, x.ConsumerId, x.OrderId })
                                          .Select(x => new
                                          {
+                                             x.Key.OrderId,
                                              x.Key.SellerId,
                                              x.Key.ConsumerId,
                                              Orders = x.DistinctBy(p => p.ProductId)
@@ -68,6 +73,12 @@ namespace Campaign.Processor.API.Handlers.EndOfMonth.ScoreByOrderCanceled
                 var score = scoreCanceleds.Single(y => y.SellerId == x.SellerId).ScoreCanceleds;
                 x.SetScoreProductsCanceledsOrders(score!.Value);
             });
+
+            var ordersIds = ordersValids.Select(x => x.OrderId);
+            var productsCanceledsIds = canceleds.SelectMany(x => x.Products).Select(x => x.ProductId);
+
+            var productsResume = await _sellerScoreProductSummaryReadOnlyRepository.GetByIds(cmd.PromotionCode, [.. ordersIds], [.. productsCanceledsIds]);
+            productsResume.ForEach(x => x.SetCanceled());
         }
     }
 }

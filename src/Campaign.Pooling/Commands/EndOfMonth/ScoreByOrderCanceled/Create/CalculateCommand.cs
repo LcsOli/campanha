@@ -2,5 +2,5 @@
 
 namespace Campaign.Processor.API.Commands.EndOfMonth.ScoreByOrderCanceled.Create
 {
-    public record CalculateCommand(List<OrderDetailPromotionResponse> Orders);
+    public record CalculateCommand(int PromotionCode, List<OrderDetailPromotionResponse> Orders);
 }
