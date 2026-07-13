@@ -6,5 +6,6 @@ namespace Campaign.Processor.API.Repositories.SellerScoreProductsSummary.WriteOn
     {
         Task AddRange(List<Entity.SellerScoreProductsSummary> entities);
         Task Add(Entity.SellerScoreProductsSummary entity);
+        void RemoveRange(List<Entity.SellerScoreProductsSummary> entities);
     }
 }

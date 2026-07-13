@@ -21,5 +21,10 @@ namespace Campaign.Processor.API.Repositories.SellerScoreProductsSummary.WriteOn
         {
             await _context.SellerScoreProductsSummaries.AddAsync(entity);
         }
+
+        public void RemoveRange(List<Entity.SellerScoreProductsSummary> entities)
+        {
+            _context.SellerScoreProductsSummaries.RemoveRange(entities);
+        }
     }
 }

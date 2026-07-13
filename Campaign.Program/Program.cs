@@ -13,24 +13,26 @@
             #SellerManager
             #Supplier
 */
-using ScoreRemovedCommand = Campaign.Processor.API.Commands.EndOfMonth.ScoreByOrderRemoved.Create;
-using ScoreCanceledCommand = Campaign.Processor.API.Commands.EndOfMonth.ScoreByOrderCanceled.Create;
 using Campaign.API.Orchestrators.RegisterUser;
 using Campaign.Pooling.Commands.Calculate;
 using Campaign.Pooling.Commands.CalculateScoreByProduct;
 using Campaign.Pooling.Configurations.ContainerDI.Handlers;
 using Campaign.Pooling.Configurations.ContainerDI.Orchestrators;
 using Campaign.Pooling.Configurations.ContainerDI.Repositories;
+using Campaign.Pooling.DTO.Response.Order;
 using Campaign.Pooling.Handlers.CalculateRevenueTarget;
 using Campaign.Pooling.Handlers.CalculateScoreByProduct;
 using Campaign.Pooling.Handlers.SellerScore.GetSellersScore;
 using Campaign.Pooling.Repositories.Order.ReadOnly;
+using Campaign.Pooling.Repositories.OrderProductRemoved.ReadOnly;
 using Campaign.Pooling.Repositories.OrderSummary.ReadOnly;
 using Campaign.Processor.API.Commands.Summaries.Create;
 using Campaign.Processor.API.Handlers.EndOfMonth.ScoreByOrderCanceled;
 using Campaign.Processor.API.Handlers.EndOfMonth.ScoreByOrderItemRemoved;
 using Campaign.Processor.API.Handlers.RegisterSellerScoreClientSummary;
 using Campaign.Processor.API.Handlers.RegisterSellerScoreProductSummary;
+using Campaign.Processor.API.Repositories.SellerScoreProductsSummary.ReadOnly;
+using Campaign.Processor.API.Repositories.SellerScoreProductsSummary.WriteOnly;
 using Campaign.Program.Register.User;
 using Campaign.Shared.DataBaseContext.Entities;
 using Campaign.Shared.DataBaseContext.Entities.UnityOfWork;
@@ -39,6 +41,8 @@ using Campaign.Shared.UnitOfWorkDI;
 using Microsoft.Extensions.DependencyInjection;
 using StackTraceInternalLibrary.Client;
 using StackTraceInternalLibrary.ContainerDI;
+using ScoreCanceledCommand = Campaign.Processor.API.Commands.EndOfMonth.ScoreByOrderCanceled.Create;
+using ScoreRemovedCommand = Campaign.Processor.API.Commands.EndOfMonth.ScoreByOrderRemoved.Create;
 
 var services = new ServiceCollection();
 services.AddDataBase();
@@ -57,7 +61,40 @@ var context = serviceProvider.GetService<CampaingContextDb>();
 
 using var scope = serviceProvider.CreateScope();
 
-await CalculateScoreByProductRemoveds(202601, 202602, 202603, 202604);
+//await ReprocessAndRegisterProductSummary(202601, 202602, 202603, 202604);
+//await CalculateScoreByProductRemoveds(202601, 202602, 202603, 202604);
+
+var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnityOfWork>();
+var sellerScoreProductSummaryReadOnlyRepository = scope.ServiceProvider.GetRequiredService<ISellerScoreProductSummaryReadOnlyRepository>();
+var sellerScoreProductSummaryWriteOnlyRepository = scope.ServiceProvider.GetRequiredService<ISellerScoreProductSummaryWriteOnlyRepository>();
+
+var promotionsCodes = new int[] { 202601 };
+
+foreach (var promotionCode in promotionsCodes)
+{
+    var products = await sellerScoreProductSummaryReadOnlyRepository.GetByPromotionCode(promotionCode);
+
+    var productsUnits = products.DistinctBy(x => new { x.SellerId, x.ProductId, x.CustomerId }).ToList();
+    var productsIds = productsUnits.Select(x => x.Id);
+
+    var productsToRemove = products.Where(x => !productsIds.Contains(x.Id)).ToList();
+
+    sellerScoreProductSummaryWriteOnlyRepository.RemoveRange(productsToRemove);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 async Task CalculateScoreByProductRemoveds(params int[] promotionCodes)
 {
@@ -138,6 +175,38 @@ async Task RegisterProductSummary(int promotionCode)
     await registerSummariesHandler.Handle(new RegisterSellerScoreProductSummaryCommand(promotionCode, ordersDetails, sellersScore));
 }
 
+async Task ReprocessAndRegisterProductSummary(params int[] promotionCodes)
+{
+    var orderDetailRepository = scope.ServiceProvider.GetRequiredService<IOrderDetailReadOnlyRepository>();
+    var orderProductRemovedReadOnlyRepository = scope.ServiceProvider.GetRequiredService<IOrderProductRemovedReadOnlyRepository>();
+
+    var getSellerScoreHandler = scope.ServiceProvider.GetRequiredService<IGetSellerScoreHandler>();
+    var registerSummariesHandler = scope.ServiceProvider.GetRequiredService<IRegisterSellerScoreProductSummaryHandler>();
+
+    var sellersScore = await getSellerScoreHandler.Handle();
+
+    foreach (var promotionCode in promotionCodes)
+    {
+        var ordersDetails = await orderDetailRepository.GetByPromotionCode(promotionCode);
+
+        var ordersIds = ordersDetails.Select(x => x.OrderId).Distinct();
+        var productsRemoveds = await orderProductRemovedReadOnlyRepository.GetByOrdersIds(promotionCode, [.. ordersIds]);
+
+        var orders = productsRemoveds.Select(x => new OrderDetailResponse(x.OrderId,
+                                                                          x.SellerId,
+                                                                          x.ProductId,
+                                                                          x.ConsumerId,
+                                                                          default!,
+                                                                          default!,
+                                                                          default!,
+                                                                          default!,
+                                                                          default!,
+                                                                          x.ProductPromotionPoints));
+
+        await registerSummariesHandler.Handle(new RegisterSellerScoreProductSummaryCommand(promotionCode, [.. orders], sellersScore));
+    }
+}
+
 async Task UserRegister()
 {
     var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnityOfWork>();
@@ -172,3 +241,4 @@ async Task CalculateScoreByProduct()
         score = sellersScores.First().Score;
     }
 }
+

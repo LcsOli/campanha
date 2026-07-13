@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Campaign.Pooling.DTO.Response.Seller;
 using Campaign.Shared.DataBaseContext.Entities;
 using Campaign.Processor.API.DTO.Response.Seller;
 

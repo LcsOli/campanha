@@ -12,15 +12,23 @@ namespace Campaign.Processor.API.Repositories.SellerScoreProductsSummary.ReadOnl
             _context = context;
         }
 
-        public async Task<List<Entity.SellerScoreProductsSummary>> GetByIds(int promotionCode, int[] productsIds, int[] sellersIds, int[] customersIds)
+        public async Task<List<Entity.SellerScoreProductsSummary>> GetByIds(int promotionCode, int[] OrdersIds, int[] productsIds)
         {
-            return await _context.SellerScoreProductsSummaries.Where(x => 
-                                                                          sellersIds.Contains(x.SellerId) &&
-                                                                          x.PromotionCode == promotionCode &&
-                                                                          productsIds.Contains(x.ProductId) &&
-                                                                          customersIds.Contains(x.CustomerId)
+            var query = from s in _context.SellerScoreProductsSummaries
+                        join r in _context.OrderProductRemoveds on new { s.ProductId, s.CustomerId, s.SellerId } equals new { r.ProductId, r.CustomerId, r.SellerId }
+                        where
+                            OrdersIds.Contains(r.OrderId) &&
+                            s.PromotionCode == promotionCode &&
+                            productsIds.Contains(s.ProductId) 
+                        select s;
 
-                                                              ).ToListAsync();
+            return await query.ToListAsync();
+        }
+
+
+        public async Task<List<Entity.SellerScoreProductsSummary>> GetByPromotionCode(int promotionCode)
+        {
+            return await _context.SellerScoreProductsSummaries.Where(x => x.PromotionCode == promotionCode).ToListAsync();
         }
     }
 }

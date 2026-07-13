@@ -14,7 +14,10 @@ namespace Campaign.API.Repositories.Product.ReadOnly
 
         public async Task<List<Entity.Product>> GetByIds(int[] ids)
         {
-            return await _context.Products.Where(x => ids.Contains(x.Id)).ToListAsync();
+            return await _context.Products
+                                 .Where(x => ids.Contains(x.Id))
+                                 .AsNoTracking()
+                                 .ToListAsync();
         }
     }
 }

@@ -12,8 +12,7 @@ namespace Campaign.Pooling.Handlers.CalculateScoreByProduct
 
             cmd.SellersScores.ForEach(sellerScore =>
             {
-                var clients = cmd.OrdersDetails.Where(x => x.SellerId == sellerScore.SellerId && 
-                                                           x.CanceledIn == null)
+                var clients = cmd.OrdersDetails.Where(x => x.SellerId == sellerScore.SellerId)
                                                       .GroupBy(x => x.ConsumerId)
                                                       .Select(x => new
                                                       {

@@ -42,7 +42,7 @@ namespace Campaign.Shared.DataBaseContext.EntitiesConfigurations
             builder.Property(x => x.ReplicationIn)
                    .HasColumnName("REP_DATA");
 
-            builder.Property(x => x.ConsumerId)
+            builder.Property(x => x.CustomerId)
                    .HasColumnName("CODCLI");
         }
     }

@@ -18,20 +18,20 @@ namespace Campaign.API.Handlers.SellerScore.GetSellerScoreProductSummary.Mapper
             var customers = param2.Model;
             var summaries = param3.Model;
 
-            var productsToResponse = param3.Model.GroupBy(x => new { x.ProductId, x.Score })
+            var productsToResponse = summaries.GroupBy(x => new { x.ProductId, x.Score })
                 .Select(x =>
                 {
-                    var productDescription = param1.Model.SingleOrDefault(p => p.Id == x.Key.ProductId);
+                    var productDescription = products.SingleOrDefault(p => p.Id == x.Key.ProductId);
 
                     var customersIds = x.Where(p => p.ProductId == x.Key.ProductId).Select(c => c.CustomerId);
 
-                    var customers = param2.Model.Where(c => customersIds.Contains(c.Id))
+                    var customersInfos = customers.Where(c => customersIds.Contains(c.Id))
                                                 .Select(c => new SellerScoreProductSummaryResponse.Customer(c.Id, c.Name))
                                                 .ToList();
 
                     return new SellerScoreProductSummaryResponse.Product(Score: x.Key.Score,
                                                                          Id: x.Key.ProductId,
-                                                                         Customers: customers,
+                                                                         Customers: customersInfos,
                                                                          Description: productDescription!.Description);
                 });
 

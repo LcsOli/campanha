@@ -1,7 +1,6 @@
-﻿using Campaign.Processor.API.DTO.Response.OrderProductRemoved.Items.Get;
+﻿using Microsoft.EntityFrameworkCore;
 using Campaign.Shared.DataBaseContext.Entities;
-using Microsoft.EntityFrameworkCore;
-using Entity = Campaign.Shared.DataBaseContext.Entities.OrderProductRemoved;
+using Campaign.Processor.API.DTO.Response.OrderProductRemoved.Items.Get;
 
 namespace Campaign.Pooling.Repositories.OrderProductRemoved.ReadOnly
 {
@@ -12,7 +11,6 @@ namespace Campaign.Pooling.Repositories.OrderProductRemoved.ReadOnly
         {
             _context = context;
         }
-
         public async Task<List<OrderProductItemsRemoved>> GetByOrdersIds(int promotionCode, int[] ordersIds)
         {
             var query = from r in _context.OrderProductRemoveds
@@ -26,12 +24,10 @@ namespace Campaign.Pooling.Repositories.OrderProductRemoved.ReadOnly
                         select new OrderProductItemsRemoved(r.OrderId,
                                                             r.SellerId,
                                                             p.ProductId,
+                                                            r.CustomerId,
                                                             p.QuantityPointsGoals!.Value);
 
-
-            var a = await query.ToListAsync();
-
-            return a;
+            return await query.ToListAsync();
         }
     }
 }
