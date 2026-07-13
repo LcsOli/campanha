@@ -22,7 +22,7 @@ namespace Campaign.Processor.API.Handlers.EndOfMonth.ScoreByOrderCanceled
                                          });
 
             var canceleds = ordersValids.SelectMany(x => x.Orders)
-                                        .Where(x => x.CanceledIn != null && x.CanceledIn.Value > x.PromotionEndIn)
+                                        .Where(x => x.CanceledIn != null && x.CanceledIn.Value > x.PromotionProcessedIn)
                                         .GroupBy(x => x.SellerId)
                                         .Select(x => new
                                         {
@@ -36,7 +36,7 @@ namespace Campaign.Processor.API.Handlers.EndOfMonth.ScoreByOrderCanceled
                                             }).DistinctBy(x => new { x.ProductId, x.ConsumerId })
                                         });
 
-            var qtyConsumers = cmd.Orders.Where(x => x.CanceledIn == null || x.CanceledIn.Value > x.PromotionEndIn)
+            var qtyConsumers = cmd.Orders.Where(x => x.CanceledIn == null || x.CanceledIn.Value > x.PromotionProcessedIn)
                                          .GroupBy(x => x.SellerId)
                                          .Select(x => new
                                          {

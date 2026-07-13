@@ -64,37 +64,6 @@ using var scope = serviceProvider.CreateScope();
 //await ReprocessAndRegisterProductSummary(202601, 202602, 202603, 202604);
 //await CalculateScoreByProductRemoveds(202601, 202602, 202603, 202604);
 
-var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnityOfWork>();
-var sellerScoreProductSummaryReadOnlyRepository = scope.ServiceProvider.GetRequiredService<ISellerScoreProductSummaryReadOnlyRepository>();
-var sellerScoreProductSummaryWriteOnlyRepository = scope.ServiceProvider.GetRequiredService<ISellerScoreProductSummaryWriteOnlyRepository>();
-
-var promotionsCodes = new int[] { 202601 };
-
-foreach (var promotionCode in promotionsCodes)
-{
-    var products = await sellerScoreProductSummaryReadOnlyRepository.GetByPromotionCode(promotionCode);
-
-    var productsUnits = products.DistinctBy(x => new { x.SellerId, x.ProductId, x.CustomerId }).ToList();
-    var productsIds = productsUnits.Select(x => x.Id);
-
-    var productsToRemove = products.Where(x => !productsIds.Contains(x.Id)).ToList();
-
-    sellerScoreProductSummaryWriteOnlyRepository.RemoveRange(productsToRemove);
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 async Task CalculateScoreByProductRemoveds(params int[] promotionCodes)
 {
@@ -242,3 +211,21 @@ async Task CalculateScoreByProduct()
     }
 }
 
+async Task RemoveSummaryProductsDucplicateds(params int[] promotionsCodes)
+{
+    var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnityOfWork>();
+    var sellerScoreProductSummaryReadOnlyRepository = scope.ServiceProvider.GetRequiredService<ISellerScoreProductSummaryReadOnlyRepository>();
+    var sellerScoreProductSummaryWriteOnlyRepository = scope.ServiceProvider.GetRequiredService<ISellerScoreProductSummaryWriteOnlyRepository>();
+
+    foreach (var promotionCode in promotionsCodes)
+    {
+        var products = await sellerScoreProductSummaryReadOnlyRepository.GetByPromotionCode(promotionCode);
+
+        var productsUnits = products.DistinctBy(x => new { x.SellerId, x.ProductId, x.CustomerId }).ToList();
+        var productsIds = productsUnits.Select(x => x.Id);
+
+        var productsToRemove = products.Where(x => !productsIds.Contains(x.Id)).ToList();
+
+        sellerScoreProductSummaryWriteOnlyRepository.RemoveRange(productsToRemove);
+    }
+}

@@ -4,8 +4,7 @@ namespace Campaign.Processor.API.DTO.Response.Order
 {
     public record OrderDetailPromotionResponse : OrderDetailResponse
     {
-        public DateTime PromotionEndIn { get; init; }
-        public DateTime PromotionInitIn { get; init; }
+        public DateTime PromotionProcessedIn { get; init; }
         public OrderDetailPromotionResponse(int OrderId,
                                             int SellerId,
                                             int ProductId,
@@ -14,9 +13,8 @@ namespace Campaign.Processor.API.DTO.Response.Order
                                             DateTime DateOfSale,
                                             string ConsumerName,
                                             DateTime? CanceledIn,
-                                            DateTime PromotionEndIn,
-                                            DateTime PromotionInitIn,
                                             string ProductDescription,
+                                            DateTime PromotionProcessedIn,
                                             decimal? ProductPromotionPoints) : base(OrderId,
                                                                                     SellerId,
                                                                                     ProductId,
@@ -28,8 +26,7 @@ namespace Campaign.Processor.API.DTO.Response.Order
                                                                                     ProductDescription,
                                                                                     ProductPromotionPoints)
         {
-            this.PromotionEndIn = PromotionEndIn;
-            this.PromotionInitIn = PromotionInitIn;
+            this.PromotionProcessedIn = PromotionProcessedIn;
         }
     }
 }

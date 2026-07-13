@@ -134,6 +134,7 @@ namespace Campaign.Pooling.Repositories.Order.ReadOnly
                                pmc.dtfim AS PromotionEndIn,
                                pmc.dtinicio AS PromotionInitIn,
                                p.descricao AS ProductDescription,
+                               ch.data_leitura AS PromotionProcessedIn,
                                pm.qtpontoscliente AS ProductPromotionPoints
                             FROM
                                cf_campanha_rca_score s
@@ -143,6 +144,7 @@ namespace Campaign.Pooling.Repositories.Order.ReadOnly
                                JOIN pcpromoc pmc ON pmc.codpromocao = pm.codpromocao
                                JOIN pcclient c ON c.codcli = pc.codcli
                                JOIN pcprodut p ON p.codprod = pi.codprod
+                               JOIN cf_campanha_promoi_historico_leitura ch on ch.codpromocao = pmi.codpromocao
                             WHERE
                                pm.codpromocao = {promotionCode} AND
                                (
