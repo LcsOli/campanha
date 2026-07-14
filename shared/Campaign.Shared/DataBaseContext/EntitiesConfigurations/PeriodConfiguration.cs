@@ -25,11 +25,11 @@ namespace Campaign.Shared.DataBaseContext.EntitiesConfigurations
                    .HasMaxLength(20)
                    .IsRequired();
 
-            builder.Property(p => p.Init)
+            builder.Property(p => p.InitIn)
                    .HasColumnName("DTINICIO")
                    .IsRequired();
 
-            builder.Property(p => p.End)
+            builder.Property(p => p.EndIn)
                    .HasColumnName("DTFIM")
                    .IsRequired();
         }

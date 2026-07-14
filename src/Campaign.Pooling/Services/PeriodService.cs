@@ -14,12 +14,12 @@ namespace Campaign.Pooling.Services
 
         public bool IsEndOfPeriod(DateTime date)
         {
-            return _periods.Select(p => p.End).Contains(date);
+            return _periods.Select(p => p.EndIn).Contains(date);
         }
 
         public Period GetPeriod(DateTime date)
         {
-            var period = _periods.FirstOrDefault(p => p.Init <= date && p.End >= date);
+            var period = _periods.FirstOrDefault(p => p.InitIn <= date && p.EndIn >= date);
 
             if (period == null)
                 throw new CompaignException(HttpStatusCode.InternalServerError, $"Data {date:dd/MM/yyyy} não representa um período.");

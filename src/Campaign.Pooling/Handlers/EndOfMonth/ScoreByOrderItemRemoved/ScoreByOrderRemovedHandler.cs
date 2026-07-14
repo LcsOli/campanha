@@ -65,10 +65,12 @@ namespace Campaign.Processor.API.Handlers.EndOfMonth.ScoreByOrderItemRemoved
                 x.SetScoreProductRemovedFromOrders(score);
             });
 
-            var productsRemovedsIds = productsRemoveds.Select(x => x.ProductId).Distinct();
+            //TODO - Criar handler específico para estas inserções
 
-            var productsResume = await _sellerScoreProductSummaryReadOnlyRepository.GetByIds(cmd.PromotionCode, [.. ordersIds], [.. productsRemovedsIds]);
-            productsResume.ForEach(x => x.SetRemoved());
+            //var productsRemovedsIds = productsRemoveds.Select(x => x.ProductId).Distinct();
+
+            //var productsResume = await _sellerScoreProductSummaryReadOnlyRepository.GetByIds(cmd.PromotionCode, [.. ordersIds], [.. productsRemovedsIds]);
+            //productsResume.ForEach(x => x.SetRemoved());
         }
     }
 }

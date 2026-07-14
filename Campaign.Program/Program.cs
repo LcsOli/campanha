@@ -31,6 +31,7 @@ using Campaign.Processor.API.Handlers.EndOfMonth.ScoreByOrderCanceled;
 using Campaign.Processor.API.Handlers.EndOfMonth.ScoreByOrderItemRemoved;
 using Campaign.Processor.API.Handlers.RegisterSellerScoreClientSummary;
 using Campaign.Processor.API.Handlers.RegisterSellerScoreProductSummary;
+using Campaign.Processor.API.Orchestrators.CalculateEndOfMonth;
 using Campaign.Processor.API.Repositories.SellerScoreProductsSummary.ReadOnly;
 using Campaign.Processor.API.Repositories.SellerScoreProductsSummary.WriteOnly;
 using Campaign.Program.Register.User;
@@ -61,8 +62,34 @@ var context = serviceProvider.GetService<CampaingContextDb>();
 
 using var scope = serviceProvider.CreateScope();
 
-//await ReprocessAndRegisterProductSummary(202601, 202602, 202603, 202604);
-//await CalculateScoreByProductRemoveds(202601, 202602, 202603, 202604);
+var calculateEndOfMonthOrchestrator = scope.ServiceProvider.GetRequiredService<ICalculateEndOfMonthOrchestrator>();
+await calculateEndOfMonthOrchestrator.Execute(202604);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 async Task CalculateScoreByProductRemoveds(params int[] promotionCodes)

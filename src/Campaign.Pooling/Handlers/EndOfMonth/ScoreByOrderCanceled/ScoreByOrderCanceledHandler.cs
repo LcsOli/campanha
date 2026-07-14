@@ -1,18 +1,14 @@
 ﻿using Campaign.Pooling.Repositories.SellerScore.ReadOnly;
 using Campaign.Processor.API.Commands.EndOfMonth.ScoreByOrderCanceled.Create;
-using Campaign.Processor.API.Repositories.SellerScoreProductsSummary.ReadOnly;
 
 namespace Campaign.Processor.API.Handlers.EndOfMonth.ScoreByOrderCanceled
 {
     public class ScoreByOrderCanceledHandler : IScoreByOrderCanceledHandler
     {
         private readonly ISellerScoreReadOnlyRepository _sellerScoreReadOnlyRepository;
-        private readonly ISellerScoreProductSummaryReadOnlyRepository _sellerScoreProductSummaryReadOnlyRepository;
-        public ScoreByOrderCanceledHandler(ISellerScoreReadOnlyRepository sellerScoreReadOnlyRepository,
-                                           ISellerScoreProductSummaryReadOnlyRepository sellerScoreProductSummaryReadOnlyRepository)
+        public ScoreByOrderCanceledHandler(ISellerScoreReadOnlyRepository sellerScoreReadOnlyRepository)
         {
             _sellerScoreReadOnlyRepository = sellerScoreReadOnlyRepository;
-            _sellerScoreProductSummaryReadOnlyRepository = sellerScoreProductSummaryReadOnlyRepository;
         }
 
         public async Task Handle(CalculateCommand cmd)
@@ -74,11 +70,13 @@ namespace Campaign.Processor.API.Handlers.EndOfMonth.ScoreByOrderCanceled
                 x.SetScoreProductsCanceledsOrders(score!.Value);
             });
 
-            var ordersIds = ordersValids.Select(x => x.OrderId);
-            var productsCanceledsIds = canceleds.SelectMany(x => x.Products).Select(x => x.ProductId);
+            //TODO - Criar handler específico para estas inserções
 
-            var productsResume = await _sellerScoreProductSummaryReadOnlyRepository.GetByIds(cmd.PromotionCode, [.. ordersIds], [.. productsCanceledsIds]);
-            productsResume.ForEach(x => x.SetCanceled());
+            //var ordersIds = ordersValids.Select(x => x.OrderId);
+            //var productsCanceledsIds = canceleds.SelectMany(x => x.Products).Select(x => x.ProductId);
+
+            //var productsResume = await _sellerScoreProductSummaryReadOnlyRepository.GetByIds(cmd.PromotionCode, [.. ordersIds], [.. productsCanceledsIds]);
+            //productsResume.ForEach(x => x.SetCanceled());
         }
     }
 }

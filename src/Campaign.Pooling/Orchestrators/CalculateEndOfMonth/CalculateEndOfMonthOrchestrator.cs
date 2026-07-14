@@ -1,45 +1,30 @@
-﻿using Campaign.Pooling.Repositories.Order.ReadOnly;
-using Campaign.Processor.API.Handlers.Period.PeriodValidator;
-using Campaign.Processor.API.Commands.Period.PeriodValidator.Validate;
-using Campaign.Processor.API.Handlers.EndOfMonth.ScoreByOrderCanceled;
-using Campaign.Processor.API.Handlers.EndOfMonth.ScoreByOrderItemRemoved;
-using ScoreRemovedCommand = Campaign.Processor.API.Commands.EndOfMonth.ScoreByOrderRemoved.Create;
-using ScoreCanceledCommand = Campaign.Processor.API.Commands.EndOfMonth.ScoreByOrderCanceled.Create;
-using Campaign.Pooling.Services;
+﻿using Campaign.Processor.API.Commands.AdjustScore;
+using Campaign.Pooling.Repositories.Period.ReadOnly;
+using Campaign.Processor.API.Orchestrators.AdjustmentScore;
 
 namespace Campaign.Processor.API.Orchestrators.CalculateEndOfMonth
 {
     public class CalculateEndOfMonthOrchestrator : ICalculateEndOfMonthOrchestrator
     {
-        public readonly IGetPeriodsHandler _periodValidatorHandler;
-        public readonly IScoreByOrderRemovedHandler _scoreByOrderRemovedHandler;
-        public readonly IScoreByOrderCanceledHandler _scoreByOrderCanceledHandler;
-
-        public readonly IOrderDetailReadOnlyRepository _orderDetailReadOnlyRepository;
-        public CalculateEndOfMonthOrchestrator(IGetPeriodsHandler periodValidatorHandler,
-                                               IScoreByOrderRemovedHandler scoreByOrderRemovedHandler,
-                                               IScoreByOrderCanceledHandler scoreByOrderCanceledHandler,
-                                               IOrderDetailReadOnlyRepository orderDetailReadOnlyRepository)
+        private readonly IPeriodReadOnlyRepository _periodReadOnlyRepository;
+        public readonly IAdjustmentScoreOrchestrator _adjustmentScoreOrchestrator;
+        public CalculateEndOfMonthOrchestrator(IPeriodReadOnlyRepository periodReadOnlyRepository,
+                                               IAdjustmentScoreOrchestrator adjustmentScoreOrchestrator)
         {
-            _periodValidatorHandler = periodValidatorHandler;
-            _scoreByOrderRemovedHandler = scoreByOrderRemovedHandler;
-            _scoreByOrderCanceledHandler = scoreByOrderCanceledHandler;
-
-            _orderDetailReadOnlyRepository = orderDetailReadOnlyRepository;
+            _periodReadOnlyRepository = periodReadOnlyRepository;
+            _adjustmentScoreOrchestrator = adjustmentScoreOrchestrator;
         }
 
         public async Task Execute(int promotionCode)
         {
-            var periods = await _periodValidatorHandler.Handle(new GetByPromotionByYearCommand(promotionCode));
-            
-            var periodsService = new PeriodService(periods);
+            var promotionsCodes = await _periodReadOnlyRepository.GetPromotionsCodesByPeriod(promotionCode);
+            var isEndOfPeriod = promotionsCodes.Length > 0;
 
+            if (!isEndOfPeriod)
+                return;
 
-            //if (!periodsService.IsEndOfPeriod())
-            //    return;
-
-            //_scoreByOrderRemovedHandler.Handle(new ScoreRemovedCommand.CalculateCommand());
-
+            foreach (var code in promotionsCodes)
+                await _adjustmentScoreOrchestrator.Execute(new AdjustScoreCommand(code));
         }
     }
 }

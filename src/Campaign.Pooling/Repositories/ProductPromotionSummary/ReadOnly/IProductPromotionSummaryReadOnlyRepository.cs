@@ -7,5 +7,6 @@ namespace Campaign.Pooling.Repositories.ProductPromotionSummary.ReadOnly
     {
         Task<ProductPromotionSummariesDatesResponse?> GetProductPromotionSummariesDates(int currentPromotionCode);
         Task<Entity.ProductPromotionSummary?> GetByPromotionCode(int promotionCode);
+        Task<int[]> GetPromotionsCodesByPeriod(DateTime initIn, DateTime endIn);
     }
 }

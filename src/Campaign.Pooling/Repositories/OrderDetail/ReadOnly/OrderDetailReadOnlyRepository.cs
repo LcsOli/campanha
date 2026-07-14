@@ -144,7 +144,7 @@ namespace Campaign.Pooling.Repositories.Order.ReadOnly
                                JOIN pcpromoc pmc ON pmc.codpromocao = pm.codpromocao
                                JOIN pcclient c ON c.codcli = pc.codcli
                                JOIN pcprodut p ON p.codprod = pi.codprod
-                               JOIN cf_campanha_promoi_historico_leitura ch on ch.codpromocao = pmi.codpromocao
+                               JOIN cf_campanha_promoi_historico_leitura ch on ch.codpromocao = pm.codpromocao
                             WHERE
                                pm.codpromocao = {promotionCode} AND
                                (

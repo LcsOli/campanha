@@ -5,6 +5,6 @@ namespace Campaign.Processor.API.Handlers.Period.PeriodValidator
 {
     public interface IGetPeriodsHandler
     {
-        Task<List<Entity.Period>> Handle(GetByPromotionByYearCommand cmd);
+        Task<List<Entity.Period>> Handle(GetByYearCommand cmd);
     }
 }

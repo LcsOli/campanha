@@ -35,7 +35,7 @@ namespace Campaign.Pooling.Handlers.CalculateRevenueTarget
 
             var period = periodService.GetPeriod(promotionsDates!.CurrentDtEnd);
 
-            var currentRevenue = await _orderDetailReadOnlyRepository.CalculateRevenueByMonth(period.Init, promotionsDates.CurrentDtEnd);
+            var currentRevenue = await _orderDetailReadOnlyRepository.CalculateRevenueByMonth(period.InitIn, promotionsDates.CurrentDtEnd);
 
             cmd.SellersScore.ForEach(sellerScore =>
             {
@@ -60,7 +60,7 @@ namespace Campaign.Pooling.Handlers.CalculateRevenueTarget
 
             var period = periodService.GetPeriod(promotionsDates!.CurrentDtEnd);
 
-            var revenueByMonth = await _orderDetailReadOnlyRepository.CalculateRevenueByMonth(period.Init, period.End);
+            var revenueByMonth = await _orderDetailReadOnlyRepository.CalculateRevenueByMonth(period.InitIn, period.EndIn);
 
             cmd.SellersScore.ForEach(sellerScore =>
             {

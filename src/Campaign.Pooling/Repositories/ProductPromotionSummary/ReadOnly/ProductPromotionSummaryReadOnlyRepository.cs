@@ -37,5 +37,12 @@ namespace Campaign.Pooling.Repositories.ProductPromotionSummary.ReadOnly
         {
             return await _context.ProductPromotionSummaries.FirstOrDefaultAsync(p => p.Id == promotionCode);
         }
+
+        public async Task<int[]> GetPromotionsCodesByPeriod(DateTime initIn, DateTime endIn)
+        {
+            return await _context.ProductPromotionSummaries.Where(x => x.InitIn.Date >= initIn && x.EndIn.Date <= endIn)
+                                                           .Select(x => x.Id)
+                                                           .ToArrayAsync();
+        }
     }
 }
