@@ -62,8 +62,6 @@ var context = serviceProvider.GetService<CampaingContextDb>();
 
 using var scope = serviceProvider.CreateScope();
 
-var calculateEndOfMonthOrchestrator = scope.ServiceProvider.GetRequiredService<ICalculateEndOfMonthOrchestrator>();
-await calculateEndOfMonthOrchestrator.Execute(202604);
 
 
 
@@ -91,6 +89,12 @@ await calculateEndOfMonthOrchestrator.Execute(202604);
 
 
 
+
+async Task CalculateCanceledsAndRemoveds(int promocaoCode)
+{
+    var calculateEndOfMonthOrchestrator = scope.ServiceProvider.GetRequiredService<ICalculateEndOfMonthOrchestrator>();
+    await calculateEndOfMonthOrchestrator.Execute(promocaoCode);
+}
 
 async Task CalculateScoreByProductRemoveds(params int[] promotionCodes)
 {

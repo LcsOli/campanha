@@ -13,12 +13,14 @@ namespace Campaign.Processor.API.Handlers.EndOfMonth.ScoreByOrderCanceled
 
         public async Task Handle(CalculateCommand cmd)
         {
-            var ordersValids = cmd.Orders.GroupBy(x => new { x.SellerId, x.ConsumerId, x.OrderId })
+            var ordersValids = cmd.Orders.GroupBy(x => new { x.SellerId, x.ConsumerId, x.OrderId, x.CanceledIn, x.PromotionProcessedIn })
                                          .Select(x => new
                                          {
                                              x.Key.OrderId,
                                              x.Key.SellerId,
                                              x.Key.ConsumerId,
+                                             x.Key.CanceledIn,
+                                             x.Key.PromotionProcessedIn,
                                              Orders = x.DistinctBy(p => p.ProductId)
                                          });
 
@@ -37,7 +39,7 @@ namespace Campaign.Processor.API.Handlers.EndOfMonth.ScoreByOrderCanceled
                                             }).DistinctBy(x => new { x.ProductId, x.ConsumerId })
                                         });
 
-            var qtyConsumers = cmd.Orders.Where(x => x.CanceledIn == null || x.CanceledIn.Value > x.PromotionProcessedIn)
+            var qtyConsumers = ordersValids.Where(x => x.CanceledIn == null || x.CanceledIn.Value > x.PromotionProcessedIn)
                                          .GroupBy(x => x.SellerId)
                                          .Select(x => new
                                          {
