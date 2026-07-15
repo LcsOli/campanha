@@ -102,7 +102,7 @@ async Task CalculateScoreByProductRemoveds(params int[] promotionCodes)
 
     foreach (var promotionCode in promotionCodes)
     {
-        var orders = await orderDetailReadOnlyRepository.GetAllByPromotionCode(promotionCode);
+        var orders = await orderDetailReadOnlyRepository.GetCanceledsByPromotionCode(promotionCode);
         await scoreByOrderRemovedHandler.Handle(new ScoreRemovedCommand.CalculateCommand(promotionCode, orders));
     }
 }
@@ -112,7 +112,7 @@ async Task CalculateScoreByProductCanceleds(int promotionCode)
     var scoreByOrderCanceledHandler = scope.ServiceProvider.GetRequiredService<IScoreByOrderCanceledHandler>();
     var orderDetailReadOnlyRepository = scope.ServiceProvider.GetRequiredService<IOrderDetailReadOnlyRepository>();
 
-    var orders = await orderDetailReadOnlyRepository.GetAllByPromotionCode(promotionCode);
+    var orders = await orderDetailReadOnlyRepository.GetCanceledsByPromotionCode(promotionCode);
 
     await scoreByOrderCanceledHandler.Handle(new ScoreCanceledCommand.CalculateCommand(promotionCode, orders));
 }

@@ -119,7 +119,7 @@ namespace Campaign.Pooling.Repositories.Order.ReadOnly
             return await query.ToListAsync();
         }
 
-        public async Task<List<OrderDetailPromotionResponse>> GetAllByPromotionCode(int promotionCode)
+        public async Task<List<OrderDetailPromotionResponse>> GetCanceledsByPromotionCode(int promotionCode)
         {
             var query = _context.Database.SqlQuery<OrderDetailPromotionResponse>($"""
                             SELECT
@@ -147,6 +147,10 @@ namespace Campaign.Pooling.Repositories.Order.ReadOnly
                                JOIN cf_campanha_promoi_historico_leitura ch on ch.codpromocao = pm.codpromocao
                             WHERE
                                pm.codpromocao = {promotionCode} AND
+                               (   
+                                    pc.dtcancel IS NOT NULL AND 
+                                    pc.dtcancel >= ch.data_leitura
+                               ) AND
                                (
                                    TRUNC(pc.data) >= TRUNC(pmc.dtinicio) AND
                                    TRUNC(pc.data) <= TRUNC(pmc.dtfim)

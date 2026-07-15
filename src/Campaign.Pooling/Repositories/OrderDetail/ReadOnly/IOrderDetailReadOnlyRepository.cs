@@ -11,6 +11,6 @@ namespace Campaign.Pooling.Repositories.Order.ReadOnly
         Task<List<OrderDetailResponse>> GetByPromotionCode(int promotionCode);
         Task<List<TotalRevenueResponse>> CalculateCurrentRevenue(int promotionCode);
         Task<List<TotalRevenueResponse>> CalculateRevenueByMonth(DateTime init, DateTime end);
-        Task<List<OrderDetailPromotionResponse>> GetAllByPromotionCode(int promotionCode);
+        Task<List<OrderDetailPromotionResponse>> GetCanceledsByPromotionCode(int promotionCode);
     }
 }

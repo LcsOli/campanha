@@ -14,16 +14,13 @@ namespace Campaign.Processor.API.Orchestrators.AdjustmentScore
         public readonly IScoreByOrderRemovedHandler _scoreByOrderRemovedHandler;
         public readonly IScoreByOrderCanceledHandler _scoreByOrderCanceledHandler;
 
-        public readonly IOrderDetailReadOnlyRepository _orderDetailReadOnlyRepository;
+        
 
         public AdjustmentScoreOrchestrator(IScoreByOrderRemovedHandler scoreByOrderRemovedHandler, 
-                                          IScoreByOrderCanceledHandler scoreByOrderCanceledHandler,
-                                          IOrderDetailReadOnlyRepository orderDetailReadOnlyRepository)
+                                          IScoreByOrderCanceledHandler scoreByOrderCanceledHandler)
         {
             _scoreByOrderRemovedHandler = scoreByOrderRemovedHandler;
             _scoreByOrderCanceledHandler = scoreByOrderCanceledHandler;
-
-            _orderDetailReadOnlyRepository = orderDetailReadOnlyRepository;
         }
 
         public async Task Execute(AdjustScoreCommand cmd)
@@ -31,10 +28,8 @@ namespace Campaign.Processor.API.Orchestrators.AdjustmentScore
             if (cmd.PromotionCode <= 0)
                 throw new CompaignException(HttpStatusCode.BadRequest, "Defina o código da promoção.");
 
-            var orders = await _orderDetailReadOnlyRepository.GetAllByPromotionCode(cmd.PromotionCode);
-
-            await _scoreByOrderRemovedHandler.Handle(new ScoreRemovedCommand.CalculateCommand(cmd.PromotionCode, orders));
-            await _scoreByOrderCanceledHandler.Handle(new ScoreCanceledCommand.CalculateCommand(cmd.PromotionCode, orders));
+            await _scoreByOrderRemovedHandler.Handle(new ScoreRemovedCommand.CalculateCommand(cmd.PromotionCode));
+            await _scoreByOrderCanceledHandler.Handle(new ScoreCanceledCommand.CalculateCommand(cmd.PromotionCode));
         }
     }
 }

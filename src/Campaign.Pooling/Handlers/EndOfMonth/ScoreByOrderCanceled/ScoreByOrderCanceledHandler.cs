@@ -1,31 +1,45 @@
-﻿using Campaign.Pooling.Repositories.SellerScore.ReadOnly;
+﻿using Campaign.Pooling.Repositories.Order.ReadOnly;
+using Campaign.Pooling.Repositories.SellerScore.ReadOnly;
 using Campaign.Processor.API.Commands.EndOfMonth.ScoreByOrderCanceled.Create;
 
 namespace Campaign.Processor.API.Handlers.EndOfMonth.ScoreByOrderCanceled
 {
     public class ScoreByOrderCanceledHandler : IScoreByOrderCanceledHandler
     {
+        public readonly IOrderDetailReadOnlyRepository _orderDetailReadOnlyRepository;
         private readonly ISellerScoreReadOnlyRepository _sellerScoreReadOnlyRepository;
-        public ScoreByOrderCanceledHandler(ISellerScoreReadOnlyRepository sellerScoreReadOnlyRepository)
+
+        public ScoreByOrderCanceledHandler(IOrderDetailReadOnlyRepository orderDetailReadOnlyRepository,
+                                           ISellerScoreReadOnlyRepository sellerScoreReadOnlyRepository)
         {
             _sellerScoreReadOnlyRepository = sellerScoreReadOnlyRepository;
+            _orderDetailReadOnlyRepository = orderDetailReadOnlyRepository;
         }
 
         public async Task Handle(CalculateCommand cmd)
         {
-            var ordersValids = cmd.Orders.GroupBy(x => new { x.SellerId, x.ConsumerId, x.OrderId, x.CanceledIn, x.PromotionProcessedIn })
-                                         .Select(x => new
-                                         {
-                                             x.Key.OrderId,
-                                             x.Key.SellerId,
-                                             x.Key.ConsumerId,
-                                             x.Key.CanceledIn,
-                                             x.Key.PromotionProcessedIn,
-                                             Orders = x.DistinctBy(p => p.ProductId)
-                                         });
+            var orders = await _orderDetailReadOnlyRepository.GetCanceledsByPromotionCode(cmd.PromotionCode);
+
+            var ordersValids = orders.GroupBy(x => new
+                                     {
+                                         x.SellerId,
+                                         x.ConsumerId,
+                                         x.OrderId,
+                                         x.CanceledIn,
+                                         x.PromotionProcessedIn
+                                     })
+                                     .Select(x => new
+                                     {
+                                         x.Key.OrderId,
+                                         x.Key.SellerId,
+                                         x.Key.ConsumerId,
+                                         x.Key.CanceledIn,
+                                         x.Key.PromotionProcessedIn,
+                                         Orders = x.DistinctBy(p => p.ProductId)
+                                     });
 
             var canceleds = ordersValids.SelectMany(x => x.Orders)
-                                        .Where(x => x.CanceledIn != null && x.CanceledIn.Value > x.PromotionProcessedIn)
+                                        .Where(x => x.CanceledIn != null && x.CanceledIn.Value >= x.PromotionProcessedIn)
                                         .GroupBy(x => x.SellerId)
                                         .Select(x => new
                                         {
@@ -39,13 +53,13 @@ namespace Campaign.Processor.API.Handlers.EndOfMonth.ScoreByOrderCanceled
                                             }).DistinctBy(x => new { x.ProductId, x.ConsumerId })
                                         });
 
-            var qtyConsumers = ordersValids.Where(x => x.CanceledIn == null || x.CanceledIn.Value > x.PromotionProcessedIn)
-                                         .GroupBy(x => x.SellerId)
-                                         .Select(x => new
-                                         {
-                                             SellerId = x.Key,
-                                             QtyConsumers = x.Select(y => y.ConsumerId).Distinct().Count()
-                                         });
+            var qtyConsumers = ordersValids.Where(x => x.CanceledIn == null || x.CanceledIn.Value >= x.PromotionProcessedIn)
+                                           .GroupBy(x => x.SellerId)
+                                           .Select(x => new
+                                           {
+                                               SellerId = x.Key,
+                                               QtyConsumers = x.Select(y => y.ConsumerId).Distinct().Count()
+                                           });
 
             var scoreCanceleds = canceleds.Select(x =>
             {
