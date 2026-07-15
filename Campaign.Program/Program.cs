@@ -63,7 +63,6 @@ var context = serviceProvider.GetService<CampaingContextDb>();
 using var scope = serviceProvider.CreateScope();
 
 
-await CalculateCanceledsAndRemoveds(202604);
 
 
 
@@ -225,7 +224,7 @@ async Task CalculateScoreByProduct()
     var promotionCodes = new int[] { 202601 };
     var sellersScore = await getSellerScoreHandler.Handle();
 
-    var sellersScores = sellersScore.Where(x => x.SellerId == 522)
+    var sellersScores = sellersScore.Where(x => x.SellerId == 113)
                                     .Select(x =>
                                     {
                                         x.ClearPoints();
