@@ -4,6 +4,6 @@ namespace Campaign.Pooling.Repositories.OrderProductRemoved.ReadOnly
 {
     public interface IOrderProductRemovedReadOnlyRepository
     {
-        Task<List<OrderProductItemsRemoved>> GetByOrdersIds(int promotionCode, int[] ordersIds);
+        Task<List<OrderProductItemsRemoved>> GetByOrdersIds(int promotionCode, long[] ordersIds);
     }
 }

@@ -63,7 +63,7 @@ var context = serviceProvider.GetService<CampaingContextDb>();
 using var scope = serviceProvider.CreateScope();
 
 
-
+await CalculateCanceledsAndRemoveds(202604);
 
 
 

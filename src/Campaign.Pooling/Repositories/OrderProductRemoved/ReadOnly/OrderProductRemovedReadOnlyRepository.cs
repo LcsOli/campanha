@@ -11,7 +11,7 @@ namespace Campaign.Pooling.Repositories.OrderProductRemoved.ReadOnly
         {
             _context = context;
         }
-        public async Task<List<OrderProductItemsRemoved>> GetByOrdersIds(int promotionCode, int[] ordersIds)
+        public async Task<List<OrderProductItemsRemoved>> GetByOrdersIds(int promotionCode, long[] ordersIds)
         {
             var query = from r in _context.OrderProductRemoveds
                         join p in _context.ProductPromotions on r.ProductId equals p.ProductId

@@ -5,7 +5,7 @@ namespace Campaign.Processor.API.DTO.Response.Order
     public record OrderDetailPromotionResponse : OrderDetailResponse
     {
         public DateTime PromotionProcessedIn { get; init; }
-        public OrderDetailPromotionResponse(int OrderId,
+        public OrderDetailPromotionResponse(long OrderId,
                                             int SellerId,
                                             int ProductId,
                                             int ConsumerId,

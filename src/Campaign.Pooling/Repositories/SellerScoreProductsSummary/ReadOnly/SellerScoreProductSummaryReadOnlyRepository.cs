@@ -12,7 +12,7 @@ namespace Campaign.Processor.API.Repositories.SellerScoreProductsSummary.ReadOnl
             _context = context;
         }
 
-        public async Task<List<Entity.SellerScoreProductsSummary>> GetByIds(int promotionCode, int[] OrdersIds, int[] productsIds)
+        public async Task<List<Entity.SellerScoreProductsSummary>> GetByIds(int promotionCode, long[] OrdersIds, int[] productsIds)
         {
             var query = from s in _context.SellerScoreProductsSummaries
                         join r in _context.OrderProductRemoveds on new { s.ProductId, s.CustomerId, s.SellerId } equals new { r.ProductId, r.CustomerId, r.SellerId }

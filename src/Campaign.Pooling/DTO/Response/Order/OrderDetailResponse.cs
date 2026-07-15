@@ -1,6 +1,6 @@
 ﻿namespace Campaign.Pooling.DTO.Response.Order
 {
-    public record OrderDetailResponse(int OrderId,
+    public record OrderDetailResponse(long OrderId,
                                       int SellerId,
                                       int ProductId,
                                       int ConsumerId,

@@ -4,7 +4,7 @@ namespace Campaign.Processor.API.Repositories.SellerScoreProductsSummary.ReadOnl
 {
     public interface ISellerScoreProductSummaryReadOnlyRepository
     {
-        Task<List<Entity.SellerScoreProductsSummary>> GetByIds(int promotionCode, int[] OrdersIds, int[] productsIds);
+        Task<List<Entity.SellerScoreProductsSummary>> GetByIds(int promotionCode, long[] OrdersIds, int[] productsIds);
         Task<List<Entity.SellerScoreProductsSummary>> GetByPromotionCode(int promotionCode);
     }
 }
