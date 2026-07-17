@@ -10,25 +10,21 @@
   <ItemGroup>
     <Compile Remove="Commands\SllerScore\**" />
     <Compile Remove="Orchestrators\CalculateScore\Validators\**" />
-    <Compile Remove="Repositories\OrderDetail\WriteOnly\**" />
     <Compile Remove="Repositories\OrderSummary\WriteOnly\**" />
     <Compile Remove="Repositories\ProductPromotion\WriteOnly\**" />
     <Compile Remove="Repositories\Sellers\Seller\WriteOnly\**" />
     <Content Remove="Commands\SllerScore\**" />
     <Content Remove="Orchestrators\CalculateScore\Validators\**" />
-    <Content Remove="Repositories\OrderDetail\WriteOnly\**" />
     <Content Remove="Repositories\OrderSummary\WriteOnly\**" />
     <Content Remove="Repositories\ProductPromotion\WriteOnly\**" />
     <Content Remove="Repositories\Sellers\Seller\WriteOnly\**" />
     <EmbeddedResource Remove="Commands\SllerScore\**" />
     <EmbeddedResource Remove="Orchestrators\CalculateScore\Validators\**" />
-    <EmbeddedResource Remove="Repositories\OrderDetail\WriteOnly\**" />
     <EmbeddedResource Remove="Repositories\OrderSummary\WriteOnly\**" />
     <EmbeddedResource Remove="Repositories\ProductPromotion\WriteOnly\**" />
     <EmbeddedResource Remove="Repositories\Sellers\Seller\WriteOnly\**" />
     <None Remove="Commands\SllerScore\**" />
     <None Remove="Orchestrators\CalculateScore\Validators\**" />
-    <None Remove="Repositories\OrderDetail\WriteOnly\**" />
     <None Remove="Repositories\OrderSummary\WriteOnly\**" />
     <None Remove="Repositories\ProductPromotion\WriteOnly\**" />
     <None Remove="Repositories\Sellers\Seller\WriteOnly\**" />
@@ -39,6 +35,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Repositories\OrderDetail\WriteOnly\" />
     <Folder Include="Repositories\OrderProductRemoved\WriteOnly\" />
     <Folder Include="Repositories\SellerScoreClientSummary\ReadOnly\" />
   </ItemGroup>

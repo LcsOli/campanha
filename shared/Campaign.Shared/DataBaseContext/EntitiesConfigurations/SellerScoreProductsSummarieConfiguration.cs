@@ -37,6 +37,9 @@ namespace Campaign.Shared.DataBaseContext.EntitiesConfigurations
             builder.Property(x => x.IsRemoved)
                    .HasColumnName("PEDIDO_REMOVIDO")
                    .HasConversion(x => x ? "S" : "N", x => x == "S");
+
+            builder.Property(x => x.OrderId)
+                   .HasColumnName("NUMPED");
         }
     }
 }

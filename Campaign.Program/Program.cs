@@ -63,31 +63,27 @@ var context = serviceProvider.GetService<CampaingContextDb>();
 using var scope = serviceProvider.CreateScope();
 
 
+var promot = new int[] {  202602, 202603, 202604, 202605, 202606 };
+
+foreach (var item in promot)
+{
+    await SetNumpedIntoOrders(item);
+}
 
 
+async Task SetNumpedIntoOrders(int promotionCode)
+{
+    var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnityOfWork>();
 
+    var sellerScoreProductSummaryReadOnlyRepository = scope.ServiceProvider.GetRequiredService<ISellerScoreProductSummaryReadOnlyRepository>();
+    var result = await sellerScoreProductSummaryReadOnlyRepository.Get(promotionCode);
 
+    var items = await sellerScoreProductSummaryReadOnlyRepository.GetByPromotionCode(promotionCode);
 
+    items.ForEach(x => x.SetOrderId(result.FirstOrDefault(z => z.Id == x.Id)?.OrderId));
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    var notSeted = items.Where(x => !x.OrderId.HasValue);
+}
 
 async Task CalculateCanceledsAndRemoveds(int promocaoCode)
 {
@@ -103,7 +99,7 @@ async Task CalculateScoreByProductRemoveds(params int[] promotionCodes)
     foreach (var promotionCode in promotionCodes)
     {
         var orders = await orderDetailReadOnlyRepository.GetCanceledsByPromotionCode(promotionCode);
-        await scoreByOrderRemovedHandler.Handle(new ScoreRemovedCommand.CalculateCommand(promotionCode, orders));
+        await scoreByOrderRemovedHandler.Handle(new ScoreRemovedCommand.CalculateCommand(promotionCode));
     }
 }
 
@@ -114,7 +110,7 @@ async Task CalculateScoreByProductCanceleds(int promotionCode)
 
     var orders = await orderDetailReadOnlyRepository.GetCanceledsByPromotionCode(promotionCode);
 
-    await scoreByOrderCanceledHandler.Handle(new ScoreCanceledCommand.CalculateCommand(promotionCode, orders));
+    await scoreByOrderCanceledHandler.Handle(new ScoreCanceledCommand.CalculateCommand(promotionCode));
 }
 async Task CalculateRevenueOfMonth()
 {

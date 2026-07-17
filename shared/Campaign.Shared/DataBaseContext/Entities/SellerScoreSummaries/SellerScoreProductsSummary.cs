@@ -5,7 +5,7 @@
         public int ProductId { get; private set; } = default!;
         public bool IsCanceled { get; private set; } = false;
         public bool IsRemoved { get; private set; } = false;
-
+        public long? OrderId { get; private set; }
         public SellerScoreProductsSummary(int sellerId,
                                           decimal score,
                                           int productId,
@@ -26,6 +26,10 @@
         public void SetCanceled()
         {
             IsCanceled = true;
+        }
+
+        public void SetOrderId(long? orderId) { 
+            OrderId = orderId;
         }
     }
 }

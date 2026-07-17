@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Campaign.Pooling.DTO.Response.Order;
 using Campaign.Pooling.DTO.Response.Revenue;
-using Campaign.Processor.API.DTO.Response.Order;
 using Campaign.Shared.DataBaseContext.Entities;
+using Campaign.Processor.API.DTO.Response.Order;
 using Entity = Campaign.Shared.DataBaseContext.Entities.Order;
 
 namespace Campaign.Pooling.Repositories.Order.ReadOnly

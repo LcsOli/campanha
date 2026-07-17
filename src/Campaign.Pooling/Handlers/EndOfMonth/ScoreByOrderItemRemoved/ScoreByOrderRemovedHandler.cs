@@ -25,7 +25,7 @@ namespace Campaign.Processor.API.Handlers.EndOfMonth.ScoreByOrderItemRemoved
         {
             new RegisterScoreRemovedDataValidator()
                 .Validate(cmd);
-
+            /*
             var ordersValids = cmd.Orders.GroupBy(x => new { x.SellerId, x.ConsumerId, x.OrderId, x.ProductId })
                                          .Select(x => new
                                          {
@@ -71,6 +71,7 @@ namespace Campaign.Processor.API.Handlers.EndOfMonth.ScoreByOrderItemRemoved
 
             //var productsResume = await _sellerScoreProductSummaryReadOnlyRepository.GetByIds(cmd.PromotionCode, [.. ordersIds], [.. productsRemovedsIds]);
             //productsResume.ForEach(x => x.SetRemoved());
+            */
         }
     }
 }

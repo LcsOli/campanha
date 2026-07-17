@@ -8,9 +8,9 @@ namespace Campaign.Processor.API.Handlers.EndOfMonth.ScoreByOrderItemRemoved.Val
     {
         public RegisterScoreRemovedDataValidator()
         {
-            RuleFor(x => x.Orders.Count)
-                .GreaterThan(0)
-                .WithMessage("Lista de vendedores devem ser definidos.");
+            //RuleFor(x => x.Orders.Count)
+            //    .GreaterThan(0)
+            //    .WithMessage("Lista de vendedores devem ser definidos.");
         }
     }
 }
