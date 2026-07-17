@@ -63,7 +63,7 @@ var context = serviceProvider.GetService<CampaingContextDb>();
 using var scope = serviceProvider.CreateScope();
 
 
-var promot = new int[] {  202602, 202603, 202604, 202605, 202606 };
+var promot = new int[] { 202601, 202602, 202603, 202604, 202605, 202606 };
 
 foreach (var item in promot)
 {
@@ -76,7 +76,7 @@ async Task SetNumpedIntoOrders(int promotionCode)
     var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnityOfWork>();
 
     var sellerScoreProductSummaryReadOnlyRepository = scope.ServiceProvider.GetRequiredService<ISellerScoreProductSummaryReadOnlyRepository>();
-    var result = await sellerScoreProductSummaryReadOnlyRepository.Get(promotionCode);
+    var result = await sellerScoreProductSummaryReadOnlyRepository.FindOrdersIds(promotionCode);
 
     var items = await sellerScoreProductSummaryReadOnlyRepository.GetByPromotionCode(promotionCode);
 

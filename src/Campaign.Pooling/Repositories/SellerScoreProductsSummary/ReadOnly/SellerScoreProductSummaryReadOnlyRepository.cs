@@ -29,70 +29,98 @@ namespace Campaign.Processor.API.Repositories.SellerScoreProductsSummary.ReadOnl
 
         public async Task<List<Entity.SellerScoreProductsSummary>> GetByPromotionCode(int promotionCode)
         {
-            return await _context.SellerScoreProductsSummaries.Where(x => x.PromotionCode == promotionCode).ToListAsync();
+            return await _context.SellerScoreProductsSummaries.Where(x => x.PromotionCode == promotionCode && !x.OrderId.HasValue).ToListAsync();
         }
 
-        public async Task<List<SellerScoreProductsSummaryOrderId>> Get(int promotionCode)
+        public async Task<List<SellerScoreProductsSummaryOrderId>> FindOrdersIds(int promotionCode)
         {
             return await _context.Database.SqlQuery<SellerScoreProductsSummaryOrderId>($"""
                             select
-                               id,
-                               numped as orderId
+                                id,
+                                numped as orderId
                             from
                             (
-                                select 
-                                    sp.id,
-                                    p.codcli,
-                                    sp.cod_produto,
-                                    'N' as removido,
-                                    min( case 
-                                            when 
-                                                p.dtcancel is null or
-                                                p.dtcancel > pc.dtfim
-                                            then
-                                                p.numped
-                                            end
-                                        ) as numped
-                                from 
-                                     cf_campanha_resumo_rca_score_produto sp 
-                                     join pcpedi pi on pi.codprod = sp.cod_produto and pi.codcli = sp.cod_cliente and pi.codusur = sp.rca_id
-                                     join pcpedc p on p.numped = pi.numped
-                                     join pcpromoc pc on pc.codpromocao = sp.cod_promocao
-                                where 
-                                    sp.cod_promocao = {promotionCode} and
-                                    trunc(p.data) >= trunc(pc.dtinicio) and trunc(p.data) <= trunc(pc.dtfim)
-                                group by
-                                    sp.id,
-                                    p.codcli,    
-                                    sp.cod_produto
-                            union
-                                select
-                                    sp.id,
-                                    p.codcli,
-                                    sp.cod_produto,
-                                    'S' as removido,
-                                    min( case 
-                                            when 
-                                                p.dtcancel is null or
-                                                p.dtcancel > pc.dtfim
-                                            then
-                                                p.numped
-                                            end
-                                        ) as numped
-                                from
+                               select 
+                                   sp.id,
+                                   p.codcli,
+                                   sp.cod_produto,
+                                   'N' as removido,
+                                   'N' as cancelado,
+                                   min( case 
+                                           when 
+                                               p.dtcancel is null or
+                                               p.dtcancel > pc.dtfim
+                                           then
+                                               p.numped
+                                           end
+                                       ) as numped
+                               from 
                                     cf_campanha_resumo_rca_score_produto sp 
-                                    join pccortei c on c.codprod = sp.cod_produto and c.codcli = sp.cod_cliente and c.codusur = sp.rca_id
-                                    join pcpedc p on p.numped = c.numped
+                                    join pcpedi pi on pi.codprod = sp.cod_produto and pi.codcli = sp.cod_cliente and pi.codusur = sp.rca_id
+                                    join pcpedc p on p.numped = pi.numped
                                     join pcpromoc pc on pc.codpromocao = sp.cod_promocao
-                                where
-                                    c.qtseparada = 0 and
+                               where 
+                                   sp.cod_promocao = {promotionCode} and
+                                   trunc(p.data) >= trunc(pc.dtinicio) and trunc(p.data) <= trunc(pc.dtfim)
+                               group by
+                                   sp.id,
+                                   p.codcli,    
+                                   sp.cod_produto
+                            union
+                               select
+                                   sp.id,
+                                   p.codcli,
+                                   sp.cod_produto,
+                                   'S' as removido,
+                                   'N' as cancelado,
+                                   min( case 
+                                           when 
+                                               p.dtcancel is null or
+                                               p.dtcancel > pc.dtfim
+                                           then
+                                               p.numped
+                                           end
+                                       ) as numped
+                               from
+                                   cf_campanha_resumo_rca_score_produto sp 
+                                   join pccortei c on c.codprod = sp.cod_produto and c.codcli = sp.cod_cliente and c.codusur = sp.rca_id
+                                   join pcpedc p on p.numped = c.numped
+                                   join pcpromoc pc on pc.codpromocao = sp.cod_promocao
+                               where
+                                   c.qtseparada = 0 and
+                                   sp.cod_promocao = {promotionCode} and
+                                   trunc(p.data) >= trunc(pc.dtinicio) and trunc(p.data) <= trunc(pc.dtfim)
+                               group by
+                                   sp.id,
+                                   p.codcli,
+                                   sp.cod_produto
+                            union    
+                               select
+                                   sp.id,
+                                   i.codcli,
+                                   sp.cod_produto,
+                                   'N' as removido,
+                                   'S' as cancelado,
+                                   min( case 
+                                           when 
+                                               i.datacanc > pc.dtfim
+                                           then
+                                               i.numped
+                                           end
+                                       ) as numped
+                               from
+                                    cf_campanha_resumo_rca_score_produto sp
+                                    join pcnfcanitem i on i.codprod = sp.cod_produto and i.codcli = sp.cod_cliente and i.codusur = sp.rca_id
+                                    join pcpromoc pc on pc.codpromocao = sp.cod_promocao
+                               where
                                     sp.cod_promocao = {promotionCode} and
-                                    trunc(p.data) >= trunc(pc.dtinicio) and trunc(p.data) <= trunc(pc.dtfim)
-                                group by
-                                    sp.id,
-                                    p.codcli,
-                                    sp.cod_produto
+                                    trunc(i.dataemissao) >= trunc(pc.dtinicio) and trunc(i.dataemissao) <= trunc(pc.dtfim)
+                               group by
+                                   sp.id,
+                                   i.codcli,
+                                   sp.cod_produto
                             )
+                
                 """).ToListAsync();
         }
 
