@@ -33,8 +33,8 @@ namespace Campaign.Pooling.Orchestrators.MainOrchestrator
 
                 await _unityOfWork.SaveAsync();
 
-                await _calculateEndOfMonthOrchestrator.Execute(promotionCode);
-                await _unityOfWork.SaveAsync();
+                //await _calculateEndOfMonthOrchestrator.Execute(promotionCode);
+                //await _unityOfWork.SaveAsync();
             });
         }
     }
