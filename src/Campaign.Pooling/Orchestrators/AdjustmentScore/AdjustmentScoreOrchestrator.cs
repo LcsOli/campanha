@@ -1,7 +1,6 @@
 ﻿using System.Net;
 using Campaign.Shared.Exceptions;
 using Campaign.Processor.API.Commands.AdjustScore;
-using Campaign.Pooling.Repositories.Order.ReadOnly;
 using Campaign.Processor.API.Handlers.EndOfMonth.ScoreByOrderCanceled;
 using Campaign.Processor.API.Handlers.EndOfMonth.ScoreByOrderItemRemoved;
 using ScoreRemovedCommand = Campaign.Processor.API.Commands.EndOfMonth.ScoreByOrderRemoved.Create;

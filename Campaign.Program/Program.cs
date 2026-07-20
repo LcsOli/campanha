@@ -62,14 +62,7 @@ var context = serviceProvider.GetService<CampaingContextDb>();
 
 using var scope = serviceProvider.CreateScope();
 
-
-var promot = new int[] { 202601, 202602, 202603, 202604, 202605, 202606 };
-
-foreach (var item in promot)
-{
-    await SetNumpedIntoOrders(item);
-}
-
+//await CalculateScoreByProductCanceleds(202601);
 
 async Task SetNumpedIntoOrders(int promotionCode)
 {
