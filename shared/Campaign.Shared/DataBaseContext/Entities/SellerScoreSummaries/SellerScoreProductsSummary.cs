@@ -9,10 +9,12 @@
         public SellerScoreProductsSummary(int sellerId,
                                           decimal score,
                                           int productId,
+                                          long? orderId,
                                           int customerId,
                                           int promotionCode)
         {
             Score = score;
+            OrderId = orderId;
             SellerId = sellerId;
             ProductId = productId;
             CustomerId = customerId;
