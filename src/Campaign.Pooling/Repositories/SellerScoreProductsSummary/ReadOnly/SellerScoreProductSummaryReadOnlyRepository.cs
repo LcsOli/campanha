@@ -49,7 +49,7 @@ namespace Campaign.Processor.API.Repositories.SellerScoreProductsSummary.ReadOnl
                                    min( case 
                                            when 
                                                p.dtcancel is null or
-                                               p.dtcancel > pc.dtfim
+                                               p.dtcancel > ch.data_leitura
                                            then
                                                p.numped
                                            end
@@ -59,6 +59,7 @@ namespace Campaign.Processor.API.Repositories.SellerScoreProductsSummary.ReadOnl
                                     join pcpedi pi on pi.codprod = sp.cod_produto and pi.codcli = sp.cod_cliente and pi.codusur = sp.rca_id
                                     join pcpedc p on p.numped = pi.numped
                                     join pcpromoc pc on pc.codpromocao = sp.cod_promocao
+                                    join cf_campanha_promoi_historico_leitura ch on ch.codpromocao = pc.codpromocao
                                where 
                                    sp.cod_promocao = {promotionCode} and
                                    trunc(p.data) >= trunc(pc.dtinicio) and trunc(p.data) <= trunc(pc.dtfim)
@@ -76,7 +77,7 @@ namespace Campaign.Processor.API.Repositories.SellerScoreProductsSummary.ReadOnl
                                    min( case 
                                            when 
                                                p.dtcancel is null or
-                                               p.dtcancel > pc.dtfim
+                                               p.dtcancel > ch.data_leitura
                                            then
                                                p.numped
                                            end
@@ -86,6 +87,7 @@ namespace Campaign.Processor.API.Repositories.SellerScoreProductsSummary.ReadOnl
                                    join pccortei c on c.codprod = sp.cod_produto and c.codcli = sp.cod_cliente and c.codusur = sp.rca_id
                                    join pcpedc p on p.numped = c.numped
                                    join pcpromoc pc on pc.codpromocao = sp.cod_promocao
+                                   join cf_campanha_promoi_historico_leitura ch on ch.codpromocao = pc.codpromocao
                                where
                                    c.qtseparada = 0 and
                                    sp.cod_promocao = {promotionCode} and
@@ -103,7 +105,7 @@ namespace Campaign.Processor.API.Repositories.SellerScoreProductsSummary.ReadOnl
                                    'S' as cancelado,
                                    min( case 
                                            when 
-                                               i.datacanc > pc.dtfim
+                                               i.datacanc > ch.data_leitura
                                            then
                                                i.numped
                                            end
@@ -112,6 +114,7 @@ namespace Campaign.Processor.API.Repositories.SellerScoreProductsSummary.ReadOnl
                                     cf_campanha_resumo_rca_score_produto sp
                                     join pcnfcanitem i on i.codprod = sp.cod_produto and i.codcli = sp.cod_cliente and i.codusur = sp.rca_id
                                     join pcpromoc pc on pc.codpromocao = sp.cod_promocao
+                                    join cf_campanha_promoi_historico_leitura ch on ch.codpromocao = pc.codpromocao
                                where
                                     sp.cod_promocao = {promotionCode} and
                                     trunc(i.dataemissao) >= trunc(pc.dtinicio) and trunc(i.dataemissao) <= trunc(pc.dtfim)
