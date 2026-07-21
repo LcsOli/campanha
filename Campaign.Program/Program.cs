@@ -64,18 +64,23 @@ using var scope = serviceProvider.CreateScope();
 
 //await CalculateScoreByProductCanceleds(202601);
 
-async Task SetNumpedIntoOrders(int promotionCode)
+//await SetNumpedIntoOrders(202601, 202602, 202603, 202604, 202605, 202606);
+
+async Task SetNumpedIntoOrders(params int[] promotionsCodes)
 {
     var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnityOfWork>();
-
     var sellerScoreProductSummaryReadOnlyRepository = scope.ServiceProvider.GetRequiredService<ISellerScoreProductSummaryReadOnlyRepository>();
-    var result = await sellerScoreProductSummaryReadOnlyRepository.FindOrdersIds(promotionCode);
 
-    var items = await sellerScoreProductSummaryReadOnlyRepository.GetByPromotionCode(promotionCode);
+    foreach (var promotionCode in promotionsCodes)
+    {
+        var result = await sellerScoreProductSummaryReadOnlyRepository.FindOrdersIds(promotionCode);
 
-    items.ForEach(x => x.SetOrderId(result.FirstOrDefault(z => z.Id == x.Id)?.OrderId));
+        var items = await sellerScoreProductSummaryReadOnlyRepository.GetByPromotionCode(promotionCode);
+        
+        items.ForEach(x => x.SetOrderId(result.FirstOrDefault(z => z.Id == x.Id)?.OrderId));
 
-    var notSeted = items.Where(x => !x.OrderId.HasValue);
+        var notSeted = items.Where(x => !x.OrderId.HasValue);
+    }
 }
 
 async Task CalculateCanceledsAndRemoveds(int promocaoCode)
