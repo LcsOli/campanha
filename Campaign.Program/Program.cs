@@ -62,10 +62,6 @@ var context = serviceProvider.GetService<CampaingContextDb>();
 
 using var scope = serviceProvider.CreateScope();
 
-//await CalculateScoreByProductCanceleds(202601);
-
-//await SetNumpedIntoOrders(202601, 202602, 202603, 202604, 202605, 202606);
-
 async Task SetNumpedIntoOrders(params int[] promotionsCodes)
 {
     var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnityOfWork>();
